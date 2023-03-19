@@ -27,8 +27,11 @@
           </div>
           <nav class="row-block">
             <div class="row ControlPanel-rowSplit">
-              <div class="row-block"><a class="ControlPanel-title" href="account.html">Login / Register</a>
-              </div>
+              {% if request.user.is_authenticated %}
+                <div class="row-block"><a class="ControlPanel-title" href="account.html">Account</a></div>
+              {% else %}
+                <div class="row-block"><a class="ControlPanel-title" href="#">Login / Register</a></div>
+              {% endif %}
             </div>
           </nav>
         </div>
@@ -71,8 +74,7 @@
           </div>
         </div>
         <div class="row-block Header-trigger"><a class="menuTrigger" href="#navigate">
-            <div class="menuTrigger-content">Показать навигацию
-            </div><span></span><span></span><span></span></a>
+            <div class="menuTrigger-content">Показать навигацию</div><span></span><span></span><span></span></a>
         </div>
       </div>
     </div>
