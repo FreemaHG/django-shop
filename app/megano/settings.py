@@ -83,7 +83,7 @@ DATABASES = {
     },
     # 'postgresql': {  # Для развертывания
     #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': '.' / BASE_DIR / 'megano_psq_db' / 'postgres_db',
+    #     'NAME': '.' / BASE_DIR / 'psq_db' / 'postgres_db',
     #     'USER': os.environ['USER'],
     #     'PASSWORD': os.environ['PASSWORD'],
     #     'HOST': os.environ['HOST'],

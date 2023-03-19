@@ -6,4 +6,4 @@ class MainView(View):
     """ Тестовая главная страница """
 
     def get(self, request):
-        return render(request, 'index.html')
+        return render(request, '../templates/index.html')
