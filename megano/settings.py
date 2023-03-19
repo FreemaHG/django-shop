@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'app_user.apps.AppUserConfig',
+    'app_shop.apps.AppShopConfig',
 ]
 
 MIDDLEWARE = [
@@ -75,10 +77,18 @@ WSGI_APPLICATION = 'megano.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default': {  # Для разработки
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    },
+    # 'postgresql': {  # Для развертывания
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': '.' / BASE_DIR / 'megano_psq_db' / 'postgres_db',
+    #     'USER': os.environ['USER'],
+    #     'PASSWORD': os.environ['PASSWORD'],
+    #     'HOST': os.environ['HOST'],
+    #     'PORT': os.environ['PORT'],
+    # }
 }
 
 
