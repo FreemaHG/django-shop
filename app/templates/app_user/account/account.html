@@ -1,98 +1,62 @@
-{% extends "base.html" %}
+{% extends "app_user/account/account_base.html" %}
 {% load static %}
 
-{% block content %}
-  <div class="Middle Middle_top">
-    <div class="Middle-top">
-      <div class="wrap">
-        <div class="Middle-header">
-          <h1 class="Middle-title">Личный кабинет
-          </h1>
-          <ul class="breadcrumbs Middle-breadcrumbs">
-            <li class="breadcrumbs-item"><a href="index.html">home</a>
-            </li>
-            <li class="breadcrumbs-item breadcrumbs-item_current"><span>Личный кабинет</span>
-            </li>
-          </ul>
+{% block account_header %}
+    {% include "app_user/account/includes/header.html" with title="Личный кабинет" %}
+{% endblock %}
+
+{% block activation_status_for_account %}menu-item_ACTIVE{% endblock %}
+
+{% block order_history %}
+    <li class="menu-item"><a class="menu-link" href="historyview.html">История просмотра</a></li>
+{% endblock %}
+
+{% block account_content %}
+  <div class="Account">
+    <div class="Account-group">
+      <div class="Account-column">
+        <div class="Account-avatar"><img src="{% static 'assets/img/content/home/card.jpg' %}" alt="card.jpg"/>
         </div>
       </div>
+      <div class="Account-column">
+        <div class="Account-name">Иванов Иван Иванович
+        </div><a class="Account-editLink" href="profile.html">Редактировать профиль</a>
+      </div>
     </div>
-    <div class="Section Section_column Section_columnLeft">
-      <div class="wrap">
-        <div class="Section-column">
-          <div class="Section-columnSection">
-            <header class="Section-header">
-              <strong class="Section-title">Навигация
-              </strong>
-            </header>
-            <div class="Section-columnContent">
-              <div class="NavigateProfile">
-                <ul class="menu menu_vt">
-                  <li class="menu-item_ACTIVE menu-item"><a class="menu-link" href="account.html">Личный кабинет</a>
-                  </li>
-                  <li class="menu-item"><a class="menu-link" href="profile.html">Профиль</a>
-                  </li>
-                  <li class="menu-item"><a class="menu-link" href="../../app_shop/orders/historyorder.html">История заказов</a>
-                  </li>
-                  <li class="menu-item"><a class="menu-link" href="historyview.html">История просмотра</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="Section-content">
-          <div class="Account">
-            <div class="Account-group">
-              <div class="Account-column">
-                <div class="Account-avatar"><img src="{% static 'assets/img/content/home/card.jpg' %}" alt="card.jpg"/>
+    <div class="Account-group">
+      <div class="Account-column Account-column_full">
+        <div class="Order Order_anons">
+          <div class="Order-personal">
+            <div class="row">
+              <div class="row-block"><a class="Order-title" href="oneorder.html">Заказ&#32;<span class="Order-numberOrder">№200</span>&#32;от&#32;<span class="Order-dateOrder">21.07.2020</span></a>
+                <div class="Account-editLink"><a href="../../app_shop/orders/historyorder.html">История заказов</a>
                 </div>
               </div>
-              <div class="Account-column">
-                <div class="Account-name">Иванов Иван Иванович
-                </div><a class="Account-editLink" href="profile.html">Редактировать профиль</a>
-              </div>
-            </div>
-            <div class="Account-group">
-              <div class="Account-column Account-column_full">
-                <div class="Order Order_anons">
-                  <div class="Order-personal">
-                    <div class="row">
-                      <div class="row-block"><a class="Order-title" href="oneorder.html">Заказ&#32;<span class="Order-numberOrder">№200</span>&#32;от&#32;<span class="Order-dateOrder">21.07.2020</span></a>
-                        <div class="Account-editLink"><a href="../../app_shop/orders/historyorder.html">История заказов</a>
-                        </div>
-                      </div>
-                      <div class="row-block">
-                        <div class="Order-info Order-info_delivery">
-                          <div class="Order-infoType">Тип доставки:
-                          </div>
-                          <div class="Order-infoContent">Обычная доставка
-                          </div>
-                        </div>
-                        <div class="Order-info Order-info_pay">
-                          <div class="Order-infoType">Оплата:
-                          </div>
-                          <div class="Order-infoContent">Онлайн картой
-                          </div>
-                        </div>
-                        <div class="Order-info">
-                          <div class="Order-infoType">Общая стоимость:
-                          </div>
-                          <div class="Order-infoContent">200.99$
-                          </div>
-                        </div>
-                        <div class="Order-info Order-info_status">
-                          <div class="Order-infoType">Статус:
-                          </div>
-                          <div class="Order-infoContent">Не оплачен
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+              <div class="row-block">
+                <div class="Order-info Order-info_delivery">
+                  <div class="Order-infoType">Тип доставки:
+                  </div>
+                  <div class="Order-infoContent">Обычная доставка
                   </div>
                 </div>
-              </div>
-            </div>
+                <div class="Order-info Order-info_pay">
+                  <div class="Order-infoType">Оплата:
+                  </div>
+                  <div class="Order-infoContent">Онлайн картой
+                  </div>
+                </div>
+                <div class="Order-info">
+                  <div class="Order-infoType">Общая стоимость:
+                  </div>
+                  <div class="Order-infoContent">200.99$
+                  </div>
+                </div>
+                <div class="Order-info Order-info_status">
+                  <div class="Order-infoType">Статус:
+                  </div>
+                  <div class="Order-infoContent">Не оплачен
+                  </div>
+                </div>
               </div>
             </div>
           </div>
