@@ -15,6 +15,8 @@ from .views import (
     ProgressPaymentView,
 )
 
+app_name = 'shop'
+
 urlpatterns = [
     path('', MainView.as_view(), name='main'),  # Главная
     path('about/', AboutView.as_view(), name='about'),  # О магазине

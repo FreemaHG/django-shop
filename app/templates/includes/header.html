@@ -28,7 +28,7 @@
           <nav class="row-block">
             <div class="row ControlPanel-rowSplit">
               {% if request.user.is_authenticated %}
-                <div class="row-block"><a class="ControlPanel-title" href="account.html">Account</a></div>
+                <div class="row-block"><a class="ControlPanel-title" href="{% url 'user:account' %}">Account</a></div>
               {% else %}
                 <div class="row-block"><a class="ControlPanel-title" href="#">Login / Register</a></div>
               {% endif %}
@@ -49,26 +49,26 @@
     </div>
     <div class="wrap">
       <div class="row Header-rowMain">
-        <div class="row-block Header-logo"><a class="logo" href="index.html"><img class="logo-image" src="{% static 'assets/img/logo.png' %}" alt="logo.png"/></a>
+        <div class="row-block Header-logo"><a class="logo" href="{% url 'shop:main' %}"><img class="logo-image" src="{% static 'assets/img/logo.png' %}" alt="logo.png"/></a>
         </div>
         <nav class="row-block row-block_right Header-menu">
           <div class="menuModal" id="navigate">
             <ul class="menu menu_main">
-              <li class="menu-item"><a class="menu-link" href="index.html">Home</a>
+              <li class="menu-item"><a class="menu-link" href="{% url 'shop:main' %}">Home</a>
               </li>
 
-              <li class="menu-item"><a class="menu-link" href="sale.html">Blog</a>
+              <li class="menu-item"><a class="menu-link" href="{% url 'shop:sale' %}">Blog</a>
               </li>
-              <li class="menu-item"><span class="menu-label menu-label_success">Hot</span><a class="menu-link" href="product.html">Gallery</a>
+              <li class="menu-item"><span class="menu-label menu-label_success">Hot</span><a class="menu-link" href="{% url 'shop:product' %}">Gallery</a>
               </li>
 
-              <li class="menu-item"><a class="menu-link" href="catalog.html">Purchase</a>
+              <li class="menu-item"><a class="menu-link" href="{% url 'shop:catalog' %}">Purchase</a>
               </li>
             </ul>
           </div>
         </nav>
         <div class="row-block">
-          <div class="CartBlock"><a class="CartBlock-block" href="cart.html"><img class="CartBlock-img" src="{% static 'assets/img/icons/cart.svg' %}" alt="cart.svg"/><span class="CartBlock-amount">0</span></a>
+          <div class="CartBlock"><a class="CartBlock-block" href="{% url 'shop:shopping_cart' %}"><img class="CartBlock-img" src="{% static 'assets/img/icons/cart.svg' %}" alt="cart.svg"/><span class="CartBlock-amount">0</span></a>
             <div class="CartBlock-block"><span class="CartBlock-price">0.00$</span>
             </div>
           </div>

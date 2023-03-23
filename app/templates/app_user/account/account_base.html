@@ -24,9 +24,9 @@
             <div class="Section-columnContent">
                 <div class="NavigateProfile">
                   <ul class="menu menu_vt">
-                    <li class="{% block activation_status_for_account %}{% endblock %} menu-item"><a class="menu-link" href="account.html">Личный кабинет</a></li>
-                    <li class="{% block activation_status_for_profile %}{% endblock %} menu-item"><a class="menu-link" href="profile.html">Профиль</a></li>
-                    <li class="{% block activation_status_for_order_history %}{% endblock %} menu-item"><a class="menu-link" href="../../app_shop/orders/historyorder.html">История заказов</a></li>
+                    <li class="{% block activation_status_for_account %}{% endblock %} menu-item"><a class="menu-link" href="{% url 'user:account' %}">Личный кабинет</a></li>
+                    <li class="{% block activation_status_for_profile %}{% endblock %} menu-item"><a class="menu-link" href="{% url 'user:profile' %}">Профиль</a></li>
+                    <li class="{% block activation_status_for_order_history %}{% endblock %} menu-item"><a class="menu-link" href="{% url 'shop:history_order' %}">История заказов</a></li>
                     {% block order_history %}{% endblock %}
                   </ul>
                 </div>
