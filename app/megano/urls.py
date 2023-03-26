@@ -21,3 +21,5 @@ urlpatterns = [
     path('', include('app_shop.urls')),
     path('', include('app_user.urls')),
 ]
+
+admin.site.site_header = 'Администрирование Megano'  # Переопределяем шапку в админке
