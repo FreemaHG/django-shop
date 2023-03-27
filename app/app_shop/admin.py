@@ -4,6 +4,20 @@ from mptt.admin import DraggableMPTTAdmin
 from .models import CategoryProduct
 
 
+@admin.action(description='Удалить (мягкое удаление)')
+def deleted_records(adminmodel, request, queryset):
+    """ Мягкое удаление записей """
+
+    queryset.update(deleted=True)
+
+
+@admin.action(description='Восстановить записи')
+def restore_records(adminmodel, request, queryset):
+    """ Восстановить записи, отключенные ч/з мягкое удаление """
+
+    queryset.update(deleted=False)
+
+
 @admin.register(CategoryProduct)
 class CategoryProductAdmin(DraggableMPTTAdmin):
     """ Админ-панель модели категории товаров """
@@ -14,6 +28,7 @@ class CategoryProductAdmin(DraggableMPTTAdmin):
     list_editable = ('deleted',)
     search_fields = ('title',)
     prepopulated_field = {'slug': ('title',)}
+    actions = [deleted_records, restore_records]  # Мягкое удаление/восстановление записей
 
     fieldsets = (
         ('Основное', {'fields': ('title', 'slug', 'parent')}),
