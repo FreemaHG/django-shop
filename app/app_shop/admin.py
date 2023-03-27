@@ -2,20 +2,22 @@ from django.contrib import admin, messages
 from mptt.admin import DraggableMPTTAdmin
 
 from .models import CategoryProduct
+from .utils.admin.change_status_delete import soft_deletion_child_records
 
 
 @admin.action(description='Удалить (мягкое удаление)')
 def deleted_records(adminmodel, request, queryset):
     """ Мягкое удаление записей """
 
-    queryset.update(deleted=True)
+    soft_deletion_child_records(queryset)  # Мягкое удаление всех дочерних записей
+    queryset.update(deleted=True)  # Мягкое удаление родительской записи
 
 
 @admin.action(description='Восстановить записи')
 def restore_records(adminmodel, request, queryset):
     """ Восстановить записи, отключенные ч/з мягкое удаление """
 
-    queryset.update(deleted=False)
+    queryset.update(deleted=False)  # Восстановление родительской записи
 
 
 @admin.register(CategoryProduct)
