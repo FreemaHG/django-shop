@@ -24,16 +24,16 @@ def restore_records(adminmodel, request, queryset):
 class CategoryProductAdmin(DraggableMPTTAdmin):
     """ Админ-панель модели категории товаров """
 
-    list_display = ('tree_actions', 'indented_title', 'selected', 'deleted')
+    list_display = ('tree_actions', 'indented_title', 'slug', 'selected', 'deleted')
     list_display_links = ('indented_title',)
     list_filter = ('selected', 'deleted')
     list_editable = ('deleted',)
     search_fields = ('title',)
-    prepopulated_field = {'slug': ('title',)}
+    # prepopulated_field = {'slug': ('title',)}  # TODO: Должно автоматически генерировать URL ч/з prepopulated_field в админке!
     actions = [deleted_records, restore_records]  # Мягкое удаление/восстановление записей
 
     fieldsets = (
-        ('Основное', {'fields': ('title', 'slug', 'parent')}),
+        ('Основное', {'fields': ('title', 'parent')}),
         ('Файлы', {'fields': ('icon', 'image')}),
         ('Статусы', {'fields': ('selected', 'deleted')}),
     )

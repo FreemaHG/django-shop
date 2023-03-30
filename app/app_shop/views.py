@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.views.generic import View
 from django.shortcuts import render
 
@@ -6,6 +7,13 @@ class MainView(View):
     """ Тестовая главная страница """
     def get(self, request):
         return render(request, '../templates/app_shop/index.html')
+
+
+class ProductsListCategoryView(View):
+    """ Тестовая страница с товарами определенной категории """
+    def get(self, request, category_name):
+        return HttpResponse(f'Вывод товаров категории {category_name}')
+        # return render(request, '../templates/app_shop/catalog.html')
 
 
 class AboutView(View):

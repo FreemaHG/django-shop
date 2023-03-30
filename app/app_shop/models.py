@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+# from django.utils.text import slugify
+from pytils.translit import slugify
 from mptt.models import MPTTModel, TreeForeignKey
 
 from .utils.models.saving_files import saving_the_category_icon, saving_the_category_image
@@ -14,7 +16,7 @@ class CategoryProduct(MPTTModel):
     """ Модель категорий товаров с вложенностью """
 
     title = models.CharField(max_length=100, verbose_name='Название')
-    slug = models.SlugField(max_length=100, blank=True, verbose_name='URL')
+    slug = models.SlugField(max_length=100, null=False, verbose_name='URL')
 
     icon = models.ImageField(upload_to=saving_the_category_icon, blank=True, verbose_name='Иконка')
     image = models.ImageField(upload_to=saving_the_category_image, blank=True, verbose_name='Изображение')
@@ -43,6 +45,12 @@ class CategoryProduct(MPTTModel):
 
     def get_absolute_url(self):
         return reverse('post-by-category', args=[str(self.slug)])
+
+    def save(self, *args, **kwargs):
+        """ Сохраняем URL по названию категории """
+        value = self.title
+        self.slug = slugify(value)  # FIXME: Должно автоматически генерировать URL ч/з prepopulated_field в админке!
+        super().save(*args, **kwargs)
 
     def __str__(self):
         """ Возвращение названия категории """
