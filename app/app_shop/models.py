@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-# from django.utils.text import slugify
+# from django.template.defaultfilters import slugify
 from pytils.translit import slugify
 from mptt.models import MPTTModel, TreeForeignKey
 
@@ -48,9 +48,8 @@ class CategoryProduct(MPTTModel):
 
     def save(self, *args, **kwargs):
         """ Сохраняем URL по названию категории """
-        value = self.title
-        self.slug = slugify(value)  # FIXME: Должно автоматически генерировать URL ч/з prepopulated_field в админке!
-        super().save(*args, **kwargs)
+        self.slug = slugify(self.title)
+        super(CategoryProduct, self).save(*args, **kwargs)
 
     def __str__(self):
         """ Возвращение названия категории """

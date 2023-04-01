@@ -1,5 +1,6 @@
 {% load static %}
 {% load header_tags %}
+{% load mptt_tags %}
 {% output_categories as categories_list %}
 
 <header class="Header">
@@ -85,47 +86,56 @@
         <div class="Header-categories">
           <div class="CategoriesButton">
             <div class="CategoriesButton-title">
-              <div class="CategoriesButton-icon"><img src="{% static 'assets/img/icons/allDep.svg' %}" alt="allDep.svg"/>
-              </div><span class="CategoriesButton-text">All Departments</span>
-              <div class="CategoriesButton-arrow">
-              </div>
+              <div class="CategoriesButton-icon"><img src="{% static 'assets/img/icons/allDep.svg' %}" alt="allDep.svg"/></div>
+              <span class="CategoriesButton-text">Каталог</span>
+              <div class="CategoriesButton-arrow"></div>
             </div>
+
+            <!-- Сделать, чтобы при отсутствии категорий кнопка не работала (не запускался скрипт) -->
             <div class="CategoriesButton-content">
-
-              {% if categories_list %}
-
-                {% for category in categories_list %}
+            {% if categories_list %}
+              {% recursetree categories_list %}
                 <div class="CategoriesButton-link">
-
-                  <a href="{% url 'shop:products_list_one_category' category_name=category.slug %}">
-
-                    {% if category.icon %}
-                      <!-- Не работает вывод медиа-файлов!!! -->
-                      <div class="CategoriesButton-icon"><img src="{{ category.icon }}" alt="Изображение для категории {{ category.title }}"/></div>
-                    {% endif %}
-
-                    <span class="CategoriesButton-text">{{ category.title }}</span>
+                  <a href="{% url 'shop:products_list_one_category' category_name=node.slug %}">
+                    <div class="CategoriesButton-icon">
+                      {% if node.icon %}
+                        <img src="{{ node.icon.url }}" alt=""/>
+                      {% endif %}
+                    </div>
+                    <span class="CategoriesButton-text">{{ node.title }}</span>
                   </a>
-                </div>
 
-                {% endfor %}
-              {% endif %}
+                  {% if node.children.count != 0 %}
+                    <a class="CategoriesButton-arrow" href="#"></a>
+                    <div class="CategoriesButton-submenu">
+
+                      {% for item in node.children.all %}
+                        <a class="CategoriesButton-link" href="{% url 'shop:products_list_one_category' category_name=item.slug %}">
+                          <div class="CategoriesButton-icon">
+                            {% if item.icon %}
+                              <img src="{{ item.icon.url }}" alt=""/>
+                            {% endif %}
+                          </div>
+                          <span class="CategoriesButton-text">{{ item.title }}</span>
+                        </a>
+                      {% endfor %}
+
+                    </div>
+                  {% endif %}
+                </div>
+              {% endrecursetree %}
+            {% endif %}
 
               <div class="CategoriesButton-link">
                 <a href="#">
-                  <div class="CategoriesButton-icon"><img src="{% static 'assets/img/icons/departments/1.svg' %}" alt="1.svg"/></div>
-                  <span class="CategoriesButton-text">Accessories</span>
+                  <div class="CategoriesButton-icon">
+                    <img src="{% static 'assets/img/icons/departments/3.svg' %}" alt="3.svg"/>
+                  </div>
+                  <span class="CategoriesButton-text">Cameras</span>
                 </a>
-              </div>
 
-              <div class="CategoriesButton-link"><a href="#">
-                  <div class="CategoriesButton-icon"><img src="{% static 'assets/img/icons/departments/2.svg' %}" alt="2.svg"/>
-                  </div><span class="CategoriesButton-text">Bags</span></a>
-              </div>
 
-              <div class="CategoriesButton-link"><a href="#">
-                  <div class="CategoriesButton-icon"><img src="{% static 'assets/img/icons/departments/3.svg' %}" alt="3.svg"/>
-                  </div><span class="CategoriesButton-text">Cameras</span></a><a class="CategoriesButton-arrow" href="#"></a>
+                <a class="CategoriesButton-arrow" href="#"></a>
                 <div class="CategoriesButton-submenu"><a class="CategoriesButton-link" href="#">
                     <div class="CategoriesButton-icon"><img src="{% static 'assets/img/icons/departments/1.svg' %}" alt="1.svg"/>
                     </div><span class="CategoriesButton-text">Accessories</span></a><a class="CategoriesButton-link" href="#">

@@ -1913,6 +1913,12 @@ a.Cart-title {
   justify-content: center;
   align-items: center;
 }
+
+.CategoriesButton-icon img {
+  max-width: 23px;
+  max-height: 19px;
+}
+
 .CategoriesButton-content {
   position: absolute;
   top: 100%;
