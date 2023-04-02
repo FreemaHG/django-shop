@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-# from django.template.defaultfilters import slugify
+# from django.template.defaultfilters import slugify  # Не работает!!!
 from pytils.translit import slugify
 from mptt.models import MPTTModel, TreeForeignKey
 
@@ -19,6 +19,7 @@ class CategoryProduct(MPTTModel):
     slug = models.SlugField(max_length=100, null=False, verbose_name='URL')
 
     icon = models.ImageField(upload_to=saving_the_category_icon, blank=True, verbose_name='Иконка')
+    # Используется на главной странице для вывода категории избранных товаров
     image = models.ImageField(upload_to=saving_the_category_image, blank=True, verbose_name='Изображение')
 
     selected = models.BooleanField(default=False, verbose_name='Избранная категория')
