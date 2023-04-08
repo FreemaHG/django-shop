@@ -1,0 +1,52 @@
+{% extends "app_user/account/account_base.html" %}
+{% load static %}
+
+{% block account_header %}
+    {% include "app_user/account/includes/header.html" with title="Авторизация" %}
+{% endblock %}
+
+{% block account_navigation %}{% endblock %}
+
+{% block account_content %}
+  <div class="Profile">
+    <form class="form Profile-form auth-block" action="{% url 'user:login' %}" method="post">
+      {% csrf_token %}
+      <div class="row">
+        <div class="row-block auth-width">
+
+          <div class="form-group">
+            <label class="form-label" for="mail">{{ form.email.label }}</label>
+            <input class="form-input" id="mail" name="email" type="text" data-validate="require"/>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="password">{{ form.password.label }}</label>
+            <input class="form-input" id="password" name="password" type="password" placeholder="{{ form.password.help_text }}"/>
+          </div>
+
+          <div class="form-group">
+
+            <div class="Profile-btn">
+              {% block save_data_button %}
+                <button class="btn btn_success" type="submit">Авторизоваться</button>
+              {% endblock %}
+            </div>
+
+            {% if form.errors %}  <!-- Текст ошибки для полей с невалидными данными -->
+              {% for field in form %}
+                {% for error in field.errors %}
+                  <div class="Profile-success error-message">{{ error | escape }}</div>
+                {% endfor %}
+              {% endfor %}
+            {% endif %}
+
+            {% if error_message %}  <!-- Текст ошибки при неудачной регистрации -->
+              <div class="Profile-success error-message">{{ error_message | escape }}</div>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock %}

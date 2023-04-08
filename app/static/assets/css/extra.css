@@ -4248,12 +4248,13 @@ a.Cart-title {
 }
 .Section_column .wrap {
   display: flex;
+  gap: 50px;
 }
 .Section_columnLeft .Section-content {
-  padding-left: 354px;
+  /*padding-left: 354px;*/
 }
 .Section_columnLeft .Section-column {
-  margin-right: -304px;
+  /*margin-right: -304px;*/
 }
 .Section_columnRight .Section-content {
   padding-right: 354px;
@@ -5160,4 +5161,22 @@ a.Cart-title {
   left: 0;
   bottom: 0rem;
   right: 0;
+}
+
+/* Кастомные стили */
+.Registration-with {
+  width: 100%;
+}
+
+.error-message {
+  color: #f26d7d;
+}
+
+.auth-block {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.auth-width {
+  max-width: 550px;
 }

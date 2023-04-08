@@ -9,8 +9,8 @@ class Profile(models.Model):
     """ Профайл пользователя с расширенными данными """
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Пользователь')
-    full_name = models.CharField(max_length=150, blank=True, verbose_name='ФИО')
-    phone_number = models.CharField(max_length=10, blank=True, verbose_name='Номер телефона')
+    full_name = models.CharField(max_length=150, verbose_name='ФИО')
+    phone_number = models.CharField(unique=True, max_length=10, blank=True, null=True, verbose_name='Телефон')
     address = models.CharField(max_length=255, blank=True, verbose_name='Адрес')
     avatar = models.ImageField(upload_to=save_avatar, blank=True, verbose_name='Аватар')
 

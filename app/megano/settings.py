@@ -74,6 +74,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'megano.wsgi.application'
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,  # True отключает все регистраторы
+    'handlers': {  # Настройка обработчика
+        # Настраиваем вывод логов в консоль
+        'console': {
+            'class': 'logging.StreamHandler',  # Вывод сообщений в консоль
+        },
+    },
+    'root': {
+        'handlers': ['console'],  # Обработчик будет выводить логи в консоль
+        'level': 'DEBUG',  # Выводить сообщения уровня WARNING и выше
+    },
+}
+
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases

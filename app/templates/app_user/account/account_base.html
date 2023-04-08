@@ -18,16 +18,23 @@
         <div class="Section-column">
           <div class="Section-columnSection">
             <header class="Section-header">
-              <strong class="Section-title">Навигация
-              </strong>
+              <strong class="Section-title">Навигация</strong>
             </header>
             <div class="Section-columnContent">
                 <div class="NavigateProfile">
                   <ul class="menu menu_vt">
-                    <li class="{% block activation_status_for_account %}{% endblock %} menu-item"><a class="menu-link" href="{% url 'user:account' %}">Личный кабинет</a></li>
-                    <li class="{% block activation_status_for_profile %}{% endblock %} menu-item"><a class="menu-link" href="{% url 'user:profile' %}">Профиль</a></li>
-                    <li class="{% block activation_status_for_order_history %}{% endblock %} menu-item"><a class="menu-link" href="{% url 'shop:history_order' %}">История заказов</a></li>
-                    {% block order_history %}{% endblock %}
+                    <li class="{% block activation_status_for_account %}{% endblock %} menu-item">
+                      <a class="menu-link" href="{% url 'user:account' %}">Личный кабинет</a>
+                    </li>
+                    <li class="{% block activation_status_for_profile %}{% endblock %} menu-item">
+                      <a class="menu-link" href="{% url 'user:profile' %}">Профиль</a>
+                    </li>
+                    <li class="{% block activation_status_for_order_history %}{% endblock %} menu-item">
+                      <a class="menu-link" href="{% url 'shop:history_order' %}">История заказов</a>
+                    </li>
+                    <li class="menu-item">
+                      <a class="menu-link" href="historyview.html">История просмотра</a>
+                    </li>
                   </ul>
                 </div>
             </div>
