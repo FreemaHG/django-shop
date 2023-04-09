@@ -24,7 +24,17 @@
             <input class="form-input" id="password" name="password" type="password" placeholder="{{ form.password.help_text }}"/>
           </div>
 
-          <div class="form-group">
+          <div class="password-recovery-block">
+            <a class="password-recovery-link" href="{% url 'user:password_recovery' %}">Не помню пароль</a>
+          </div>
+
+          <div class="form-group flex authorization-button">
+
+            <div class="Profile-register">
+              <div>Ещё нет профиля?
+                <a href="{% url 'user:registration' %}">Зарегистрируйтесь</a>
+              </div>
+            </div>
 
             <div class="Profile-btn">
               {% block save_data_button %}

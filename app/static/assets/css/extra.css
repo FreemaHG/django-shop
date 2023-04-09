@@ -5180,3 +5180,33 @@ a.Cart-title {
 .auth-width {
   max-width: 550px;
 }
+
+.Profile-register {
+  font-size: 16px;
+}
+
+.flex {
+  display: flex;
+}
+
+.authorization-button {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.password-recovery-block {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.password-recovery-link {
+  font-size: 14px;
+}
+
+.recovery-password-text {
+  margin-bottom: 15px;
+}
+
+.recovery-password-text p {
+  font-size: 16px;
+}

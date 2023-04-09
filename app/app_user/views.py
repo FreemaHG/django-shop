@@ -12,10 +12,14 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
+from django.core.mail import send_mail, BadHeaderError
 
 from .models import Profile
-from .forms import RegisterUserForm, AuthUserForm
+from .forms import RegisterUserForm, AuthUserForm, EmailForm
 from .utils.save_new_user import save_username
+from .utils.check_users import check_for_email
+from .utils.password_recovery import password_generation
+from django.conf import settings
 
 
 logger = logging.getLogger(__name__)
@@ -109,6 +113,46 @@ class LoginUserView(FormView):
                 'form': form,
                 'error_message': 'Email или пароль не верны!'
             })
+
+
+class PasswordRecovery(FormView):
+    """ Восстановления пароля """
+
+    form_class = EmailForm
+    template_name = '../templates/app_user/account/password_recovery.html'
+
+    def form_valid(self, form, message='', error_message=''):
+        logger.debug(f'Данные валидны: {form.cleaned_data}')
+        email = form.cleaned_data.get('email')
+
+        user = check_for_email(email)
+
+        if user:
+            new_password = password_generation()
+            user.set_password(new_password)
+            user.save()
+            logger.info(f'Пароль для пользователя username: {user.username} id: {user.id} успешно изменен')
+
+            try:
+                send_mail(
+                    f'{email} от Megano',
+                    f'Новый пароль - {new_password}',
+                    settings.DEFAULT_FROM_EMAIL,
+                    [email],
+                )
+                message = 'Новый пароль выслан на указанный Email.'
+
+            except BadHeaderError:
+                error_message = 'При отправке Email произошла ошибка! Попробуйте позже...'
+
+        else:
+            error_message = 'Пользователь с таким Email не найден!'
+
+        return render(self.request, '../templates/app_user/account/password_recovery.html', {
+            'form': form,
+            'message': message,
+            'error_message': error_message,
+        })
 
 
 def account_view(request):
