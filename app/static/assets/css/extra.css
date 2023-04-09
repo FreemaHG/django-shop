@@ -1913,6 +1913,12 @@ a.Cart-title {
   justify-content: center;
   align-items: center;
 }
+
+.CategoriesButton-icon img {
+  max-width: 23px;
+  max-height: 19px;
+}
+
 .CategoriesButton-content {
   position: absolute;
   top: 100%;
@@ -4242,12 +4248,13 @@ a.Cart-title {
 }
 .Section_column .wrap {
   display: flex;
+  gap: 50px;
 }
 .Section_columnLeft .Section-content {
-  padding-left: 354px;
+  /*padding-left: 354px;*/
 }
 .Section_columnLeft .Section-column {
-  margin-right: -304px;
+  /*margin-right: -304px;*/
 }
 .Section_columnRight .Section-content {
   padding-right: 354px;
@@ -5154,4 +5161,52 @@ a.Cart-title {
   left: 0;
   bottom: 0rem;
   right: 0;
+}
+
+/* Кастомные стили */
+.Registration-with {
+  width: 100%;
+}
+
+.error-message {
+  color: #f26d7d;
+}
+
+.auth-block {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.auth-width {
+  max-width: 550px;
+}
+
+.Profile-register {
+  font-size: 16px;
+}
+
+.flex {
+  display: flex;
+}
+
+.authorization-button {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.password-recovery-block {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.password-recovery-link {
+  font-size: 14px;
+}
+
+.recovery-password-text {
+  margin-bottom: 15px;
+}
+
+.recovery-password-text p {
+  font-size: 16px;
 }

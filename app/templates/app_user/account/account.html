@@ -5,56 +5,59 @@
     {% include "app_user/account/includes/header.html" with title="Личный кабинет" %}
 {% endblock %}
 
+<!-- Подсветка выбранного пункта меню в личном кабинете -->
 {% block activation_status_for_account %}menu-item_ACTIVE{% endblock %}
 
-{% block order_history %}
-    <li class="menu-item"><a class="menu-link" href="historyview.html">История просмотра</a></li>
-{% endblock %}
+{% if request.user.is_authenticated %}
 
-{% block account_content %}
-  <div class="Account">
-    <div class="Account-group">
-      <div class="Account-column">
-        <div class="Account-avatar"><img src="{% static 'assets/img/content/home/card.jpg' %}" alt="card.jpg"/>
+  {% block account_content %}
+    <div class="Account">
+      <div class="Account-group">
+        <div class="Account-column">
+          <div class="Account-avatar"><img src="{% static 'assets/img/content/home/card.jpg' %}" alt="card.jpg"/>
+          </div>
+        </div>
+        <div class="Account-column">
+          <div class="Account-name">{{ request.user.profile.full_name }}</div>
+          <a class="Account-editLink" href="profile.html">Редактировать профиль</a>
         </div>
       </div>
-      <div class="Account-column">
-        <div class="Account-name">Иванов Иван Иванович
-        </div><a class="Account-editLink" href="profile.html">Редактировать профиль</a>
-      </div>
-    </div>
-    <div class="Account-group">
-      <div class="Account-column Account-column_full">
-        <div class="Order Order_anons">
-          <div class="Order-personal">
-            <div class="row">
-              <div class="row-block"><a class="Order-title" href="oneorder.html">Заказ&#32;<span class="Order-numberOrder">№200</span>&#32;от&#32;<span class="Order-dateOrder">21.07.2020</span></a>
-                <div class="Account-editLink"><a href="../../app_shop/orders/historyorder.html">История заказов</a>
-                </div>
-              </div>
-              <div class="row-block">
-                <div class="Order-info Order-info_delivery">
-                  <div class="Order-infoType">Тип доставки:
-                  </div>
-                  <div class="Order-infoContent">Обычная доставка
+      <div class="Account-group">
+        <div class="Account-column Account-column_full">
+          <div class="Order Order_anons">
+            <div class="Order-personal">
+              <div class="row">
+                <div class="row-block"><a class="Order-title" href="oneorder.html">Заказ&#32;
+                  <span class="Order-numberOrder">№200</span>&#32;от&#32;
+                  <span class="Order-dateOrder">21.07.2020</span></a>
+                  <div class="Account-editLink">
+                    <a href="../../app_shop/orders/historyorder.html">История заказов</a>
                   </div>
                 </div>
-                <div class="Order-info Order-info_pay">
-                  <div class="Order-infoType">Оплата:
+                <div class="row-block">
+                  <div class="Order-info Order-info_delivery">
+                    <div class="Order-infoType">Тип доставки:
+                    </div>
+                    <div class="Order-infoContent">Обычная доставка
+                    </div>
                   </div>
-                  <div class="Order-infoContent">Онлайн картой
+                  <div class="Order-info Order-info_pay">
+                    <div class="Order-infoType">Оплата:
+                    </div>
+                    <div class="Order-infoContent">Онлайн картой
+                    </div>
                   </div>
-                </div>
-                <div class="Order-info">
-                  <div class="Order-infoType">Общая стоимость:
+                  <div class="Order-info">
+                    <div class="Order-infoType">Общая стоимость:
+                    </div>
+                    <div class="Order-infoContent">200.99$
+                    </div>
                   </div>
-                  <div class="Order-infoContent">200.99$
-                  </div>
-                </div>
-                <div class="Order-info Order-info_status">
-                  <div class="Order-infoType">Статус:
-                  </div>
-                  <div class="Order-infoContent">Не оплачен
+                  <div class="Order-info Order-info_status">
+                    <div class="Order-infoType">Статус:
+                    </div>
+                    <div class="Order-infoContent">Не оплачен
+                    </div>
                   </div>
                 </div>
               </div>
@@ -63,5 +66,11 @@
         </div>
       </div>
     </div>
-  </div>
-{% endblock %}
+  {% endblock %}
+
+{% else %}
+  <p>Для перехода в личный кабинет, пожалуйста,
+    <a href="{% url 'user:login' %}">авторизуйтесь</a><
+  /p>
+{% endif %}
+

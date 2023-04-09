@@ -2,6 +2,7 @@ from django.urls import path, include
 
 from .views import (
     MainView,
+    ProductsListCategoryView,
     AboutView,
     ProductsSalesView,
     ProductDetailView,
@@ -19,6 +20,7 @@ app_name = 'shop'
 
 urlpatterns = [
     path('', MainView.as_view(), name='main'),  # Главная
+    path('category/<slug:category_name>', ProductsListCategoryView.as_view(), name='products_list_one_category'),  # Товары определенной категории
     path('about/', AboutView.as_view(), name='about'),  # О магазине
     path('sale/', ProductsSalesView.as_view(), name='sale'),  # Распродаж
     path('product/', ProductDetailView.as_view(), name='product'),  # Страница товара
