@@ -1,17 +1,11 @@
 import logging
 
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView, LogoutView
-from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib import messages
+from django.contrib.auth.views import LogoutView
 from django.db import IntegrityError
-from django.http import HttpResponse
-from django.views.generic.edit import CreateView, UpdateView, FormView
+from django.views.generic.edit import FormView
 from django.shortcuts import render, redirect
 from django.views import View
-from django.urls import reverse_lazy
-from django.contrib.auth.models import User
 from django.core.mail import send_mail, BadHeaderError
 
 from .models import Profile
@@ -51,7 +45,6 @@ def register_user_view(request):
                     user.set_password(password)
                     user.save()
                 except IntegrityError:
-                    # FIXME передача формы с имеющимися данными
                     logger.warning(f'Регистрация - дублирующийся email')
                     error_message = 'Пользователь с таким email уже зарегистрирован'
                     return render(request, 'app_user/registration.html', {'form': form, 'error_message': error_message})
@@ -64,7 +57,6 @@ def register_user_view(request):
                         avatar=avatar
                     )
                 except IntegrityError:
-                    # FIXME передача формы с имеющимися данными
                     logger.warning(f'Регистрация - дублирующийся phone_number')
                     error_message = 'Пользователь с таким номером телефона уже зарегистрирован'
                     return render(request, 'app_user/registration.html', {'form': form, 'error_message': error_message})
@@ -74,7 +66,6 @@ def register_user_view(request):
                 login(request, user)
                 return redirect('user:account')
 
-            # FIXME передача формы с имеющимися данными
             logger.error(f'Регистрация - не валидные данные: {form.errors}')
             return render(request, 'app_user/registration.html', {'form': form})
 
@@ -89,7 +80,6 @@ class LogoutUserView(LogoutView):
     next_page = 'user:registration'
 
 
-# FIXME настройка шаблона с возможностью восстановления пароля
 class LoginUserView(FormView):
     """ Авторизация пользователя """
 

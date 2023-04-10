@@ -1,4 +1,5 @@
 {% load static %}
+{% load solo_tags %}
 
 <!--END-->
 <!--END--><!DOCTYPE html><!--[if IE 7]>
@@ -18,8 +19,9 @@
 <![endif]-->
 <!--[if gt IE 11]><!--> <html lang="ru"> <!--<![endif]-->
 <head>
-  <title>Megano</title>
-  <meta name="description" content="Описание страницы">
+  {% get_solo "config.SiteConfiguration" as site_config %}
+  <title>{{ site_config.title }}</title>
+  <meta name="description" content={{ site_config.description }}>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
   <link href="{% static 'assets/img/favicon.ico' %}" rel="shortcut icon">
@@ -34,6 +36,7 @@
   <link rel="stylesheet" href="{% static 'assets/css/extra.css' %}" type="text/css">
   <script src="{% static 'assets/plg/CountDown/countdown.js' %}"></script><!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
 </head>
 
 <body class="Site">
