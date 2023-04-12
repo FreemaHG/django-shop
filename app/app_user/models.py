@@ -6,8 +6,9 @@ from .utils.models.output import output_name
 
 
 class Profile(models.Model):
-    """ Профайл пользователя с расширенными данными """
-
+    """
+    Профайл пользователя с расширенными данными
+    """
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Пользователь')
     full_name = models.CharField(max_length=150, verbose_name='ФИО')
     phone_number = models.CharField(unique=True, max_length=10, blank=True, null=True, verbose_name='Телефон')
@@ -20,13 +21,16 @@ class Profile(models.Model):
         verbose_name_plural = 'Учетные записи'
 
     def __str__(self):
-        """ Вывод имени пользователя """
+        """
+        Вывод имени пользователя
+        """
         return output_name(self)
 
 
 class Seller(models.Model):
-    """ Продавец """
-
+    """
+    Модель для продавца
+    """
     profile = models.OneToOneField(Profile, on_delete=models.CASCADE, verbose_name='Пользователь')
     title = models.CharField(max_length=150, verbose_name='Продавец')
     description = models.TextField(verbose_name='Описание')
@@ -41,8 +45,9 @@ class Seller(models.Model):
 
 
 class Buyer(models.Model):
-    """ Покупатель """
-
+    """
+    Модель для покупателя
+    """
     profile = models.OneToOneField(Profile, on_delete=models.CASCADE, verbose_name='Пользователь')
     # FIXME Раскомментировать после добавления модели с товарами
     # views = models.ManyToManyField(Product, verbose_name='Просмотренные товары')

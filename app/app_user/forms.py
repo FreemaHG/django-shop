@@ -5,20 +5,23 @@ from django.core.exceptions import ValidationError
 
 
 class EmailForm(forms.Form):
-    """ Форма для восстановления пароля (ввода email) """
-
+    """
+    Форма для восстановления пароля (ввода email)
+    """
     email = forms.EmailField(label='E-mail', help_text='Введите email')
 
 
 class AuthUserForm(EmailForm):
-    """ Форма авторизации пользователя """
-
+    """
+    Форма авторизации пользователя
+    """
     password = forms.CharField(widget=forms.PasswordInput, label='Пароль', help_text='Введите пароль')
 
 
 class RegisterUserForm(UserCreationForm):
-    """ Расширенная форма для регистрации пользователя """
-
+    """
+    Расширенная форма для регистрации пользователя
+    """
     full_name = forms.CharField(min_length=2, max_length=150, label='ФИО')
     email = forms.EmailField(label='E-mail')
     phone_number = forms.CharField(min_length=10, max_length=12, required=False, label='Телефон')
@@ -28,7 +31,9 @@ class RegisterUserForm(UserCreationForm):
                                       help_text='Введите пароль повторно')
 
     def clean_password2(self):
-        """ Проверка, что введенные пароли совпадают """
+        """
+        Проверка, что введенные пароли совпадают
+        """
         password1 = self.cleaned_data['password1']
         password2 = self.cleaned_data['password2']
 

@@ -19,7 +19,9 @@ from django.conf import settings
 logger = logging.getLogger(__name__)
 
 def register_user_view(request):
-    """ Регистрация пользователя в расширенной форме """
+    """
+    Регистрация пользователя в расширенной форме
+    """
 
     if request.user.is_authenticated:
         return redirect('user:account')
@@ -76,12 +78,16 @@ def register_user_view(request):
 
 
 class LogoutUserView(LogoutView):
-    """ Выход из учетной записи """
+    """
+    Выход из учетной записи
+    """
     next_page = 'user:registration'
 
 
 class LoginUserView(FormView):
-    """ Авторизация пользователя """
+    """
+    Авторизация пользователя
+    """
 
     form_class = AuthUserForm
     template_name = '../templates/app_user/account/login.html'
@@ -106,7 +112,9 @@ class LoginUserView(FormView):
 
 
 class PasswordRecovery(FormView):
-    """ Восстановления пароля """
+    """
+    Восстановления пароля
+    """
 
     form_class = EmailForm
     template_name = '../templates/app_user/account/password_recovery.html'
@@ -146,7 +154,9 @@ class PasswordRecovery(FormView):
 
 
 def account_view(request):
-    """ Личный кабинет """
+    """
+    Личный кабинет пользователя
+    """
 
     if request.user.is_authenticated:
         return render(request, '../templates/app_user/account/account.html')
@@ -155,12 +165,18 @@ def account_view(request):
 
 
 class ProfileView(View):
-    """ Тестовая страница с данными пользователя """
+    """
+    Тестовая страница с данными пользователя
+    """
+
     def get(self, request):
         return render(request, '../templates/app_user/account/profile.html')
 
 
 class ProfileWithAvatarView(View):
-    """ Тестовая страница с данными пользователя 2 """
+    """
+    Тестовая страница с данными пользователя 2
+    """
+
     def get(self, request):
         return render(request, '../templates/app_user/account/profileAvatar.html')
