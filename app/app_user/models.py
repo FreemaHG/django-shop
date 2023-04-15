@@ -9,6 +9,7 @@ class Profile(models.Model):
     """
     Профайл пользователя с расширенными данными
     """
+    # FIXME Добавить поле deleted для мягкого удаления
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Пользователь')
     full_name = models.CharField(max_length=150, verbose_name='ФИО')
     phone_number = models.CharField(unique=True, max_length=10, blank=True, null=True, verbose_name='Телефон')
@@ -29,8 +30,9 @@ class Profile(models.Model):
 
 class Seller(models.Model):
     """
-    Модель для продавца
+    Модель для роли продавца
     """
+    # FIXME Добавить поле deleted для мягкого удаления
     profile = models.OneToOneField(Profile, on_delete=models.CASCADE, verbose_name='Пользователь')
     title = models.CharField(max_length=150, verbose_name='Продавец')
     description = models.TextField(verbose_name='Описание')
@@ -46,8 +48,9 @@ class Seller(models.Model):
 
 class Buyer(models.Model):
     """
-    Модель для покупателя
+    Модель для роли покупателя
     """
+    # FIXME Добавить поле deleted для мягкого удаления
     profile = models.OneToOneField(Profile, on_delete=models.CASCADE, verbose_name='Пользователь')
     # FIXME Раскомментировать после добавления модели с товарами
     # views = models.ManyToManyField(Product, verbose_name='Просмотренные товары')

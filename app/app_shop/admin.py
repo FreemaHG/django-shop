@@ -1,35 +1,41 @@
+import json
+
 from django.contrib import admin, messages
+from django.db.models import JSONField
 from mptt.admin import DraggableMPTTAdmin
 
-from .models import CategoryProduct
+from .models import CategoryProduct, Product, ProductTags, ProductImages
 from .utils.admin.change_status_delete import soft_deletion_child_records
 
 
 @admin.action(description='Удалить (мягкое удаление)')
 def deleted_records(adminmodel, request, queryset):
-    """ Мягкое удаление записей """
-
+    """
+    Мягкое удаление записей
+    """
     soft_deletion_child_records(queryset)  # Мягкое удаление всех дочерних записей
     queryset.update(deleted=True)  # Мягкое удаление родительской записи
 
 
 @admin.action(description='Восстановить записи')
 def restore_records(adminmodel, request, queryset):
-    """ Восстановить записи, отключенные ч/з мягкое удаление """
-
+    """
+    Восстановить записи, отключенные ч/з мягкое удаление
+    """
     queryset.update(deleted=False)  # Восстановление родительской записи
 
 
 @admin.register(CategoryProduct)
 class CategoryProductAdmin(DraggableMPTTAdmin):
-    """ Админ-панель модели категории товаров """
-
+    """
+    Админ-панель для категорий товаров
+    """
     list_display = ('tree_actions', 'indented_title', 'id', 'slug', 'selected', 'deleted')
     list_display_links = ('indented_title',)
     list_filter = ('selected', 'deleted')
     list_editable = ('deleted',)
     search_fields = ('title',)
-    actions = [deleted_records, restore_records]  # Мягкое удаление/восстановление записей
+    actions = (deleted_records, restore_records)  # Мягкое удаление/восстановление записей
 
     fieldsets = (
         ('Основное', {'fields': ('title', 'parent')}),
@@ -38,7 +44,9 @@ class CategoryProductAdmin(DraggableMPTTAdmin):
     )
 
     def save_model(self, request, obj, form, change):
-        """ Проверяем уровень вложенности категории перед сохранением """
+        """
+        Проверяем уровень вложенности категории перед сохранением
+        """
 
         if obj.parent:
             max_indent = 2
@@ -57,3 +65,65 @@ class CategoryProductAdmin(DraggableMPTTAdmin):
                 )
         else:
             super(CategoryProductAdmin, self).save_model(request, obj, form, change)
+
+
+@admin.register(ProductTags)
+class ProductTagsAdmin(admin.ModelAdmin):
+    """
+    Админ-панель для товарных тегов
+    """
+    list_display = ('id', 'name', 'deleted')
+    list_display_links = ('name',)
+    list_editable = ('deleted',)
+    actions = (deleted_records, restore_records)  # Мягкое удаление/восстановление записей
+
+
+class ChoiceImages(admin.TabularInline):
+    """
+    Вывод изображений на странице товара
+    """
+    model = ProductImages
+    extra = 1
+
+
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    """
+    Админ-панель для товаров
+    """
+    list_display = ('id', 'short_name', 'category', 'price', 'discount', 'count', 'limited_edition', 'deleted')
+    list_display_links = ('short_name',)
+    list_filter = ('category', 'tags')
+    search_fields = ('name',)
+    list_editable = ('deleted',)
+    actions = (deleted_records, restore_records)  # Мягкое удаление/восстановление записей
+    inlines = (ChoiceImages,)
+
+    fieldsets = (
+        ('Основное', {
+            'fields': ('name', 'definition', 'characteristics'),
+            'description': 'Название и описание товара',
+        }),
+        ('Категория и теги', {'fields': ('category', 'tags')}),
+        ('Стоимость и скидка', {'fields': ('price', 'discount')}),
+        ('Кол-во товара', {
+            'fields': ('count', 'limited_edition'),
+            'description': 'Оставшееся кол-во товара на складе, а также принадлежность товара к ограниченному тиражу',
+        }),
+        ('Статус', {
+            'fields': ('deleted',),
+            'description': 'Статус товара: активен или удален из БД',
+            'classes': ('collapse',)
+        }),
+    )
+
+    def short_name(self, obj):
+        """
+        Возврат короткого названия товара (не более 150 символов)
+        """
+        if len(obj.name) > 150:
+            return f'{obj.name[0:150]}...'
+
+        return obj.name
+
+    short_name.short_description = 'Название товара'
