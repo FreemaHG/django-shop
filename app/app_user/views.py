@@ -1,17 +1,11 @@
 import logging
 
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView, LogoutView
-from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib import messages
+from django.contrib.auth.views import LogoutView
 from django.db import IntegrityError
-from django.http import HttpResponse
-from django.views.generic.edit import CreateView, UpdateView, FormView
+from django.views.generic.edit import FormView
 from django.shortcuts import render, redirect
 from django.views import View
-from django.urls import reverse_lazy
-from django.contrib.auth.models import User
 from django.core.mail import send_mail, BadHeaderError
 
 from .models import Profile
@@ -25,7 +19,9 @@ from django.conf import settings
 logger = logging.getLogger(__name__)
 
 def register_user_view(request):
-    """ Регистрация пользователя в расширенной форме """
+    """
+    Регистрация пользователя в расширенной форме
+    """
 
     if request.user.is_authenticated:
         return redirect('user:account')
@@ -51,7 +47,6 @@ def register_user_view(request):
                     user.set_password(password)
                     user.save()
                 except IntegrityError:
-                    # FIXME передача формы с имеющимися данными
                     logger.warning(f'Регистрация - дублирующийся email')
                     error_message = 'Пользователь с таким email уже зарегистрирован'
                     return render(request, 'app_user/registration.html', {'form': form, 'error_message': error_message})
@@ -64,7 +59,6 @@ def register_user_view(request):
                         avatar=avatar
                     )
                 except IntegrityError:
-                    # FIXME передача формы с имеющимися данными
                     logger.warning(f'Регистрация - дублирующийся phone_number')
                     error_message = 'Пользователь с таким номером телефона уже зарегистрирован'
                     return render(request, 'app_user/registration.html', {'form': form, 'error_message': error_message})
@@ -74,7 +68,6 @@ def register_user_view(request):
                 login(request, user)
                 return redirect('user:account')
 
-            # FIXME передача формы с имеющимися данными
             logger.error(f'Регистрация - не валидные данные: {form.errors}')
             return render(request, 'app_user/registration.html', {'form': form})
 
@@ -85,13 +78,16 @@ def register_user_view(request):
 
 
 class LogoutUserView(LogoutView):
-    """ Выход из учетной записи """
+    """
+    Выход из учетной записи
+    """
     next_page = 'user:registration'
 
 
-# FIXME настройка шаблона с возможностью восстановления пароля
 class LoginUserView(FormView):
-    """ Авторизация пользователя """
+    """
+    Авторизация пользователя
+    """
 
     form_class = AuthUserForm
     template_name = '../templates/app_user/account/login.html'
@@ -116,7 +112,9 @@ class LoginUserView(FormView):
 
 
 class PasswordRecovery(FormView):
-    """ Восстановления пароля """
+    """
+    Восстановления пароля
+    """
 
     form_class = EmailForm
     template_name = '../templates/app_user/account/password_recovery.html'
@@ -156,7 +154,9 @@ class PasswordRecovery(FormView):
 
 
 def account_view(request):
-    """ Личный кабинет """
+    """
+    Личный кабинет пользователя
+    """
 
     if request.user.is_authenticated:
         return render(request, '../templates/app_user/account/account.html')
@@ -165,12 +165,18 @@ def account_view(request):
 
 
 class ProfileView(View):
-    """ Тестовая страница с данными пользователя """
+    """
+    Тестовая страница с данными пользователя
+    """
+
     def get(self, request):
         return render(request, '../templates/app_user/account/profile.html')
 
 
 class ProfileWithAvatarView(View):
-    """ Тестовая страница с данными пользователя 2 """
+    """
+    Тестовая страница с данными пользователя 2
+    """
+
     def get(self, request):
         return render(request, '../templates/app_user/account/profileAvatar.html')

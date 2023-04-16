@@ -1,11 +1,16 @@
 {% load static %}
+{% load solo_tags %}
 
 <footer class="Footer">
     <div class="wrap">
       <div class="row Footer-main">
-        <div class="row-block"><a class="logo Footer-logo" href="index.html"><img class="logo-image" src="{% static 'assets/img/logo_footer.png' %}" alt="logo_footer.png"/></a>
-          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid  unt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad
-          </p>
+        <div class="row-block">
+          <a class="logo Footer-logo" href="{% url 'shop:main' %}">
+            {% get_solo "config.SiteConfiguration" as site_config %}
+            <img class="logo-image" src="{{ site_config.logo_footer.url }}" alt="logo_footer.png"/>
+          </a>
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid  unt ut
+            laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad</p>
           <ul class="menu menu_img menu_smallImg Footer-menuSoc">
             <li class="menu-item">
                 <a class="menu-link" href="#">

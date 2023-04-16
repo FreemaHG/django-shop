@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'mptt',  # Вложенные категории
     'app_user.apps.AppUserConfig',
     'app_shop.apps.AppShopConfig',
+    'config.apps.ConfigConfig',  # Конфигурация сайта
     'django_cleanup.apps.CleanupConfig',  # Очистка файлов при удалении записи
+    'solo',
 ]
 
 MIDDLEWARE = [

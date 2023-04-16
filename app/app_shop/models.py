@@ -1,10 +1,15 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.urls import reverse
-# from django.template.defaultfilters import slugify  # Не работает!!!
 from pytils.translit import slugify
 from mptt.models import MPTTModel, TreeForeignKey
+from jsonfield import JSONField
 
-from .utils.models.saving_files import saving_the_category_icon, saving_the_category_image
+from .utils.models.saving_files import (
+    saving_the_category_icon,
+    saving_the_category_image,
+    saving_images_for_product
+)
 
 
 STATUS_CHOICES = [
@@ -13,8 +18,9 @@ STATUS_CHOICES = [
 ]
 
 class CategoryProduct(MPTTModel):
-    """ Модель категорий товаров с вложенностью """
-
+    """
+    Модель категорий товаров с вложенностью
+    """
     title = models.CharField(max_length=100, verbose_name='Название')
     slug = models.SlugField(max_length=100, null=False, verbose_name='URL')
 
@@ -35,23 +41,84 @@ class CategoryProduct(MPTTModel):
     )
 
     class MPTTMeta:
-        """ Сортировка по вложенности """
+        """
+        Сортировка по вложенности
+        """
         order_insertion_by = ('title',)
 
     class Meta:
-        """ Таблица с данными, название модели в админке """
         db_table = 'categories_products'
         verbose_name = 'Категория товара'
         verbose_name_plural = 'Категории товаров'
 
+    # TODO точно нужно?
     def get_absolute_url(self):
         return reverse('post-by-category', args=[str(self.slug)])
 
     def save(self, *args, **kwargs):
-        """ Сохраняем URL по названию категории """
+        """
+        Сохраняем URL по названию категории
+        """
         self.slug = slugify(self.title)
         super(CategoryProduct, self).save(*args, **kwargs)
 
     def __str__(self):
-        """ Возвращение названия категории """
         return self.title
+
+
+class Product(models.Model):
+    """
+    Модель для хранения данных о товаре
+    """
+    name = models.CharField(max_length=250, verbose_name='Название')
+    definition = models.TextField(max_length=1000, verbose_name='Описание')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата и время добавления товара')
+    characteristics = JSONField(verbose_name='Характеристики')
+    category = models.ForeignKey(CategoryProduct, on_delete=models.CASCADE, verbose_name='Категория')
+    tags = models.ManyToManyField('ProductTags', verbose_name='Теги')
+    price = models.FloatField(validators=[MinValueValidator(0)], verbose_name='Стоимость')
+    discount = models.PositiveIntegerField(default=0, validators=[MaxValueValidator(90)], verbose_name='Скидка (в %)')
+    count = models.PositiveIntegerField(default=0, verbose_name='Кол-во')
+    limited_edition = models.BooleanField(default=False, verbose_name='Ограниченный тираж')
+    deleted = models.BooleanField(choices=STATUS_CHOICES, default=False, verbose_name='Статус')  # Мягкое удаление
+
+    class Meta:
+        db_table = 'products'
+        verbose_name = 'Товар'
+        verbose_name_plural = 'Товары'
+
+    def __str__(self):
+        return self.name
+
+
+class ProductImages(models.Model):
+    """
+    Модель для хранения изображений к товарам
+    """
+    title = models.CharField(max_length=250, verbose_name='Название изображения')
+    image = models.ImageField(upload_to=saving_images_for_product, verbose_name='Изображение')
+    product = models.ForeignKey('Product', on_delete=models.CASCADE, verbose_name='Товар')
+
+    class Meta:
+        db_table = 'product_images'
+        verbose_name = 'Изображение товара'
+        verbose_name_plural = 'Изображения товаров'
+
+    def __str__(self):
+        return self.title
+
+
+class ProductTags(models.Model):
+    """
+    Модель для хранения тегов для товаров
+    """
+    name = models.CharField(max_length=100, verbose_name='Теги для товаров')
+    deleted = models.BooleanField(choices=STATUS_CHOICES, default=False, verbose_name='Статус')  # Мягкое удаление
+
+    class Meta:
+        db_table = 'product_tags'
+        verbose_name = 'Тег'
+        verbose_name_plural = 'Теги'
+
+    def __str__(self):
+        return self.name

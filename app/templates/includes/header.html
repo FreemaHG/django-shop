@@ -1,6 +1,7 @@
 {% load static %}
 {% load header_tags %}
 {% load mptt_tags %}
+{% load solo_tags %}  <!-- Загрузка тегов solo -->
 {% output_categories as categories_list %}
 
 <header class="Header">
@@ -54,7 +55,8 @@
       <div class="row Header-rowMain">
         <div class="row-block Header-logo">
           <a class="logo" href="{% url 'shop:main' %}">
-            <img class="logo-image" src="{% static 'assets/img/logo.png' %}" alt="logo.png"/>
+            {% get_solo "config.SiteConfiguration" as site_config %}  <!-- Подгружаем тег -->
+            <img class="logo-image" src="{{ site_config.logo_head.url }}" alt="logo.png"/>  <!-- Выводим логотип из модели -->
           </a>
         </div>
         <nav class="row-block row-block_right Header-menu">
