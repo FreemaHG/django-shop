@@ -54,9 +54,12 @@
     {% include "includes/header.html" %}
 {% endblock %}
 
+<div class="Middle Middle_top">
 {% block content %}
+    {% block junior_header %}{% endblock %}
     {% block title %}{% endblock %}
 {% endblock %}
+</div>
 
 {% block footer %}
     {% include "includes/footer.html" %}

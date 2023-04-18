@@ -2,21 +2,11 @@
 {% load static %}
 
 {% block content %}
-  <div class="Middle Middle_top">
-    <div class="Middle-top">
-      <div class="wrap">
-        <div class="Middle-header">
-          <h1 class="Middle-title">Megano Blog
-          </h1>
-          <ul class="breadcrumbs Middle-breadcrumbs">
-            <li class="breadcrumbs-item"><a href="index.html">home</a>
-            </li>
-            <li class="breadcrumbs-item breadcrumbs-item_current"><span>Blog</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+
+    {% block junior_header %}
+      {% include "includes/junior_header.html" with title="Распродажа" %}
+    {% endblock %}
+
     <div class="Section">
       <div class="wrap">
         <div class="Cards Cards_blog">
@@ -173,7 +163,7 @@
         </div>
       </div>
     </div>
-  </div>
+
   <div class="Pagination">
     <div class="Pagination-ins"><a class="Pagination-element Pagination-element_prev" href="#"><img src="{% static 'assets/img/icons/prevPagination.svg' %}" alt="prevPagination.svg"/></a><a class="Pagination-element Pagination-element_current" href="#"><span class="Pagination-text">1</span></a><a class="Pagination-element" href="#"><span class="Pagination-text">2</span></a><a class="Pagination-element" href="#"><span class="Pagination-text">3</span></a><a class="Pagination-element Pagination-element_prev" href="#"><img src="{% static 'assets/img/icons/nextPagination.svg' %}" alt="nextPagination.svg"/></a>
     </div>

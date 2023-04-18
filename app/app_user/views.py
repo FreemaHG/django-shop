@@ -170,7 +170,8 @@ class ProfileView(View):
     """
 
     def get(self, request):
-        return render(request, '../templates/app_user/account/profile.html')
+        form = RegisterUserForm()
+        return render(request, '../templates/app_user/account/profile.html', {'form': form})
 
 
 class ProfileWithAvatarView(View):

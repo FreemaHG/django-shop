@@ -4251,10 +4251,10 @@ a.Cart-title {
   gap: 50px;
 }
 .Section_columnLeft .Section-content {
-  /*padding-left: 354px;*/
+  padding-left: 354px;
 }
 .Section_columnLeft .Section-column {
-  /*margin-right: -304px;*/
+  margin-right: -304px;
 }
 .Section_columnRight .Section-content {
   padding-right: 354px;
@@ -5209,4 +5209,12 @@ a.Cart-title {
 
 .recovery-password-text p {
   font-size: 16px;
+}
+
+.Section-content-centering {
+  justify-content: center;
+}
+
+.registration-form-width {
+  width: 1250px;
 }

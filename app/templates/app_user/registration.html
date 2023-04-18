@@ -1,13 +1,14 @@
 {% extends "app_user/account/account_base.html" %}
 {% load static %}
 
-{% block account_header %}
-    {% include "app_user/account/includes/header.html" with title="Регистрация" %}
+{% block junior_header %}
+    {% include "includes/junior_header.html" with title="Регистрация" %}
 {% endblock %}
 
 {% block account_navigation %}{% endblock %}
 
 {% block account_content %}
-  {% include "app_user/account/includes/data_entry_forms.html" with form=form button_text="Зарегистрироваться" %}
+  <div class="registration-form-width">
+    {% include "app_user/account/includes/data_entry_forms.html" with form=form button_text="Зарегистрироваться" %}
+  </div>
 {% endblock %}
-
