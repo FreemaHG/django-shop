@@ -1,7 +1,14 @@
+import logging
+
 from django.http import HttpResponse
-from django.views.generic import View
+from django.views.generic import View, ListView
 from django.shortcuts import render
 
+from .services.products.products_list import ProductsList
+from .models import Product, CategoryProduct
+
+
+logger = logging.getLogger(__name__)
 
 class MainView(View):
     """ Тестовая главная страница """
@@ -9,11 +16,23 @@ class MainView(View):
         return render(request, '../templates/app_shop/index.html')
 
 
-class ProductsListCategoryView(View):
-    """ Тестовая страница с товарами определенной категории """
-    def get(self, request, category_name):
-        return HttpResponse(f'Вывод товаров категории {category_name}')
-        # return render(request, '../templates/app_shop/catalog.html')
+class ProductsListCategoryView(ListView):
+    """
+    Вывод товаров определенной категории
+    """
+    model = Product
+    template_name = '../templates/app_shop/catalog.html'
+    context_object_name = 'products'
+    # paginate_by = 8  # Разбиение на страницы
+
+    def get_queryset(self, **kwargs):
+        """
+        Извлечение названия категории из URL и вывод отфильтрованных товаров
+        """
+        logger.debug('Запуск представления')
+        products = ProductsList.output_by_category(category_name=self.kwargs['category_name'])
+
+        return products
 
 
 class AboutView(View):

@@ -1,0 +1,27 @@
+{% load static %}
+{% load product_card %}
+
+<div class="Card">
+  <a class="Card-picture" href="#">
+    <!-- Тег для получения изображения по переданному id товара -->
+    {% product_image product.id as image %}
+    <img src="{{ image.image.url }}" alt={{ image.title }}/>
+  </a>
+  <div class="Card-content">
+    <strong class="Card-title">
+      <a href="product.html">{{ product.name }}</a>
+    </strong>
+    <div class="Card-description">
+      <div class="Card-cost">
+        <span class="Card-price">{{ product.price }} <small>р</small></span>
+      </div>
+      <div class="Card-category">{{ product.category.title }}
+      </div>
+      <div class="Card-hover">
+        <a class="Card-btn" href="#">
+          <img src="{% static 'assets/img/icons/card/cart.svg' %}" alt="cart.svg"/>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
