@@ -18,7 +18,7 @@ class MainView(View):
 
 class ProductsListCategoryView(ListView):
     """
-    Вывод товаров определенной категории
+    Вывод каталога товаров определенной категории
     """
     model = Product
     template_name = '../templates/app_shop/catalog.html'
@@ -29,10 +29,38 @@ class ProductsListCategoryView(ListView):
         """
         Извлечение названия категории из URL и вывод отфильтрованных товаров
         """
-        logger.debug('Запуск представления')
+        logger.debug('Запуск представления ProductsListCategoryView')
         products = ProductsList.output_by_category(category_name=self.kwargs['category_name'])
 
+        # FIXME Сохранить товары в текущей сессии для последующей фильтрации
+        # if products:  # Сохраняем товары в текущей сессии для последующей возможной фильтрации
+        #     self.request.session['products'] = list(products)
+
         return products
+
+
+class ProductsFilterListView(View):
+    """
+    Вывод отфильтрованных товаров
+    """
+    # paginate_by = 8  # Разбиение на страницы
+
+    def post(self, request):
+        logger.debug('Запуск представления ProductsFilterListView')
+
+        # FIXME Извлечение товаров из текущей сесии для фильтрации
+        try:
+            products = request.session.get('products')
+            logger.debug(f'Товары из сессии: {products}')
+
+        except KeyError:
+            products = Product.objects.all()
+
+        res_products = ProductsList.output_by_filter(context_data=request.POST)
+        # res_products = ProductsList.output_by_filter(context_data=request.POST, products=products)
+
+        # TODO После вывода отфильтрованных товаров в блоке фильтра сохраняются выставленные значения
+        return render(request, '../templates/app_shop/catalog.html', {'products': res_products})
 
 
 class AboutView(View):
@@ -51,12 +79,6 @@ class ProductDetailView(View):
     """ Тестовая страница товара """
     def get(self, request):
         return render(request, '../templates/app_shop/product.html')
-
-
-class CatalogView(View):
-    """ Тестовая страница с каталогом товаров """
-    def get(self, request):
-        return render(request, '../templates/app_shop/catalog.html')
 
 
 class ShoppingCartView(View):

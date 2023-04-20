@@ -6,6 +6,7 @@ from solo.admin import SingletonModelAdmin
 from .models import SiteConfiguration
 
 
+# FIXME Сделать вывод по категориям
 admin.site.register(SiteConfiguration, SingletonModelAdmin)
 
 try:

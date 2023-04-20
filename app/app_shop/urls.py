@@ -3,10 +3,10 @@ from django.urls import path, include
 from .views import (
     MainView,
     ProductsListCategoryView,
+    ProductsFilterListView,
     AboutView,
     ProductsSalesView,
     ProductDetailView,
-    CatalogView,
     ShoppingCartView,
     OrderRegistrationView,
     OrderInformationView,
@@ -20,11 +20,13 @@ app_name = 'shop'
 
 urlpatterns = [
     path('', MainView.as_view(), name='main'),  # Главная
-    path('category/<slug:category_name>', ProductsListCategoryView.as_view(), name='products_list_one_category'),
+    path('catalog/', include([
+        path('category/<slug:category_name>', ProductsListCategoryView.as_view(), name='products_list_one_category'),
+        path('filter/', ProductsFilterListView.as_view(), name='products_filter_list'),  # Вывод отфильтрованных товаров
+    ])),
     path('about/', AboutView.as_view(), name='about'),  # О магазине
     path('sale/', ProductsSalesView.as_view(), name='sale'),  # Распродаж
     path('product/', ProductDetailView.as_view(), name='product'),  # Страница товара
-    path('catalog/', CatalogView.as_view(), name='catalog'),  # Каталог товаров
     path('shopping_cart/', ShoppingCartView.as_view(), name='shopping_cart'),  # Корзина с товарами
     path('order/', include([
         path('registration/', OrderRegistrationView.as_view(), name='order_registration'),  # Регистрация заказа

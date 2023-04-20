@@ -19,7 +19,17 @@ class SiteConfiguration(SingletonModel):
     site_url = models.URLField(max_length=150, null=True, verbose_name='URL')
     logo_head = models.ImageField(upload_to=saving_logo, verbose_name='Логотип в шапке')
     logo_footer = models.ImageField(upload_to=saving_logo, verbose_name='Логотип в футере')
-    selected_products = models.ManyToManyField(CategoryProduct, verbose_name='Избранные товары')  # Для вывода избранных категорий товаров на главной
+
+    # Для вывода избранных категорий товаров на главной
+    selected_products = models.ManyToManyField(CategoryProduct, verbose_name='Избранные товары')
+
+    # Стоимость доставки
+    shipping_cost = models.IntegerField(default=200, verbose_name='Стоимость обычной доставки (руб.)')
+    extra_shipping_cost = models.IntegerField(default=500,
+                                              verbose_name='Надбавочная стоимость для экспресс-доставки (руб.)')
+    min_order_cost = models.IntegerField(default=2000,
+                                         verbose_name='Минимальная стоимость заказа для бесплатной доставки (руб.)')
+
     maintenance_mode = models.BooleanField(default=False, verbose_name='Режим обслуживания')
 
     def __str__(self):
