@@ -1,3 +1,6 @@
+{% load tags %}
+{% output_tags as tags %}
+
 <div class="Section-column">
   <div class="Section-columnSection">
     <header class="Section-header">
@@ -76,19 +79,20 @@
       </form>
     </div>
   </div>
-  <div class="Section-columnSection">
-    <header class="Section-header">
-      <strong class="Section-title">Популярные теги</strong>
-    </header>
-    <div class="Section-columnContent">
-      <div class="buttons">
-        <a class="btn btn_default btn_sm" href="#">Video</a>
-        <a class="btn btn_default btn_sm" href="#">Development</a>
-        <a class="btn btn_default btn_sm" href="#">Gaming</a>
-        <a class="btn btn_default btn_sm" href="#">Asus</a>
-        <a class="btn btn_default btn_sm" href="#">Development</a>
-        <a class="btn btn_default btn_sm" href="#">Video</a>
+
+  {% if tags %}
+      <div class="Section-columnSection">
+        <header class="Section-header">
+          <strong class="Section-title">Популярные теги</strong>
+        </header>
+        <div class="Section-columnContent">
+          <div class="buttons">
+            {% for tag in tags %}
+              <a class="btn btn_default btn_sm" href="{% url 'shop:filter_by_tags' tag_name=tag.slug %}">{{ tag.name }}</a>
+            {% endfor %}
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+  {% endif %}
+
 </div>

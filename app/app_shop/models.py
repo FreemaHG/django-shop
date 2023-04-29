@@ -1,3 +1,5 @@
+import logging
+
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.urls import reverse
@@ -11,6 +13,8 @@ from .utils.models.saving_files import (
     saving_images_for_product
 )
 
+
+loger = logging.getLogger(__name__)
 
 STATUS_CHOICES = [
     (True, 'Удалено'),
@@ -66,6 +70,32 @@ class CategoryProduct(MPTTModel):
         return self.title
 
 
+class ProductTags(models.Model):
+    """
+    Модель для хранения тегов для товаров
+    """
+    name = models.CharField(max_length=100, verbose_name='Теги для товаров')
+    slug = models.SlugField(max_length=100, blank=True, verbose_name='URL')
+    deleted = models.BooleanField(choices=STATUS_CHOICES, default=False, verbose_name='Статус')  # Мягкое удаление
+
+    class Meta:
+        db_table = 'product_tags'
+        verbose_name = 'Тег'
+        verbose_name_plural = 'Теги'
+
+    def save(self, *args, **kwargs):
+        """
+        Сохраняем URL по названию тега
+        """
+        if not self.slug:
+            self.slug = slugify(self.name)
+
+        super(ProductTags, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+
 class Product(models.Model):
     """
     Модель для хранения данных о товаре
@@ -106,19 +136,3 @@ class ProductImages(models.Model):
 
     def __str__(self):
         return self.title
-
-
-class ProductTags(models.Model):
-    """
-    Модель для хранения тегов для товаров
-    """
-    name = models.CharField(max_length=100, verbose_name='Теги для товаров')
-    deleted = models.BooleanField(choices=STATUS_CHOICES, default=False, verbose_name='Статус')  # Мягкое удаление
-
-    class Meta:
-        db_table = 'product_tags'
-        verbose_name = 'Тег'
-        verbose_name_plural = 'Теги'
-
-    def __str__(self):
-        return self.name

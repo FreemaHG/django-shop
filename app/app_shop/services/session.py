@@ -7,13 +7,13 @@ from django.contrib.sessions.models import Session
 
 logger = logging.getLogger(__name__)
 
-class ProductTracking:
+class ProductCategoryTracking:
     """
     Сервис по отслеживанию последней просматриваемой категории товаров текущего пользователя
     """
 
     @classmethod
-    def add(cls, session: Session, category: Union[str, bool]) -> None:
+    def add(cls, session: Session, category: Union[str, bool] = False) -> None:
         """
         Добавление новой записи в сессию о просматриваемой категории товаров
         """
@@ -38,7 +38,45 @@ class ProductTracking:
         Удаление записи о последней просматриваемой категории товаров
         """
         logger.debug('Удаление из сессии данных о последней просматриваемой категории товаров')
-        session['last_category'].clear()
+
+        try:
+            del session['last_category']
+        except KeyError:
+            logger.warning('Данные нельзя удалить, т.к. они еще не были записаны')
+
+
+class ProductTagTracking:
+    """
+    Сервис по отслеживанию текущим пользователем последних просматриваемых товаров определенного тега
+    """
+
+    @classmethod
+    def add(cls, session: Session, tag: Union[str, bool] = False) -> None:
+        """
+        Добавление новой записи в сессию о просматриваемой категории товаров
+        """
+        logger.info(f'Добавление тега товара в сессию: {tag}')
+        session['last_tag'] = tag
+
+    @classmethod
+    def check(cls, session: Session) -> str:
+        """
+        Проверка последней записи в сессии о просматриваемых товарах определенного тега
+        """
+        logger.debug('Извлечение записи из сессии о последних просматриваемых товарах определенного тега')
+        return session.get('last_tag', False)
+
+    @classmethod
+    def delete(cls, session: Session):
+        """
+        Удаление записи о последних просматриваемых товарах определенного тега
+        """
+        logger.debug('Удаление из сессии данных о последних просматриваемых товарах определенного тега')
+
+        try:
+            del session['last_tag']
+        except KeyError:
+            logger.warning('Данные нельзя удалить, т.к. они еще не были записаны')
 
 
 class FilterParametersTracking:
@@ -80,4 +118,8 @@ class FilterParametersTracking:
         Удаление записи о параметрах фильтрации текущего пользователя
         """
         logger.debug('Удаление записи из сессии о параметрах фильтрации')
-        session['filters'].clear()
+
+        try:
+            session['filters'].clear()
+        except KeyError:
+            logger.warning('Данные нельзя удалить, т.к. они еще не были записаны')

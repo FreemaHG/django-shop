@@ -72,11 +72,14 @@ class ProductTagsAdmin(admin.ModelAdmin):
     """
     Админ-панель для товарных тегов
     """
-    list_display = ('id', 'name', 'deleted')
+    list_display = ('id', 'name', 'slug', 'deleted')
     list_display_links = ('name',)
     list_editable = ('deleted',)
     actions = (deleted_records, restore_records)  # Мягкое удаление/восстановление записей
 
+    fieldsets = (
+        ('Основное', {'fields': ('name', 'slug', 'deleted')}),
+    )
 
 class ChoiceImages(admin.TabularInline):
     """

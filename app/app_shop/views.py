@@ -8,8 +8,8 @@ from django.forms.models import model_to_dict
 
 from .services.products.filter import ProductFilter
 from .services.products.sorting import ProductSorted
-from .services.session import ProductTracking, FilterParametersTracking
-from .models import Product, CategoryProduct
+from .services.session import ProductCategoryTracking, ProductTagTracking, FilterParametersTracking
+from .models import Product, CategoryProduct, ProductTags
 
 
 logger = logging.getLogger(__name__)
@@ -37,10 +37,36 @@ class ProductsListView(ListView):
         logger.info(f'Извлечение категории товаров: {category_name}')
 
         # Фиксируем в сессии просматриваемую категорию товаров
-        ProductTracking.add(session=session, category=category_name)
+        ProductCategoryTracking.add(session=session, category=category_name)
+
+        # Удаляем из сессии данные о последних просматриваемых товарах определенного тега
+        ProductTagTracking.delete(session=session)
 
         # Товары нужной категории
         products = ProductFilter.output_by_category(category_name=category_name)
+
+        return products
+
+
+class ProductsForTagLIstView(ProductsListView):
+    """
+    Вывод товаров определенного тега
+    """
+    def get_queryset(self, **kwargs):
+        logger.debug('Вывод товаров определенного тега')
+
+        session = self.request.session
+        tag_name = self.kwargs.get('tag_name', False)
+        logger.info(f'Извлечение тега товаров: {tag_name}')
+
+        # Фиксируем в сессии просматриваемую товары определенного тега
+        ProductTagTracking.add(session=session, tag=tag_name)
+
+        # Удаляем из сессии данные о последней просматриваемой категории товаров текущего пользователя
+        ProductCategoryTracking.delete(session=session)
+
+        # Товары нужной категории
+        products = ProductFilter.output_by_tag(tag_name=tag_name)
 
         return products
 
@@ -87,9 +113,15 @@ class ResetFiltersView(View):
         logger.debug('Сброс параметров фильтрации')
         session = request.session
         FilterParametersTracking.delete(session=session)
-        category = ProductTracking.check(session=session)
 
-        return redirect(reverse('shop:products_list', kwargs={'category_name': category}))
+        category = ProductCategoryTracking.check(session=session)
+        tag = ProductTagTracking.check(session=session)
+
+        if category:
+            return redirect(reverse('shop:products_list', kwargs={'category_name': category}))
+
+        elif tag:
+            return redirect(reverse('shop:filter_by_tags', kwargs={'tag_name': tag}))
 
 
 class ProductsSortedByPrice(ListView):
@@ -102,8 +134,7 @@ class ProductsSortedByPrice(ListView):
     def get_queryset(self):
         logger.debug('Запуск представления ProductsSortedByPrice')
 
-
-        products = ProductTracking.check(session=self.request.session)
+        products = ProductCategoryTracking.check(session=self.request.session)
 
         if not products:
             logger.warning('В сессии пользователя не найдено данных о просматриваемой категории товаров')

@@ -3,9 +3,10 @@ import logging
 from typing import Union, Dict
 from django.contrib.sessions.models import Session
 
-from ...models import Product, CategoryProduct
+from ...models import Product, CategoryProduct, ProductTags
 from config.admin import config
 from ...utils.categories import GetCategory
+from ...utils.tags import GetTag
 
 
 logger = logging.getLogger(__name__)
@@ -36,9 +37,23 @@ class ProductFilter:
 
 
     @classmethod
-    def output_by_tag(cls):
-        """ Вывод товаров по определенному тегу """
-        ...
+    def output_by_tag(cls, tag_name: Union[str, bool]) -> Union[Product, bool]:
+        """
+        Вывод товаров по определенному тегу
+        """
+        logger.warning(f'Вывод товаров по тегу: {tag_name}')
+
+        if not tag_name:
+            logger.warning('Тег не передан')
+            return False
+
+        else:
+            tag_id = GetTag.get_tag_id(tag_name)
+
+            if tag_id:
+                products = Product.objects.filter(tags=tag_id, deleted=False)
+                logger.debug(f'Возврат товаров по тегу: {tag_name}')
+                return products
 
     @classmethod
     def output_by_filter(cls, filter_parameters: Dict, session: Session) -> Product:
@@ -54,13 +69,22 @@ class ProductFilter:
         in_stock = filter_parameters['in_stock']
         free_shipping = filter_parameters['free_shipping']
 
-        category_name = session.get('last_category', False)
-        logger.debug(f'Категория извлечена: {category_name}')
-
         # FIXME Записывать в сессию id категории, чтобы не делать лишний запрос к БД
         # category = CategoryProduct.objects.get(slug=category_name)
 
-        products = cls.output_by_category(category_name)
+        category_name = session.get('last_category', False)
+        tag_name = session.get('last_tag', False)
+
+        if category_name:
+            logger.debug(f'Категория извлечена: {category_name}')
+            products = cls.output_by_category(category_name=category_name)
+
+        elif tag_name:
+            logger.debug(f'Тег извлечен: {tag_name}')
+            products = cls.output_by_tag(tag_name=tag_name)
+
+        else:
+            products = Product.objects.all()
 
         if min_price:
             logger.debug('Фильтрация по минимальной цене')

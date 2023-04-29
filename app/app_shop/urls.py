@@ -4,6 +4,7 @@ from .views import (
     MainView,
     ProductsListView,
     ProductsFilterListView,
+    ProductsForTagLIstView,
     ResetFiltersView,
     AboutView,
     ProductsSalesView,
@@ -25,6 +26,7 @@ urlpatterns = [
     path('catalog/', include([
         path('', ProductsListView.as_view(), name='products_list'),
         path('category/<slug:category_name>', ProductsListView.as_view(), name='products_list'),
+        path('tags/<slug:tag_name>', ProductsForTagLIstView.as_view(), name='filter_by_tags'),
         path('filter/', include([
             path('', ProductsFilterListView.as_view(), name='products_filter_list'),  # Вывод отфильтрованных товаров
             path('reset/', ResetFiltersView.as_view(), name='reset_filters'),  # Сброс параметров фильтрации
