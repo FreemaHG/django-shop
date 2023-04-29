@@ -14,6 +14,8 @@ def product_image(product_id: int) -> ProductImages:
     Возвращает изображение по id переданного товара
     """
     image = ProductImages.objects.filter(product=product_id).first()
-    logger.info('Изображение найдено')
+
+    if not image:
+        logger.warning('Изображение не найдено')
 
     return image

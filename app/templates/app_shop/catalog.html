@@ -12,7 +12,7 @@
       <div class="wrap">
 
         {% block filter_block %}
-          {% include "app_shop/includes/catalog/filters_block.html" %}
+          {% include "app_shop/includes/catalog/filters_block.html" with filter_parameters=filter_parameters %}
         {% endblock %}
 
         <div class="Section-content">

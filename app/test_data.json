@@ -1,6 +1,18 @@
 {
-  "Тип устройства": "беспроводные наушники",
-  "Конструкция": "полноразмерные",
-  "Технология": "динамические",
-  "Система активного шумоподавления (ANC)": "есть"
+  "category": "category",
+  "filters": {
+    "price": {
+      "min": "value",
+      "max": "value"
+    },
+    "title": "value",
+    "in_stock": "value",
+    "free_shipping": "value"
+  },
+  "sorted": {
+    "by_popularity": "value",
+    "by_price": "value",
+    "by_reviews": "value",
+    "by_novelty": "value"
+  }
 }

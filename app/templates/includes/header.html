@@ -110,7 +110,7 @@
             {% if categories_list %}
               {% recursetree categories_list %}
                 <div class="CategoriesButton-link">
-                  <a href="{% url 'shop:products_list_one_category' category_name=node.slug %}">
+                  <a href="{% url 'shop:products_list' category_name=node.slug %}">
                     <div class="CategoriesButton-icon">
                       {% if node.icon %}
                         <img src="{{ node.icon.url }}" alt=""/>
@@ -124,7 +124,7 @@
                     <div class="CategoriesButton-submenu">
 
                       {% for item in node.children.all %}
-                        <a class="CategoriesButton-link" href="{% url 'shop:products_list_one_category' category_name=item.slug %}">
+                        <a class="CategoriesButton-link" href="{% url 'shop:products_list' category_name=item.slug %}">
                           <div class="CategoriesButton-icon">
                             {% if item.icon %}
                               <img src="{{ item.icon.url }}" alt=""/>

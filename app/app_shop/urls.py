@@ -2,8 +2,9 @@ from django.urls import path, include
 
 from .views import (
     MainView,
-    ProductsListCategoryView,
+    ProductsListView,
     ProductsFilterListView,
+    ResetFiltersView,
     AboutView,
     ProductsSalesView,
     ProductDetailView,
@@ -13,6 +14,7 @@ from .views import (
     HistoryOrderView,
     PaymentView,
     PaymentWithInvoiceGenerationView,
+    ProductsSortedByPrice,
     ProgressPaymentView,
 )
 
@@ -21,8 +23,19 @@ app_name = 'shop'
 urlpatterns = [
     path('', MainView.as_view(), name='main'),  # Главная
     path('catalog/', include([
-        path('category/<slug:category_name>', ProductsListCategoryView.as_view(), name='products_list_one_category'),
-        path('filter/', ProductsFilterListView.as_view(), name='products_filter_list'),  # Вывод отфильтрованных товаров
+        path('', ProductsListView.as_view(), name='products_list'),
+        path('category/<slug:category_name>', ProductsListView.as_view(), name='products_list'),
+        path('filter/', include([
+            path('', ProductsFilterListView.as_view(), name='products_filter_list'),  # Вывод отфильтрованных товаров
+            path('reset/', ResetFiltersView.as_view(), name='reset_filters'),  # Сброс параметров фильтрации
+        ])),
+        path('sorted/', include([
+            # TODO В работе
+            # path('by_popularity/', name='sorted_by_popularity'),  # Сортировка товаров по популярности
+            path('by_price/', ProductsSortedByPrice.as_view(), name='sorted_by_price'),  # Сортировка товаров по цене
+            # path('by_reviews/', name='sorted_by_reviews'),  # Сортировка товаров по кол-ву отзывов
+            # path('by_novelty/', name='sorted_by_novelty'),  # Сортировка товаров по новизне
+        ])),
     ])),
     path('about/', AboutView.as_view(), name='about'),  # О магазине
     path('sale/', ProductsSalesView.as_view(), name='sale'),  # Распродаж

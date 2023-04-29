@@ -6,3 +6,5 @@ pytils==0.4.1
 django-solo==2.0.0
 psycopg2==2.9.6
 jsonfield==3.1.0
+colorlog==6.7.0
+DjangoColorsFormatter @ git+https://github.com/tiliv/django-colors-formatter.git

@@ -5220,3 +5220,13 @@ a.Cart-title {
 .registration-form-width {
   width: 1250px;
 }
+
+.small-text-for-price {
+  font-size: 14px !important;
+  margin-bottom: 16px !important;
+}
+
+.reset-filters-button {
+  display: inline-block;
+  padding-top: 20px;
+}

@@ -1,10 +1,14 @@
 import logging
 
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
+from django.urls import reverse
 from django.views.generic import View, ListView
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.forms.models import model_to_dict
 
-from .services.products.products_list import ProductsList
+from .services.products.filter import ProductFilter
+from .services.products.sorting import ProductSorted
+from .services.session import ProductTracking, FilterParametersTracking
 from .models import Product, CategoryProduct
 
 
@@ -16,9 +20,9 @@ class MainView(View):
         return render(request, '../templates/app_shop/index.html')
 
 
-class ProductsListCategoryView(ListView):
+class ProductsListView(ListView):
     """
-    Вывод каталога товаров определенной категории
+    Вывод каталога товаров (определенной категории или всех)
     """
     model = Product
     template_name = '../templates/app_shop/catalog.html'
@@ -26,15 +30,17 @@ class ProductsListCategoryView(ListView):
     # paginate_by = 8  # Разбиение на страницы
 
     def get_queryset(self, **kwargs):
-        """
-        Извлечение названия категории из URL и вывод отфильтрованных товаров
-        """
-        logger.debug('Запуск представления ProductsListCategoryView')
-        products = ProductsList.output_by_category(category_name=self.kwargs['category_name'])
+        logger.debug('Вывод товаров')
 
-        # FIXME Сохранить товары в текущей сессии для последующей фильтрации
-        # if products:  # Сохраняем товары в текущей сессии для последующей возможной фильтрации
-        #     self.request.session['products'] = list(products)
+        session = self.request.session
+        category_name = self.kwargs.get('category_name', False)
+        logger.info(f'Извлечение категории товаров: {category_name}')
+
+        # Фиксируем в сессии просматриваемую категорию товаров
+        ProductTracking.add(session=session, category=category_name)
+
+        # Товары нужной категории
+        products = ProductFilter.output_by_category(category_name=category_name)
 
         return products
 
@@ -46,21 +52,73 @@ class ProductsFilterListView(View):
     # paginate_by = 8  # Разбиение на страницы
 
     def post(self, request):
-        logger.debug('Запуск представления ProductsFilterListView')
+        logger.debug('Фильтрация товаров')
 
-        # FIXME Извлечение товаров из текущей сесии для фильтрации
-        try:
-            products = request.session.get('products')
-            logger.debug(f'Товары из сессии: {products}')
+        session = request.session
+        new_filter_parameters = {
+            # 'price_range': request.POST.get('price', False),
+            'min_price': request.POST.get('min_price', False),
+            'max_price': request.POST.get('max_price', False),
+            'title': request.POST.get('title', False),
+            'in_stock': request.POST.get('in_stock', False),
+            'free_shipping': request.POST.get('free_shipping', False),
+        }
 
-        except KeyError:
+        # Вывод отфильтрованных товаров
+        res_products = ProductFilter.output_by_filter(filter_parameters=new_filter_parameters, session=session)
+
+        # Сохранение параметров фильтрации текущего пользователя
+        FilterParametersTracking.add(filter_parameters=new_filter_parameters, session=session)
+
+        # Вывод параметров фильтрации текущего пользователя
+        filter_parameters = FilterParametersTracking.get(session=session)
+
+        return render(request, '../templates/app_shop/catalog.html', {
+            'products': res_products,
+            'filter_parameters': filter_parameters,
+        })
+
+
+class ResetFiltersView(View):
+    """
+    Сброс параметров фильтрации
+    """
+    def get(self, request):
+        logger.debug('Сброс параметров фильтрации')
+        session = request.session
+        FilterParametersTracking.delete(session=session)
+        category = ProductTracking.check(session=session)
+
+        return redirect(reverse('shop:products_list', kwargs={'category_name': category}))
+
+
+class ProductsSortedByPrice(ListView):
+    """
+    Вывод товаров отсортированных по цене
+    """
+    template_name = '../templates/app_shop/catalog.html'
+    context_object_name = 'products'
+
+    def get_queryset(self):
+        logger.debug('Запуск представления ProductsSortedByPrice')
+
+
+        products = ProductTracking.check(session=self.request.session)
+
+        if not products:
+            logger.warning('В сессии пользователя не найдено данных о просматриваемой категории товаров')
             products = Product.objects.all()
 
-        res_products = ProductsList.output_by_filter(context_data=request.POST)
-        # res_products = ProductsList.output_by_filter(context_data=request.POST, products=products)
+        price_up = self.request.session.get('price_up', False)
 
-        # TODO После вывода отфильтрованных товаров в блоке фильтра сохраняются выставленные значения
-        return render(request, '../templates/app_shop/catalog.html', {'products': res_products})
+        if price_up:
+            sorted_products = ProductSorted.by_price_up(products)
+            self.request.session['price_up'] = False
+        else:  # Если флаг False
+            sorted_products = ProductSorted.by_price_down(products)
+            self.request.session['price_up'] = True
+
+        return sorted_products
 
 
 class AboutView(View):
