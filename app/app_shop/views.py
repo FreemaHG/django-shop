@@ -8,8 +8,14 @@ from django.forms.models import model_to_dict
 
 from .services.products.filter import ProductFilter
 from .services.products.sorting import ProductSorted
-from .services.session import ProductCategoryTracking, ProductTagTracking, FilterParametersTracking
 from .models import Product, CategoryProduct, ProductTags
+from .services.session import (
+    ProductCategoryTracking,
+    ProductTagTracking,
+    FilterParametersTracking,
+    SortProductsTracing,
+    SortProductsTracingForPrice,
+)
 
 
 logger = logging.getLogger(__name__)
@@ -36,10 +42,14 @@ class ProductsListView(ListView):
         category_name = self.kwargs.get('category_name', False)
         logger.info(f'Извлечение категории товаров: {category_name}')
 
-        # Фиксируем в сессии просматриваемую категорию товаров
+        # Сброс параметров фильтрации и сортировки товаров
+        FilterParametersTracking.delete(session=session)
+        SortProductsTracing.delete(session=session)
+
+        # ФИКСИРУЕМ в сессии просматриваемую КАТЕГОРИЮ товаров
         ProductCategoryTracking.add(session=session, category=category_name)
 
-        # Удаляем из сессии данные о последних просматриваемых товарах определенного тега
+        # УДАЛЯЕМ из сессии данные о последних просматриваемых товарах определенного ТЕГА
         ProductTagTracking.delete(session=session)
 
         # Товары нужной категории
@@ -59,16 +69,66 @@ class ProductsForTagLIstView(ProductsListView):
         tag_name = self.kwargs.get('tag_name', False)
         logger.info(f'Извлечение тега товаров: {tag_name}')
 
-        # Фиксируем в сессии просматриваемую товары определенного тега
+        # Сброс параметров фильтрации и сортировки товаров
+        FilterParametersTracking.delete(session=session)
+        SortProductsTracing.delete(session=session)
+
+        # ФИКСИРУЕМ в сессии просматриваемые товары определенного ТЕГА
         ProductTagTracking.add(session=session, tag=tag_name)
 
-        # Удаляем из сессии данные о последней просматриваемой категории товаров текущего пользователя
+        # УДАЛЯЕМ из сессии данные о последней просматриваемой КАТЕГОРИИ товаров текущего пользователя
         ProductCategoryTracking.delete(session=session)
 
-        # Товары нужной категории
+        # Товары определенного тега
         products = ProductFilter.output_by_tag(tag_name=tag_name)
 
         return products
+
+
+class ProductsSortedByPrice(ProductsListView):
+    """
+    Вывод товаров отсортированных по цене
+    """
+
+    def get_queryset(self, **kwargs):
+        logger.debug('Вывод товаров, отсортированных ПО ЦЕНЕ')
+
+        session = self.request.session
+
+        # Проверка параметров сортировки по цене
+        SortProductsTracing.check_or_create(session=session)
+        sorted_data = SortProductsTracingForPrice.check(session=session)
+        filtered_products = ProductFilter.output_by_filter(session=session)
+
+        if sorted_data:
+            logger.warning(f'Параметр сортировки ДО: {session["sorted"]}')
+
+            # Сортировка товаров по цене по возрастанию
+            sorted_products = ProductSorted.by_price_up(products=filtered_products)
+
+            logger.info('Меняем сортировку по цене на убывание')
+            # Меняем сортировку на "по убыванию"
+            SortProductsTracingForPrice.add_price_down(session=session)
+
+            logger.warning(f'Параметр сортировки ПОСЛЕ: {session["sorted"]}')
+
+        else:
+            logger.warning(f'Параметр сортировки ДО: {session["sorted"]}')
+
+            # Сортировка товаров по цене по убыванию
+            sorted_products = ProductSorted.by_price_down(products=filtered_products)
+
+            logger.debug('Меняем сортировку по цене на возрастание')
+            # Устанавливаем сортировку на "по возрастанию"
+            SortProductsTracingForPrice.add_price_up(session=session)
+
+
+            logger.warning(f'Параметр сортировки ПОСЛЕ: {session["sorted"]}')
+
+        # ОЧИСТКА всех параметров сортировки, КРОМЕ ЦЕНЫ
+        # SortProductsTracing.clear_data(session=session, control_parameter='by_price')
+
+        return sorted_products
 
 
 class ProductsFilterListView(View):
@@ -86,18 +146,26 @@ class ProductsFilterListView(View):
             'min_price': request.POST.get('min_price', False),
             'max_price': request.POST.get('max_price', False),
             'title': request.POST.get('title', False),
-            'in_stock': request.POST.get('in_stock', False),
-            'free_shipping': request.POST.get('free_shipping', False),
+            'in_stock': True if request.POST.get('in_stock', False) else False,
+            'free_shipping': True if request.POST.get('free_shipping', False) else False,
         }
 
+        logger.info(f'Переданные параметры: {new_filter_parameters}')
+
+        # СОХРАНЕНИЕ параметров фильтрации текущего пользователя
+        FilterParametersTracking.add(new_filter_parameters=new_filter_parameters, session=session)
+
+
+
+        # FIXME Сделать один вызываемый метод для вывода товаров с заданными критериями по фильтрации и сортировке
         # Вывод отфильтрованных товаров
-        res_products = ProductFilter.output_by_filter(filter_parameters=new_filter_parameters, session=session)
+        res_products = ProductFilter.output_by_filter(session=session)
 
-        # Сохранение параметров фильтрации текущего пользователя
-        FilterParametersTracking.add(filter_parameters=new_filter_parameters, session=session)
 
-        # Вывод параметров фильтрации текущего пользователя
+        # Вывод параметров фильтрации ТЕКУЩЕГО пользователя
         filter_parameters = FilterParametersTracking.get(session=session)
+
+        logger.info(f'Параметры фильтрации, передаваемый в шаблон: {filter_parameters}')
 
         return render(request, '../templates/app_shop/catalog.html', {
             'products': res_products,
@@ -122,34 +190,6 @@ class ResetFiltersView(View):
 
         elif tag:
             return redirect(reverse('shop:filter_by_tags', kwargs={'tag_name': tag}))
-
-
-class ProductsSortedByPrice(ListView):
-    """
-    Вывод товаров отсортированных по цене
-    """
-    template_name = '../templates/app_shop/catalog.html'
-    context_object_name = 'products'
-
-    def get_queryset(self):
-        logger.debug('Запуск представления ProductsSortedByPrice')
-
-        products = ProductCategoryTracking.check(session=self.request.session)
-
-        if not products:
-            logger.warning('В сессии пользователя не найдено данных о просматриваемой категории товаров')
-            products = Product.objects.all()
-
-        price_up = self.request.session.get('price_up', False)
-
-        if price_up:
-            sorted_products = ProductSorted.by_price_up(products)
-            self.request.session['price_up'] = False
-        else:  # Если флаг False
-            sorted_products = ProductSorted.by_price_down(products)
-            self.request.session['price_up'] = True
-
-        return sorted_products
 
 
 class AboutView(View):

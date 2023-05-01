@@ -13,8 +13,6 @@ class ProductSorted:
     Сервис с бизнес-логикой по сортировке товаров по популярности, цене, отзывам и новизне
     """
 
-    # Переключатели для сортировки со значениями по умолчанию
-    # FIXME Флаги учитываются (меняются) для разных сессий (пользователей)
     # popularity_up = True
     # price_up = True
     # reviews_up = True
@@ -36,7 +34,6 @@ class ProductSorted:
         """
         ...
 
-    # FIXME Смена флага сортировки для текущей сессии пользователя
     @classmethod
     def by_price_up(cls, products: QuerySet) -> QuerySet:
         """
@@ -44,8 +41,6 @@ class ProductSorted:
         """
         logger.debug('Сортировка по цене (по возрастанию)')
         sorted_products = products.order_by('price')
-        # cls.price_up = False  # Меняем флаг
-        logger.debug(f'Отсортированные товары: {sorted_products}')
 
         return sorted_products
 
@@ -56,8 +51,6 @@ class ProductSorted:
         """
         logger.debug('Сортировка по цене (по убыванию)')
         sorted_products = products.order_by('-price')
-        # cls.price_up = True  # Меняем флаг
-        logger.debug(f'Отсортированные товары: {sorted_products}')
 
         return sorted_products
 

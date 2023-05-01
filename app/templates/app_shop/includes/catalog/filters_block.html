@@ -23,14 +23,16 @@
           <strong class="Section-title small-text-for-price">Цена, <small>руб</small></strong>
           <div class="block">
 
-            {% if filter_parameters.price.min %}
-              <input class="form-input form-input_full" id="title" name="min_price" type="text" placeholder="от {{ filter_parameters.price.min }}"/>
+            {% if filter_parameters.min_price %}
+              <input class="form-input form-input_full" id="title" name="min_price" type="text"
+                     placeholder="от {{ filter_parameters.min_price }}" value="{{ filter_parameters.min_price }}"/>
             {% else %}
               <input class="form-input form-input_full" id="title" name="min_price" type="text" placeholder="от 10"/>
             {% endif %}
 
-            {% if filter_parameters.price.max %}
-              <input class="form-input form-input_full" id="title" name="max_price" type="text" placeholder="до {{ filter_parameters.price.max }}"/>
+            {% if filter_parameters.max_price %}
+              <input class="form-input form-input_full" id="title" name="max_price" type="text"
+                     placeholder="до {{ filter_parameters.max_price }}" value="{{ filter_parameters.max_price }}"/>
             {% else %}
               <input class="form-input form-input_full" id="title" name="max_price" type="text" placeholder="до 100000"/>
             {% endif %}
@@ -40,7 +42,8 @@
 
         <div class="form-group">
           {% if filter_parameters.title %}
-            <input class="form-input form-input_full" id="title" name="title" type="text" placeholder={{ filter_parameters.title }}>
+            <input class="form-input form-input_full" id="title" name="title" type="text"
+                   placeholder="{{ filter_parameters.title }}" value="{{ filter_parameters.title }}">
           {% else %}
             <input class="form-input form-input_full" id="title" name="title" type="text" placeholder="Название"/>
           {% endif %}

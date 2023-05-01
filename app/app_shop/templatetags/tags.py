@@ -13,8 +13,6 @@ def output_tags():
     """
     Вывод всех тегов
     """
-    logger.debug('Вывод ВСЕХ тегов')
-
     # FIXME Переделать на вывод популярных тегов для выводимых товаров
     tags = ProductTags.objects.all()
 

@@ -21,7 +21,6 @@ class ProductFilter:
         """
         Вывод товаров определенной категории
         """
-        logger.warning(f'Вывод товаров категории: {category_name}')
 
         if not category_name or category_name == 'all':
             logger.debug('Возврат ВСЕХ товаров')
@@ -41,7 +40,6 @@ class ProductFilter:
         """
         Вывод товаров по определенному тегу
         """
-        logger.warning(f'Вывод товаров по тегу: {tag_name}')
 
         if not tag_name:
             logger.warning('Тег не передан')
@@ -55,19 +53,28 @@ class ProductFilter:
                 logger.debug(f'Возврат товаров по тегу: {tag_name}')
                 return products
 
+
     @classmethod
-    def output_by_filter(cls, filter_parameters: Dict, session: Session) -> Product:
+    def output_by_filter(cls, session: Session) -> Product:
         """
         Возврат отфильтрованных товаров
         """
         logger.debug(f'Вывод отфильтрованных товаров')
 
+        filters = session.get('filters', False)
+
+        if not filters:
+            logger.error('Параметры фильтрации не найдены')
+            # TODO Подумать, что делать!!!
+
         # price_range = filter_parameters['price_range']
-        min_price = filter_parameters['min_price']
-        max_price = filter_parameters['max_price']
-        title = filter_parameters['title']
-        in_stock = filter_parameters['in_stock']
-        free_shipping = filter_parameters['free_shipping']
+        min_price = filters.get('min_price', False)
+        max_price = filters.get('max_price', False)
+        title = filters.get('title', False)
+        in_stock = filters.get('in_stock', False)
+        free_shipping = filters.get('free_shipping', False)
+
+        logger.debug(f'Параметры фильтрации: {filters}')
 
         # FIXME Записывать в сессию id категории, чтобы не делать лишний запрос к БД
         # category = CategoryProduct.objects.get(slug=category_name)
@@ -89,27 +96,26 @@ class ProductFilter:
         if min_price:
             logger.debug('Фильтрация по минимальной цене')
             products = products.filter(price__gte=min_price)
-            logger.debug(f'Найдено товаров: {len(products)}')
+            # logger.debug(f'Найдено товаров: {len(products)}')
 
         if max_price:
             logger.debug('Фильтрация по максимальной цене')
             products = products.filter(price__lte=max_price)
-            logger.debug(f'Найдено товаров: {len(products)}')
+            # logger.debug(f'Найдено товаров: {len(products)}')
 
         if title:
             logger.debug('Фильтрация по названию')
             products = products.filter(name__icontains=f'{title}')
-            logger.debug(f'Найдено товаров: {len(products)}')
+            # logger.debug(f'Найдено товаров: {len(products)}')
 
         if in_stock:
             logger.debug('Фильтрация по наличию')
             products = products.filter(count__gt=0)
-            logger.debug(f'Найдено товаров: {len(products)}')
+            # logger.debug(f'Найдено товаров: {len(products)}')
 
         if free_shipping:
             logger.debug('Фильтрация по бесплатной доставке')
             products = products.filter(price__gt=config.min_order_cost)
-            logger.debug(f'config.min_order_cost: {config.min_order_cost}')
-            logger.debug(f'Найдено товаров: {len(products)}')
+            # logger.debug(f'Найдено товаров: {len(products)}')
 
         return products

@@ -32,7 +32,6 @@ urlpatterns = [
             path('reset/', ResetFiltersView.as_view(), name='reset_filters'),  # Сброс параметров фильтрации
         ])),
         path('sorted/', include([
-            # TODO В работе
             # path('by_popularity/', name='sorted_by_popularity'),  # Сортировка товаров по популярности
             path('by_price/', ProductsSortedByPrice.as_view(), name='sorted_by_price'),  # Сортировка товаров по цене
             # path('by_reviews/', name='sorted_by_reviews'),  # Сортировка товаров по кол-ву отзывов

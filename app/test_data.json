@@ -1,10 +1,9 @@
 {
-  "category": "category",
+  "category": "last_category",
+  "tag": "last_tag",
   "filters": {
-    "price": {
-      "min": "value",
-      "max": "value"
-    },
+    "min_price": "value",
+    "max_price": "value",
     "title": "value",
     "in_stock": "value",
     "free_shipping": "value"
