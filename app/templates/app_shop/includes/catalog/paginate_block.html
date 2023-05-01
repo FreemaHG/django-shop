@@ -1,0 +1,27 @@
+{% load static %}
+
+<div class="Pagination">
+  <div class="Pagination-ins">
+
+    <a class="Pagination-element Pagination-element_prev" href="?page=1">
+      <img src="{% static 'assets/img/icons/prevPagination.svg' %}" alt="prevPagination.svg"/>
+    </a>
+
+    {% for p in paginator.page_range %}
+      {% if page_obj.number == p %}
+        <a class="Pagination-element Pagination-element_current" href="#">
+          <span class="Pagination-text">{{ p }}</span>
+        </a>
+      {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+        <a class="Pagination-element" href="?page={{ p }}">
+          <span class="Pagination-text">{{ p }}</span>
+        </a>
+      {% endif %}
+    {% endfor %}
+
+    <a class="Pagination-element Pagination-element_prev" href="?page={{ page_obj.paginator.num_pages }}">
+      <img src="{% static 'assets/img/icons/nextPagination.svg' %}" alt="nextPagination.svg"/>
+    </a>
+
+  </div>
+</div>

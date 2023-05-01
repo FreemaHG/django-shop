@@ -33,7 +33,7 @@ class ProductsListView(ListView):
     model = Product
     template_name = '../templates/app_shop/catalog.html'
     context_object_name = 'products'
-    # paginate_by = 8  # Разбиение на страницы
+    paginate_by = 8
 
     def get_queryset(self, **kwargs):
         logger.debug('Вывод товаров')
@@ -100,9 +100,9 @@ class ProductsSortedByPrice(ProductsListView):
         sorted_data = SortProductsTracingForPrice.check(session=session)
         filtered_products = ProductFilter.output_by_filter(session=session)
 
-        if sorted_data:
-            logger.warning(f'Параметр сортировки ДО: {session["sorted"]}')
+        logger.warning(f'Параметр сортировки ДО: {session["sorted"]}')
 
+        if sorted_data:
             # Сортировка товаров по цене по возрастанию
             sorted_products = ProductSorted.by_price_up(products=filtered_products)
 
@@ -113,15 +113,12 @@ class ProductsSortedByPrice(ProductsListView):
             logger.warning(f'Параметр сортировки ПОСЛЕ: {session["sorted"]}')
 
         else:
-            logger.warning(f'Параметр сортировки ДО: {session["sorted"]}')
-
             # Сортировка товаров по цене по убыванию
             sorted_products = ProductSorted.by_price_down(products=filtered_products)
 
             logger.debug('Меняем сортировку по цене на возрастание')
             # Устанавливаем сортировку на "по возрастанию"
             SortProductsTracingForPrice.add_price_up(session=session)
-
 
             logger.warning(f'Параметр сортировки ПОСЛЕ: {session["sorted"]}')
 
