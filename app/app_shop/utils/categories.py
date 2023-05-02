@@ -15,11 +15,11 @@ class GetCategory:
         """
         Метод возвращает id категории по переданному полю slug
         """
-        logger.debug(f'Поиск категории по переданному значению: {category_name}')
+        logger.debug(f'Утилиты: поиск категории по переданному значению: {category_name}')
 
         try:
             category_id = CategoryProduct.objects.only('id').get(slug=category_name)
-            logger.info(f'Категория найдена. id - {category_id}')
+            logger.debug(f'Категория найдена. id - {category_id}')
             return category_id
 
         except ObjectDoesNotExist:

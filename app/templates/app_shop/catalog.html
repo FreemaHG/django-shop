@@ -18,7 +18,16 @@
         <div class="Section-content">
 
           {% block sorting_block %}
-            {% include "app_shop/includes/catalog/sorting_block.html" %}
+{#            {% include "app_shop/includes/catalog/sorting_block.html" %}#}
+            <div class="Sort">
+              <div class="Sort-title">Сортировать по:</div>
+              <div class="Sort-variants">
+                <a class="Sort-sortBy {{ sorting_indicator_by_popularity }}" href="#">Популярности</a>
+                <a class="Sort-sortBy {{ sorting_indicator_by_price }}" href="{% url 'shop:sorted_by_price' %}">Цене</a>
+                <a class="Sort-sortBy {{ sorting_indicator_by_reviews }}" href="#">Отзывам</a>
+                <a class="Sort-sortBy {{ sorting_indicator_by_novelty }}" href="#">Новизне</a>
+              </div>
+            </div>
           {% endblock %}
 
           {% if products %}

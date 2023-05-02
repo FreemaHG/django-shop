@@ -17,32 +17,34 @@ class ProductCategoryTracking:
         """
         Добавление новой записи в сессию о просматриваемой категории товаров
         """
-        logger.info(f'Добавление категории товара в сессию: {category}')
-
         if category:
             session['last_category'] = category
         else:
             session['last_category'] = 'all'
+
+        logger.info(f'Сессия: добавление категории товара: {session["last_category"]}')
 
     @classmethod
     def check(cls, session: Session) -> str:
         """
         Проверка последней записи в сессии о просматриваемой категории товаров
         """
-        logger.debug('Извлечение записи из сессии о последней просматриваемой категории товаров')
-        return session.get('last_category', False)
+        last_category = session.get('last_category', False)
+        logger.debug(f'Сессия: извлечение данных о категории: {last_category}')
+
+        return last_category
 
     @classmethod
     def delete(cls, session: Session):
         """
         Удаление записи о последней просматриваемой категории товаров
         """
-        logger.debug('Удаление из сессии данных о последней просматриваемой категории товаров')
+        logger.debug('Сессия: удаление категории')
 
         try:
             del session['last_category']
         except KeyError:
-            logger.warning('Данные нельзя удалить, т.к. они еще не были записаны')
+            logger.warning('Сессия: данные нельзя удалить, т.к. они еще не были записаны')
 
 
 class ProductTagTracking:
@@ -55,28 +57,30 @@ class ProductTagTracking:
         """
         Добавление новой записи в сессию о просматриваемой категории товаров
         """
-        logger.info(f'Добавление тега товара в сессию: {tag}')
         session['last_tag'] = tag
+        logger.info(f'Сессия: добавление тега: {session["last_tag"]}')
 
     @classmethod
     def check(cls, session: Session) -> str:
         """
         Проверка последней записи в сессии о просматриваемых товарах определенного тега
         """
-        logger.debug('Извлечение записи из сессии о последних просматриваемых товарах определенного тега')
-        return session.get('last_tag', False)
+        last_tag = session.get('last_tag', False)
+        logger.debug(f'Сессия: извлечение данных о теге: {last_tag}')
+
+        return last_tag
 
     @classmethod
     def delete(cls, session: Session):
         """
         Удаление записи о последних просматриваемых товарах определенного тега
         """
-        logger.debug('Удаление из сессии данных о последних просматриваемых товарах определенного тега')
+        logger.debug('Сессия: удаление данных о товарах тега')
 
         try:
             del session['last_tag']
         except KeyError:
-            logger.warning('Данные нельзя удалить, т.к. они еще не были записаны')
+            logger.warning('Сессия: данные нельзя удалить, т.к. они еще не были записаны')
 
 
 class FilterParametersTracking:
@@ -89,12 +93,13 @@ class FilterParametersTracking:
         """
         Добавление новой записи с параметрами фильтрации
         """
-        logger.debug('Добавление записи в сессию о параметрах фильтрации')
+        logger.debug('Сессия: добавление параметров фильтрации')
 
         parameters_filter = cls.get(session=session)
 
         if not parameters_filter:
-            logger.warning('В текущей сессии нет записей с параметрами фильтрации. Добавление НОВОЙ записи')
+            logger.debug('Сессия: добавление НОВОЙ записи')
+            logger.debug(f'Сессия: входные параметры: {new_filter_parameters}')
 
             parameters_filter = {
                 'min_price': new_filter_parameters['min_price'],
@@ -106,19 +111,21 @@ class FilterParametersTracking:
             session['filters'] = parameters_filter
 
         else:
-            logger.info('ОБНОВЛЕНИЕ записи с параметрами фильтрации')
+            logger.debug('Сессия: ОБНОВЛЕНИЕ записи')
 
             for key, value in new_filter_parameters.items():
                 if session['filters'][key] != value:
                     session['filters'][key] = value
+
+        logger.info(f'Сессия: обновленные данные фильтрации: {session["filters"]}')
 
     @classmethod
     def get(cls, session: Session) -> Dict:
         """
         Извлечение параметров фильтрации из объекта сессии текущего пользователя
         """
-        logger.debug('Извлечение записи из сессии о параметрах фильтрации')
         parameters_filter = session.get('filters', False)
+        logger.debug(f'Сессия: извлечение данных фильтрации: {parameters_filter}')
         return parameters_filter
 
     @classmethod
@@ -126,12 +133,13 @@ class FilterParametersTracking:
         """
         Удаление записи о параметрах фильтрации текущего пользователя
         """
-        logger.debug('Удаление записи из сессии о параметрах фильтрации')
+        logger.info('Сессия: удаление данных фильтрации')
 
         try:
-            session['filters'].clear()
+            del session['filters']
+
         except KeyError:
-            logger.warning('Данные нельзя удалить, т.к. они еще не были записаны')
+            logger.warning('Сессия: данные нельзя удалить, т.к. они еще не были записаны')
 
 
 class SortProductsTracingForPrice:
@@ -145,20 +153,17 @@ class SortProductsTracingForPrice:
         Добавление новой записи с параметрами сортировки по цене (по убыванию)
         """
         # TODO Почему-то при проверке не то же самое, что при записи
-        logger.debug('Добавление записи в сессию о параметре сортировки по цене (по убыванию)')
+        logger.info('Сессия: добавление записи о сортировке по цене (по убыванию)')
         session['sorted']['by_price'] = False
-        logger.error(f'Проверка сортировки по цене: {session["sorted"]["by_price"]}')
 
     @classmethod
     def add_price_up(cls, session: Session) -> None:
         """
         Добавление новой записи с параметрами сортировки по цене (по возрастанию)
         """
-        # TODO Почему-то при проверке не то же самое, что при записи
-        logger.debug('Добавление записи в сессию о параметре сортировки по цене (по возрастанию)')
+        logger.info('Сессия: добавление записи о сортировке по цене (по возрастанию)')
         session['sorted'] = {}
         session['sorted']['by_price'] = True
-        logger.debug(f'Проверка сортировки по возрастанию: {session["sorted"]["by_price"]}')
 
     @classmethod
     def check(cls, session: Session):
@@ -166,14 +171,13 @@ class SortProductsTracingForPrice:
         Проверка параметра сортировки по цене для текущего пользователя
         """
         try:
-            # TODO Почему-то не то же самое, что после записи
             check_data = session['sorted']['by_price']
-            logger.error(f'Параметр сортировки: {session["sorted"]}')
+            logger.debug(f'Сессия: параметр сортировки: {session["sorted"]}')
 
             return check_data
 
         except KeyError:
-            logger.warning('Параметры сортировки по цене не найдены')
+            logger.warning('Сессия: параметры сортировки по цене не найдены')
             return False
 
 
@@ -190,8 +194,8 @@ class SortProductsTracing:
         res = session.get('sorted', False)
 
         if not res:
-            logger.warning('Параметр сортировки не найден')
             session['sorted'] = {}
+            logger.info('Сессия: параметр сортировки создан')
 
 
     @classmethod
@@ -199,7 +203,7 @@ class SortProductsTracing:
         """
         Выборочная очистка ВСЕХ данных, кроме переданного параметра
         """
-        logger.debug(f'Очистка параметров сортировки, кроме параметра: {control_parameter}')
+        logger.info(f'Сессия: очистка параметров сортировки, кроме {control_parameter}')
 
         sorted_parameters = session.get('sorted', False)
 
@@ -210,12 +214,9 @@ class SortProductsTracing:
                     try:
                         del session[parameter]
                     except KeyError:
-                        logger.warning(f'Параметр сортировки {parameter} не найден')
-
-            logger.error(f'Проверка очищенных параметров сортировки: {session["sorted"]}')
-
+                        logger.warning(f'Сессия: параметр сортировки {parameter} не найден')
         else:
-            logger.warning('Данные нельзя удалить, т.к. они еще не были записаны')
+            logger.warning('Сессия: данные нельзя удалить, т.к. они еще не были записаны')
 
 
     @classmethod
@@ -224,8 +225,8 @@ class SortProductsTracing:
         Очистка всех параметров сортировки
         """
         try:
-            session['sorted'].clear()
-            logger.debug(f'Проверка параметров после очистки: { session["sorted"]}')
+            logger.info(f'Сессия: очистка параметров сортировки')
+            del session['sorted']
 
         except KeyError:
-            logger.warning('Данные сортировки нельзя удалить, т.к. они еще не были записаны')
+            logger.warning('Сессия: данные сортировки нельзя удалить, т.к. они еще не были записаны')

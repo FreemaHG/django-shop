@@ -39,7 +39,7 @@ class ProductSorted:
         """
         Сортировка товаров по цене (по возрастанию)
         """
-        logger.debug('Сортировка по цене (по возрастанию)')
+        logger.debug('Сортировка по цене: по возрастанию')
         sorted_products = products.order_by('price')
 
         return sorted_products
@@ -49,7 +49,7 @@ class ProductSorted:
         """
         Сортировка товаров по цене (по убыванию)
         """
-        logger.debug('Сортировка по цене (по убыванию)')
+        logger.debug('Сортировка по цене: по убыванию')
         sorted_products = products.order_by('-price')
 
         return sorted_products

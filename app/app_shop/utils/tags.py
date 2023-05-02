@@ -15,7 +15,7 @@ class GetTag:
         """
         Метод возвращает id тега по переданному полю slug
         """
-        logger.debug(f'Поиск тега по переданному значению: {tag_name}')
+        logger.debug(f'Утилиты: поиск тега по переданному значению: {tag_name}')
 
         try:
             tag_id = ProductTags.objects.only('id').get(slug__icontains=tag_name)

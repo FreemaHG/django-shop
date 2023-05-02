@@ -1,11 +1,16 @@
 from django.urls import path, include
 
-from .views import (
-    MainView,
+from .views.products_sort import (
+    ProductsSortedByPrice,
+)
+from .views.products_list import (
     ProductsListView,
     ProductsFilterListView,
     ProductsForTagLIstView,
     ResetFiltersView,
+)
+from .views.pages import (
+    MainView,
     AboutView,
     ProductsSalesView,
     ProductDetailView,
@@ -15,7 +20,6 @@ from .views import (
     HistoryOrderView,
     PaymentView,
     PaymentWithInvoiceGenerationView,
-    ProductsSortedByPrice,
     ProgressPaymentView,
 )
 
