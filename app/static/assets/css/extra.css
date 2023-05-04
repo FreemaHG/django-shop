@@ -446,7 +446,7 @@
 .Cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   width: 100%;
 }
 @media screen and (min-width: 990px) {
@@ -5229,4 +5229,12 @@ a.Cart-title {
 .reset-filters-button {
   display: inline-block;
   padding-top: 20px;
+}
+
+.Card-left-alignment {
+  justify-content: flex-start;
+}
+
+.button-margin-bottom {
+  margin-bottom: 20px;
 }

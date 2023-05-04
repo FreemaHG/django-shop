@@ -1,15 +1,6 @@
-from django.urls import path, include
+from django.urls import path, re_path, include
 
-from .views.products_sort import (
-    ProductsSortedByPrice,
-)
-from .views.products_list import (
-    ProductsListView,
-    ProductsFilterListView,
-    ProductsForTagLIstView,
-    ResetFiltersView,
-)
-from .views.pages import (
+from .views import (
     MainView,
     AboutView,
     ProductsSalesView,
@@ -21,26 +12,17 @@ from .views.pages import (
     PaymentView,
     PaymentWithInvoiceGenerationView,
     ProgressPaymentView,
+    ProductsListView,
 )
 
 app_name = 'shop'
 
 urlpatterns = [
     path('', MainView.as_view(), name='main'),  # Главная
-    path('catalog/', include([
+    path('catalog/', include([  # Фильтрация товаров по категории / тегу, параметрам фильтрации и сортировка
         path('', ProductsListView.as_view(), name='products_list'),
-        path('category/<slug:category_name>', ProductsListView.as_view(), name='products_list'),
-        path('tags/<slug:tag_name>', ProductsForTagLIstView.as_view(), name='filter_by_tags'),
-        path('filter/', include([
-            path('', ProductsFilterListView.as_view(), name='products_filter_list'),  # Вывод отфильтрованных товаров
-            path('reset/', ResetFiltersView.as_view(), name='reset_filters'),  # Сброс параметров фильтрации
-        ])),
-        path('sorted/', include([
-            # path('by_popularity/', name='sorted_by_popularity'),  # Сортировка товаров по популярности
-            path('by_price/', ProductsSortedByPrice.as_view(), name='sorted_by_price'),  # Сортировка товаров по цене
-            # path('by_reviews/', name='sorted_by_reviews'),  # Сортировка товаров по кол-ву отзывов
-            # path('by_novelty/', name='sorted_by_novelty'),  # Сортировка товаров по новизне
-        ])),
+        re_path(r'^(?P<group>.*)/(?P<name>.*)/', ProductsListView.as_view(), name='products_list'),
+        re_path(r'^(?P<group>.*)/(?P<name>.*)/.+', ProductsListView.as_view(), name='products_list'),
     ])),
     path('about/', AboutView.as_view(), name='about'),  # О магазине
     path('sale/', ProductsSalesView.as_view(), name='sale'),  # Распродаж

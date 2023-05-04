@@ -94,7 +94,7 @@ class ProductAdmin(admin.ModelAdmin):
     """
     Админ-панель для товаров
     """
-    list_display = ('id', 'short_name', 'category', 'price', 'discount', 'count', 'limited_edition', 'deleted')
+    list_display = ('id', 'short_name', 'category', 'price', 'discount', 'count', 'limited_edition', 'created_at', 'deleted')
     list_display_links = ('short_name',)
     list_filter = ('category', 'tags')
     search_fields = ('name',)

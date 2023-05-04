@@ -3,11 +3,13 @@
 <div class="Pagination">
   <div class="Pagination-ins">
 
-    <a class="Pagination-element Pagination-element_prev" href="?page=1">
-      <img src="{% static 'assets/img/icons/prevPagination.svg' %}" alt="prevPagination.svg"/>
-    </a>
+    {% if page_obj.has_previous %}
+      <a class="Pagination-element Pagination-element_prev" href="?page=1">
+        <img src="{% static 'assets/img/icons/prevPagination.svg' %}" alt="prevPagination.svg"/>
+      </a>
+    {% endif %}
 
-    {% for p in paginator.page_range %}
+    {% for p in page_obj.paginator.page_range %}
       {% if page_obj.number == p %}
         <a class="Pagination-element Pagination-element_current" href="#">
           <span class="Pagination-text">{{ p }}</span>
@@ -19,9 +21,30 @@
       {% endif %}
     {% endfor %}
 
-    <a class="Pagination-element Pagination-element_prev" href="?page={{ page_obj.paginator.num_pages }}">
-      <img src="{% static 'assets/img/icons/nextPagination.svg' %}" alt="nextPagination.svg"/>
-    </a>
+    {% if page_obj.has_next %}
+      <a class="Pagination-element Pagination-element_prev" href="?page={{ page_obj.paginator.num_pages }}">
+        <img src="{% static 'assets/img/icons/nextPagination.svg' %}" alt="nextPagination.svg"/>
+      </a>
+    {% endif %}
 
   </div>
 </div>
+
+{#<div class="pagination">#}
+{#    <span class="step-links">#}
+{#        {% if page_obj.has_previous %}#}
+{#            <a href="?page=1">&laquo; first</a>#}
+{#            <a href="?page={{ page_obj.previous_page_number }}">previous</a>#}
+{#        {% endif %}#}
+{##}
+{#        <span class="current">#}
+{#            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.#}
+{#        </span>#}
+{##}
+{#        {% if page_obj.has_next %}#}
+{#            <a href="?page={{ page_obj.next_page_number }}">next</a>#}
+{#            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>#}
+{#        {% endif %}#}
+{#    </span>#}
+{#</div>#}
+
