@@ -4,7 +4,7 @@ from django.contrib import admin, messages
 from django.db.models import JSONField
 from mptt.admin import DraggableMPTTAdmin
 
-from .models import CategoryProduct, Product, ProductTags, ProductImages
+from .models import CategoryProduct, Product, ProductTags, ProductImages, ProductReviews
 from .utils.admin.change_status_delete import soft_deletion_child_records
 
 
@@ -81,12 +81,21 @@ class ProductTagsAdmin(admin.ModelAdmin):
         ('Основное', {'fields': ('name', 'slug', 'deleted')}),
     )
 
+
 class ChoiceImages(admin.TabularInline):
     """
     Вывод изображений на странице товара
     """
     model = ProductImages
     extra = 1
+
+
+class ChoiceReviews(admin.TabularInline):
+    """
+    Вывод комментариев на странице товара
+    """
+    model = ProductReviews
+    extra = 0
 
 
 @admin.register(Product)
@@ -100,7 +109,8 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     list_editable = ('deleted',)
     actions = (deleted_records, restore_records)  # Мягкое удаление/восстановление записей
-    inlines = (ChoiceImages,)
+    # FIXME Добавить в inlines комментарии
+    inlines = (ChoiceImages, ChoiceReviews)
 
     fieldsets = (
         ('Основное', {
@@ -130,3 +140,36 @@ class ProductAdmin(admin.ModelAdmin):
         return obj.name
 
     short_name.short_description = 'Название товара'
+
+
+@admin.register(ProductReviews)
+class ProductReviewsAdmin(admin.ModelAdmin):
+    """
+    Админ-панель для комментариев к товарам
+    """
+    list_display = ('product_name', 'buyer', 'short_review', 'created_at', 'deleted')
+    list_display_links = ('product_name',)
+    list_filter = ('deleted',)
+    search_fields = ('product', 'short_review')
+    list_editable = ('deleted',)
+    actions = (deleted_records, restore_records)  # Мягкое удаление/восстановление записей
+
+    def short_review(self, obj):
+        """
+        Возврат короткого отзыва (не более 250 символов)
+        """
+        if len(obj.review) > 250:
+            return f'{obj.review[0:250]}...'
+        return obj.review
+
+    short_review.short_description = 'Отзыв'
+
+    def product_name(self, obj):
+        """
+        Возврат короткого названия товара (не более 100 символов)
+        """
+        if len(obj.product.name) > 50:
+            return f'{obj.product.name[0:50]}...'
+        return obj.product.name
+
+    product_name.short_description = 'Товар'

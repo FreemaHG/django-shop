@@ -102,7 +102,7 @@ class Product(models.Model):
     """
     name = models.CharField(max_length=250, verbose_name='Название')
     definition = models.TextField(max_length=1000, verbose_name='Описание')
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата и время добавления товара')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Время добавления товара')
     characteristics = JSONField(verbose_name='Характеристики')
     category = models.ForeignKey(CategoryProduct, on_delete=models.CASCADE, verbose_name='Категория')
     tags = models.ManyToManyField('ProductTags', verbose_name='Теги')
@@ -133,7 +133,29 @@ class ProductImages(models.Model):
     class Meta:
         db_table = 'product_images'
         verbose_name = 'Изображение товара'
-        verbose_name_plural = 'Изображения товаров'
+        verbose_name_plural = 'Изображения товара'
 
     def __str__(self):
         return self.title
+
+
+class ProductReviews(models.Model):
+    """
+    Модель для хранения отзывов о товарах
+    """
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Товар')
+    buyer = models.ForeignKey('app_user.Buyer', on_delete=models.CASCADE, verbose_name='Покупатель')
+    # # TODO Точно нужно?
+    # rating = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    review = models.TextField(max_length=2500, verbose_name='Отзыв')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Время добавления отзыва')
+    deleted = models.BooleanField(choices=STATUS_CHOICES, default=False, verbose_name='Статус')  # Мягкое удаление
+
+    class Meta:
+        db_table = 'products_reviews'
+        verbose_name = 'Отзыв о товаре'
+        verbose_name_plural = 'Отзывы о товаре'
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return self.product.name
