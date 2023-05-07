@@ -1,19 +1,32 @@
 import json
+import logging
 
 from django.contrib import admin, messages
 from django.db.models import JSONField
 from mptt.admin import DraggableMPTTAdmin
+from mptt.querysets import TreeQuerySet
 
 from .models import CategoryProduct, Product, ProductTags, ProductImages, ProductReviews
 from .utils.admin.change_status_delete import soft_deletion_child_records
 
 
-@admin.action(description='Удалить (мягкое удаление)')
-def deleted_records(adminmodel, request, queryset):
+logger = logging.getLogger(__name__)
+
+
+@admin.action(description='Мягкое удаление всех записей (включая дочерние)')
+def deleted_all_records(adminmodel, request, queryset):
     """
-    Мягкое удаление записей
+    Мягкое удаление всех записей, включая дочерние
     """
     soft_deletion_child_records(queryset)  # Мягкое удаление всех дочерних записей
+    queryset.update(deleted=True)  # Мягкое удаление родительской записи
+
+
+@admin.action(description='Мягкое удаление')
+def deleted_records(adminmodel, request, queryset):
+    """
+    Мягкое удаление всех записей, включая дочерние
+    """
     queryset.update(deleted=True)  # Мягкое удаление родительской записи
 
 
@@ -35,7 +48,7 @@ class CategoryProductAdmin(DraggableMPTTAdmin):
     list_filter = ('selected', 'deleted')
     list_editable = ('deleted',)
     search_fields = ('title',)
-    actions = (deleted_records, restore_records)  # Мягкое удаление/восстановление записей
+    actions = (deleted_all_records, restore_records)  # Мягкое удаление/восстановление записей
 
     fieldsets = (
         ('Основное', {'fields': ('title', 'parent')}),
@@ -109,7 +122,6 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     list_editable = ('deleted',)
     actions = (deleted_records, restore_records)  # Мягкое удаление/восстановление записей
-    # FIXME Добавить в inlines комментарии
     inlines = (ChoiceImages, ChoiceReviews)
 
     fieldsets = (
