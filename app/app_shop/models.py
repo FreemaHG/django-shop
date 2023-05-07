@@ -155,7 +155,7 @@ class ProductReviews(models.Model):
         db_table = 'products_reviews'
         verbose_name = 'Отзыв о товаре'
         verbose_name_plural = 'Отзывы о товаре'
-        ordering = ['-created_at']
+        ordering = ['created_at']
 
     def __str__(self):
         return self.product.name

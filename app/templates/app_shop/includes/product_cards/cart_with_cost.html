@@ -2,14 +2,16 @@
 {% load product_card %}
 
 <div class="Card">
-  <a class="Card-picture" href="#">
+  <a class="Card-picture" href="{% url 'shop:product_detail' product.id %}">
     <!-- Тег для получения изображения по переданному id товара -->
-    {% product_image product.id as image %}
-    <img src="{{ image.image.url }}" alt={{ image.title }}/>
+{#    {% product_image product.id as image %}#}
+{#    <img src="{{ image.image.url }}" alt={{ image.title }}/>#}
+    <img src="{{ product.productimages_set.first.image.url }}" alt="{{ product.productimages_set.first.title }}"/>
+
   </a>
   <div class="Card-content Card-content-custom">
     <strong class="Card-title">
-      <a href="product.html">{{ product.name }}</a>
+      <a href={% url 'shop:product_detail' product.id %}>{{ product.name }}</a>
     </strong>
     <div class="Card-description">
       <div class="Card-cost">

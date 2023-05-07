@@ -8,6 +8,7 @@ from ..models import ProductImages, Product
 logger = logging.getLogger(__name__)
 register = template.Library()
 
+# Не используется!!!
 @register.simple_tag
 def product_image(product_id: int) -> ProductImages:
     """

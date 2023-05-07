@@ -26,7 +26,10 @@ urlpatterns = [
     ])),
     path('about/', AboutView.as_view(), name='about'),  # О магазине
     path('sale/', ProductsSalesView.as_view(), name='sale'),  # Распродаж
-    path('product/', ProductDetailView.as_view(), name='product'),  # Страница товара
+    path('product/<int:pk>', ProductDetailView.as_view(), name='product_detail'),  # Страница товара
+
+    # re_path(r'^product/(?P<pk>[0-9]*)/#(?P<tag>.*)', ProductDetailView.as_view(), name='product_detail'),  # Страница товара
+
     path('shopping_cart/', ShoppingCartView.as_view(), name='shopping_cart'),  # Корзина с товарами
     path('order/', include([
         path('registration/', OrderRegistrationView.as_view(), name='order_registration'),  # Регистрация заказа

@@ -1,8 +1,9 @@
 import logging
 
+from typing import List
 from django import template
 
-from ..models import ProductTags
+from ..models import ProductTags, Product
 
 
 logger = logging.getLogger(__name__)
@@ -20,54 +21,32 @@ def output_tags():
 
 
 @register.simple_tag
-def clear_link_for_sort(link: str) -> str:
+def tags_for_product(product: Product) -> List[ProductTags]:
     """
-    Очистка входящей строки от текста после ключевой фразы 'sort'.
-    Добавление спец.символа в конце для корректного парсинга параметров из URL.
+    Вывод всех активных тегов товара
     """
-    # logger.info(f'Очистка ссылки для сортировки: {link}')
+    logger.debug(f'Возврат активных тегов товара: {product.name}')
+    tags = product.tags.filter(deleted=False)
 
-    if '&sort' in link:
-        link = link.split('&sort')[0]
-
-    elif '?sort' in link:
-        link = link.split('?sort')[0]
-
-    elif '&page=' in link:
-        link = link.split('&page=')[0]
-
-    elif '?page=' in link:
-        link = link.split('?page=')[0]
-
-    # logger.debug(f'Возврат очищенной ссылки: {link}')
-
-    if '?' not in link:
-        link += '?'
-    else:
-        link += '&'
-
-    return link
+    logger.debug(f'Найдено тегов: {len(tags)}')
+    return tags
 
 
 @register.simple_tag
-def clear_link_for_paginate(link: str) -> str:
+def check_for_word_end(number: int) -> str:
     """
-    Очистка входящей строки от текста после ключевой фразы 'page'.
-    Добавление спец.символа в конце для корректного парсинга параметров из URL.
+    Проверка входящего числа для вывода корректного окончания в шаблоне
     """
-    # logger.info(f'Очистка ссылки для пагинации: {link}')
+    logger.debug(f'Проверка входного числа: {number}')
 
-    if '&page=' in link:
-        link = link.split('&page=')[0]
+    if str(number)[-1] in ['5', '6', '7', '8', '9', '0'] or str(number)[-2:] in ['11', '12', '13', '14']:
+        # logger.debug('Возврат окончания: "ов"')
+        return 'ов'
 
-    elif '?page=' in link:
-        link = link.split('?page=')[0]
+    elif str(number)[-1] in ['2', '3', '4']:
+        # logger.debug('Возврат окончания: "а"')
+        return 'а'
 
-    # logger.debug(f'Возврат очищенной ссылки: {link}')
-
-    if '?' not in link:
-        link += '?'
     else:
-        link += '&'
-
-    return link
+        # logger.debug('Нет окончания')
+        return ''

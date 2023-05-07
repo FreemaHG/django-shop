@@ -1,11 +1,16 @@
 import logging
 
-from django.http import HttpResponse
-from django.views.generic import View, ListView
-from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
+from django.views.generic import View, ListView, DetailView
+from django.shortcuts import render, redirect
+from django.views.generic.edit import FormMixin
+from django.contrib import messages
 
 from .models import Product
+from .forms import CommentProductForm
 from .services.products.output_products import ProductsListService
+from .services.products.detail_page import DetailProduct
 from .utils.input_data import clear_data
 
 
@@ -90,10 +95,58 @@ class ProductsSalesView(View):
         return render(request, '../templates/app_shop/sale.html')
 
 
-class ProductDetailView(View):
-    """ Тестовая страница товара """
-    def get(self, request):
-        return render(request, '../templates/app_shop/product.html')
+class ProductDetailView(DetailView, FormMixin):
+    """
+    Детальная страница товара с комментариями.
+    """
+    model = Product
+    form_class = CommentProductForm
+    template_name = '../templates/app_shop/product.html'
+
+    def get_context_data(self, **kwargs):
+        """
+        Передача в контекст всех комментариев к товару
+        """
+        context = super().get_context_data(**kwargs)
+        product = self.object
+        comments = DetailProduct.all_comments(product=product)
+        context['comments'] = comments
+
+        return context
+
+    def post(self, request, pk):
+        """
+        Обработка формы с новым комментарием
+        """
+        form = CommentProductForm(request.POST)
+        product = self.get_object()
+        comments = DetailProduct.all_comments(product=product)
+
+        if form.is_valid():
+            logger.debug(f'Данные формы валидны: {form.cleaned_data}')
+
+            # Добавляем новый комментарий к товару
+            result = DetailProduct.add_new_comments(
+                form=form,
+                product=product,
+                user=request.user
+            )
+
+            if result:
+                return HttpResponseRedirect(reverse('shop:product_detail', kwargs={'pk': pk}))
+                # return redirect(reverse(reverse('shop:product_detail', kwargs={'pk': pk, 'tag': 'comment'})))
+
+            else:
+                logger.error(f'Ошибка при публикации комментария')
+
+        else:
+            logger.warning(f'Невалидные данные: {form.errors}')
+
+        return render(request, '../templates/app_shop/product.html', context={
+            'object': product,
+            'comments': comments,
+            'form': form
+        })
 
 
 class ShoppingCartView(View):

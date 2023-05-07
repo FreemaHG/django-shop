@@ -1984,6 +1984,7 @@ a.Cart-title {
   background-color: #f3f4f9;
   position: relative;
   display: flex;
+  margin-bottom: 30px;
 }
 .Comment-column + .Comment-column {
   margin-left: 23px;
@@ -2046,6 +2047,13 @@ a.Cart-title {
   border-radius: 100px;
   background: #0063d1 url("../img/icons/user_icon.svg") center center no-repeat;
 }
+
+.Comment-avatar-custom {
+  width: 99px;
+  height: 99px;
+  border-radius: 100px;
+}
+
 .Comment-rating {
   position: absolute;
   right: 24px;
@@ -5182,6 +5190,7 @@ a.Cart-title {
 
 .auth-width {
   max-width: 550px;
+  min-width: 450px;
 }
 
 .Profile-register {
@@ -5245,4 +5254,28 @@ a.Cart-title {
   flex-direction: column;
   align-items: stretch;
   justify-content: space-between;
+}
+
+.product_descr {
+  margin-right: 25px;
+}
+
+.pict_mixin {
+  max-height: 250px;
+  max-width: 250px;
+  margin-top: 0 !important;
+  margin-left: 0;
+  flex-shrink: 0;
+}
+
+.login_text {
+  text-align: center;
+}
+
+.register-text {
+  flex-direction: column;
+}
+
+.text-reset {
+  margin: 0;
 }
