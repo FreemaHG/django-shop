@@ -2,9 +2,10 @@ import logging
 
 from typing import Union, Dict
 from django.db.models import QuerySet
+from django.core.exceptions import ObjectDoesNotExist
 
 from config.admin import config
-from ....models import Product
+from ....models import Product, CategoryProduct
 
 
 logger = logging.getLogger(__name__)
@@ -19,8 +20,17 @@ class ProductFilter:
         """
         Вывод товаров определенной категории
         """
-        products = Product.objects.filter(category__slug=category_name, deleted=False)
-        logger.debug(f'Фильтр: возврат товаров категории: {category_name}. Найдено товаров: {len(products)}')
+        try:
+            category = CategoryProduct.objects.get(slug=category_name)
+            logger.debug(f'Категория найдена: {category.title}')
+
+        except ObjectDoesNotExist:
+            logger.warning('Категория не найдена')
+            return []
+
+        sub_categories = category.get_descendants(include_self=True)  # Дочерние категории
+        products = Product.objects.filter(category__in=sub_categories, deleted=False)
+        # products = Product.objects.filter(category__slug=category_name, deleted=False)
 
         return products
 
