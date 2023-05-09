@@ -118,6 +118,17 @@ class Product(models.Model):
         verbose_name_plural = 'Товары'
         ordering = ['id']
 
+    def save(self, *args, **kwargs):
+        """
+        Меняем поле limited_edition в зависимости от кол-ва товара
+        """
+        if 0 <= self.count <= 100:
+            self.limited_edition = True
+        else:
+            self.limited_edition = False
+
+        super(Product, self).save(*args, **kwargs)
+
     def __str__(self):
         return self.name
 

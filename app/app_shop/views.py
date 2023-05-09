@@ -2,7 +2,7 @@ import logging
 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from django.views.generic import View, ListView, DetailView
+from django.views.generic import View, TemplateView, ListView, DetailView
 from django.shortcuts import render, redirect
 from django.views.generic.edit import FormMixin
 from django.contrib import messages
@@ -10,6 +10,7 @@ from django.contrib import messages
 from .models import Product
 from .forms import CommentProductForm
 from .services.products.output_products import ProductsListService
+from .services.products.main import ProductsForMainService
 from .services.products.detail_page import DetailProduct
 from .utils.input_data import clear_data
 
@@ -17,10 +18,22 @@ from .utils.input_data import clear_data
 logger = logging.getLogger(__name__)
 
 
-class MainView(View):
-    """ Тестовая главная страница """
-    def get(self, request):
-        return render(request, '../templates/app_shop/index.html')
+class MainView(TemplateView):
+    """
+    Главная страница
+    """
+    template_name = '../templates/app_shop/index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['selected_categories'] = ProductsForMainService.selected_categories()
+        context['limited_products'] = ProductsForMainService.limited_edition()
+
+        # FIXME Добавить после реализации механики покупки товаров
+        # context['popular_products'] = ProductsForMainService.popular_products()
+        context['popular_products'] = Product.objects.all()[:8]
+
+        return context
 
 
 class ProductsListView(ListView):

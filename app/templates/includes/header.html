@@ -63,7 +63,7 @@
           <div class="menuModal" id="navigate">
             <ul class="menu menu_main">
               <li class="menu-item">
-                <a class="menu-link" href="{% url 'shop:main' %}">Home</a>
+                <a class="menu-link" href="{% url 'shop:main' %}">Главная</a>
               </li>
 
               <li class="menu-item">
@@ -75,7 +75,7 @@
               </li>
 
               <li class="menu-item">
-                <a class="menu-link" href="#">Purchase</a>
+                <a class="menu-link" href="{% url 'shop:products_list' %}">Каталог</a>
               </li>
             </ul>
           </div>
@@ -149,8 +149,7 @@
           <div class="search">
             <form class="form form_search" action="#" method="post">
               <input class="search-input" id="query" name="query" type="text" placeholder="What are you looking for ..."/>
-              <button class="search-button" type="submit" name="search" id="search"><img src="{% static 'assets/img/icons/search.svg' %}" alt="search.svg"/>Search
-              </button>
+              <button class="search-button" type="submit" name="search" id="search"><img src="{% static 'assets/img/icons/search.svg' %}" alt="search.svg"/>Поиск</button>
             </form>
           </div>
         </div>

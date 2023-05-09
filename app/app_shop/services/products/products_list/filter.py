@@ -1,6 +1,6 @@
 import logging
 
-from typing import Union, Dict
+from typing import Union, Dict, List
 from django.db.models import QuerySet
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -16,7 +16,7 @@ class ProductFilter:
     """
 
     @classmethod
-    def output_by_category(cls, category_name: Union[str, bool]) -> Union[Product, bool]:
+    def output_by_category(cls, category_name: Union[str, bool]) -> Union[Product, List]:
         """
         Вывод товаров определенной категории
         """

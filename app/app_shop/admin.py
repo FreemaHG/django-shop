@@ -38,6 +38,22 @@ def restore_records(adminmodel, request, queryset):
     queryset.update(deleted=False)  # Восстановление родительской записи
 
 
+@admin.action(description='Перевести в "Избранные категории"')
+def make_selected(adminmodel, request, queryset):
+    """
+    Перевод категорий в избранные
+    """
+    queryset.update(selected=True)
+
+
+@admin.action(description='Удалить из "Избранные категории"')
+def remove_selected(adminmodel, request, queryset):
+    """
+    Перевод категорий в избранные
+    """
+    queryset.update(selected=False)
+
+
 @admin.register(CategoryProduct)
 class CategoryProductAdmin(DraggableMPTTAdmin):
     """
@@ -48,7 +64,8 @@ class CategoryProductAdmin(DraggableMPTTAdmin):
     list_filter = ('selected', 'deleted')
     list_editable = ('deleted',)
     search_fields = ('title',)
-    actions = (deleted_all_records, restore_records)  # Мягкое удаление/восстановление записей
+    # Мягкое удаление/восстановление записей, перевод и удаление из избранных
+    actions = (deleted_all_records, restore_records, make_selected, remove_selected)
 
     fieldsets = (
         ('Основное', {'fields': ('title', 'parent')}),
@@ -118,7 +135,7 @@ class ProductAdmin(admin.ModelAdmin):
     """
     list_display = ('id', 'short_name', 'category', 'price', 'discount', 'count', 'limited_edition', 'created_at', 'deleted')
     list_display_links = ('short_name',)
-    list_filter = ('category', 'tags')
+    list_filter = ('limited_edition', 'category', 'tags')
     search_fields = ('name',)
     list_editable = ('deleted',)
     actions = (deleted_records, restore_records)  # Мягкое удаление/восстановление записей

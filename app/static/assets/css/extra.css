@@ -387,6 +387,7 @@
 .BannersHomeBlock-title {
   text-transform: uppercase;
   margin-bottom: 18px;
+  font-size: 20px;
   display: block;
   line-height: 1.2em;
 }
@@ -397,7 +398,7 @@
 .BannersHomeBlock-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 @media screen and (max-width: 1200px) {
   .BannersHomeBlock-row {
