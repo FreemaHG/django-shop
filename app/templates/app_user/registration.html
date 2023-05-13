@@ -9,6 +9,10 @@
 
 {% block account_content %}
   <div class="registration-form-width">
-    {% include "app_user/account/includes/data_entry_forms.html" with form=form button_text="Зарегистрироваться" %}
+    <div class="Profile">
+      <form class="form Profile-form" action="{% url 'user:registration' %}" method="post" enctype="multipart/form-data">
+        {% include "app_user/account/includes/data_entry_forms.html" with form=form button_text="Зарегистрироваться" %}
+      </form>
+    </div>
   </div>
 {% endblock %}

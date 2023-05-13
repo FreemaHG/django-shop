@@ -9,6 +9,10 @@
 
 {% block account_content %}
   <div class="Section-content">
-    {% include "app_user/account/includes/data_entry_forms.html" with form=form button_text="Сохранить" %}
+    <div class="Profile">
+      <form class="form Profile-form" action="{% url 'user:update_account' %}" method="post" enctype="multipart/form-data">
+        {% include "app_user/account/includes/data_entry_forms.html" with form=form button_text="Сохранить" %}
+      </form>
+    </div>
   </div>
 {% endblock %}

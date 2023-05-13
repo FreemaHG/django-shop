@@ -1,25 +1,50 @@
-<div class="Profile">
-  <form class="form Profile-form" action="{% url 'user:registration' %}" method="post" enctype="multipart/form-data">
+{#<div class="Profile">#}
+{#  <form class="form Profile-form" action="{% url 'user:registration' %}" method="post" enctype="multipart/form-data">#}
     {% csrf_token %}
     <div class="row">
       <div class="row-block">
         <div class="form-group">
           <label class="form-label" for="avatar">{{ form.avatar.label }}</label>
-          <div class="Profile-avatar Profile-avatar_noimg">
-            <!-- Добавить вывод уже загруженного ранее аватара -->
-{#            <div class="Profile-img">#}
-{#              <img src="assets/img/#.png" alt="#.png"/>#}
-{#            </div>#}
-            <label class="Profile-fileLabel" for="avatar">{{ form.avatar.help_text }}</label>
-            <input class="Profile-file form-input" id="avatar" name="avatar" type="file" data-validate="onlyImgAvatar"/>
-          </div>
+          {% with request.user.profile.avatar as avatar %}
+            {% if avatar %}
+              <div class="Profile-avatar">
+                <div class="Profile-img">
+                  <img src="{{ request.user.profile.avatar.url }}" alt="Аватар {{ request.user.profile.full_name }}"/>
+                </div>
+                <label class="Profile-fileLabel" for="avatar">{{ form.avatar.help_text }}</label>
+                <input class="Profile-file form-input" id="avatar" name="avatar" type="file" data-validate="onlyImgAvatar"/>
+              </div>
+            {% else %}
+              <div class="Profile-avatar Profile-avatar_noimg">
+                <div class="Profile-img">
+                  <img src="#" alt="#.png"/>
+                </div>
+                <label class="Profile-fileLabel" for="avatar">{{ form.avatar.help_text }}</label>
+                <input class="Profile-file form-input" id="avatar" name="avatar" type="file" data-validate="onlyImgAvatar"/>
+              </div>
+            {% endif %}
+          {% endwith %}
+
+        {% if form.avatar.errors %}
+          {% for error in form.avatar.errors %}
+            <div class="Profile-success error-message">{{ error | escape }}</div>
+          {% endfor %}
+        {% endif %}
 
         </div>
 
         <div class="form-group">
           <label class="form-label" for="name">{{ form.full_name.label }}</label>
-          <input class="form-input" id="name" name="full_name" type="text" value="" data-validate="require"/>
+          {% with request.user.profile.full_name as full_name %}
+              <input class="form-input" id="name" name="full_name" type="text" value="{{ full_name }}" data-validate="require"/>
+          {% endwith %}
         </div>
+
+        {% if form.full_name.errors %}
+          {% for error in form.full_name.errors %}
+            <div class="Profile-success error-message">{{ error | escape }}</div>
+          {% endfor %}
+        {% endif %}
 
       </div>
 
@@ -27,47 +52,76 @@
 
         <div class="form-group">
           <label class="form-label" for="phone">{{ form.phone_number.label }}</label>
-          <input class="form-input" id="phone" name="phone_number" type="text" value="+70000000000"/>
+          {% with request.user.profile.phone_number as phone_number %}
+            {% if phone_number %}
+              <input class="form-input" id="phone" name="phone_number" type="tel" value="+7{{ phone_number }}"/>
+            {% else %}
+              <input class="form-input" id="phone" name="phone_number" type="tel"/>
+            {% endif %}
+          {% endwith %}
+
+          {% if form.phone_number.errors %}
+            {% for error in form.phone_number.errors %}
+              <div class="Profile-success error-message">{{ error | escape }}</div>
+            {% endfor %}
+          {% endif %}
+
         </div>
 
         <div class="form-group">
           <label class="form-label" for="mail">{{ form.email.label }}</label>
-          <input class="form-input" id="mail" name="email" type="text" value="send@test.test" data-validate="require"/>
+          {% with request.user.email as email %}
+            <input class="form-input" id="mail" name="email" type="email" value="{{ email }}" data-validate="require"/>
+          {% endwith %}
+
+          {% if form.email.errors %}
+            {% for error in form.email.errors %}
+              <div class="Profile-success error-message">{{ error | escape }}</div>
+            {% endfor %}
+          {% endif %}
+
         </div>
 
         <div class="form-group">
           <label class="form-label" for="password">{{ form.password1.label }}</label>
-          <input class="form-input" id="password" name="password1" type="password" placeholder="{{ form.password1.help_text }}"/>
+          <input class="form-input" id="password" name="password1" type="password" placeholder="{{ form.password1.help_text }}" data-validate="require"/>
+
+          {% if form.password1.errors %}
+            {% for error in form.password1.errors %}
+              <div class="Profile-success error-message">{{ error | escape }}</div>
+            {% endfor %}
+          {% endif %}
         </div>
 
         <div class="form-group">
           <label class="form-label" for="passwordReply">{{ form.password2.label }}</label>
-          <input class="form-input" id="passwordReply" name="password2" type="password" placeholder="{{ form.password2.help_text }}"/>
+          <input class="form-input" id="passwordReply" name="password2" type="password" placeholder="{{ form.password2.help_text }}" data-validate="require"/>
+
+          {% if form.password2.errors %}
+            {% for error in form.password2.errors %}
+              <div class="Profile-success error-message">{{ error | escape }}</div>
+            {% endfor %}
+          {% endif %}
         </div>
 
-        <div class="form-group">
+        {% if error_message %}  <!-- Текст ошибки при неудачной регистрации -->
+          <div class="Profile-success error-message button-margin-bottom">{{ error_message | escape }}</div>
+        {% endif %}
 
+        {% if message %}  <!-- Текст сообщения -->
+          <div class="Profile-success button-margin-bottom">{{ message | escape }}</div>
+        {% endif %}
+
+        <div class="form-group">
           <div class="Profile-btn">
             {% block save_data_button %}
               <button class="btn btn_success" type="submit">{{ button_text }}</button>
             {% endblock %}
           </div>
 
-          {% if form.errors %}  <!-- Текст ошибки для полей с невалидными данными -->
-            {% for field in form %}
-              {% for error in field.errors %}
-                <div class="Profile-success error-message">{{ error | escape }}</div>
-              {% endfor %}
-            {% endfor %}
-          {% endif %}
-
-          {% if error_message %}  <!-- Текст ошибки при неудачной регистрации -->
-            <div class="Profile-success error-message">{{ error_message | escape }}</div>
-          {% endif %}
-
         </div>
       </div>
-    </div>
-  </form>
+{#    </div>#}
+{#  </form>#}
 
-</div>
+    </div>
