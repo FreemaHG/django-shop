@@ -6,6 +6,8 @@ from django.views.generic import View, TemplateView, ListView, DetailView
 from django.shortcuts import render, redirect
 from django.views.generic.edit import FormMixin
 from django.contrib import messages
+from django.core.cache import cache
+from config.admin import config
 
 from .models import Product
 from .forms import CommentProductForm
@@ -91,7 +93,7 @@ class ProductsListView(ListView):
                 elif sort_param == 'by_novelty_up':
                     context['sorting_indicator_by_novelty'] = class_down  # Сортировка вниз
 
-            logger.info(f'Передача параметров в шаблон: {context["filter_parameters"]}')
+            logger.debug(f'Передача параметров в шаблон: {context["filter_parameters"]}')
 
         return context
 
@@ -116,23 +118,29 @@ class ProductDetailView(DetailView, FormMixin):
     form_class = CommentProductForm
     template_name = '../templates/app_shop/product.html'
 
-    def get_context_data(self, **kwargs):
+    def get(self, request, *args, **kwargs):
         """
-        Передача в контекст всех комментариев к товару
+        Вывод детальной страницы товара с комментариями
         """
-        context = super().get_context_data(**kwargs)
-        product = self.object
-        comments = DetailProduct.all_comments(product=product)
+        id = self.kwargs["pk"]  # id товара из URL
+
+        # Возвращаем объект из кэша / кэшируем объект
+        self.object = cache.get_or_set(f'product_{id}', self.get_object(), 60 * config.caching_time)
+        logger.info(f'Товар добавлен в кэш: id - {id}')
+
+        context = self.get_context_data(object=self.object)
+        comments = DetailProduct.all_comments(product=self.object)  # Комментарии к товару
         context['comments'] = comments
 
-        return context
+        return self.render_to_response(context)
+
 
     def post(self, request, pk):
         """
         Обработка формы с новым комментарием
         """
         form = CommentProductForm(request.POST)
-        product = self.get_object()
+        product = self.get_object()  # FIXME Извлекать объект из GET, проверить!!!
         comments = DetailProduct.all_comments(product=product)
 
         if form.is_valid():

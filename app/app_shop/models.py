@@ -6,6 +6,7 @@ from django.urls import reverse
 from pytils.translit import slugify
 from mptt.models import MPTTModel, TreeForeignKey
 from jsonfield import JSONField
+from django.core.cache import cache
 
 from .utils.models.saving_files import (
     saving_the_category_icon,
@@ -14,7 +15,7 @@ from .utils.models.saving_files import (
 )
 
 
-loger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 STATUS_CHOICES = [
     (True, 'Удалено'),
@@ -128,6 +129,11 @@ class Product(models.Model):
             self.limited_edition = False
 
         super(Product, self).save(*args, **kwargs)
+        logger.info(f'Товар сохранен: id - {self.id}')
+
+        if cache.delete(f"product_{self.id}"):
+            logger.info('Кэш товара очищен')
+
 
     def __str__(self):
         return self.name

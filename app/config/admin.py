@@ -25,9 +25,9 @@ class SiteConfigurationAdmin(SingletonModelAdmin):  # Создаем класс,
             'description': 'Стоимость обычной и экспресс-доставки, установка минимальной стоимости заказа '
                            '/ товаров для бесплатной доставки',
         }),
-        ('Режим работы', {
-            'fields': ('maintenance_mode',),
-            'description': 'Смена режима работы сайта',
+        ('Кэш и режим работы', {
+            'fields': ('caching_time', 'maintenance_mode'),
+            'description': 'Настройки кэша и смена режима работы сайта',
         }),
     )
 
