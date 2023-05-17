@@ -13,6 +13,7 @@ from .views import (
     PaymentWithInvoiceGenerationView,
     ProgressPaymentView,
     ProductsListView,
+    load_comments,
 )
 
 app_name = 'shop'
@@ -27,6 +28,7 @@ urlpatterns = [
     path('about/', AboutView.as_view(), name='about'),  # О магазине
     path('sale/', ProductsSalesView.as_view(), name='sale'),  # Распродаж
     path('product/<int:pk>', ProductDetailView.as_view(), name='product_detail'),  # Страница товара
+    path('load_comments/', load_comments, name='load_comments'),  # Загрузка доп.комментариев к товару через кнопку
 
     # re_path(r'^product/(?P<pk>[0-9]*)/#(?P<tag>.*)', ProductDetailView.as_view(), name='product_detail'),  # Страница товара
 

@@ -31,7 +31,7 @@ class CategoryProduct(MPTTModel):
 
     icon = models.ImageField(upload_to=saving_the_category_icon, blank=True, verbose_name='Иконка')
     # Используется на главной странице для вывода категории избранных товаров
-    image = models.ImageField(upload_to=saving_the_category_image, blank=True, verbose_name='Изображение')
+    image = models.ImageField(upload_to=saving_the_category_image, verbose_name='Изображение')
 
     selected = models.BooleanField(default=False, verbose_name='Избранная категория')
     deleted = models.BooleanField(choices=STATUS_CHOICES, default=False, verbose_name='Статус')  # Мягкое удаление

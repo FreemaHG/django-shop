@@ -84,7 +84,7 @@
               </a>
               <a class="Tabs-link" href="#reviews">
                 {% if comments %}
-                  <span>Отзывы ({{ comments|length }})</span>
+                  <span>Отзывы ({{ total_comments }})</span>
                 {% else %}
                   <span>Отзывы</span>
                 {% endif %}
@@ -129,14 +129,15 @@
               </div>
               <div class="Tabs-block" id="reviews">
                 <header class="Section-header">
-                  {% with comments|length as comments_count %}
+{#                  {% with comments|length as comments_count %}#}
+                  {% with total_comments as comments_count %}
                     {% check_for_word_end comments_count as end %}
                     <h3 class="Section-title">{{ comments_count }} отзыв{{ end }}</h3>
                   {% endwith %}
                 </header>
 
                 {% if comments %}
-                  <div class="Comments">
+                  <div class="Comments" id="comments">
                     {% for comment in comments %}
                       <div class="Comment">
                         <div class="Comment-column Comment-column_pict">
@@ -158,6 +159,18 @@
                       </div>
                     {% endfor %}
                   </div>
+
+                  <div class="spinner-border text-primary mt-2 not-visible" role="status" id="spinner">
+                      <span class="sr-only">Загрузка...</span>
+                  </div>
+                  <div class="load-more__btn mt-3" id="btn">
+                    <button type="button" class="btn btn-success btn_primary btn-blue">Загрузить еще</button>
+                  </div>
+                  <div class="alert alert-danger mt-2 not-visible" role="alert" id='alert'>Отзывов больше нет!</div>
+
+                  <!-- Загрузка доп.комментариев к товару -->
+                  {% include "app_shop/upload_comments.html" %}
+
                 {% endif %}
 
                 <header class="Section-header Section-header_product">
@@ -200,7 +213,7 @@
                           </div>
                         </div>
                         <div class="form-group">
-                          <button class="btn btn_muted" type="submit">Отправить</button>
+                          <button class="btn btn_muted btn-blue" type="submit">Отправить</button>
                         </div>
                       </form>
                     </div>

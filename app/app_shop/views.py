@@ -1,6 +1,6 @@
 import logging
 
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from django.views.generic import View, TemplateView, ListView, DetailView
 from django.shortcuts import render, redirect
@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.core.cache import cache
 from config.admin import config
 
-from .models import Product
+from .models import Product, ProductReviews
 from .forms import CommentProductForm
 from .services.products.output_products import ProductsListService
 from .services.products.main import ProductsForMainService
@@ -130,7 +130,8 @@ class ProductDetailView(DetailView, FormMixin):
 
         context = self.get_context_data(object=self.object)
         comments = DetailProduct.all_comments(product=self.object)  # Комментарии к товару
-        context['comments'] = comments
+        context['comments'] = comments[:1]
+        context['total_comments'] = comments.count()
 
         return self.render_to_response(context)
 
@@ -168,6 +169,29 @@ class ProductDetailView(DetailView, FormMixin):
             'comments': comments,
             'form': form
         })
+
+
+def load_comments(request):
+    """
+    Загрузка доп.комментариев к товару
+    """
+    loaded_item = int(request.GET.get('loaded_item'))
+    product_id = int(request.GET.get('product_id'))
+    limit = 1
+
+    comments = ProductReviews.objects.filter(product=product_id)[loaded_item:loaded_item+limit]
+    comments_obj = []
+
+    for comment in comments:
+        comments_obj.append({
+            'avatar': comment.buyer.profile.avatar.url,
+            'name': comment.buyer.profile.full_name,
+            'created_at': comment.created_at,
+            'review': comment.review
+        })
+
+    data = {'comments': comments_obj}
+    return JsonResponse(data=data)
 
 
 class ShoppingCartView(View):

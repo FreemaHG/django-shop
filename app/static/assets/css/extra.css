@@ -3378,6 +3378,7 @@ a.Cart-title {
 }
 .ProductCard-look {
   width: 51%;
+  max-height: 800px;
   position: relative;
 }
 @media screen and (max-width: 990px) {
@@ -5280,4 +5281,15 @@ a.Cart-title {
 
 .text-reset {
   margin: 0;
+}
+
+.btn-blue {
+  background-color: #0063d1;
+  color: #fff;
+}
+
+.btn-blue:hover {
+  background-color: #1c86ff;
+  border-color: #0063d1;
+  transition: all 300ms;
 }
