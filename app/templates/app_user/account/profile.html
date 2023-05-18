@@ -1,12 +1,18 @@
 {% extends "app_user/account/account_base.html" %}
 {% load static %}
 
-{% block account_header %}
-    {% include "app_user/account/includes/header.html" with title="Профиль" %}
+{% block junior_header %}
+    {% include "includes/junior_header.html" with title="Профиль" %}
 {% endblock %}
 
 {% block activation_status_for_profile %}menu-item_ACTIVE{% endblock %}
 
 {% block account_content %}
-  {% include "app_user/account/includes/data_entry_forms.html" with button_text="Сохранить" %}
+  <div class="Section-content">
+    <div class="Profile">
+      <form class="form Profile-form" action="{% url 'user:update_account' %}" method="post" enctype="multipart/form-data">
+        {% include "app_user/account/includes/data_entry_forms.html" with form=form button_text="Сохранить" %}
+      </form>
+    </div>
+  </div>
 {% endblock %}

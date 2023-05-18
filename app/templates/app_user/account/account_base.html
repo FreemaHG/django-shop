@@ -2,16 +2,16 @@
 {% load static %}
 
 {% block content %}
-  <div class="Middle Middle_top">
 
-  <!-- Шапка -->
-  {% block account_header %}{% endblock %}
+  <!-- Вторая шапка -->
+{#  {% block account_header %}{% endblock %}#}
+  {% block junior_header %}{% endblock %}
 
   <!-- Тело страницы -->
   {% block account_body %}
 
   <div class="Section Section_column Section_columnLeft">
-    <div class="wrap">
+    <div class="wrap Section-content-centering">
 
       <!-- Блок навигации по личному кабинету -->
       {% block account_navigation %}
@@ -43,13 +43,13 @@
       {% endblock %}
 
       <!-- Блок страницы -->
-      <div class="Section-content">
+{#      <div class="Section-content">#}
         {% block account_content %}{% endblock %}
-      </div>
+{#      </div>#}
 
     </div>
   </div>
 
   {% endblock %}
-  </div>
+
 {% endblock %}

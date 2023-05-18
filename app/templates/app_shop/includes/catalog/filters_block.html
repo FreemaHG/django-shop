@@ -1,0 +1,106 @@
+{% load tags %}  <!-- Вывод всех тегов -->
+{% load links %}  <!-- Очистка ссылок для корректной обработки параметров из URL -->
+{% output_tags as tags %}
+
+<div class="Section-column">
+  <div class="Section-columnSection">
+    <header class="Section-header">
+      <strong class="Section-title">Фильтр</strong>
+    </header>
+    <div class="Section-columnContent">
+      <form class="form" action="{% url 'shop:products_list' group=filter_parameters.group name=filter_parameters.name %}" method="get">
+{#        {% csrf_token %}#}
+
+{#        <div class="form-group">#}
+{#          <div class="range Section-columnRange">#}
+{#            <input class="range-line" id="price" name="price" type="text" data-type="double" data-min="1" data-max="100000" data-from="17" data-to="127"/>#}
+{#            <div class="range-price">Цена:&#32;#}
+{#              <div class="rangePrice"></div>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+
+        <div class="form-group">
+          <strong class="Section-title small-text-for-price">Цена, <small>руб</small></strong>
+          <div class="block">
+
+            {% if filter_parameters.min_price %}
+              <input class="form-input form-input_full" id="title" name="min_price" type="text"
+                     placeholder="от {{ filter_parameters.min_price }}" value="{{ filter_parameters.min_price }}"/>
+            {% else %}
+              <input class="form-input form-input_full" id="title" name="min_price" type="text" placeholder="от 10"/>
+            {% endif %}
+
+            {% if filter_parameters.max_price %}
+              <input class="form-input form-input_full" id="title" name="max_price" type="text"
+                     placeholder="до {{ filter_parameters.max_price }}" value="{{ filter_parameters.max_price }}"/>
+            {% else %}
+              <input class="form-input form-input_full" id="title" name="max_price" type="text" placeholder="до 100000"/>
+            {% endif %}
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          {% if filter_parameters.title %}
+            <input class="form-input form-input_full" id="title" name="title" type="text"
+                   placeholder="{{ filter_parameters.title }}" value="{{ filter_parameters.title }}">
+          {% else %}
+            <input class="form-input form-input_full" id="title" name="title" type="text" placeholder="Название"/>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          <!-- - var options = setOptions(items, ['value', 'selected', 'disabled']);-->
+        </div>
+        <div class="form-group">
+          <label class="toggle">
+            {% if filter_parameters.in_stock %}
+              <input type="checkbox" name="in_stock" value="true" checked="checked"/>
+            {% else %}
+              <input type="checkbox" name="in_stock" value="true"/>
+            {% endif %}
+            <span class="toggle-box"></span>
+            <span class="toggle-text">Только товары в наличии</span>
+          </label>
+        </div>
+        <div class="form-group">
+          <label class="toggle">
+            {% if filter_parameters.free_shipping %}
+              <input type="checkbox" name="free_shipping" value="true" checked="checked"/>
+            {% else %}
+              <input type="checkbox" name="free_shipping" value="true"/>
+            {% endif %}
+            <span class="toggle-box"></span>
+            <span class="toggle-text">С бесплатной доставкой</span>
+          </label>
+        </div>
+        <div class="form-group">
+          <div class="buttons button-margin-bottom">
+            <button class="btn btn_square btn_dark btn_narrow">Фильтровать</button>
+          </div>
+
+          <div class="buttons">
+              <a class="Sort-sortBy reset-filters-button" href="{% url 'shop:products_list' group=filter_parameters.group name=filter_parameters.name %}">Сбросить фильтр</a>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {% if tags %}
+      <div class="Section-columnSection">
+        <header class="Section-header">
+          <strong class="Section-title">Популярные теги</strong>
+        </header>
+        <div class="Section-columnContent">
+          <div class="buttons">
+            {% for tag in tags %}
+              <a class="btn btn_default btn_sm" href="{% url 'shop:products_list' group='tag' name=tag.slug %}">{{ tag.name }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+  {% endif %}
+
+</div>

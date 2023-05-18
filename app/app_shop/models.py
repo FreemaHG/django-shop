@@ -1,9 +1,12 @@
+import logging
+
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.urls import reverse
 from pytils.translit import slugify
 from mptt.models import MPTTModel, TreeForeignKey
 from jsonfield import JSONField
+from django.core.cache import cache
 
 from .utils.models.saving_files import (
     saving_the_category_icon,
@@ -11,6 +14,8 @@ from .utils.models.saving_files import (
     saving_images_for_product
 )
 
+
+logger = logging.getLogger(__name__)
 
 STATUS_CHOICES = [
     (True, 'Удалено'),
@@ -26,7 +31,7 @@ class CategoryProduct(MPTTModel):
 
     icon = models.ImageField(upload_to=saving_the_category_icon, blank=True, verbose_name='Иконка')
     # Используется на главной странице для вывода категории избранных товаров
-    image = models.ImageField(upload_to=saving_the_category_image, blank=True, verbose_name='Изображение')
+    image = models.ImageField(upload_to=saving_the_category_image, verbose_name='Изображение')
 
     selected = models.BooleanField(default=False, verbose_name='Избранная категория')
     deleted = models.BooleanField(choices=STATUS_CHOICES, default=False, verbose_name='Статус')  # Мягкое удаление
@@ -66,13 +71,39 @@ class CategoryProduct(MPTTModel):
         return self.title
 
 
+class ProductTags(models.Model):
+    """
+    Модель для хранения тегов для товаров
+    """
+    name = models.CharField(max_length=100, verbose_name='Теги для товаров')
+    slug = models.SlugField(max_length=100, blank=True, verbose_name='URL')
+    deleted = models.BooleanField(choices=STATUS_CHOICES, default=False, verbose_name='Статус')  # Мягкое удаление
+
+    class Meta:
+        db_table = 'product_tags'
+        verbose_name = 'Тег'
+        verbose_name_plural = 'Теги'
+
+    def save(self, *args, **kwargs):
+        """
+        Сохраняем URL по названию тега
+        """
+        if not self.slug:
+            self.slug = slugify(self.name)
+
+        super(ProductTags, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+
 class Product(models.Model):
     """
     Модель для хранения данных о товаре
     """
     name = models.CharField(max_length=250, verbose_name='Название')
     definition = models.TextField(max_length=1000, verbose_name='Описание')
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата и время добавления товара')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Время добавления товара')
     characteristics = JSONField(verbose_name='Характеристики')
     category = models.ForeignKey(CategoryProduct, on_delete=models.CASCADE, verbose_name='Категория')
     tags = models.ManyToManyField('ProductTags', verbose_name='Теги')
@@ -86,6 +117,23 @@ class Product(models.Model):
         db_table = 'products'
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
+        ordering = ['id']
+
+    def save(self, *args, **kwargs):
+        """
+        Меняем поле limited_edition в зависимости от кол-ва товара
+        """
+        if 0 <= self.count <= 100:
+            self.limited_edition = True
+        else:
+            self.limited_edition = False
+
+        super(Product, self).save(*args, **kwargs)
+        logger.info(f'Товар сохранен: id - {self.id}')
+
+        if cache.delete(f"product_{self.id}"):
+            logger.info('Кэш товара очищен')
+
 
     def __str__(self):
         return self.name
@@ -102,23 +150,29 @@ class ProductImages(models.Model):
     class Meta:
         db_table = 'product_images'
         verbose_name = 'Изображение товара'
-        verbose_name_plural = 'Изображения товаров'
+        verbose_name_plural = 'Изображения товара'
 
     def __str__(self):
         return self.title
 
 
-class ProductTags(models.Model):
+class ProductReviews(models.Model):
     """
-    Модель для хранения тегов для товаров
+    Модель для хранения отзывов о товарах
     """
-    name = models.CharField(max_length=100, verbose_name='Теги для товаров')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Товар')
+    buyer = models.ForeignKey('app_user.Buyer', on_delete=models.CASCADE, verbose_name='Покупатель')
+    # # TODO Точно нужно?
+    # rating = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    review = models.TextField(max_length=2500, verbose_name='Отзыв')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Время добавления отзыва')
     deleted = models.BooleanField(choices=STATUS_CHOICES, default=False, verbose_name='Статус')  # Мягкое удаление
 
     class Meta:
-        db_table = 'product_tags'
-        verbose_name = 'Тег'
-        verbose_name_plural = 'Теги'
+        db_table = 'products_reviews'
+        verbose_name = 'Отзыв о товаре'
+        verbose_name_plural = 'Отзывы о товаре'
+        ordering = ['created_at']
 
     def __str__(self):
-        return self.name
+        return self.product.name

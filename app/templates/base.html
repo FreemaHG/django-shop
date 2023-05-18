@@ -24,6 +24,11 @@
   <meta name="description" content={{ site_config.description }}>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+  <!-- ЛОМАЕТСЯ ФОРМА ДЛЯ НОВОГО КОММЕНТАРИЯ ПРИ ПОКЛЮЧЕНИИ СТИЛЯ!!! -->
+{#  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"#}
+{#    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">#}
+
   <link href="{% static 'assets/img/favicon.ico' %}" rel="shortcut icon">
   <link rel="preload" href="{% static 'assets/fonts/Roboto/Roboto-Regular.woff' %}" as="font">
   <link rel="preload" href="{% static 'assets/fonts/Roboto/Roboto-Italic.woff' %}" as="font">
@@ -33,10 +38,12 @@
   <link rel="preload" href="{% static 'assets/fonts/Roboto/Roboto-Light_Italic.woff' %}" as="font">
   <link rel="stylesheet" href="{% static 'assets/css/fonts.css' %}" type="text/css">
   <link rel="stylesheet" href="{% static 'assets/css/basic.css' %}" type="text/css">
+
+  <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" type="text/css">
+
   <link rel="stylesheet" href="{% static 'assets/css/extra.css' %}" type="text/css">
   <script src="{% static 'assets/plg/CountDown/countdown.js' %}"></script><!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
 </head>
 
 <body class="Site">
@@ -54,9 +61,12 @@
     {% include "includes/header.html" %}
 {% endblock %}
 
+<div class="Middle Middle_top">
 {% block content %}
+    {% block junior_header %}{% endblock %}
     {% block title %}{% endblock %}
 {% endblock %}
+</div>
 
 {% block footer %}
     {% include "includes/footer.html" %}

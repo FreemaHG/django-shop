@@ -1,7 +1,7 @@
 from django import template
 
 from ..models import CategoryProduct
-from ..utils.models.check import check_active_products
+# from ..utils.models.check import check_active_products
 
 
 register = template.Library()

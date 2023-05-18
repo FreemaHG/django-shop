@@ -1,19 +1,32 @@
 import json
+import logging
 
 from django.contrib import admin, messages
 from django.db.models import JSONField
 from mptt.admin import DraggableMPTTAdmin
+from mptt.querysets import TreeQuerySet
 
-from .models import CategoryProduct, Product, ProductTags, ProductImages
+from .models import CategoryProduct, Product, ProductTags, ProductImages, ProductReviews
 from .utils.admin.change_status_delete import soft_deletion_child_records
 
 
-@admin.action(description='Удалить (мягкое удаление)')
-def deleted_records(adminmodel, request, queryset):
+logger = logging.getLogger(__name__)
+
+
+@admin.action(description='Мягкое удаление всех записей (включая дочерние)')
+def deleted_all_records(adminmodel, request, queryset):
     """
-    Мягкое удаление записей
+    Мягкое удаление всех записей, включая дочерние
     """
     soft_deletion_child_records(queryset)  # Мягкое удаление всех дочерних записей
+    queryset.update(deleted=True)  # Мягкое удаление родительской записи
+
+
+@admin.action(description='Мягкое удаление')
+def deleted_records(adminmodel, request, queryset):
+    """
+    Мягкое удаление всех записей, включая дочерние
+    """
     queryset.update(deleted=True)  # Мягкое удаление родительской записи
 
 
@@ -23,6 +36,22 @@ def restore_records(adminmodel, request, queryset):
     Восстановить записи, отключенные ч/з мягкое удаление
     """
     queryset.update(deleted=False)  # Восстановление родительской записи
+
+
+@admin.action(description='Перевести в "Избранные категории"')
+def make_selected(adminmodel, request, queryset):
+    """
+    Перевод категорий в избранные
+    """
+    queryset.update(selected=True)
+
+
+@admin.action(description='Удалить из "Избранные категории"')
+def remove_selected(adminmodel, request, queryset):
+    """
+    Перевод категорий в избранные
+    """
+    queryset.update(selected=False)
 
 
 @admin.register(CategoryProduct)
@@ -35,7 +64,8 @@ class CategoryProductAdmin(DraggableMPTTAdmin):
     list_filter = ('selected', 'deleted')
     list_editable = ('deleted',)
     search_fields = ('title',)
-    actions = (deleted_records, restore_records)  # Мягкое удаление/восстановление записей
+    # Мягкое удаление/восстановление записей, перевод и удаление из избранных
+    actions = (deleted_all_records, restore_records, make_selected, remove_selected)
 
     fieldsets = (
         ('Основное', {'fields': ('title', 'parent')}),
@@ -72,10 +102,14 @@ class ProductTagsAdmin(admin.ModelAdmin):
     """
     Админ-панель для товарных тегов
     """
-    list_display = ('id', 'name', 'deleted')
+    list_display = ('id', 'name', 'slug', 'deleted')
     list_display_links = ('name',)
     list_editable = ('deleted',)
     actions = (deleted_records, restore_records)  # Мягкое удаление/восстановление записей
+
+    fieldsets = (
+        ('Основное', {'fields': ('name', 'slug', 'deleted')}),
+    )
 
 
 class ChoiceImages(admin.TabularInline):
@@ -86,18 +120,26 @@ class ChoiceImages(admin.TabularInline):
     extra = 1
 
 
+class ChoiceReviews(admin.TabularInline):
+    """
+    Вывод комментариев на странице товара
+    """
+    model = ProductReviews
+    extra = 0
+
+
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     """
     Админ-панель для товаров
     """
-    list_display = ('id', 'short_name', 'category', 'price', 'discount', 'count', 'limited_edition', 'deleted')
+    list_display = ('id', 'short_name', 'category', 'price', 'discount', 'count', 'limited_edition', 'created_at', 'deleted')
     list_display_links = ('short_name',)
-    list_filter = ('category', 'tags')
+    list_filter = ('limited_edition', 'category', 'tags')
     search_fields = ('name',)
     list_editable = ('deleted',)
     actions = (deleted_records, restore_records)  # Мягкое удаление/восстановление записей
-    inlines = (ChoiceImages,)
+    inlines = (ChoiceImages, ChoiceReviews)
 
     fieldsets = (
         ('Основное', {
@@ -127,3 +169,36 @@ class ProductAdmin(admin.ModelAdmin):
         return obj.name
 
     short_name.short_description = 'Название товара'
+
+
+@admin.register(ProductReviews)
+class ProductReviewsAdmin(admin.ModelAdmin):
+    """
+    Админ-панель для комментариев к товарам
+    """
+    list_display = ('product_name', 'buyer', 'short_review', 'created_at', 'deleted')
+    list_display_links = ('product_name',)
+    list_filter = ('deleted',)
+    search_fields = ('product', 'short_review')
+    list_editable = ('deleted',)
+    actions = (deleted_records, restore_records)  # Мягкое удаление/восстановление записей
+
+    def short_review(self, obj):
+        """
+        Возврат короткого отзыва (не более 250 символов)
+        """
+        if len(obj.review) > 250:
+            return f'{obj.review[0:250]}...'
+        return obj.review
+
+    short_review.short_description = 'Отзыв'
+
+    def product_name(self, obj):
+        """
+        Возврат короткого названия товара (не более 100 символов)
+        """
+        if len(obj.product.name) > 50:
+            return f'{obj.product.name[0:50]}...'
+        return obj.product.name
+
+    product_name.short_description = 'Товар'

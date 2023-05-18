@@ -1,10 +1,17 @@
+import logging
+
 from django.db.models import QuerySet
 
 from ...models import CategoryProduct
 
 
+logger = logging.getLogger(__name__)
+
 def soft_deletion_child_records(queryset: QuerySet):
-    """ Мягкое удаление дочерних записей """
+    """
+    Мягкое удаление дочерних записей
+    """
+    logger.debug('Утилиты: мягкое удаление дочерних записей')
 
     deleted_objects = []
 

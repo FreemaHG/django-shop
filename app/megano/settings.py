@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -48,6 +49,8 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # 'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -74,23 +77,46 @@ TEMPLATES = [
     },
 ]
 
+CASHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+        'TIMEOUT': 60,
+        'OPTIONS': {
+            'MAX_ENTRIES': 500
+        }
+    }
+}
+
 WSGI_APPLICATION = 'megano.wsgi.application'
 
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': False,  # True отключает все регистраторы
-    'handlers': {  # Настройка обработчика
-        # Настраиваем вывод логов в консоль
+    'disable_existing_loggers': False,
+    'formatters': {
+            'color': {
+                '()': 'colorlog.ColoredFormatter',
+                'format': '%(log_color)s%(asctime)-8s %(levelname)s - %(name)s.py | func:%(funcName)s (%(lineno)s) - %(message)s',
+                'log_colors': {
+                    'DEBUG':    'white',
+                    'INFO':     'green',
+                    'WARNING':  'yellow',
+                    'ERROR':    'red',
+                    'CRITICAL': 'bold_red',
+                },
+            }
+        },
+    'handlers': {
         'console': {
-            'class': 'logging.StreamHandler',  # Вывод сообщений в консоль
+            'class': 'logging.StreamHandler',
+            'formatter': 'color'
         },
     },
     'root': {
-        'handlers': ['console'],  # Обработчик будет выводить логи в консоль
-        'level': 'DEBUG',  # Выводить сообщения уровня WARNING и выше
+        'handlers': ['console'],
+        'level': 'DEBUG',
     },
 }
-
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases

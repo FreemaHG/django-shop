@@ -1,1001 +1,4532 @@
 [
-{
-  "model": "admin.logentry",
-  "pk": 1,
-  "fields": {
-    "action_time": "2023-03-28T20:31:38.724Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "1",
-    "object_repr": "Бытовая техника",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
+  {
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+      "action_time": "2023-03-28T20:31:38.724Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "1",
+      "object_repr": "Бытовая техника",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+      "action_time": "2023-03-28T20:32:02.090Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "2",
+      "object_repr": "Бытовая техника 2",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+      "action_time": "2023-03-28T20:33:45.831Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "3",
+      "object_repr": "Бытовая техника 3",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+      "action_time": "2023-03-28T20:35:18.728Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "4",
+      "object_repr": "Бытовая техника 4",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+      "action_time": "2023-03-28T20:35:53.027Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "5",
+      "object_repr": "Бытовая техника 5",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+      "action_time": "2023-03-28T20:40:38.708Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "6",
+      "object_repr": "Бытовая техника 6",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+      "action_time": "2023-03-28T20:42:14.909Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "2",
+      "object_repr": "Бытовая техника 2",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+      "action_time": "2023-03-28T20:42:14.930Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "6",
+      "object_repr": "Бытовая техника 6",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+      "action_time": "2023-03-28T20:42:36.335Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "1",
+      "object_repr": "Бытовая техника",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+      "action_time": "2023-03-28T20:42:36.369Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "3",
+      "object_repr": "Бытовая техника 3",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+      "action_time": "2023-03-28T20:43:23.867Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "4",
+      "object_repr": "Бытовая техника 4",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+      "action_time": "2023-03-28T20:43:23.899Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "5",
+      "object_repr": "Бытовая техника 5",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+      "action_time": "2023-03-28T20:43:46.769Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "7",
+      "object_repr": "Бытовая техника",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+      "action_time": "2023-03-28T20:44:58.248Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "8",
+      "object_repr": "Электроника",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+      "action_time": "2023-03-28T20:45:15.550Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "9",
+      "object_repr": "Смартфоны",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+      "action_time": "2023-03-30T19:36:01.485Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "10",
+      "object_repr": "Одежда",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+      "action_time": "2023-03-30T19:52:36.433Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "10",
+      "object_repr": "Одежда",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+      "action_time": "2023-04-01T17:16:11.505Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "11",
+      "object_repr": "Бытовая техника",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+      "action_time": "2023-04-01T17:25:50.286Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "11",
+      "object_repr": "Бытовая техника",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+      "action_time": "2023-04-01T18:21:55.468Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "12",
+      "object_repr": "Телевизоры",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+      "action_time": "2023-04-01T19:13:14.208Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "12",
+      "object_repr": "Телевизоры",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+      "action_time": "2023-04-01T19:13:25.489Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "13",
+      "object_repr": "Телевизоры",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+      "action_time": "2023-04-01T19:13:36.938Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "13",
+      "object_repr": "Телевизоры",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+      "action_time": "2023-04-01T19:13:48.605Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "14",
+      "object_repr": "Холодильники",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+      "action_time": "2023-04-01T19:14:16.023Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "15",
+      "object_repr": "Микроволновки",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+      "action_time": "2023-04-01T19:15:02.162Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "15",
+      "object_repr": "Микроволновки",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"URL\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+      "action_time": "2023-04-01T19:15:31.304Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "15",
+      "object_repr": "Микроволновки",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+      "action_time": "2023-04-01T19:15:31.331Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "14",
+      "object_repr": "Холодильники",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+      "action_time": "2023-04-01T19:45:22.968Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "16",
+      "object_repr": "Печи",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+      "action_time": "2023-04-01T19:45:28.455Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "16",
+      "object_repr": "Печи",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+      "action_time": "2023-04-01T19:45:42.632Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "17",
+      "object_repr": "Столы",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+      "action_time": "2023-04-01T19:47:07.370Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "18",
+      "object_repr": "Микроволновки",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+      "action_time": "2023-04-01T19:47:16.445Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "18",
+      "object_repr": "Микроволновки",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+      "action_time": "2023-04-01T19:47:16.459Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "17",
+      "object_repr": "Столы",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+      "action_time": "2023-04-01T19:50:46.764Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "19",
+      "object_repr": "Телевизоры",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+      "action_time": "2023-04-01T19:51:04.392Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "20",
+      "object_repr": "Холодильники",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+      "action_time": "2023-04-02T08:03:04.455Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "21",
+      "object_repr": "Микроволновки",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+      "action_time": "2023-04-02T08:03:15.380Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "22",
+      "object_repr": "Аудио",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+      "action_time": "2023-04-02T08:03:22.283Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "23",
+      "object_repr": "Одежда",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 40,
+    "fields": {
+      "action_time": "2023-04-02T08:03:30.019Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "24",
+      "object_repr": "Книги",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 41,
+    "fields": {
+      "action_time": "2023-04-02T08:03:33.788Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "25",
+      "object_repr": "Мебель",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 42,
+    "fields": {
+      "action_time": "2023-04-02T08:03:38.510Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "26",
+      "object_repr": "Продукты питания",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 43,
+    "fields": {
+      "action_time": "2023-04-02T08:03:44.734Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "27",
+      "object_repr": "Дом и сад",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 44,
+    "fields": {
+      "action_time": "2023-04-02T08:03:50.756Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "28",
+      "object_repr": "Освещение",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 45,
+    "fields": {
+      "action_time": "2023-04-02T08:03:56.130Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "29",
+      "object_repr": "Посуда",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 46,
+    "fields": {
+      "action_time": "2023-04-02T08:04:02.095Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "30",
+      "object_repr": "Красота и здоровье",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 47,
+    "fields": {
+      "action_time": "2023-04-02T08:06:20.542Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "31",
+      "object_repr": "Новая",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 48,
+    "fields": {
+      "action_time": "2023-04-02T08:06:37.515Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "31",
+      "object_repr": "Новая",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 49,
+    "fields": {
+      "action_time": "2023-04-02T08:18:34.327Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "32",
+      "object_repr": "Комиксы",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 50,
+    "fields": {
+      "action_time": "2023-04-02T08:19:18.197Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "32",
+      "object_repr": "Комиксы",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 51,
+    "fields": {
+      "action_time": "2023-04-02T08:19:29.396Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "33",
+      "object_repr": "Комиксы",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 52,
+    "fields": {
+      "action_time": "2023-04-02T08:21:12.605Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "33",
+      "object_repr": "Комиксы",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 53,
+    "fields": {
+      "action_time": "2023-04-02T08:23:42.506Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "34",
+      "object_repr": "Тумбы",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 54,
+    "fields": {
+      "action_time": "2023-04-02T08:24:06.012Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "34",
+      "object_repr": "Тумбы",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 55,
+    "fields": {
+      "action_time": "2023-04-09T17:34:05.209Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Конфигурация сайта",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041d\\u0430\\u0437\\u0432\\u0430\\u043d\\u0438\\u0435\", \"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\", \"URL\", \"\\u041b\\u043e\\u0433\\u043e\\u0442\\u0438\\u043f \\u0432 \\u0448\\u0430\\u043f\\u043a\\u0435\", \"\\u041b\\u043e\\u0433\\u043e\\u0442\\u0438\\u043f \\u0432 \\u0444\\u0443\\u0442\\u0435\\u0440\\u0435\", \"\\u0418\\u0437\\u0431\\u0440\\u0430\\u043d\\u043d\\u044b\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u044b\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 56,
+    "fields": {
+      "action_time": "2023-04-09T17:50:19.811Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Конфигурация сайта",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041d\\u0430\\u0437\\u0432\\u0430\\u043d\\u0438\\u0435\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 57,
+    "fields": {
+      "action_time": "2023-04-10T19:26:31.636Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Конфигурация сайта",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"URL\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 58,
+    "fields": {
+      "action_time": "2023-04-10T19:26:44.334Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Конфигурация сайта",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 59,
+    "fields": {
+      "action_time": "2023-04-10T19:41:52.910Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Конфигурация сайта",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 60,
+    "fields": {
+      "action_time": "2023-04-10T19:43:32.203Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Конфигурация сайта",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0420\\u0435\\u0436\\u0438\\u043c \\u043e\\u0431\\u0441\\u043b\\u0443\\u0436\\u0438\\u0432\\u0430\\u043d\\u0438\\u044f\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 61,
+    "fields": {
+      "action_time": "2023-04-10T19:45:00.239Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Конфигурация сайта",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0420\\u0435\\u0436\\u0438\\u043c \\u043e\\u0431\\u0441\\u043b\\u0443\\u0436\\u0438\\u0432\\u0430\\u043d\\u0438\\u044f\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 62,
+    "fields": {
+      "action_time": "2023-04-10T19:46:28.598Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Конфигурация сайта",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"URL\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 63,
+    "fields": {
+      "action_time": "2023-04-10T19:47:41.662Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Конфигурация сайта",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0420\\u0435\\u0436\\u0438\\u043c \\u043e\\u0431\\u0441\\u043b\\u0443\\u0436\\u0438\\u0432\\u0430\\u043d\\u0438\\u044f\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 64,
+    "fields": {
+      "action_time": "2023-04-10T19:48:00.744Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Конфигурация сайта",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0420\\u0435\\u0436\\u0438\\u043c \\u043e\\u0431\\u0441\\u043b\\u0443\\u0436\\u0438\\u0432\\u0430\\u043d\\u0438\\u044f\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 65,
+    "fields": {
+      "action_time": "2023-04-10T19:48:43.305Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Конфигурация сайта",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0420\\u0435\\u0436\\u0438\\u043c \\u043e\\u0431\\u0441\\u043b\\u0443\\u0436\\u0438\\u0432\\u0430\\u043d\\u0438\\u044f\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 66,
+    "fields": {
+      "action_time": "2023-04-10T19:50:06.429Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Конфигурация сайта",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 67,
+    "fields": {
+      "action_time": "2023-04-10T19:52:06.339Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Конфигурация сайта",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 68,
+    "fields": {
+      "action_time": "2023-04-10T19:52:10.909Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Конфигурация сайта",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0420\\u0435\\u0436\\u0438\\u043c \\u043e\\u0431\\u0441\\u043b\\u0443\\u0436\\u0438\\u0432\\u0430\\u043d\\u0438\\u044f\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 69,
+    "fields": {
+      "action_time": "2023-04-10T20:02:42.454Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Конфигурация сайта",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 70,
+    "fields": {
+      "action_time": "2023-04-14T19:13:37.899Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "1",
+      "object_repr": "ProductTags object (1)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 71,
+    "fields": {
+      "action_time": "2023-04-14T19:42:32.659Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "1",
+      "object_repr": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"Sony Wh1000xm4b.e Black\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 72,
+    "fields": {
+      "action_time": "2023-04-14T19:54:19.325Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "2",
+      "object_repr": "dsvsdv",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"scscsc\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 73,
+    "fields": {
+      "action_time": "2023-04-14T19:57:17.830Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "3",
+      "object_repr": "dfrbdrb",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"3333\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 74,
+    "fields": {
+      "action_time": "2023-04-14T20:06:06.411Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "4",
+      "object_repr": "t6jtjt6j",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"3333\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 75,
+    "fields": {
+      "action_time": "2023-04-14T20:07:42.956Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "5",
+      "object_repr": "45yt4y",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"4444\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 76,
+    "fields": {
+      "action_time": "2023-04-14T20:08:27.280Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "5",
+      "object_repr": "45yt4y",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 77,
+    "fields": {
+      "action_time": "2023-04-14T20:08:27.285Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "4",
+      "object_repr": "t6jtjt6j",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 78,
+    "fields": {
+      "action_time": "2023-04-14T20:08:27.289Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "3",
+      "object_repr": "dfrbdrb",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 79,
+    "fields": {
+      "action_time": "2023-04-14T20:08:27.297Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "2",
+      "object_repr": "dsvsdv",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 80,
+    "fields": {
+      "action_time": "2023-04-14T20:08:33.499Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "1",
+      "object_repr": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 81,
+    "fields": {
+      "action_time": "2023-04-18T17:59:13.326Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "2",
+      "object_repr": "Яндекс",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 82,
+    "fields": {
+      "action_time": "2023-04-18T18:00:40.655Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "6",
+      "object_repr": "Умная колонка Яндекс Станция Мини с часами с Алисой, черный оникс, 10Вт",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u042f\\u043d\\u0434\\u0435\\u043a\\u0441 \\u041a\\u043e\\u043b\\u043e\\u043d\\u043a\\u0430\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 83,
+    "fields": {
+      "action_time": "2023-04-18T18:02:07.166Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "7",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0423\\u043c\\u043d\\u0430\\u044f \\u0440\\u043e\\u0437\\u0435\\u0442\\u043a\\u0430 \\u042f\\u043d\\u0434\\u0435\\u043a\\u0441 \\u0441 \\u0410\\u043b\\u0438\\u0441\\u043e\\u0439\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 84,
+    "fields": {
+      "action_time": "2023-04-18T18:03:01.011Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "8",
+      "object_repr": "Умный пульт Yandex SmartControl",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0423\\u043c\\u043d\\u044b\\u0439 \\u043f\\u0443\\u043b\\u044c\\u0442 Yandex SmartControl\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 85,
+    "fields": {
+      "action_time": "2023-04-18T18:04:33.213Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "9",
+      "object_repr": "Чехол силиконовый Deppa для AirPods Pro 2 (D-47340) 1.3мм с ремешком Черный",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0427\\u0435\\u0445\\u043e\\u043b \\u0441\\u0438\\u043b\\u0438\\u043a\\u043e\\u043d\\u043e\\u0432\\u044b\\u0439 Deppa \\u0434\\u043b\\u044f AirPods Pro 2\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 86,
+    "fields": {
+      "action_time": "2023-04-20T19:16:50.272Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "1",
+      "object_repr": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041a\\u043e\\u043b-\\u0432\\u043e\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 87,
+    "fields": {
+      "action_time": "2023-04-22T04:02:59.763Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Конфигурация сайта",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 88,
+    "fields": {
+      "action_time": "2023-04-22T04:34:21.011Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "6",
+      "object_repr": "Умная колонка Яндекс Станция Мини с часами с Алисой, черный оникс, 10Вт",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 89,
+    "fields": {
+      "action_time": "2023-04-22T04:34:37.049Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "6",
+      "object_repr": "Умная колонка Яндекс Станция Мини с часами с Алисой, черный оникс, 10Вт",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 90,
+    "fields": {
+      "action_time": "2023-04-23T10:38:13.964Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "9",
+      "object_repr": "Чехол силиконовый Deppa для AirPods Pro 2 (D-47340) 1.3мм с ремешком Черный",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 91,
+    "fields": {
+      "action_time": "2023-04-29T13:08:03.185Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "2",
+      "object_repr": "Яндекс",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"URL\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 92,
+    "fields": {
+      "action_time": "2023-04-29T13:08:09.049Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "1",
+      "object_repr": "Apple",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"URL\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 93,
+    "fields": {
+      "action_time": "2023-04-29T13:11:32.318Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "3",
+      "object_repr": "Наварот",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 94,
+    "fields": {
+      "action_time": "2023-04-29T13:11:39.090Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "3",
+      "object_repr": "Наварот",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 95,
+    "fields": {
+      "action_time": "2023-04-29T13:15:16.986Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "3",
+      "object_repr": "Для кухни",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 96,
+    "fields": {
+      "action_time": "2023-04-29T13:15:34.693Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "None",
+      "object_repr": "Для дома",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 97,
+    "fields": {
+      "action_time": "2023-04-29T13:16:29.359Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "None",
+      "object_repr": "Для дома",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 98,
+    "fields": {
+      "action_time": "2023-04-29T13:17:48.743Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "None",
+      "object_repr": "для дома",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 99,
+    "fields": {
+      "action_time": "2023-04-29T13:18:22.158Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "None",
+      "object_repr": "Для дома",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 100,
+    "fields": {
+      "action_time": "2023-04-29T13:20:21.606Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "None",
+      "object_repr": "Для дома",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 101,
+    "fields": {
+      "action_time": "2023-04-29T13:20:47.304Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "None",
+      "object_repr": "Для дома",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 102,
+    "fields": {
+      "action_time": "2023-04-29T13:21:40.008Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "None",
+      "object_repr": "Для кухни",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 103,
+    "fields": {
+      "action_time": "2023-04-29T13:22:32.584Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "4",
+      "object_repr": "Для дома",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 104,
+    "fields": {
+      "action_time": "2023-04-29T13:22:40.188Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "5",
+      "object_repr": "для дома 2",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 105,
+    "fields": {
+      "action_time": "2023-04-29T13:22:48.493Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "5",
+      "object_repr": "для дома 2",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 106,
+    "fields": {
+      "action_time": "2023-04-29T13:22:48.512Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "4",
+      "object_repr": "Для дома",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 107,
+    "fields": {
+      "action_time": "2023-04-29T13:22:48.522Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "3",
+      "object_repr": "Для кухни",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 108,
+    "fields": {
+      "action_time": "2023-04-29T13:23:38.660Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "3",
+      "object_repr": "для дома",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 109,
+    "fields": {
+      "action_time": "2023-04-29T13:23:44.414Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "4",
+      "object_repr": "для кухни",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 110,
+    "fields": {
+      "action_time": "2023-04-29T13:23:51.046Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "4",
+      "object_repr": "для кухни",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 111,
+    "fields": {
+      "action_time": "2023-04-29T13:23:51.071Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "3",
+      "object_repr": "для дома",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 112,
+    "fields": {
+      "action_time": "2023-04-29T13:38:47.432Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "1",
+      "object_repr": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 113,
+    "fields": {
+      "action_time": "2023-05-04T13:13:37.627Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "5",
+      "object_repr": "Tuvio",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 114,
+    "fields": {
+      "action_time": "2023-05-04T13:14:24.795Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "6",
+      "object_repr": "Sony",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 115,
+    "fields": {
+      "action_time": "2023-05-04T13:14:57.771Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "1",
+      "object_repr": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f\", \"\\u0422\\u0435\\u0433\\u0438\", \"\\u0421\\u0442\\u043e\\u0438\\u043c\\u043e\\u0441\\u0442\\u044c\", \"\\u0421\\u043a\\u0438\\u0434\\u043a\\u0430 (\\u0432 %)\", \"\\u041a\\u043e\\u043b-\\u0432\\u043e\", \"\\u041e\\u0433\\u0440\\u0430\\u043d\\u0438\\u0447\\u0435\\u043d\\u043d\\u044b\\u0439 \\u0442\\u0438\\u0440\\u0430\\u0436\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 116,
+    "fields": {
+      "action_time": "2023-05-04T13:15:23.129Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "1",
+      "object_repr": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f\", \"\\u0421\\u0442\\u043e\\u0438\\u043c\\u043e\\u0441\\u0442\\u044c\", \"\\u0421\\u043a\\u0438\\u0434\\u043a\\u0430 (\\u0432 %)\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 117,
+    "fields": {
+      "action_time": "2023-05-04T13:17:12.877Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "10",
+      "object_repr": "Микроволновая печь Tuvio MS8S20SM1, серый/серебристый",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u041c\\u0438\\u043a\\u0440\\u043e\\u0432\\u043e\\u043b\\u043d\\u043e\\u0432\\u0430\\u044f \\u043f\\u0435\\u0447\\u044c Tuvio MS8S20SM1\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 118,
+    "fields": {
+      "action_time": "2023-05-04T13:18:21.848Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "7",
+      "object_repr": "Weissgauff",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 119,
+    "fields": {
+      "action_time": "2023-05-04T13:20:29.450Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "11",
+      "object_repr": "Холодильник Weissgauff WRK 2000 X Full NoFrost, нержавеющая сталь",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"Weissgauff WRK 2000\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 120,
+    "fields": {
+      "action_time": "2023-05-04T13:24:59.672Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "8",
+      "object_repr": "Midea",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 121,
+    "fields": {
+      "action_time": "2023-05-04T13:30:05.903Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "12",
+      "object_repr": "Холодильник Midea MDRD86SLF01 Ретро",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"idea MDRD86SLF01\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 122,
+    "fields": {
+      "action_time": "2023-05-04T13:30:36.983Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "12",
+      "object_repr": "Холодильник Midea MDRD86SLF01 Ретро",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"Midea MDRD86SLF01\", \"fields\": [\"\\u041d\\u0430\\u0437\\u0432\\u0430\\u043d\\u0438\\u0435 \\u0438\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u044f\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 123,
+    "fields": {
+      "action_time": "2023-05-04T13:30:44.956Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "7",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u0433\\u0440\\u0430\\u043d\\u0438\\u0447\\u0435\\u043d\\u043d\\u044b\\u0439 \\u0442\\u0438\\u0440\\u0430\\u0436\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 124,
+    "fields": {
+      "action_time": "2023-05-04T13:30:51.842Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "8",
+      "object_repr": "Умный пульт Yandex SmartControl",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u0433\\u0440\\u0430\\u043d\\u0438\\u0447\\u0435\\u043d\\u043d\\u044b\\u0439 \\u0442\\u0438\\u0440\\u0430\\u0436\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 125,
+    "fields": {
+      "action_time": "2023-05-04T13:32:28.300Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "13",
+      "object_repr": "Тестовый товар",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0442\\u0435\\u0441\\u0442\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 126,
+    "fields": {
+      "action_time": "2023-05-04T13:32:38.501Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "13",
+      "object_repr": "Тестовый товар",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 127,
+    "fields": {
+      "action_time": "2023-05-04T13:33:46.535Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "13",
+      "object_repr": "Тестовый товар",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 128,
+    "fields": {
+      "action_time": "2023-05-04T13:34:34.882Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "13",
+      "object_repr": "Тестовый товар",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0425\\u0430\\u0440\\u0430\\u043a\\u0442\\u0435\\u0440\\u0438\\u0441\\u0442\\u0438\\u043a\\u0438\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 129,
+    "fields": {
+      "action_time": "2023-05-04T13:36:26.510Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "9",
+      "object_repr": "Бирюса",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 130,
+    "fields": {
+      "action_time": "2023-05-04T13:37:38.327Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "14",
+      "object_repr": "Холодильник Бирюса 70, белый",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0411\\u0438\\u0440\\u044e\\u0441\\u0430 70\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 131,
+    "fields": {
+      "action_time": "2023-05-05T10:06:10.380Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "15",
+      "object_repr": "Микроволновая печь Tuvio MS7M20WE1, белый",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u041c\\u0438\\u043a\\u0440\\u043e\\u0432\\u043e\\u043b\\u043d\\u043e\\u0432\\u0430\\u044f \\u043f\\u0435\\u0447\\u044c Tuvio MS7M20WE1\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 132,
+    "fields": {
+      "action_time": "2023-05-05T10:14:00.495Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "10",
+      "object_repr": "LG",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 133,
+    "fields": {
+      "action_time": "2023-05-05T10:17:10.501Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "16",
+      "object_repr": "Микроволновая печь LG MS2042DB, черный",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u041c\\u0438\\u043a\\u0440\\u043e\\u0432\\u043e\\u043b\\u043d\\u043e\\u0432\\u0430\\u044f \\u043f\\u0435\\u0447\\u044c LG MS2042DB\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 134,
+    "fields": {
+      "action_time": "2023-05-05T10:24:53.788Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "17",
+      "object_repr": "50” Телевизор Tuvio 4K ULTRA HD DLED на платформе Яндекс.ТВ, STV-50FDUBK1R, черный",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"50-televizor-tuvio-stv-50fdubk1r-2023\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 135,
+    "fields": {
+      "action_time": "2023-05-05T10:26:01.778Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "11",
+      "object_repr": "Xiaomi",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 136,
+    "fields": {
+      "action_time": "2023-05-05T10:30:02.623Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "18",
+      "object_repr": "50\" Телевизор Xiaomi TV A2 50 LED, HDR RU, черный",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"50-televizor-xiaomi-tv-a2\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 137,
+    "fields": {
+      "action_time": "2023-05-05T10:31:01.168Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "6",
+      "object_repr": "Умная колонка Яндекс Станция Мини с часами с Алисой, черный оникс, 10Вт",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 138,
+    "fields": {
+      "action_time": "2023-05-05T12:54:43.063Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Конфигурация сайта",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u0431\\u0440\\u0430\\u043d\\u043d\\u044b\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u044b\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 139,
+    "fields": {
+      "action_time": "2023-05-05T12:57:01.827Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "19",
+      "object_repr": "Телевизоры",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 140,
+    "fields": {
+      "action_time": "2023-05-05T12:57:11.275Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "9",
+      "object_repr": "Смартфоны",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 141,
+    "fields": {
+      "action_time": "2023-05-05T12:57:17.540Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "22",
+      "object_repr": "Аудио",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 142,
+    "fields": {
+      "action_time": "2023-05-05T14:12:20.531Z",
+      "user": 1,
+      "content_type": 4,
+      "object_id": "2",
+      "object_repr": "test_user",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 143,
+    "fields": {
+      "action_time": "2023-05-05T14:12:34.067Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "1",
+      "object_repr": "Тестовый пользователь",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 144,
+    "fields": {
+      "action_time": "2023-05-05T14:14:35.725Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "1",
+      "object_repr": "Тестовый пользователь",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 145,
+    "fields": {
+      "action_time": "2023-05-05T14:15:05.523Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "1",
+      "object_repr": "Умная колонка Яндекс Станция Мини с часами с Алисой, черный оникс, 10Вт",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 146,
+    "fields": {
+      "action_time": "2023-05-05T14:23:13.484Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "1",
+      "object_repr": "Умная колонка Яндекс Станция Мини с часами с Алисой, черный оникс, 10Вт",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u0442\\u0437\\u044b\\u0432\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 147,
+    "fields": {
+      "action_time": "2023-05-05T14:24:00.713Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "1",
+      "object_repr": "Умная колонка Яндекс Станция Мини с часами с Алисой, черный оникс, 10Вт",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 148,
+    "fields": {
+      "action_time": "2023-05-05T16:06:57.594Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "7",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0423\\u043c\\u043d\\u0430\\u044f \\u0440\\u043e\\u0437\\u0435\\u0442\\u043a\\u0430 \\u042f\\u043d\\u0434\\u0435\\u043a\\u0441 \\u0441 \\u0410\\u043b\\u0438\\u0441\\u043e\\u0439\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0423\\u043c\\u043d\\u0430\\u044f \\u0440\\u043e\\u0437\\u0435\\u0442\\u043a\\u0430 \\u042f\\u043d\\u0434\\u0435\\u043a\\u0441 \\u0441 \\u0410\\u043b\\u0438\\u0441\\u043e\\u0439\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 149,
+    "fields": {
+      "action_time": "2023-05-06T08:45:25.385Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "7",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"\\u041e\\u0442\\u0437\\u044b\\u0432 \\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0435\", \"object\": \"\\u0423\\u043c\\u043d\\u0430\\u044f \\u0440\\u043e\\u0437\\u0435\\u0442\\u043a\\u0430 \\u042f\\u043d\\u0434\\u0435\\u043a\\u0441 \\u0441 \\u0410\\u043b\\u0438\\u0441\\u043e\\u0439, \\u0447\\u0435\\u0440\\u043d\\u044b\\u0439\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 150,
+    "fields": {
+      "action_time": "2023-05-06T10:07:13.084Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "1",
+      "object_repr": "Тестовый пользователь",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0410\\u0432\\u0430\\u0442\\u0430\\u0440\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 151,
+    "fields": {
+      "action_time": "2023-05-06T10:12:07.282Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "7",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"\\u041e\\u0442\\u0437\\u044b\\u0432 \\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0435\", \"object\": \"\\u0423\\u043c\\u043d\\u0430\\u044f \\u0440\\u043e\\u0437\\u0435\\u0442\\u043a\\u0430 \\u042f\\u043d\\u0434\\u0435\\u043a\\u0441 \\u0441 \\u0410\\u043b\\u0438\\u0441\\u043e\\u0439, \\u0447\\u0435\\u0440\\u043d\\u044b\\u0439\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 152,
+    "fields": {
+      "action_time": "2023-05-06T10:52:08.565Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "12",
+      "object_repr": "Умный дом",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 153,
+    "fields": {
+      "action_time": "2023-05-06T10:52:12.957Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "7",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0422\\u0435\\u0433\\u0438\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 154,
+    "fields": {
+      "action_time": "2023-05-06T10:52:31.327Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "12",
+      "object_repr": "Умный дом",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 155,
+    "fields": {
+      "action_time": "2023-05-06T10:52:38.651Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "12",
+      "object_repr": "Умный дом",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 156,
+    "fields": {
+      "action_time": "2023-05-06T13:10:22.628Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "2",
+      "object_repr": "Стафеев Дмитрий Олегович",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 157,
+    "fields": {
+      "action_time": "2023-05-06T13:10:32.078Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "2",
+      "object_repr": "Стафеев Дмитрий Олегович",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 158,
+    "fields": {
+      "action_time": "2023-05-07T09:44:24.374Z",
+      "user": 1,
+      "content_type": 4,
+      "object_id": "3",
+      "object_repr": "test_user2",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 159,
+    "fields": {
+      "action_time": "2023-05-07T09:47:49.765Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "3",
+      "object_repr": "Тестовый пользователь 2",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 160,
+    "fields": {
+      "action_time": "2023-05-07T10:10:17.233Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "4",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 161,
+    "fields": {
+      "action_time": "2023-05-07T10:10:17.241Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "5",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 162,
+    "fields": {
+      "action_time": "2023-05-07T10:10:17.250Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "6",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 163,
+    "fields": {
+      "action_time": "2023-05-07T10:10:17.257Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "8",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 164,
+    "fields": {
+      "action_time": "2023-05-07T10:10:17.265Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "9",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 165,
+    "fields": {
+      "action_time": "2023-05-07T10:10:17.273Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "10",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 166,
+    "fields": {
+      "action_time": "2023-05-07T10:10:17.273Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "11",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 167,
+    "fields": {
+      "action_time": "2023-05-07T10:10:29.095Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "3",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 168,
+    "fields": {
+      "action_time": "2023-05-07T10:10:41.271Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "3",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 169,
+    "fields": {
+      "action_time": "2023-05-07T10:44:26.581Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "12",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 170,
+    "fields": {
+      "action_time": "2023-05-07T10:44:26.609Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "13",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 171,
+    "fields": {
+      "action_time": "2023-05-07T10:44:26.614Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "14",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 172,
+    "fields": {
+      "action_time": "2023-05-07T10:44:26.622Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "15",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 173,
+    "fields": {
+      "action_time": "2023-05-07T10:44:26.630Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "16",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 174,
+    "fields": {
+      "action_time": "2023-05-07T10:44:26.640Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "17",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 175,
+    "fields": {
+      "action_time": "2023-05-07T10:44:26.646Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "18",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 176,
+    "fields": {
+      "action_time": "2023-05-07T10:44:26.646Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "19",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 177,
+    "fields": {
+      "action_time": "2023-05-07T10:44:26.654Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "20",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 178,
+    "fields": {
+      "action_time": "2023-05-07T11:04:02.252Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "21",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 179,
+    "fields": {
+      "action_time": "2023-05-07T11:04:02.260Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "22",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 180,
+    "fields": {
+      "action_time": "2023-05-07T11:04:02.268Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "23",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 181,
+    "fields": {
+      "action_time": "2023-05-09T12:55:52.594Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "1",
+      "object_repr": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041a\\u043e\\u043b-\\u0432\\u043e\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 182,
+    "fields": {
+      "action_time": "2023-05-09T12:56:59.366Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "1",
+      "object_repr": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041a\\u043e\\u043b-\\u0432\\u043e\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 183,
+    "fields": {
+      "action_time": "2023-05-09T12:58:34.502Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "1",
+      "object_repr": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041a\\u043e\\u043b-\\u0432\\u043e\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 184,
+    "fields": {
+      "action_time": "2023-05-09T13:04:27.079Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "1",
+      "object_repr": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 185,
+    "fields": {
+      "action_time": "2023-05-09T13:14:39.601Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "1",
+      "object_repr": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 186,
+    "fields": {
+      "action_time": "2023-05-09T13:14:52.643Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "1",
+      "object_repr": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041a\\u043e\\u043b-\\u0432\\u043e\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 187,
+    "fields": {
+      "action_time": "2023-05-09T13:15:41.483Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "1",
+      "object_repr": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041a\\u043e\\u043b-\\u0432\\u043e\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 188,
+    "fields": {
+      "action_time": "2023-05-09T13:17:05.224Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "7",
+      "object_repr": "Бытовая техника",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u0431\\u0440\\u0430\\u043d\\u043d\\u0430\\u044f \\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 189,
+    "fields": {
+      "action_time": "2023-05-09T14:02:37.607Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "7",
+      "object_repr": "Бытовая техника",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 190,
+    "fields": {
+      "action_time": "2023-05-09T14:08:59.307Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "21",
+      "object_repr": "Микроволновки",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 191,
+    "fields": {
+      "action_time": "2023-05-09T14:09:05.025Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "20",
+      "object_repr": "Холодильники",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 192,
+    "fields": {
+      "action_time": "2023-05-09T14:11:45.439Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "19",
+      "object_repr": "Телевизоры",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 193,
+    "fields": {
+      "action_time": "2023-05-09T14:12:40.213Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "20",
+      "object_repr": "Холодильники",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 194,
+    "fields": {
+      "action_time": "2023-05-09T14:13:34.624Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "21",
+      "object_repr": "Микроволновки",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 195,
+    "fields": {
+      "action_time": "2023-05-09T14:21:45.207Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "26",
+      "object_repr": "Продукты питания",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 196,
+    "fields": {
+      "action_time": "2023-05-09T14:21:52.036Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "26",
+      "object_repr": "Продукты питания",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u0431\\u0440\\u0430\\u043d\\u043d\\u0430\\u044f \\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 197,
+    "fields": {
+      "action_time": "2023-05-09T14:24:33.145Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "30",
+      "object_repr": "Красота и здоровье",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\", \"\\u0418\\u0437\\u0431\\u0440\\u0430\\u043d\\u043d\\u0430\\u044f \\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 198,
+    "fields": {
+      "action_time": "2023-05-09T14:26:08.725Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "7",
+      "object_repr": "Бытовая техника",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\", \"\\u0418\\u0437\\u0431\\u0440\\u0430\\u043d\\u043d\\u0430\\u044f \\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 199,
+    "fields": {
+      "action_time": "2023-05-09T14:27:10.244Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "27",
+      "object_repr": "Дом и сад",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\", \"\\u0418\\u0437\\u0431\\u0440\\u0430\\u043d\\u043d\\u0430\\u044f \\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 200,
+    "fields": {
+      "action_time": "2023-05-09T14:27:56.649Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "24",
+      "object_repr": "Книги",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\", \"\\u0418\\u0437\\u0431\\u0440\\u0430\\u043d\\u043d\\u0430\\u044f \\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 201,
+    "fields": {
+      "action_time": "2023-05-09T14:28:33.988Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "25",
+      "object_repr": "Мебель",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\", \"\\u0418\\u0437\\u0431\\u0440\\u0430\\u043d\\u043d\\u0430\\u044f \\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 202,
+    "fields": {
+      "action_time": "2023-05-09T14:29:38.947Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "23",
+      "object_repr": "Одежда",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\", \"\\u0418\\u0437\\u0431\\u0440\\u0430\\u043d\\u043d\\u0430\\u044f \\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 203,
+    "fields": {
+      "action_time": "2023-05-09T14:30:42.516Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "8",
+      "object_repr": "Электроника",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\", \"\\u0418\\u0437\\u0431\\u0440\\u0430\\u043d\\u043d\\u0430\\u044f \\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 204,
+    "fields": {
+      "action_time": "2023-05-09T14:32:07.959Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "22",
+      "object_repr": "Аудио",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\", \"\\u0418\\u0437\\u0431\\u0440\\u0430\\u043d\\u043d\\u0430\\u044f \\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 205,
+    "fields": {
+      "action_time": "2023-05-09T14:32:20.484Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "9",
+      "object_repr": "Смартфоны",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\", \"\\u0418\\u0437\\u0431\\u0440\\u0430\\u043d\\u043d\\u0430\\u044f \\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 206,
+    "fields": {
+      "action_time": "2023-05-09T15:30:54.551Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "6",
+      "object_repr": "Умная колонка Яндекс Станция Мини с часами с Алисой, черный оникс, 10Вт",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041a\\u043e\\u043b-\\u0432\\u043e\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 207,
+    "fields": {
+      "action_time": "2023-05-09T15:31:08.254Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "14",
+      "object_repr": "Холодильник Бирюса 70, белый",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041a\\u043e\\u043b-\\u0432\\u043e\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 208,
+    "fields": {
+      "action_time": "2023-05-09T15:31:15.934Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "16",
+      "object_repr": "Микроволновая печь LG MS2042DB, черный",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041a\\u043e\\u043b-\\u0432\\u043e\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 209,
+    "fields": {
+      "action_time": "2023-05-09T15:31:22.976Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "17",
+      "object_repr": "50” Телевизор Tuvio 4K ULTRA HD DLED на платформе Яндекс.ТВ, STV-50FDUBK1R, черный",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041a\\u043e\\u043b-\\u0432\\u043e\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 210,
+    "fields": {
+      "action_time": "2023-05-13T09:15:28.093Z",
+      "user": 1,
+      "content_type": 4,
+      "object_id": "2",
+      "object_repr": "test_user",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Email address\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 211,
+    "fields": {
+      "action_time": "2023-05-13T09:53:41.752Z",
+      "user": 1,
+      "content_type": 4,
+      "object_id": "3",
+      "object_repr": "test_user2",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Email address\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 212,
+    "fields": {
+      "action_time": "2023-05-13T11:00:13.666Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "4",
+      "object_repr": "Валя",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 213,
+    "fields": {
+      "action_time": "2023-05-13T11:34:04.486Z",
+      "user": 1,
+      "content_type": 4,
+      "object_id": "1",
+      "object_repr": "adminn",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Email address\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 214,
+    "fields": {
+      "action_time": "2023-05-13T11:34:31.599Z",
+      "user": 1,
+      "content_type": 4,
+      "object_id": "1",
+      "object_repr": "admin",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Username\", \"Email address\"]}}]"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+      "name": "Can add log entry",
+      "content_type": 1,
+      "codename": "add_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+      "name": "Can change log entry",
+      "content_type": 1,
+      "codename": "change_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+      "name": "Can delete log entry",
+      "content_type": 1,
+      "codename": "delete_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+      "name": "Can view log entry",
+      "content_type": 1,
+      "codename": "view_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+      "name": "Can add permission",
+      "content_type": 2,
+      "codename": "add_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+      "name": "Can change permission",
+      "content_type": 2,
+      "codename": "change_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+      "name": "Can delete permission",
+      "content_type": 2,
+      "codename": "delete_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+      "name": "Can view permission",
+      "content_type": 2,
+      "codename": "view_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+      "name": "Can add group",
+      "content_type": 3,
+      "codename": "add_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+      "name": "Can change group",
+      "content_type": 3,
+      "codename": "change_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+      "name": "Can delete group",
+      "content_type": 3,
+      "codename": "delete_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+      "name": "Can view group",
+      "content_type": 3,
+      "codename": "view_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+      "name": "Can add user",
+      "content_type": 4,
+      "codename": "add_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+      "name": "Can change user",
+      "content_type": 4,
+      "codename": "change_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+      "name": "Can delete user",
+      "content_type": 4,
+      "codename": "delete_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+      "name": "Can view user",
+      "content_type": 4,
+      "codename": "view_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+      "name": "Can add content type",
+      "content_type": 5,
+      "codename": "add_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+      "name": "Can change content type",
+      "content_type": 5,
+      "codename": "change_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+      "name": "Can delete content type",
+      "content_type": 5,
+      "codename": "delete_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+      "name": "Can view content type",
+      "content_type": 5,
+      "codename": "view_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+      "name": "Can add session",
+      "content_type": 6,
+      "codename": "add_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+      "name": "Can change session",
+      "content_type": 6,
+      "codename": "change_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+      "name": "Can delete session",
+      "content_type": 6,
+      "codename": "delete_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+      "name": "Can view session",
+      "content_type": 6,
+      "codename": "view_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+      "name": "Can add Профиль",
+      "content_type": 7,
+      "codename": "add_profile"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+      "name": "Can change Профиль",
+      "content_type": 7,
+      "codename": "change_profile"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+      "name": "Can delete Профиль",
+      "content_type": 7,
+      "codename": "delete_profile"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+      "name": "Can view Профиль",
+      "content_type": 7,
+      "codename": "view_profile"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+      "name": "Can add Продавец",
+      "content_type": 8,
+      "codename": "add_seller"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+      "name": "Can change Продавец",
+      "content_type": 8,
+      "codename": "change_seller"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+      "name": "Can delete Продавец",
+      "content_type": 8,
+      "codename": "delete_seller"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+      "name": "Can view Продавец",
+      "content_type": 8,
+      "codename": "view_seller"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+      "name": "Can add Покупатель",
+      "content_type": 9,
+      "codename": "add_buyer"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+      "name": "Can change Покупатель",
+      "content_type": 9,
+      "codename": "change_buyer"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+      "name": "Can delete Покупатель",
+      "content_type": 9,
+      "codename": "delete_buyer"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+      "name": "Can view Покупатель",
+      "content_type": 9,
+      "codename": "view_buyer"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+      "name": "Can add Категория товара",
+      "content_type": 10,
+      "codename": "add_categoryproduct"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+      "name": "Can change Категория товара",
+      "content_type": 10,
+      "codename": "change_categoryproduct"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+      "name": "Can delete Категория товара",
+      "content_type": 10,
+      "codename": "delete_categoryproduct"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+      "name": "Can view Категория товара",
+      "content_type": 10,
+      "codename": "view_categoryproduct"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+      "name": "Can add Конфигурация сайта",
+      "content_type": 11,
+      "codename": "add_siteconfiguration"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 42,
+    "fields": {
+      "name": "Can change Конфигурация сайта",
+      "content_type": 11,
+      "codename": "change_siteconfiguration"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+      "name": "Can delete Конфигурация сайта",
+      "content_type": 11,
+      "codename": "delete_siteconfiguration"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 44,
+    "fields": {
+      "name": "Can view Конфигурация сайта",
+      "content_type": 11,
+      "codename": "view_siteconfiguration"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 45,
+    "fields": {
+      "name": "Can add Изображение товара",
+      "content_type": 12,
+      "codename": "add_productimages"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 46,
+    "fields": {
+      "name": "Can change Изображение товара",
+      "content_type": 12,
+      "codename": "change_productimages"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 47,
+    "fields": {
+      "name": "Can delete Изображение товара",
+      "content_type": 12,
+      "codename": "delete_productimages"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 48,
+    "fields": {
+      "name": "Can view Изображение товара",
+      "content_type": 12,
+      "codename": "view_productimages"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 49,
+    "fields": {
+      "name": "Can add Товар",
+      "content_type": 13,
+      "codename": "add_product"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 50,
+    "fields": {
+      "name": "Can change Товар",
+      "content_type": 13,
+      "codename": "change_product"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 51,
+    "fields": {
+      "name": "Can delete Товар",
+      "content_type": 13,
+      "codename": "delete_product"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 52,
+    "fields": {
+      "name": "Can view Товар",
+      "content_type": 13,
+      "codename": "view_product"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 53,
+    "fields": {
+      "name": "Can add Тег для товара",
+      "content_type": 14,
+      "codename": "add_producttags"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 54,
+    "fields": {
+      "name": "Can change Тег для товара",
+      "content_type": 14,
+      "codename": "change_producttags"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 55,
+    "fields": {
+      "name": "Can delete Тег для товара",
+      "content_type": 14,
+      "codename": "delete_producttags"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 56,
+    "fields": {
+      "name": "Can view Тег для товара",
+      "content_type": 14,
+      "codename": "view_producttags"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 57,
+    "fields": {
+      "name": "Can add Отзыв о товаре",
+      "content_type": 15,
+      "codename": "add_productreviews"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 58,
+    "fields": {
+      "name": "Can change Отзыв о товаре",
+      "content_type": 15,
+      "codename": "change_productreviews"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 59,
+    "fields": {
+      "name": "Can delete Отзыв о товаре",
+      "content_type": 15,
+      "codename": "delete_productreviews"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 60,
+    "fields": {
+      "name": "Can view Отзыв о товаре",
+      "content_type": 15,
+      "codename": "view_productreviews"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$SmXN9KriRTsDxnQUYw1WKj$y7+pkHzMkULb6drqVqGg9C2sewCbNx9LwU8N3tL60RE=",
+      "last_login": "2023-05-02T11:40:22Z",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "admin@mail.ru",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-03-28T20:30:30Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$hkJDsDi2Kd2FgDiW0nYHH8$BD8oxMn3D7IQP+VP/OjMoD1HsD53V4xtjPheDXGTaYI=",
+      "last_login": "2023-05-13T09:52:29.683Z",
+      "is_superuser": false,
+      "username": "test_user",
+      "first_name": "",
+      "last_name": "",
+      "email": "test_user@mail.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-05-05T14:12:20Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$jI4LWsFPz0esGllnyCtCr0$gC3gOCsdXLE/q3rKg56RCX41+wg2UJj44LT7LsL6HEU=",
+      "last_login": "2023-05-13T10:06:11.584Z",
+      "is_superuser": false,
+      "username": "test_user2",
+      "first_name": "",
+      "last_name": "",
+      "email": "test_user2@mail.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-05-07T09:44:23Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$Eqzf6qhq2GBicXbDV5xR9p$ymKKKkdeeIi1BhDUEWFjGkJ5vguxsKE9MpKP0gLDCaY=",
+      "last_login": "2023-05-07T09:49:12.670Z",
+      "is_superuser": false,
+      "username": "send",
+      "first_name": "",
+      "last_name": "",
+      "email": "send@test.test",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-05-07T09:46:08.319Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$RP1INsEJPKbHEKH3OO0YA0$IlxNKUwuDQr/mkQuiyNtEHSvwJAFGeY34ZVZvl6+ov0=",
+      "last_login": "2023-05-13T10:26:53.209Z",
+      "is_superuser": false,
+      "username": "valua",
+      "first_name": "",
+      "last_name": "",
+      "email": "valua@mail.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-05-13T10:26:51.967Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$s3iAmQ5yiulj8qlaoaP3cO$FzFUktIy3jZKI5U8xyhC2h6flEoXpD0A+9rT7x1CTLY=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "nothing",
+      "first_name": "",
+      "last_name": "",
+      "email": "nothing@mail.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-05-13T10:32:42.847Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$OCkRNjTEycE575qovFzVqk$gp77aXvAQPMSSfr2evMhvh+N2bH5XagN41fGvN33WWI=",
+      "last_login": "2023-05-13T11:36:27.617Z",
+      "is_superuser": false,
+      "username": "send1",
+      "first_name": "",
+      "last_name": "",
+      "email": "send1@test.test",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-05-13T11:36:27.224Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+      "app_label": "admin",
+      "model": "logentry"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+      "app_label": "auth",
+      "model": "permission"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+      "app_label": "auth",
+      "model": "group"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+      "app_label": "auth",
+      "model": "user"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+      "app_label": "contenttypes",
+      "model": "contenttype"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+      "app_label": "sessions",
+      "model": "session"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+      "app_label": "app_user",
+      "model": "profile"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+      "app_label": "app_user",
+      "model": "seller"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+      "app_label": "app_user",
+      "model": "buyer"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+      "app_label": "app_shop",
+      "model": "categoryproduct"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+      "app_label": "config",
+      "model": "siteconfiguration"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": {
+      "app_label": "app_shop",
+      "model": "productimages"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 13,
+    "fields": {
+      "app_label": "app_shop",
+      "model": "product"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 14,
+    "fields": {
+      "app_label": "app_shop",
+      "model": "producttags"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 15,
+    "fields": {
+      "app_label": "app_shop",
+      "model": "productreviews"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "07kubus00tfn99xt8nrfl0svm08uvyzn",
+    "fields": {
+      "session_data": ".eJxVjEEOwiAQRe_C2hCgDIhL9z0DmYFBqoYmpV0Z765NutDtf-_9l4i4rTVunZc4ZXERVpx-N8L04LaDfMd2m2Wa27pMJHdFHrTLcc78vB7u30HFXr-1CYadN1ppE6jkYtTgQmCnz-wAvFcMPmUgYJ0oGRdQWygDEyAqG5R4fwDAPzdG:1pvb0y:3B2R3CV1mTr3xJbsGg9323gYDhi4jq85Ja8GQkxl48Q",
+      "expire_date": "2023-05-21T09:49:12.678Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "299eqxcix34a7qin17uvyrcfswzzsbof",
+    "fields": {
+      "session_data": ".eJxVjMsOwiAUBf-FtSEFysule7-B3AdI1dCktCvjv2uTLnR7Zua8RIJtrWnreUkTi7Pw4vS7IdAjtx3wHdptljS3dZlQ7oo8aJfXmfPzcrh_BxV6_dYlAmIxnhxZxHEoWmWLhouxJsNoyWGMwTIGr1kROTUEQq0deibDWbw_Ers48g:1pxnY3:4fBN9ubUG_nWArYlgvIGMFeXRddhLAt1ZD7vilVSObo",
+      "expire_date": "2023-05-27T11:36:27.622Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "5wyr00ahx8fxk2zc0cv7ywnxxk08mwiq",
+    "fields": {
+      "session_data": ".eJxVjEEOwiAQRe_C2pBCkQGX7j0DYWZAqgaS0q6Md7dNutDtf-_9twhxXUpYe5rDxOIitDj9bhjpmeoO-BHrvUlqdZknlLsiD9rlrXF6XQ_376DEXrbawsjglc3ebtGQ1VlrB9axIdDGo8OoYEiJkaJ3QETKDJy1ziOC4Sw-X9qtOD8:1pxlLj:LfrioFtWe7C2PZrxD-i6wjHYBTmQiQWp4yDuWDYDudA",
+      "expire_date": "2023-05-27T09:15:35.513Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "65fho53quhrxxm5k87amvxc34n08qaqp",
+    "fields": {
+      "session_data": ".eJxVjEEOwiAQRe_C2pBCkQGX7j0DYWZAqgaS0q6Md7dNutDtf-_9twhxXUpYe5rDxOIitDj9bhjpmeoO-BHrvUlqdZknlLsiD9rlrXF6XQ_376DEXrbawsjglc3ebtGQ1VlrB9axIdDGo8OoYEiJkaJ3QETKDJy1ziOC4Sw-X9qtOD8:1pxlfZ:nHFh3HKaoF93UKqAbUtl5EP8QCrGBWm627EbDyAG_I8",
+      "expire_date": "2023-05-27T09:36:05.291Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "8ld5l1z52fhbaq01xpztsk1dvk5zcyx9",
+    "fields": {
+      "session_data": "e30:1pxlV4:o5CC_c4dWJtVLR0FgiuHxjJwFYPNEKjsHab76y9HoAU",
+      "expire_date": "2023-05-27T09:25:14.817Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "9yxeyew0q8pjebb46efybaeprla2jyeq",
+    "fields": {
+      "session_data": ".eJxVjEEOwiAQAP_C2ZCyZQE9evcNZFk2UjWQlPZk_Lsh6UGvM5N5q0j7VuLeZY1LVhc1q9MvS8RPqUPkB9V709zqti5Jj0Qftutby_K6Hu3foFAvY5tIwDpA8sEadOgxCZGZwSEbYhdktpAnMhx4sufgATGIB8MZmIP6fAHJIzc2:1pxm8h:D-kV2C79bTc9UstZ2TjUu5ZiB34wD2YqOQczwpzRCd0",
+      "expire_date": "2023-05-27T10:06:11.593Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "is2hpo2xi6q2g5hk5cva9q1egn311qyg",
+    "fields": {
+      "session_data": ".eJxVjEEOgyAQRe_CuiEORLBddt8zkGEY1GogAVw0Te9eTdy4_e-9_xUr1uYIG4-5fMRD8MpLKznNC4qbcLi1yW2Vi5vDTuG6eaSF0wHCG9OYJeXUyuzlociTVvnKgdfn6V4OJqzTXt-tZ6Co0dx9Z8Cb0HuKHbAaWCulQiRjWQGEIWKwvTWkkSMCGj8Y3YvfHwHeQ4I:1pu8Hx:he0JDNOOE0cwNmRIFdYwEdGHplitCqTzR4v13KcOvgA",
+      "expire_date": "2023-05-17T08:56:41.865Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "rs36rhghtabdzwnghpmbramh14ku0hu9",
+    "fields": {
+      "session_data": ".eJxVjEEOwiAQRe_C2hCgDIhL9z0DmYFBqoYmpV0Z765NutDtf-_9l4i4rTVunZc4ZXERVpx-N8L04LaDfMd2m2Wa27pMJHdFHrTLcc78vB7u30HFXr-1CYadN1ppE6jkYtTgQmCnz-wAvFcMPmUgYJ0oGRdQWygDEyAqG5R4fwDAPzdG:1pvay1:tQzoMC7AL40nhZ0BO-RcdojfQbVshoTdu6AwJ4Ngs28",
+      "expire_date": "2023-05-21T09:46:09.463Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "t9y9m5i55zs5163askq2rztaklnhs8i1",
+    "fields": {
+      "session_data": ".eJw9jEEKwzAMBP-icw6-9OLPGNdVUmHFNpIKDcF_rwppjzs7zAmc1VLJhluXAyIgYzXpjWqGBVZiQ1GIJ-zU0hAq6JI_e37_5y2E4MjI-HrdVeulQlwzK3pIEJM-aQxq20XnAtrF8PHN349fzuSFc34A_tM1OA:1ptl4e:PkmtuF8A85ytmsVPb3CrZV5SvjpszUxCg9ipxZCaxGI",
+      "expire_date": "2023-05-16T08:09:24.223Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "v6pidh5zzmb6ynw2vihf9loci8c20ixh",
+    "fields": {
+      "session_data": ".eJxVjEEOwiAQAP_C2ZCyZQE9evcNZFk2UjWQlPZk_Lsh6UGvM5N5q0j7VuLeZY1LVhc1q9MvS8RPqUPkB9V709zqti5Jj0Qftutby_K6Hu3foFAvY5tIwDpA8sEadOgxCZGZwSEbYhdktpAnMhx4sufgATGIB8MZmIP6fAHJIzc2:1pxlx5:T6Ly-9T50uEXARK8FlDXOjRABw7V8-UqXHNoZ6_uHA0",
+      "expire_date": "2023-05-27T09:54:11.284Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "vm8y2r60h05p8ldlpngnntm4nebcoov1",
+    "fields": {
+      "session_data": ".eJxVjEEOwiAQRe_C2pAgMIBL956BzMAgVQNJaVeNd9cmXej2v_f-JiKuS43r4DlOWVyEFaffjTA9ue0gP7Ddu0y9LfNEclfkQYe89cyv6-H-HVQc9VsbAxodcSlobeCAPp21USprygZIJ9IlIxcLzhsm54IFJKSgELyHIt4fAGE4qg:1pxmSj:TOpZnP3Ou5FQbfSS7lcwBGIcRtclnn9LLZJMn2xa56s",
+      "expire_date": "2023-05-27T10:26:53.216Z"
+    }
+  },
+  {
+    "model": "app_user.profile",
+    "pk": 1,
+    "fields": {
+      "user": 2,
+      "full_name": "Тестовый пользователь",
+      "phone_number": null,
+      "address": "",
+      "avatar": "images/profiles/test_user/avatar/test_avatar.jpg",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_user.profile",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "full_name": "Стафеев Дмитрий Олегович",
+      "phone_number": "9027448564",
+      "address": "Москва, ул.Корнева, 36",
+      "avatar": "images/profiles/admin/avatar/cs-go-avatars-vk-pixelbox.ru-37.jpg",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_user.profile",
+    "pk": 4,
+    "fields": {
+      "user": 5,
+      "full_name": "Валя",
+      "phone_number": null,
+      "address": "",
+      "avatar": "",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_user.profile",
+    "pk": 5,
+    "fields": {
+      "user": 7,
+      "full_name": "Дима",
+      "phone_number": "0000000006",
+      "address": "",
+      "avatar": "images/profiles/send1/avatar/cs-go-avatars-vk-pixelbox.ru-37.jpg",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_user.buyer",
+    "pk": 1,
+    "fields": {
+      "profile": 1,
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_user.buyer",
+    "pk": 2,
+    "fields": {
+      "profile": 2,
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.categoryproduct",
+    "pk": 7,
+    "fields": {
+      "title": "Бытовая техника",
+      "slug": "byitovaya-tehnika",
+      "icon": "images/categories/icons/byitovaya-tehnika/appliances.svg",
+      "image": "images/categories/images/byitovaya-tehnika/appliances-img.png",
+      "selected": true,
+      "deleted": false,
+      "parent": null,
+      "lft": 1,
+      "rght": 6,
+      "tree_id": 1,
+      "level": 0
+    }
+  },
+  {
+    "model": "app_shop.categoryproduct",
+    "pk": 8,
+    "fields": {
+      "title": "Электроника",
+      "slug": "elektronika",
+      "icon": "images/categories/icons/elektronika/electronics.svg",
+      "image": "images/categories/images/elektronika/electronics-img.png",
+      "selected": false,
+      "deleted": false,
+      "parent": null,
+      "lft": 1,
+      "rght": 8,
+      "tree_id": 12,
+      "level": 0
+    }
+  },
+  {
+    "model": "app_shop.categoryproduct",
+    "pk": 9,
+    "fields": {
+      "title": "Смартфоны",
+      "slug": "smartfonyi",
+      "icon": "",
+      "image": "images/categories/images/smartfonyi/phones-img.png",
+      "selected": false,
+      "deleted": false,
+      "parent": 8,
+      "lft": 4,
+      "rght": 5,
+      "tree_id": 12,
+      "level": 1
+    }
+  },
+  {
+    "model": "app_shop.categoryproduct",
+    "pk": 19,
+    "fields": {
+      "title": "Телевизоры",
+      "slug": "televizoryi",
+      "icon": "",
+      "image": "images/categories/images/televizoryi/tv-img.png",
+      "selected": true,
+      "deleted": false,
+      "parent": 8,
+      "lft": 6,
+      "rght": 7,
+      "tree_id": 12,
+      "level": 1
+    }
+  },
+  {
+    "model": "app_shop.categoryproduct",
+    "pk": 20,
+    "fields": {
+      "title": "Холодильники",
+      "slug": "holodilniki",
+      "icon": "",
+      "image": "images/categories/images/holodilniki/holodilnik-img.png",
+      "selected": false,
+      "deleted": false,
+      "parent": 7,
+      "lft": 4,
+      "rght": 5,
+      "tree_id": 1,
+      "level": 1
+    }
+  },
+  {
+    "model": "app_shop.categoryproduct",
+    "pk": 21,
+    "fields": {
+      "title": "Микроволновки",
+      "slug": "mikrovolnovki",
+      "icon": "",
+      "image": "images/categories/images/mikrovolnovki/microwaves-img.png",
+      "selected": false,
+      "deleted": false,
+      "parent": 7,
+      "lft": 2,
+      "rght": 3,
+      "tree_id": 1,
+      "level": 1
+    }
+  },
+  {
+    "model": "app_shop.categoryproduct",
+    "pk": 22,
+    "fields": {
+      "title": "Аудио",
+      "slug": "audio",
+      "icon": "",
+      "image": "images/categories/images/audio/audio-img.png",
+      "selected": true,
+      "deleted": false,
+      "parent": 8,
+      "lft": 2,
+      "rght": 3,
+      "tree_id": 12,
+      "level": 1
+    }
+  },
+  {
+    "model": "app_shop.categoryproduct",
+    "pk": 23,
+    "fields": {
+      "title": "Одежда",
+      "slug": "odezhda",
+      "icon": "images/categories/icons/odezhda/clothes-icon.svg",
+      "image": "images/categories/images/odezhda/clothes-img.png",
+      "selected": false,
+      "deleted": false,
+      "parent": null,
+      "lft": 1,
+      "rght": 2,
+      "tree_id": 10,
+      "level": 0
+    }
+  },
+  {
+    "model": "app_shop.categoryproduct",
+    "pk": 24,
+    "fields": {
+      "title": "Книги",
+      "slug": "knigi",
+      "icon": "images/categories/icons/knigi/books-icon.svg",
+      "image": "images/categories/images/knigi/books-img.png",
+      "selected": false,
+      "deleted": false,
+      "parent": null,
+      "lft": 1,
+      "rght": 2,
+      "tree_id": 5,
+      "level": 0
+    }
+  },
+  {
+    "model": "app_shop.categoryproduct",
+    "pk": 25,
+    "fields": {
+      "title": "Мебель",
+      "slug": "mebel",
+      "icon": "images/categories/icons/mebel/furniture-icon.svg",
+      "image": "images/categories/images/mebel/furniture-img.png",
+      "selected": false,
+      "deleted": false,
+      "parent": null,
+      "lft": 1,
+      "rght": 2,
+      "tree_id": 8,
+      "level": 0
+    }
+  },
+  {
+    "model": "app_shop.categoryproduct",
+    "pk": 26,
+    "fields": {
+      "title": "Продукты питания",
+      "slug": "produktyi-pitaniya",
+      "icon": "images/categories/icons/produktyi-pitaniya/food-icon.svg",
+      "image": "images/categories/images/produktyi-pitaniya/products-img.png",
+      "selected": false,
+      "deleted": false,
+      "parent": null,
+      "lft": 1,
+      "rght": 2,
+      "tree_id": 11,
+      "level": 0
+    }
+  },
+  {
+    "model": "app_shop.categoryproduct",
+    "pk": 27,
+    "fields": {
+      "title": "Дом и сад",
+      "slug": "dom-i-sad",
+      "icon": "images/categories/icons/dom-i-sad/house-icon.svg",
+      "image": "images/categories/images/dom-i-sad/house-and-garden-img.png",
+      "selected": false,
+      "deleted": false,
+      "parent": null,
+      "lft": 1,
+      "rght": 6,
+      "tree_id": 4,
+      "level": 0
+    }
+  },
+  {
+    "model": "app_shop.categoryproduct",
+    "pk": 28,
+    "fields": {
+      "title": "Освещение",
+      "slug": "osveschenie",
+      "icon": "",
+      "image": "",
+      "selected": false,
+      "deleted": false,
+      "parent": 27,
+      "lft": 2,
+      "rght": 3,
+      "tree_id": 4,
+      "level": 1
+    }
+  },
+  {
+    "model": "app_shop.categoryproduct",
+    "pk": 29,
+    "fields": {
+      "title": "Посуда",
+      "slug": "posuda",
+      "icon": "",
+      "image": "",
+      "selected": false,
+      "deleted": false,
+      "parent": 27,
+      "lft": 4,
+      "rght": 5,
+      "tree_id": 4,
+      "level": 1
+    }
+  },
+  {
+    "model": "app_shop.categoryproduct",
+    "pk": 30,
+    "fields": {
+      "title": "Красота и здоровье",
+      "slug": "krasota-i-zdorove",
+      "icon": "images/categories/icons/krasota-i-zdorove/beauty-and-health-icon.svg",
+      "image": "images/categories/images/krasota-i-zdorove/beauty-img.png",
+      "selected": false,
+      "deleted": false,
+      "parent": null,
+      "lft": 1,
+      "rght": 2,
+      "tree_id": 7,
+      "level": 0
+    }
+  },
+  {
+    "model": "app_shop.producttags",
+    "pk": 1,
+    "fields": {
+      "name": "Apple",
+      "slug": "apple",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.producttags",
+    "pk": 2,
+    "fields": {
+      "name": "Яндекс",
+      "slug": "yandeks",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.producttags",
+    "pk": 5,
+    "fields": {
+      "name": "Tuvio",
+      "slug": "tuvio",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.producttags",
+    "pk": 6,
+    "fields": {
+      "name": "Sony",
+      "slug": "sony",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.producttags",
+    "pk": 7,
+    "fields": {
+      "name": "Weissgauff",
+      "slug": "weissgauff",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.producttags",
+    "pk": 8,
+    "fields": {
+      "name": "Midea",
+      "slug": "midea",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.producttags",
+    "pk": 9,
+    "fields": {
+      "name": "Бирюса",
+      "slug": "biryusa",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.producttags",
+    "pk": 10,
+    "fields": {
+      "name": "LG",
+      "slug": "lg",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.producttags",
+    "pk": 11,
+    "fields": {
+      "name": "Xiaomi",
+      "slug": "xiaomi",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.producttags",
+    "pk": 12,
+    "fields": {
+      "name": "Умный дом",
+      "slug": "umnyij-dom",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.product",
+    "pk": 1,
+    "fields": {
+      "name": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "definition": "Летите ли вы в дальнее путешествие или отдыхаете в кафе, наушники WH-1000XM4 будут великолепно подавлять шум и максимально качественно передавать высоко- и среднечастотный звук.\r\nЧаши наушников оснащены двумя датчиками с микрофонами, которые обрабатывают внешний шум и отправляют данные HD-процессору QN1. С помощью нового алгоритма процессор в реальном времени применяет механизм шумоподавления в зависимости от обстановки. Вместе с новой аудиосистемой на кристалле с поддержкой Bluetooth процессор анализирует звуки, управляет воспроизведением, блокирует шумы и регулирует работу динамика с учетом различных акустических характеристик. Всё это происходит на скорости 700 раз в секунду.\r\nС помощью приложения Sony | Headphones Connect можно настроить характеристики окружающего звука, чтобы отсечь шум, но при этом слышать важные звуки, например объявления на вокзале.",
+      "created_at": "2023-04-14T19:42:32.655Z",
+      "characteristics": "{\"\\u0422\\u0438\\u043f \\u0443\\u0441\\u0442\\u0440\\u043e\\u0439\\u0441\\u0442\\u0432\\u0430\": \"\\u0431\\u0435\\u0441\\u043f\\u0440\\u043e\\u0432\\u043e\\u0434\\u043d\\u044b\\u0435 \\u043d\\u0430\\u0443\\u0448\\u043d\\u0438\\u043a\\u0438\", \"\\u041a\\u043e\\u043d\\u0441\\u0442\\u0440\\u0443\\u043a\\u0446\\u0438\\u044f\": \"\\u043f\\u043e\\u043b\\u043d\\u043e\\u0440\\u0430\\u0437\\u043c\\u0435\\u0440\\u043d\\u044b\\u0435\", \"\\u0422\\u0435\\u0445\\u043d\\u043e\\u043b\\u043e\\u0433\\u0438\\u044f\": \"\\u0434\\u0438\\u043d\\u0430\\u043c\\u0438\\u0447\\u0435\\u0441\\u043a\\u0438\\u0435\", \"\\u0421\\u0438\\u0441\\u0442\\u0435\\u043c\\u0430 \\u0430\\u043a\\u0442\\u0438\\u0432\\u043d\\u043e\\u0433\\u043e \\u0448\\u0443\\u043c\\u043e\\u043f\\u043e\\u0434\\u0430\\u0432\\u043b\\u0435\\u043d\\u0438\\u044f (ANC)\": \"\\u0435\\u0441\\u0442\\u044c\"}",
+      "category": 22,
+      "price": 2500.0,
+      "discount": 10,
+      "count": 100,
+      "limited_edition": true,
+      "deleted": false,
+      "tags": [
+        6
+      ]
+    }
+  },
+  {
+    "model": "app_shop.product",
+    "pk": 6,
+    "fields": {
+      "name": "Умная колонка Яндекс Станция Мини с часами с Алисой, черный оникс, 10Вт",
+      "definition": "Яндекс.Станция Мини - обновленная версия умной колонки с голосовым ассистентом Алиса. Данная модель получила более громкий звук мощностью 10 Вт. Колонка управляется не только голосом, но и с помощью сенсорных кнопок, расположенных сверху. Алиса по-прежнему умеет управлять \"Умным домом\", подбирать музыку, знает много детских сказок, разбудит вовремя, расскажет новости или напомнит о важных делах. Станции Мини впишется в большинство интерьеров благодаря лаконичному дизайну и различным цветам. Подключается колонка к интернету по Wi-Fi, а Bluetooth 5.0 позволит подключать такие устройства, как умную лампу, пылесос и сотни других устройств.\r\nРежим радионяни:\r\nРаботая в режиме радионяни, станция передаёт все звуки из комнаты малыша. Если он проснётся или заплачет, родители это услышат.",
+      "created_at": "2023-04-18T18:00:40.647Z",
+      "characteristics": "{\"\\u0422\\u0438\\u043f \\u0443\\u0441\\u0442\\u0440\\u043e\\u0439\\u0441\\u0442\\u0432\\u0430\": \"\\u0431\\u0435\\u0441\\u043f\\u0440\\u043e\\u0432\\u043e\\u0434\\u043d\\u044b\\u0435 \\u043d\\u0430\\u0443\\u0448\\u043d\\u0438\\u043a\\u0438\", \"\\u041a\\u043e\\u043d\\u0441\\u0442\\u0440\\u0443\\u043a\\u0446\\u0438\\u044f\": \"\\u043f\\u043e\\u043b\\u043d\\u043e\\u0440\\u0430\\u0437\\u043c\\u0435\\u0440\\u043d\\u044b\\u0435\", \"\\u0422\\u0435\\u0445\\u043d\\u043e\\u043b\\u043e\\u0433\\u0438\\u044f\": \"\\u0434\\u0438\\u043d\\u0430\\u043c\\u0438\\u0447\\u0435\\u0441\\u043a\\u0438\\u0435\", \"\\u0421\\u0438\\u0441\\u0442\\u0435\\u043c\\u0430 \\u0430\\u043a\\u0442\\u0438\\u0432\\u043d\\u043e\\u0433\\u043e \\u0448\\u0443\\u043c\\u043e\\u043f\\u043e\\u0434\\u0430\\u0432\\u043b\\u0435\\u043d\\u0438\\u044f (ANC)\": \"\\u0435\\u0441\\u0442\\u044c\"}",
+      "category": 22,
+      "price": 7980.0,
+      "discount": 5,
+      "count": 56,
+      "limited_edition": true,
+      "deleted": false,
+      "tags": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "app_shop.product",
+    "pk": 7,
+    "fields": {
+      "name": "Умная розетка Яндекс с Алисой, черный",
+      "definition": "Устройство представляет собой блок в виде внешней электрической розетки, который подключается к электрической сети и позволяет подключить внешнее устройство к электричеству. Подключение внешнего устройства через Умную розетку Яндекса позволяет управлять его электрическим соединением через интернет (включение/выключение).",
+      "created_at": "2023-04-18T18:02:07.162Z",
+      "characteristics": "{\"\\u0422\\u0438\\u043f \\u0443\\u0441\\u0442\\u0440\\u043e\\u0439\\u0441\\u0442\\u0432\\u0430\": \"\\u0431\\u0435\\u0441\\u043f\\u0440\\u043e\\u0432\\u043e\\u0434\\u043d\\u044b\\u0435 \\u043d\\u0430\\u0443\\u0448\\u043d\\u0438\\u043a\\u0438\", \"\\u041a\\u043e\\u043d\\u0441\\u0442\\u0440\\u0443\\u043a\\u0446\\u0438\\u044f\": \"\\u043f\\u043e\\u043b\\u043d\\u043e\\u0440\\u0430\\u0437\\u043c\\u0435\\u0440\\u043d\\u044b\\u0435\", \"\\u0422\\u0435\\u0445\\u043d\\u043e\\u043b\\u043e\\u0433\\u0438\\u044f\": \"\\u0434\\u0438\\u043d\\u0430\\u043c\\u0438\\u0447\\u0435\\u0441\\u043a\\u0438\\u0435\", \"\\u0421\\u0438\\u0441\\u0442\\u0435\\u043c\\u0430 \\u0430\\u043a\\u0442\\u0438\\u0432\\u043d\\u043e\\u0433\\u043e \\u0448\\u0443\\u043c\\u043e\\u043f\\u043e\\u0434\\u0430\\u0432\\u043b\\u0435\\u043d\\u0438\\u044f (ANC)\": \"\\u0435\\u0441\\u0442\\u044c\"}",
+      "category": 8,
+      "price": 1299.0,
+      "discount": 6,
+      "count": 50,
+      "limited_edition": true,
+      "deleted": false,
+      "tags": [
+        2,
+        12
+      ]
+    }
+  },
+  {
+    "model": "app_shop.product",
+    "pk": 8,
+    "fields": {
+      "name": "Умный пульт Yandex SmartControl",
+      "definition": "Автоматизировать бытовую технику при помощи умного пульта Yandex SmartControl YNDX-0006 проще, чем может показаться. С его помощью можно управлять техникой, например телевизором или кондиционером, а также любым другим устройством, которое поддерживает ИК-соединение. Также осуществляется передача данных посредством технологии Wi-Fi. Используя модель, можно не только включать/выключать технику, но и настраивать её. Умный пульт Yandex SmartControl YNDX-0006 поддерживает управление с помощью голосового помощника Алисы. Для этого просто нужно сказать, что необходимо сделать, и система передаст приказ на устройство. Благодаря этому можно удалённо управлять бытовой техникой, даже если пользователь находится не дома. Для этого предварительно нужно настроить приборы и пульт.",
+      "created_at": "2023-04-18T18:03:01.007Z",
+      "characteristics": "{\"\\u0422\\u0438\\u043f \\u0443\\u0441\\u0442\\u0440\\u043e\\u0439\\u0441\\u0442\\u0432\\u0430\": \"\\u0431\\u0435\\u0441\\u043f\\u0440\\u043e\\u0432\\u043e\\u0434\\u043d\\u044b\\u0435 \\u043d\\u0430\\u0443\\u0448\\u043d\\u0438\\u043a\\u0438\", \"\\u041a\\u043e\\u043d\\u0441\\u0442\\u0440\\u0443\\u043a\\u0446\\u0438\\u044f\": \"\\u043f\\u043e\\u043b\\u043d\\u043e\\u0440\\u0430\\u0437\\u043c\\u0435\\u0440\\u043d\\u044b\\u0435\", \"\\u0422\\u0435\\u0445\\u043d\\u043e\\u043b\\u043e\\u0433\\u0438\\u044f\": \"\\u0434\\u0438\\u043d\\u0430\\u043c\\u0438\\u0447\\u0435\\u0441\\u043a\\u0438\\u0435\", \"\\u0421\\u0438\\u0441\\u0442\\u0435\\u043c\\u0430 \\u0430\\u043a\\u0442\\u0438\\u0432\\u043d\\u043e\\u0433\\u043e \\u0448\\u0443\\u043c\\u043e\\u043f\\u043e\\u0434\\u0430\\u0432\\u043b\\u0435\\u043d\\u0438\\u044f (ANC)\": \"\\u0435\\u0441\\u0442\\u044c\"}",
+      "category": 8,
+      "price": 1189.0,
+      "discount": 10,
+      "count": 77,
+      "limited_edition": true,
+      "deleted": false,
+      "tags": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "app_shop.product",
+    "pk": 9,
+    "fields": {
+      "name": "Чехол силиконовый Deppa для AirPods Pro 2 (D-47340) 1.3мм с ремешком Черный",
+      "definition": "Силиконовый чехол Deppa для наушников Apple AirPods Pro 2 - стильное и практичное дополнение для любимого аксессуара.\r\nЧехол для AirPods Pro 2 плотно прилегает к зарядному футляру и надежно защищает его от досадных царапин и сколов, неизбежных при ежедневном активном использовании наушников.\r\nТонкий чехол из высококачественного силикона не препятствует беспроводной зарядке и имеет специальную заглушку для разъема заряда.",
+      "created_at": "2023-04-18T18:04:33.207Z",
+      "characteristics": "{\"\\u0422\\u0438\\u043f \\u0443\\u0441\\u0442\\u0440\\u043e\\u0439\\u0441\\u0442\\u0432\\u0430\": \"\\u0431\\u0435\\u0441\\u043f\\u0440\\u043e\\u0432\\u043e\\u0434\\u043d\\u044b\\u0435 \\u043d\\u0430\\u0443\\u0448\\u043d\\u0438\\u043a\\u0438\", \"\\u041a\\u043e\\u043d\\u0441\\u0442\\u0440\\u0443\\u043a\\u0446\\u0438\\u044f\": \"\\u043f\\u043e\\u043b\\u043d\\u043e\\u0440\\u0430\\u0437\\u043c\\u0435\\u0440\\u043d\\u044b\\u0435\", \"\\u0422\\u0435\\u0445\\u043d\\u043e\\u043b\\u043e\\u0433\\u0438\\u044f\": \"\\u0434\\u0438\\u043d\\u0430\\u043c\\u0438\\u0447\\u0435\\u0441\\u043a\\u0438\\u0435\", \"\\u0421\\u0438\\u0441\\u0442\\u0435\\u043c\\u0430 \\u0430\\u043a\\u0442\\u0438\\u0432\\u043d\\u043e\\u0433\\u043e \\u0448\\u0443\\u043c\\u043e\\u043f\\u043e\\u0434\\u0430\\u0432\\u043b\\u0435\\u043d\\u0438\\u044f (ANC)\": \"\\u0435\\u0441\\u0442\\u044c\"}",
+      "category": 22,
+      "price": 420.0,
+      "discount": 0,
+      "count": 888,
+      "limited_edition": false,
+      "deleted": false,
+      "tags": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "app_shop.product",
+    "pk": 10,
+    "fields": {
+      "name": "Микроволновая печь Tuvio MS8S20SM1, серый/серебристый",
+      "definition": "Tuvio — это бренд удобной бытовой техники для домашней семейной жизни, придуманный в Яндексе.\r\nМикроволновая печь Tuvio станет настоящим помощником на кухне. Кроме привычных разморозки и подогрева, поможет с готовкой (у этой модели повышенная мощность — 800 Вт). Ей можно доверить завтрак, обед и ужин — среди программ автоприготовления найдется всё от каши до пиццы. Еще один приятный бонус — отложенное приготовление. Объем камеры — 20 л. Диаметр поворотной тарелки — 245 мм.",
+      "created_at": "2023-05-04T13:17:12.869Z",
+      "characteristics": "{\"\\u041e\\u0431\\u044a\\u0435\\u043c\": \"20 \\u043b\", \"\\u0420\\u0430\\u0441\\u043f\\u043e\\u043b\\u043e\\u0436\\u0435\\u043d\\u0438\\u0435\": \"\\u043e\\u0442\\u0434\\u0435\\u043b\\u044c\\u043d\\u043e \\u0441\\u0442\\u043e\\u044f\\u0449\\u0430\\u044f\", \"\\u0414\\u0438\\u0430\\u043c\\u0435\\u0442\\u0440 \\u043f\\u043e\\u0434\\u0434\\u043e\\u043d\\u0430\": \"255 \\u043c\\u043c\", \"\\u0412\\u043d\\u0443\\u0442\\u0440\\u0435\\u043d\\u043d\\u0435\\u0435 \\u043f\\u043e\\u043a\\u0440\\u044b\\u0442\\u0438\\u0435 \\u043a\\u0430\\u043c\\u0435\\u0440\\u044b\": \"\\u044d\\u043c\\u0430\\u043b\\u044c\"}",
+      "category": 21,
+      "price": 6990.0,
+      "discount": 21,
+      "count": 500,
+      "limited_edition": false,
+      "deleted": false,
+      "tags": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "app_shop.product",
+    "pk": 11,
+    "fields": {
+      "name": "Холодильник Weissgauff WRK 2000 X Full NoFrost, нержавеющая сталь",
+      "definition": "Отдельностоящий холодильник Weissgauff, выполненный в современном дизайне с фасадом в цвете \"нержавеющая сталь\", обладающий полной системой размораживания Full No Frost и фантастической вместительностью - это соотношение превосходной эргономики внутреннего пространства, технологического совершенства и великолепия внешнего дизайна!\r\nГабариты устройства 595 х 630 х 2010 мм - это оптимальные параметры, при выборе которых инженеры Weissgauff руководствовались целью создать для вас максимально вместительный и функциональный холодильник, который при этом окажется удобен в установке и не будет занимать лишнее место на вашей кухне!",
+      "created_at": "2023-05-04T13:20:29.442Z",
+      "characteristics": "{\"\\u0412\\u044b\\u0441\\u043e\\u0442\\u0430\": \"201 \\u0441\\u043c\", \"\\u0428\\u0438\\u0440\\u0438\\u043d\\u0430\": \"60 \\u0441\\u043c\", \"\\u0413\\u043b\\u0443\\u0431\\u0438\\u043d\\u0430\": \"63 \\u0441\\u043c\", \"\\u041e\\u0431\\u0449\\u0438\\u0439 \\u043e\\u0431\\u044a\\u0435\\u043c\": \"360 \\u043b\"}",
+      "category": 20,
+      "price": 33000.0,
+      "discount": 15,
+      "count": 654,
+      "limited_edition": false,
+      "deleted": false,
+      "tags": [
+        7
+      ]
+    }
+  },
+  {
+    "model": "app_shop.product",
+    "pk": 12,
+    "fields": {
+      "name": "Холодильник Midea MDRD86SLF01 Ретро",
+      "definition": "Холодильник компактный MDRD86SLF01 решит вопрос с хранением продуктовых припасов в офисе, на даче или в гостинице. Вместительность модели составляет 47 л. Модель оснащена отдельной холодильной камерой с низкотемпературной зоной, регулируемыми ножками и перенавешиваемой дверцей. В дверце имеются \"балкончики\" для бутылок с напитками и герметичных упаковок с йогуртами и сырами. Холодильник выглядит стильно и привлекательно. Эффектный дизайн, наличие базового функционала и удобные размеры - главные преимущества модели для повседневной жизни.",
+      "created_at": "2023-05-04T13:30:05.887Z",
+      "characteristics": "{\"\\u0426\\u0432\\u0435\\u0442\": \"\\u0431\\u0435\\u043b\\u044b\\u0439\", \"\\u0428\\u0445\\u0412\\u0445\\u0413\": \"48.50\\u044550\\u044544 \\u0441\\u043c\", \"\\u041e\\u0431\\u0449\\u0438\\u0439 \\u043e\\u0431\\u044a\\u0435\\u043c\": \"47 \\u043b\", \"\\u0420\\u0430\\u0437\\u043c\\u043e\\u0440\\u0430\\u0436\\u0438\\u0432\\u0430\\u043d\\u0438\\u0435 \\u043c\\u043e\\u0440\\u043e\\u0437\\u0438\\u043b\\u044c\\u043d\\u043e\\u0439 \\u043a\\u0430\\u043c\\u0435\\u0440\\u044b\": \"\\u0440\\u0443\\u0447\\u043d\\u043e\\u0435\", \"\\u041a\\u043b\\u0430\\u0441\\u0441 \\u044d\\u043d\\u0435\\u0440\\u0433\\u043e\\u043f\\u043e\\u0442\\u0440\\u0435\\u0431\\u043b\\u0435\\u043d\\u0438\\u044f\": \"A+\", \"\\u041e\\u0431\\u044a\\u0435\\u043c \\u0445\\u043e\\u043b\\u043e\\u0434\\u0438\\u043b\\u044c\\u043d\\u043e\\u0439 \\u043a\\u0430\\u043c\\u0435\\u0440\\u044b\": \"46 \\u043b\", \"\\u0422\\u0438\\u043f \\u043a\\u043e\\u043c\\u043f\\u0440\\u0435\\u0441\\u0441\\u043e\\u0440\\u0430\": \"\\u0441\\u0442\\u0430\\u043d\\u0434\\u0430\\u0440\\u0442\\u043d\\u044b\\u0439\", \"\\u041e\\u0441\\u043e\\u0431\\u0435\\u043d\\u043d\\u043e\\u0441\\u0442\\u0438 \\u043a\\u043e\\u043d\\u0441\\u0442\\u0440\\u0443\\u043a\\u0446\\u0438\\u0438\": \"\\u0430\\u043d\\u0442\\u0438\\u0431\\u0430\\u043a\\u0442\\u0435\\u0440\\u0438\\u0430\\u043b\\u044c\\u043d\\u043e\\u0435 \\u043f\\u043e\\u043a\\u0440\\u044b\\u0442\\u0438\\u0435, \\u0440\\u0443\\u0447\\u043a\\u0430 \\u0441 \\u0442\\u043e\\u043b\\u043a\\u0430\\u0442\\u0435\\u043b\\u0435\\u043c\", \"\\u0414\\u043e\\u043f\\u043e\\u043b\\u043d\\u0438\\u0442\\u0435\\u043b\\u044c\\u043d\\u044b\\u0435 \\u0444\\u0443\\u043d\\u043a\\u0446\\u0438\\u0438\": \"\\u043d\\u0438\\u0437\\u043a\\u043e\\u0442\\u0435\\u043c\\u043f\\u0435\\u0440\\u0430\\u0442\\u0443\\u0440\\u043d\\u043e\\u0435 \\u043e\\u0442\\u0434\\u0435\\u043b\\u0435\\u043d\\u0438\\u0435\"}",
+      "category": 20,
+      "price": 16890.0,
+      "discount": 50,
+      "count": 34,
+      "limited_edition": true,
+      "deleted": false,
+      "tags": [
+        8
+      ]
+    }
+  },
+  {
+    "model": "app_shop.product",
+    "pk": 13,
+    "fields": {
+      "name": "Тестовый товар",
+      "definition": "ТЕстовое описание",
+      "created_at": "2023-05-04T13:32:28.292Z",
+      "characteristics": "{\"\\u041f\\u0430\\u0440\\u0430\\u043c\\u0435\\u0442\\u04401\": \"\\u0435\\u0441\\u0442\\u044c\", \"\\u041f\\u0430\\u0440\\u0430\\u043c\\u0435\\u0442\\u04402\": \"\\u0435\\u0441\\u0442\\u044c\", \"\\u041f\\u0430\\u0440\\u0430\\u043c\\u0435\\u0442\\u04403\": \"\\u0435\\u0441\\u0442\\u044c\", \"\\u041f\\u0430\\u0440\\u0430\\u043c\\u0435\\u0442\\u04404\": \"\\u0435\\u0441\\u0442\\u044c\", \"\\u041f\\u0430\\u0440\\u0430\\u043c\\u0435\\u0442\\u04405\": \"\\u0435\\u0441\\u0442\\u044c\", \"\\u041f\\u0430\\u0440\\u0430\\u043c\\u0435\\u0442\\u04406\": \"\\u0435\\u0441\\u0442\\u044c\", \"\\u041f\\u0430\\u0440\\u0430\\u043c\\u0435\\u0442\\u04407\": \"\\u0435\\u0441\\u0442\\u044c\", \"\\u041f\\u0430\\u0440\\u0430\\u043c\\u0435\\u0442\\u04408\": \"\\u0435\\u0441\\u0442\\u044c\"}",
+      "category": 7,
+      "price": 100.0,
+      "discount": 5,
+      "count": 1,
+      "limited_edition": false,
+      "deleted": true,
+      "tags": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "app_shop.product",
+    "pk": 14,
+    "fields": {
+      "name": "Холодильник Бирюса 70, белый",
+      "definition": "Холодильник Бирюса 70 – компактен и надежен! Устройство создано на основе современного компрессора с малым энергопотреблением и низким уровнем шума. Оно соответствует классу экономичности А+. Вы сможете легко хранить свежие продукты, не опасаясь за нехватку места. Красивый дизайн поможет вписаться в любой интерьер. Полки холодильника выполнены из металла, что позволяет им выдерживать значительные нагрузки. Пользоваться этим холодильником очень просто благодаря удобному электромеханическому управлению.",
+      "created_at": "2023-05-04T13:37:38.327Z",
+      "characteristics": "{\"\\u0428\\u0445\\u0412\\u0445\\u0413\": \"44.50\\u044563\\u044551 \\u0441\\u043c\", \"\\u041e\\u0431\\u0449\\u0438\\u0439 \\u043e\\u0431\\u044a\\u0435\\u043c\": \"67 \\u043b\", \"\\u0420\\u0430\\u0437\\u043c\\u043e\\u0440\\u0430\\u0436\\u0438\\u0432\\u0430\\u043d\\u0438\\u0435\": \"\\u0440\\u0443\\u0447\\u043d\\u043e\\u0435\", \"\\u041a\\u043b\\u0430\\u0441\\u0441 \\u044d\\u043d\\u0435\\u0440\\u0433\\u043e\\u043f\\u043e\\u0442\\u0440\\u0435\\u0431\\u043b\\u0435\\u043d\\u0438\\u044f\": \"A+\", \"\\u041e\\u0431\\u044a\\u0435\\u043c \\u0445\\u043e\\u043b\\u043e\\u0434\\u0438\\u043b\\u044c\\u043d\\u043e\\u0439 \\u043a\\u0430\\u043c\\u0435\\u0440\\u044b\": \"66 \\u043b\", \"\\u0422\\u0438\\u043f \\u043a\\u043e\\u043c\\u043f\\u0440\\u0435\\u0441\\u0441\\u043e\\u0440\\u0430\": \"\\u0441\\u0442\\u0430\\u043d\\u0434\\u0430\\u0440\\u0442\\u043d\\u044b\\u0439\", \"\\u041e\\u0441\\u043e\\u0431\\u0435\\u043d\\u043d\\u043e\\u0441\\u0442\\u0438 \\u043a\\u043e\\u043d\\u0441\\u0442\\u0440\\u0443\\u043a\\u0446\\u0438\\u0438\": \"\\u043f\\u0435\\u0440\\u0435\\u0432\\u0435\\u0448\\u0438\\u0432\\u0430\\u0435\\u043c\\u044b\\u0435 \\u0434\\u0432\\u0435\\u0440\\u0438\", \"\\u0414\\u043e\\u043f\\u043e\\u043b\\u043d\\u0438\\u0442\\u0435\\u043b\\u044c\\u043d\\u044b\\u0435 \\u0444\\u0443\\u043d\\u043a\\u0446\\u0438\\u0438\": \"\\u043b\\u044c\\u0434\\u043e\\u0433\\u0435\\u043d\\u0435\\u0440\\u0430\\u0442\\u043e\\u0440\"}",
+      "category": 20,
+      "price": 8340.0,
+      "discount": 0,
+      "count": 65,
+      "limited_edition": true,
+      "deleted": false,
+      "tags": [
+        9
+      ]
+    }
+  },
+  {
+    "model": "app_shop.product",
+    "pk": 15,
+    "fields": {
+      "name": "Микроволновая печь Tuvio MS7M20WE1, белый",
+      "definition": "Tuvio — это бренд удобной бытовой техники для домашней семейной жизни, придуманный в Яндексе.\r\nМикроволновая печь Tuvio — простая и надежная модель, которая выручит в самых разных ситуациях. Приготовит суп и второе, если вам некогда стоять у плиты. Поддержит ваши кулинарные замыслы — от запекания рыбы до кипячения молока. Объем камеры — 20 л. Диаметр поворотной тарелки — 255 мм.",
+      "created_at": "2023-05-05T10:06:10.347Z",
+      "characteristics": "{\"\\u041e\\u0431\\u044a\\u0435\\u043c\": \"20 \\u043b\", \"\\u041c\\u043e\\u0449\\u043d\\u043e\\u0441\\u0442\\u044c\": \"700 \\u0412\\u0442\", \"\\u0412\\u043d\\u0443\\u0442\\u0440\\u0435\\u043d\\u043d\\u0435\\u0435 \\u043f\\u043e\\u043a\\u0440\\u044b\\u0442\\u0438\\u0435 \\u043a\\u0430\\u043c\\u0435\\u0440\\u044b\": \"\\u044d\\u043c\\u0430\\u043b\\u044c\", \"\\u0414\\u0438\\u0430\\u043c\\u0435\\u0442\\u0440 \\u043f\\u043e\\u0434\\u0434\\u043e\\u043d\\u0430\": \"255 \\u043c\\u043c\", \"\\u041f\\u0435\\u0440\\u0435\\u043a\\u043b\\u044e\\u0447\\u0430\\u0442\\u0435\\u043b\\u0438\": \"\\u043f\\u043e\\u0432\\u043e\\u0440\\u043e\\u0442\\u043d\\u044b\\u0435 \\u043c\\u0435\\u0445\\u0430\\u043d\\u0438\\u0447\\u0435\\u0441\\u043a\\u0438\\u0435\", \"\\u0420\\u0435\\u0436\\u0438\\u043c\\u044b \\u0440\\u0430\\u0431\\u043e\\u0442\\u044b\": \"\\u0440\\u0430\\u0437\\u043c\\u043e\\u0440\\u043e\\u0437\\u043a\\u0430\", \"\\u0414\\u043e\\u043f\\u043e\\u043b\\u043d\\u0438\\u0442\\u0435\\u043b\\u044c\\u043d\\u044b\\u0435 \\u0440\\u0435\\u0436\\u0438\\u043c\\u044b\": \"\\u0437\\u0432\\u0443\\u043a\\u043e\\u0432\\u043e\\u0439 \\u0441\\u0438\\u0433\\u043d\\u0430\\u043b \\u043e\\u0442\\u043a\\u043b\\u044e\\u0447\\u0435\\u043d\\u0438\\u044f\", \"\\u041e\\u0441\\u043e\\u0431\\u0435\\u043d\\u043d\\u043e\\u0441\\u0442\\u0438\": \"\\u043f\\u043e\\u0434\\u0441\\u0432\\u0435\\u0442\\u043a\\u0430 \\u043a\\u0430\\u043c\\u0435\\u0440\\u044b\", \"\\u0428\\u0445\\u0412\\u0445\\u0413\": \"44\\u044525\\u044535 \\u0441\\u043c\"}",
+      "category": 21,
+      "price": 5990.0,
+      "discount": 20,
+      "count": 678,
+      "limited_edition": false,
+      "deleted": false,
+      "tags": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "app_shop.product",
+    "pk": 16,
+    "fields": {
+      "name": "Микроволновая печь LG MS2042DB, черный",
+      "definition": "Микроволновая печь LG MS2042DB со специальным легко очищаемым покрытием оснащена технологией i-Wave, которая позволяет обеспечить проникновение тепла по всей поверхности блюда и равномерное приготовление пищи. Сенсорный дисплей, звуковой сигнал, подсветка камеры и возможность блокировки от детей сделают использование комфортным и безопасным.",
+      "created_at": "2023-05-05T10:17:10.493Z",
+      "characteristics": "{\"\\u041e\\u0431\\u044a\\u0435\\u043c\": \"20 \\u043b\", \"\\u041c\\u043e\\u0449\\u043d\\u043e\\u0441\\u0442\\u044c\": \"700 \\u0412\\u0442\", \"\\u0412\\u043d\\u0443\\u0442\\u0440\\u0435\\u043d\\u043d\\u0435\\u0435 \\u043f\\u043e\\u043a\\u0440\\u044b\\u0442\\u0438\\u0435 \\u043a\\u0430\\u043c\\u0435\\u0440\\u044b\": \"\\u044d\\u043c\\u0430\\u043b\\u044c\", \"\\u0414\\u0438\\u0430\\u043c\\u0435\\u0442\\u0440 \\u043f\\u043e\\u0434\\u0434\\u043e\\u043d\\u0430\": \"245 \\u043c\\u043c\", \"\\u041f\\u0435\\u0440\\u0435\\u043a\\u043b\\u044e\\u0447\\u0430\\u0442\\u0435\\u043b\\u0438\": \"\\u0441\\u0435\\u043d\\u0441\\u043e\\u0440\\u043d\\u044b\\u0435\", \"\\u0420\\u0435\\u0436\\u0438\\u043c\\u044b \\u0440\\u0430\\u0431\\u043e\\u0442\\u044b\": \"\\u0420\\u0430\\u0437\\u043c\\u043e\\u0440\\u043e\\u0437\\u043a\\u0430, \\u0421\\u043e\\u043b\\u043e\", \"\\u0414\\u043e\\u043f\\u043e\\u043b\\u043d\\u0438\\u0442\\u0435\\u043b\\u044c\\u043d\\u044b\\u0435 \\u0440\\u0435\\u0436\\u0438\\u043c\\u044b\": \"\\u0430\\u0432\\u0442\\u043e\\u043c\\u0430\\u0442\\u0438\\u0447\\u0435\\u0441\\u043a\\u0430\\u044f \\u0440\\u0430\\u0437\\u043c\\u043e\\u0440\\u043e\\u0437\\u043a\\u0430, \\u0430\\u0432\\u0442\\u043e\\u043c\\u0430\\u0442\\u0438\\u0447\\u0435\\u0441\\u043a\\u043e\\u0435 \\u043f\\u0440\\u0438\\u0433\\u043e\\u0442\\u043e\\u0432\\u043b\\u0435\\u043d\\u0438\\u0435, \\u0437\\u0432\\u0443\\u043a\\u043e\\u0432\\u043e\\u0439 \\u0441\\u0438\\u0433\\u043d\\u0430\\u043b \\u043e\\u0442\\u043a\\u043b\\u044e\\u0447\\u0435\\u043d\\u0438\\u044f, \\u0443\\u0441\\u043a\\u043e\\u0440\\u0435\\u043d\\u043d\\u0430\\u044f \\u0440\\u0430\\u0437\\u043c\\u043e\\u0440\\u043e\\u0437\\u043a\\u0430\", \"\\u041e\\u0441\\u043e\\u0431\\u0435\\u043d\\u043d\\u043e\\u0441\\u0442\\u0438\": \"\\u0431\\u043b\\u043e\\u043a\\u0438\\u0440\\u043e\\u0432\\u043a\\u0430 \\u043e\\u0442 \\u0434\\u0435\\u0442\\u0435\\u0439, \\u0434\\u0438\\u0441\\u043f\\u043b\\u0435\\u0439, \\u043f\\u043e\\u0434\\u0441\\u0432\\u0435\\u0442\\u043a\\u0430 \\u043a\\u0430\\u043c\\u0435\\u0440\\u044b, \\u0441\\u0438\\u0441\\u0442\\u0435\\u043c\\u0430 \\u0440\\u0430\\u0432\\u043d\\u043e\\u043c\\u0435\\u0440\\u043d\\u043e\\u0433\\u043e \\u0440\\u0430\\u0441\\u043f\\u0440\\u0435\\u0434\\u0435\\u043b\\u0435\\u043d\\u0438\\u044f \\u043c\\u0438\\u043a\\u0440\\u043e\\u0432\\u043e\\u043b\\u043d, \\u0411\\u044b\\u0441\\u0442\\u0440\\u044b\\u0439 \\u0441\\u0442\\u0430\\u0440\\u0442, \\u041f\\u0440\\u043e\\u0433\\u0440\\u0430\\u043c\\u043c\\u0438\\u0440\\u043e\\u0432\\u0430\\u043d\\u0438\\u0435 \\u0440\\u0435\\u0446\\u0435\\u043f\\u0442\\u043e\\u0432, \\u0420\\u0435\\u0436\\u0438\\u043c \\u044d\\u043d\\u0435\\u0440\\u0433\\u043e\\u0441\\u0431\\u0435\\u0440\\u0435\\u0436\\u0435\\u043d\\u0438\\u044f, \\u0421 \\u043f\\u043e\\u0432\\u043e\\u0440\\u043e\\u0442\\u043d\\u044b\\u043c \\u0441\\u0442\\u043e\\u043b\\u043e\\u043c, \\u0422\\u0430\\u0439\\u043c\\u0435\\u0440, \\u0427\\u0430\\u0441\\u044b\", \"\\u0428\\u0445\\u0412\\u0445\\u0413\": \"45.50\\u044528.40\\u044531.20 \\u0441\\u043c\"}",
+      "category": 21,
+      "price": 9090.0,
+      "discount": 0,
+      "count": 53,
+      "limited_edition": true,
+      "deleted": false,
+      "tags": [
+        10
+      ]
+    }
+  },
+  {
+    "model": "app_shop.product",
+    "pk": 17,
+    "fields": {
+      "name": "50” Телевизор Tuvio 4K ULTRA HD DLED на платформе Яндекс.ТВ, STV-50FDUBK1R, черный",
+      "definition": "Tuvio — это бренд удобной бытовой техники для домашней семейной жизни, придуманный в Яндексе. Телевизор Tuvio Frameless 4K Ultra HD DLED 50’’ на платформе Яндекс.ТВ превратит комнату в уютное место для отдыха. Пульт с голосовым управлением сделает поиск нужного контента быстрым и удобным. Вам доступны десятки телеканалов, а также сотни фильмов и сериалов из интернета. Благодаря разрешению 4K Ultra HD и увеличенной яркости 300 кд/м2 привычное видео заиграет новыми красками.",
+      "created_at": "2023-05-05T10:24:53.771Z",
+      "characteristics": "{\"\\u0414\\u0438\\u0430\\u0433\\u043e\\u043d\\u0430\\u043b\\u044c\": \"50 \\u0434\\u044e\\u0439\\u043c\\u043e\\u0432\", \"\\u0420\\u0430\\u0437\\u0440\\u0435\\u0448\\u0435\\u043d\\u0438\\u0435 HD\": \"4K UHD\", \"\\u0422\\u0435\\u0445\\u043d\\u043e\\u043b\\u043e\\u0433\\u0438\\u044f \\u044d\\u043a\\u0440\\u0430\\u043d\\u0430\": \"LED\", \"\\u0427\\u0430\\u0441\\u0442\\u043e\\u0442\\u0430 \\u043e\\u0431\\u043d\\u043e\\u0432\\u043b\\u0435\\u043d\\u0438\\u044f \\u044d\\u043a\\u0440\\u0430\\u043d\\u0430\": \"60 \\u0413\\u0446\", \"\\u042f\\u0440\\u043a\\u043e\\u0441\\u0442\\u044c\": \"300 \\u043a\\u0434/\\u043c\\u00b2\", \"\\u0420\\u0430\\u0437\\u044a\\u0435\\u043c\\u044b \\u0438 \\u0438\\u043d\\u0442\\u0435\\u0440\\u0444\\u0435\\u0439\\u0441\\u044b\": \"AV-\\u0432\\u0445\\u043e\\u0434, Ethernet - RJ-45, USB Type-A x 2, \\u0432\\u0445\\u043e\\u0434 HDMI x 3, \\u0432\\u044b\\u0445\\u043e\\u0434 \\u0430\\u0443\\u0434\\u0438\\u043e \\u0446\\u0438\\u0444\\u0440\\u043e\\u0432\\u043e\\u0439 \\u043e\\u043f\\u0442\\u0438\\u0447\\u0435\\u0441\\u043a\\u0438\\u0439, \\u0441\\u043b\\u043e\\u0442 CI/CI+\", \"\\u0411\\u0435\\u0441\\u043f\\u0440\\u043e\\u0432\\u043e\\u0434\\u043d\\u0430\\u044f \\u0441\\u0432\\u044f\\u0437\\u044c\": \"Bluetooth, Wi-Fi\", \"\\u0413\\u043e\\u0434 \\u0441\\u043e\\u0437\\u0434\\u0430\\u043d\\u0438\\u044f \\u043c\\u043e\\u0434\\u0435\\u043b\\u0438\": \"2023\", \"\\u041f\\u043b\\u0430\\u0442\\u0444\\u043e\\u0440\\u043c\\u0430 Smart TV\": \"\\u042f\\u043d\\u0434\\u0435\\u043a\\u0441 \\u0422\\u0412\", \"\\u042d\\u043a\\u043e\\u0441\\u0438\\u0441\\u0442\\u0435\\u043c\\u0430 \\u0443\\u043c\\u043d\\u043e\\u0433\\u043e \\u0434\\u043e\\u043c\\u0430\": \"\\u0423\\u043c\\u043d\\u044b\\u0439 \\u0434\\u043e\\u043c \\u042f\\u043d\\u0434\\u0435\\u043a\\u0441\\u0430\", \"\\u0420\\u0430\\u0437\\u0440\\u0435\\u0448\\u0435\\u043d\\u0438\\u0435\": \"3840x2160\", \"\\u0422\\u0438\\u043f \\u043c\\u0430\\u0442\\u0440\\u0438\\u0446\\u044b \\u044d\\u043a\\u0440\\u0430\\u043d\\u0430\": \"S-MVA\", \"\\u0422\\u0438\\u043f \\u043f\\u043e\\u0434\\u0441\\u0432\\u0435\\u0442\\u043a\\u0438\": \"Direct LED\", \"\\u0424\\u043e\\u0440\\u043c\\u0430\\u0442\\u044b HDR\": \"HDR10\", \"\\u041c\\u043e\\u0449\\u043d\\u043e\\u0441\\u0442\\u044c \\u0437\\u0432\\u0443\\u043a\\u0430\": \"20 \\u0412\\u0442\"}",
+      "category": 19,
+      "price": 30990.0,
+      "discount": 26,
+      "count": 32,
+      "limited_edition": true,
+      "deleted": false,
+      "tags": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "app_shop.product",
+    "pk": 18,
+    "fields": {
+      "name": "50\" Телевизор Xiaomi TV A2 50 LED, HDR RU, черный",
+      "definition": "Xiaomi TV A2 Series – В серии умных телевизоров Xiaomi TV A2 каждый найдет для себя самый подходящий вариант, ведь они представлены в четырех диагоналях: 32, 43, 50 и 55 дюймов. Независимо от размера, каждый из этих телевизоров предлагает все современные функции Android TV и способен управлять домашней техникой, совместимой с Google Assistant. Рамки вокруг экранов вновь существенно уменьшились, обеспечивая еще более ощутимый эффект присутствия. Благодаря частоте обновления до 60 Гц картинка стала еще плавнее и реалистичнее, а поддержка Dolby Audio, DTS-X и DTS Virtual:X гарантирует максимум удовольствия от качества звука. Как и прежде, центральным элементом является Patchwall – собственная разработка Xiaomi, которая позволяет с удобством объединять все ваши подписки на контент, обеспечивая максимально просом доступ к любимым фильмам, сериалам и телешоу.",
+      "created_at": "2023-05-05T10:30:02.615Z",
+      "characteristics": "{\"\\u0414\\u0438\\u0430\\u0433\\u043e\\u043d\\u0430\\u043b\\u044c\": \"49.5 \\u0434\\u044e\\u0439\\u043c\\u043e\\u0432\", \"\\u0420\\u0430\\u0437\\u0440\\u0435\\u0448\\u0435\\u043d\\u0438\\u0435 HD\": \"4K UHD\", \"\\u0422\\u0435\\u0445\\u043d\\u043e\\u043b\\u043e\\u0433\\u0438\\u044f \\u044d\\u043a\\u0440\\u0430\\u043d\\u0430\": \"HDR, LED\", \"\\u0427\\u0430\\u0441\\u0442\\u043e\\u0442\\u0430 \\u043e\\u0431\\u043d\\u043e\\u0432\\u043b\\u0435\\u043d\\u0438\\u044f \\u044d\\u043a\\u0440\\u0430\\u043d\\u0430\": \"60 \\u0413\\u0446\", \"\\u042f\\u0440\\u043a\\u043e\\u0441\\u0442\\u044c\": \"250 \\u043a\\u0434/\\u043c\\u00b2\", \"\\u0420\\u0430\\u0437\\u044a\\u0435\\u043c\\u044b \\u0438 \\u0438\\u043d\\u0442\\u0435\\u0440\\u0444\\u0435\\u0439\\u0441\\u044b\": \"AV-\\u0432\\u0445\\u043e\\u0434, Ethernet - RJ-45, USB Type-A x 2, \\u0432\\u0445\\u043e\\u0434 HDMI x 3, \\u0432\\u044b\\u0445\\u043e\\u0434 \\u0430\\u0443\\u0434\\u0438\\u043e \\u0446\\u0438\\u0444\\u0440\\u043e\\u0432\\u043e\\u0439 \\u043e\\u043f\\u0442\\u0438\\u0447\\u0435\\u0441\\u043a\\u0438\\u0439, \\u0432\\u044b\\u0445\\u043e\\u0434 \\u043d\\u0430 \\u043d\\u0430\\u0443\\u0448\\u043d\\u0438\\u043a\\u0438, \\u0441\\u043b\\u043e\\u0442 CI\", \"\\u0411\\u0435\\u0441\\u043f\\u0440\\u043e\\u0432\\u043e\\u0434\\u043d\\u0430\\u044f \\u0441\\u0432\\u044f\\u0437\\u044c\": \"Bluetooth, Wi-Fi\", \"\\u041f\\u043b\\u0430\\u0442\\u0444\\u043e\\u0440\\u043c\\u0430 Smart TV\": \"Android TV\", \"\\u0420\\u0430\\u0437\\u0440\\u0435\\u0448\\u0435\\u043d\\u0438\\u0435\": \"3840x2160\", \"\\u0424\\u043e\\u0440\\u043c\\u0430\\u0442\\u044b HDR\": \"Dolby Vision, HDR10, HLG\", \"\\u041c\\u043e\\u0449\\u043d\\u043e\\u0441\\u0442\\u044c \\u0437\\u0432\\u0443\\u043a\\u0430\": \"24 \\u0412\\u0442\"}",
+      "category": 19,
+      "price": 34180.0,
+      "discount": 0,
+      "count": 763,
+      "limited_edition": false,
+      "deleted": false,
+      "tags": [
+        11
+      ]
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 1,
+    "fields": {
+      "title": "Sony Wh1000xm4b.e Black",
+      "image": "images/products/1/2023-04-14_22-38-39.jpeg",
+      "product": 1
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 6,
+    "fields": {
+      "title": "Яндекс Колонка",
+      "image": "images/products/6/1001466460_2.jpeg",
+      "product": 6
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 7,
+    "fields": {
+      "title": "Умная розетка Яндекс с Алисой",
+      "image": "images/products/7/1562415.jpg",
+      "product": 7
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 8,
+    "fields": {
+      "title": "Умный пульт Yandex SmartControl",
+      "image": "images/products/8/pk4f0hqkblg2tcf3nk29gqxiz7zjakn0.jpg",
+      "product": 8
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 9,
+    "fields": {
+      "title": "Чехол силиконовый Deppa для AirPods Pro 2",
+      "image": "images/products/9/44195_big.jpg",
+      "product": 9
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 10,
+    "fields": {
+      "title": "Микроволновая печь Tuvio MS8S20SM1",
+      "image": "images/products/10/2023-05-04_16-16-12.png",
+      "product": 10
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 11,
+    "fields": {
+      "title": "Weissgauff WRK 2000",
+      "image": "images/products/11/orig.jfif",
+      "product": 11
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 12,
+    "fields": {
+      "title": "Midea MDRD86SLF01",
+      "image": "images/products/12/2023-05-04_16-25-36.png",
+      "product": 12
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 13,
+    "fields": {
+      "title": "тест",
+      "image": "images/products/13/orig.jfif",
+      "product": 13
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 14,
+    "fields": {
+      "title": "Бирюса 70",
+      "image": "images/products/14/Бирюса-70.jfif",
+      "product": 14
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 15,
+    "fields": {
+      "title": "Микроволновая печь Tuvio MS7M20WE1",
+      "image": "images/products/15/mikrovolnovaia-pech-tuvio-ms7m20we1.png",
+      "product": 15
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 16,
+    "fields": {
+      "title": "Микроволновая печь LG MS2042DB",
+      "image": "images/products/16/mikrovolnovaia-pech-lg-ms2042db.png",
+      "product": 16
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 17,
+    "fields": {
+      "title": "50-televizor-tuvio-stv-50fdubk1r-2023",
+      "image": "images/products/17/2023-05-05_13-24-28.png",
+      "product": 17
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 18,
+    "fields": {
+      "title": "50-televizor-xiaomi-tv-a2",
+      "image": "images/products/18/2023-05-05_13-29-10.jpg",
+      "product": 18
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 19,
+    "fields": {
+      "title": "Умная розетка Яндекс с Алисой",
+      "image": "images/products/7/я8.jpg",
+      "product": 7
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 20,
+    "fields": {
+      "title": "Умная розетка Яндекс с Алисой",
+      "image": "images/products/7/78OQkvzx0Bm4.jfif",
+      "product": 7
+    }
+  },
+  {
+    "model": "app_shop.productreviews",
+    "pk": 1,
+    "fields": {
+      "product": 6,
+      "buyer": 1,
+      "review": "Особенность TCL 50C635 в использовании матрицы с разрешением 4K Ultra HD, соответствующим 3840x2160. Наряду с технологией Dolby Vision такое разрешение позволяет погрузиться в происходящее на экране, что позволяет использовать телевизор в качестве домашнего кинотеатра или игрового экрана для подключения консолей. Модуль Wi-Fi обеспечивает плавную трансляцию видеопотока, не допуская задержек. Google TV дает возможность насладиться удобным интерфейсом и предоставляет широкие возможности для пользователей.",
+      "created_at": "2023-05-05T14:15:05.522Z",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.productreviews",
+    "pk": 2,
+    "fields": {
+      "product": 7,
+      "buyer": 1,
+      "review": "Какой-то тестовый комментарий",
+      "created_at": "2023-05-06T08:45:25.385Z",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.productreviews",
+    "pk": 3,
+    "fields": {
+      "product": 7,
+      "buyer": 1,
+      "review": "Второй какой-то тестовый комментарий",
+      "created_at": "2023-05-06T10:12:07.275Z",
+      "deleted": false
+    }
+  },
+  {
+    "model": "config.siteconfiguration",
+    "pk": 1,
+    "fields": {
+      "title": "Интернет-магазин Megano - покупки с быстрой доставкой",
+      "description": "Тестовое описание сайта",
+      "site_url": "http://127.0.0.1:8000",
+      "logo_head": "images/logo/logo.png",
+      "logo_footer": "images/logo/logo_footer.png",
+      "shipping_cost": 200,
+      "extra_shipping_cost": 500,
+      "min_order_cost": 2000,
+      "maintenance_mode": false,
+      "selected_products": [
+        22,
+        9,
+        19
+      ]
+    }
   }
-},
-{
-  "model": "admin.logentry",
-  "pk": 2,
-  "fields": {
-    "action_time": "2023-03-28T20:32:02.090Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "2",
-    "object_repr": "Бытовая техника 2",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 3,
-  "fields": {
-    "action_time": "2023-03-28T20:33:45.831Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "3",
-    "object_repr": "Бытовая техника 3",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 4,
-  "fields": {
-    "action_time": "2023-03-28T20:35:18.728Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "4",
-    "object_repr": "Бытовая техника 4",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 5,
-  "fields": {
-    "action_time": "2023-03-28T20:35:53.027Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "5",
-    "object_repr": "Бытовая техника 5",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 6,
-  "fields": {
-    "action_time": "2023-03-28T20:40:38.708Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "6",
-    "object_repr": "Бытовая техника 6",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 7,
-  "fields": {
-    "action_time": "2023-03-28T20:42:14.909Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "2",
-    "object_repr": "Бытовая техника 2",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 8,
-  "fields": {
-    "action_time": "2023-03-28T20:42:14.930Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "6",
-    "object_repr": "Бытовая техника 6",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 9,
-  "fields": {
-    "action_time": "2023-03-28T20:42:36.335Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "1",
-    "object_repr": "Бытовая техника",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 10,
-  "fields": {
-    "action_time": "2023-03-28T20:42:36.369Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "3",
-    "object_repr": "Бытовая техника 3",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 11,
-  "fields": {
-    "action_time": "2023-03-28T20:43:23.867Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "4",
-    "object_repr": "Бытовая техника 4",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 12,
-  "fields": {
-    "action_time": "2023-03-28T20:43:23.899Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "5",
-    "object_repr": "Бытовая техника 5",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 13,
-  "fields": {
-    "action_time": "2023-03-28T20:43:46.769Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "7",
-    "object_repr": "Бытовая техника",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 14,
-  "fields": {
-    "action_time": "2023-03-28T20:44:58.248Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "8",
-    "object_repr": "Электроника",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 15,
-  "fields": {
-    "action_time": "2023-03-28T20:45:15.550Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "9",
-    "object_repr": "Смартфоны",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 16,
-  "fields": {
-    "action_time": "2023-03-30T19:36:01.485Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "10",
-    "object_repr": "Одежда",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 17,
-  "fields": {
-    "action_time": "2023-03-30T19:52:36.433Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "10",
-    "object_repr": "Одежда",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 18,
-  "fields": {
-    "action_time": "2023-04-01T17:16:11.505Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "11",
-    "object_repr": "Бытовая техника",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 19,
-  "fields": {
-    "action_time": "2023-04-01T17:25:50.286Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "11",
-    "object_repr": "Бытовая техника",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 20,
-  "fields": {
-    "action_time": "2023-04-01T18:21:55.468Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "12",
-    "object_repr": "Телевизоры",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 21,
-  "fields": {
-    "action_time": "2023-04-01T19:13:14.208Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "12",
-    "object_repr": "Телевизоры",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 22,
-  "fields": {
-    "action_time": "2023-04-01T19:13:25.489Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "13",
-    "object_repr": "Телевизоры",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 23,
-  "fields": {
-    "action_time": "2023-04-01T19:13:36.938Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "13",
-    "object_repr": "Телевизоры",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 24,
-  "fields": {
-    "action_time": "2023-04-01T19:13:48.605Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "14",
-    "object_repr": "Холодильники",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 25,
-  "fields": {
-    "action_time": "2023-04-01T19:14:16.023Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "15",
-    "object_repr": "Микроволновки",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 26,
-  "fields": {
-    "action_time": "2023-04-01T19:15:02.162Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "15",
-    "object_repr": "Микроволновки",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"URL\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 27,
-  "fields": {
-    "action_time": "2023-04-01T19:15:31.304Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "15",
-    "object_repr": "Микроволновки",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 28,
-  "fields": {
-    "action_time": "2023-04-01T19:15:31.331Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "14",
-    "object_repr": "Холодильники",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 29,
-  "fields": {
-    "action_time": "2023-04-01T19:45:22.968Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "16",
-    "object_repr": "Печи",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 30,
-  "fields": {
-    "action_time": "2023-04-01T19:45:28.455Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "16",
-    "object_repr": "Печи",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 31,
-  "fields": {
-    "action_time": "2023-04-01T19:45:42.632Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "17",
-    "object_repr": "Столы",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 32,
-  "fields": {
-    "action_time": "2023-04-01T19:47:07.370Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "18",
-    "object_repr": "Микроволновки",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 33,
-  "fields": {
-    "action_time": "2023-04-01T19:47:16.445Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "18",
-    "object_repr": "Микроволновки",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 34,
-  "fields": {
-    "action_time": "2023-04-01T19:47:16.459Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "17",
-    "object_repr": "Столы",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 35,
-  "fields": {
-    "action_time": "2023-04-01T19:50:46.764Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "19",
-    "object_repr": "Телевизоры",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 36,
-  "fields": {
-    "action_time": "2023-04-01T19:51:04.392Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "20",
-    "object_repr": "Холодильники",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 37,
-  "fields": {
-    "action_time": "2023-04-02T08:03:04.455Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "21",
-    "object_repr": "Микроволновки",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 38,
-  "fields": {
-    "action_time": "2023-04-02T08:03:15.380Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "22",
-    "object_repr": "Аудио",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 39,
-  "fields": {
-    "action_time": "2023-04-02T08:03:22.283Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "23",
-    "object_repr": "Одежда",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 40,
-  "fields": {
-    "action_time": "2023-04-02T08:03:30.019Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "24",
-    "object_repr": "Книги",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 41,
-  "fields": {
-    "action_time": "2023-04-02T08:03:33.788Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "25",
-    "object_repr": "Мебель",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 42,
-  "fields": {
-    "action_time": "2023-04-02T08:03:38.510Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "26",
-    "object_repr": "Продукты питания",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 43,
-  "fields": {
-    "action_time": "2023-04-02T08:03:44.734Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "27",
-    "object_repr": "Дом и сад",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 44,
-  "fields": {
-    "action_time": "2023-04-02T08:03:50.756Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "28",
-    "object_repr": "Освещение",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 45,
-  "fields": {
-    "action_time": "2023-04-02T08:03:56.130Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "29",
-    "object_repr": "Посуда",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 46,
-  "fields": {
-    "action_time": "2023-04-02T08:04:02.095Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "30",
-    "object_repr": "Красота и здоровье",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 47,
-  "fields": {
-    "action_time": "2023-04-02T08:06:20.542Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "31",
-    "object_repr": "Новая",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 48,
-  "fields": {
-    "action_time": "2023-04-02T08:06:37.515Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "31",
-    "object_repr": "Новая",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 49,
-  "fields": {
-    "action_time": "2023-04-02T08:18:34.327Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "32",
-    "object_repr": "Комиксы",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 50,
-  "fields": {
-    "action_time": "2023-04-02T08:19:18.197Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "32",
-    "object_repr": "Комиксы",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 51,
-  "fields": {
-    "action_time": "2023-04-02T08:19:29.396Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "33",
-    "object_repr": "Комиксы",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 52,
-  "fields": {
-    "action_time": "2023-04-02T08:21:12.605Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "33",
-    "object_repr": "Комиксы",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 53,
-  "fields": {
-    "action_time": "2023-04-02T08:23:42.506Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "34",
-    "object_repr": "Тумбы",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 54,
-  "fields": {
-    "action_time": "2023-04-02T08:24:06.012Z",
-    "user": 1,
-    "content_type": 7,
-    "object_id": "34",
-    "object_repr": "Тумбы",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "auth.user",
-  "pk": 1,
-  "fields": {
-    "password": "pbkdf2_sha256$390000$SmXN9KriRTsDxnQUYw1WKj$y7+pkHzMkULb6drqVqGg9C2sewCbNx9LwU8N3tL60RE=",
-    "last_login": "2023-03-30T19:08:46.770Z",
-    "is_superuser": true,
-    "username": "admin",
-    "first_name": "",
-    "last_name": "",
-    "email": "",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2023-03-28T20:30:30.233Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "sessions.session",
-  "pk": "idyrqnv5zdungqc9c76evti68dmyb50f",
-  "fields": {
-    "session_data": ".eJxVjDEOwjAMRe-SGUV1ojopIztnqOzYIQWUSk07Ie4OlTrA-t97_2VG2tYybk2XcRJzNmBOvxtTemjdgdyp3mab5rouE9tdsQdt9jqLPi-H-3dQqJVvPQRWSNkTDtwhMErPKXegLqp3zklOGNQBSMwkoQ-YPGkmIOSIvjfvD_zgOIo:1phxXb:4ChQgNrWab3vgiMchFtMfl7ndi7hGtihSkgaXeRKq7s",
-    "expire_date": "2023-04-13T19:02:31.379Z"
-  }
-},
-{
-  "model": "sessions.session",
-  "pk": "it1rty56ul7qefozklac0112mrp3skc7",
-  "fields": {
-    "session_data": ".eJxVjDEOwjAMRe-SGUV1ojopIztnqOzYIQWUSk07Ie4OlTrA-t97_2VG2tYybk2XcRJzNmBOvxtTemjdgdyp3mab5rouE9tdsQdt9jqLPi-H-3dQqJVvPQRWSNkTDtwhMErPKXegLqp3zklOGNQBSMwkoQ-YPGkmIOSIvjfvD_zgOIo:1phxde:V_nLGFJUKfdVmmSnP38CwF6s9ZknHZK3clOQlUCUgLY",
-    "expire_date": "2023-04-13T19:08:46.774Z"
-  }
-},
-{
-  "model": "sessions.session",
-  "pk": "u88paxdtzp4ma4sgemd3ucu9gkocawfo",
-  "fields": {
-    "session_data": ".eJxVjDEOwjAMRe-SGUV1ojopIztnqOzYIQWUSk07Ie4OlTrA-t97_2VG2tYybk2XcRJzNmBOvxtTemjdgdyp3mab5rouE9tdsQdt9jqLPi-H-3dQqJVvPQRWSNkTDtwhMErPKXegLqp3zklOGNQBSMwkoQ-YPGkmIOSIvjfvD_zgOIo:1phFxm:A3LUAcd4c9SQd1adAaTO4NgUuMT1rRBaHHa98x3ezD0",
-    "expire_date": "2023-04-11T20:30:38.539Z"
-  }
-},
-{
-  "model": "app_shop.categoryproduct",
-  "pk": 7,
-  "fields": {
-    "title": "Бытовая техника",
-    "slug": "byitovaya-tehnika",
-    "icon": "images/categories/icons/byitovaya-tehnika/appliances.svg",
-    "image": "",
-    "selected": false,
-    "deleted": false,
-    "parent": null,
-    "lft": 1,
-    "rght": 6,
-    "tree_id": 1,
-    "level": 0
-  }
-},
-{
-  "model": "app_shop.categoryproduct",
-  "pk": 8,
-  "fields": {
-    "title": "Электроника",
-    "slug": "elektronika",
-    "icon": "images/categories/icons/elektronika/electronics.svg",
-    "image": "",
-    "selected": false,
-    "deleted": false,
-    "parent": null,
-    "lft": 1,
-    "rght": 8,
-    "tree_id": 12,
-    "level": 0
-  }
-},
-{
-  "model": "app_shop.categoryproduct",
-  "pk": 9,
-  "fields": {
-    "title": "Смартфоны",
-    "slug": "smartfonyi",
-    "icon": "",
-    "image": "",
-    "selected": false,
-    "deleted": false,
-    "parent": 8,
-    "lft": 4,
-    "rght": 5,
-    "tree_id": 12,
-    "level": 1
-  }
-},
-{
-  "model": "app_shop.categoryproduct",
-  "pk": 19,
-  "fields": {
-    "title": "Телевизоры",
-    "slug": "televizoryi",
-    "icon": "",
-    "image": "",
-    "selected": false,
-    "deleted": false,
-    "parent": 8,
-    "lft": 6,
-    "rght": 7,
-    "tree_id": 12,
-    "level": 1
-  }
-},
-{
-  "model": "app_shop.categoryproduct",
-  "pk": 20,
-  "fields": {
-    "title": "Холодильники",
-    "slug": "holodilniki",
-    "icon": "",
-    "image": "",
-    "selected": false,
-    "deleted": false,
-    "parent": 7,
-    "lft": 4,
-    "rght": 5,
-    "tree_id": 1,
-    "level": 1
-  }
-},
-{
-  "model": "app_shop.categoryproduct",
-  "pk": 21,
-  "fields": {
-    "title": "Микроволновки",
-    "slug": "mikrovolnovki",
-    "icon": "",
-    "image": "",
-    "selected": false,
-    "deleted": false,
-    "parent": 7,
-    "lft": 2,
-    "rght": 3,
-    "tree_id": 1,
-    "level": 1
-  }
-},
-{
-  "model": "app_shop.categoryproduct",
-  "pk": 22,
-  "fields": {
-    "title": "Аудио",
-    "slug": "audio",
-    "icon": "",
-    "image": "",
-    "selected": false,
-    "deleted": false,
-    "parent": 8,
-    "lft": 2,
-    "rght": 3,
-    "tree_id": 12,
-    "level": 1
-  }
-},
-{
-  "model": "app_shop.categoryproduct",
-  "pk": 23,
-  "fields": {
-    "title": "Одежда",
-    "slug": "odezhda",
-    "icon": "images/categories/icons/odezhda/clothes-icon.svg",
-    "image": "",
-    "selected": false,
-    "deleted": false,
-    "parent": null,
-    "lft": 1,
-    "rght": 2,
-    "tree_id": 10,
-    "level": 0
-  }
-},
-{
-  "model": "app_shop.categoryproduct",
-  "pk": 24,
-  "fields": {
-    "title": "Книги",
-    "slug": "knigi",
-    "icon": "images/categories/icons/knigi/books-icon.svg",
-    "image": "",
-    "selected": false,
-    "deleted": false,
-    "parent": null,
-    "lft": 1,
-    "rght": 2,
-    "tree_id": 5,
-    "level": 0
-  }
-},
-{
-  "model": "app_shop.categoryproduct",
-  "pk": 25,
-  "fields": {
-    "title": "Мебель",
-    "slug": "mebel",
-    "icon": "images/categories/icons/mebel/furniture-icon.svg",
-    "image": "",
-    "selected": false,
-    "deleted": false,
-    "parent": null,
-    "lft": 1,
-    "rght": 2,
-    "tree_id": 8,
-    "level": 0
-  }
-},
-{
-  "model": "app_shop.categoryproduct",
-  "pk": 26,
-  "fields": {
-    "title": "Продукты питания",
-    "slug": "produktyi-pitaniya",
-    "icon": "images/categories/icons/produktyi-pitaniya/food-icon.svg",
-    "image": "",
-    "selected": false,
-    "deleted": false,
-    "parent": null,
-    "lft": 1,
-    "rght": 2,
-    "tree_id": 11,
-    "level": 0
-  }
-},
-{
-  "model": "app_shop.categoryproduct",
-  "pk": 27,
-  "fields": {
-    "title": "Дом и сад",
-    "slug": "dom-i-sad",
-    "icon": "images/categories/icons/dom-i-sad/house-icon.svg",
-    "image": "",
-    "selected": false,
-    "deleted": false,
-    "parent": null,
-    "lft": 1,
-    "rght": 6,
-    "tree_id": 4,
-    "level": 0
-  }
-},
-{
-  "model": "app_shop.categoryproduct",
-  "pk": 28,
-  "fields": {
-    "title": "Освещение",
-    "slug": "osveschenie",
-    "icon": "",
-    "image": "",
-    "selected": false,
-    "deleted": false,
-    "parent": 27,
-    "lft": 2,
-    "rght": 3,
-    "tree_id": 4,
-    "level": 1
-  }
-},
-{
-  "model": "app_shop.categoryproduct",
-  "pk": 29,
-  "fields": {
-    "title": "Посуда",
-    "slug": "posuda",
-    "icon": "",
-    "image": "",
-    "selected": false,
-    "deleted": false,
-    "parent": 27,
-    "lft": 4,
-    "rght": 5,
-    "tree_id": 4,
-    "level": 1
-  }
-},
-{
-  "model": "app_shop.categoryproduct",
-  "pk": 30,
-  "fields": {
-    "title": "Красота и здоровье",
-    "slug": "krasota-i-zdorove",
-    "icon": "images/categories/icons/krasota-i-zdorove/beauty-and-health-icon.svg",
-    "image": "",
-    "selected": false,
-    "deleted": false,
-    "parent": null,
-    "lft": 1,
-    "rght": 2,
-    "tree_id": 7,
-    "level": 0
-  }
-}
 ]

@@ -15,15 +15,25 @@
               <div class="row-block hide_700">
                   <span class="ControlPanel-title">Follow Us</span>
                 <ul class="menu menu_img menu_smallImg ControlPanel-menu">
-                  <li class="menu-item"><a class="menu-link" href="#"><img src="{% static 'assets/img/icons/socialHeader/fb.svg' %}" alt="fb.svg"/></a>
+                  <li class="menu-item">
+                    <a class="menu-link" href="#">
+                      <img src="{% static 'assets/img/icons/socialHeader/fb.svg' %}" alt="fb.svg"/></a>
                   </li>
-                  <li class="menu-item"><a class="menu-link" href="#"><img src="{% static 'assets/img/icons/socialHeader/tw.svg' %}" alt="tw.svg"/></a>
+                  <li class="menu-item">
+                    <a class="menu-link" href="#">
+                      <img src="{% static 'assets/img/icons/socialHeader/tw.svg' %}" alt="tw.svg"/></a>
                   </li>
-                  <li class="menu-item"><a class="menu-link" href="#"><img src="{% static 'assets/img/icons/socialHeader/in.svg' %}" alt="in.svg"/></a>
+                  <li class="menu-item">
+                    <a class="menu-link" href="#">
+                      <img src="{% static 'assets/img/icons/socialHeader/in.svg' %}" alt="in.svg"/></a>
                   </li>
-                  <li class="menu-item"><a class="menu-link" href="#"><img src="{% static 'assets/img/icons/socialHeader/pt.svg' %}" alt="pt.svg"/></a>
+                  <li class="menu-item">
+                    <a class="menu-link" href="#">
+                      <img src="{% static 'assets/img/icons/socialHeader/pt.svg' %}" alt="pt.svg"/></a>
                   </li>
-                  <li class="menu-item"><a class="menu-link" href="#"><img src="{% static 'assets/img/icons/socialHeader/mail.svg' %}" alt="mail.svg"/></a>
+                  <li class="menu-item">
+                    <a class="menu-link" href="#">
+                      <img src="{% static 'assets/img/icons/socialHeader/mail.svg' %}" alt="mail.svg"/></a>
                   </li>
                 </ul>
               </div>
@@ -63,7 +73,7 @@
           <div class="menuModal" id="navigate">
             <ul class="menu menu_main">
               <li class="menu-item">
-                <a class="menu-link" href="{% url 'shop:main' %}">Home</a>
+                <a class="menu-link" href="{% url 'shop:main' %}">Главная</a>
               </li>
 
               <li class="menu-item">
@@ -71,11 +81,11 @@
               </li>
               <li class="menu-item">
                 <span class="menu-label menu-label_success">Hot</span>
-                <a class="menu-link" href="{% url 'shop:product' %}">Gallery</a>
+                <a class="menu-link" href="#">Gallery</a>
               </li>
 
               <li class="menu-item">
-                <a class="menu-link" href="{% url 'shop:catalog' %}">Purchase</a>
+                <a class="menu-link" href="{% url 'shop:products_list' %}">Каталог</a>
               </li>
             </ul>
           </div>
@@ -110,7 +120,7 @@
             {% if categories_list %}
               {% recursetree categories_list %}
                 <div class="CategoriesButton-link">
-                  <a href="{% url 'shop:products_list_one_category' category_name=node.slug %}">
+                  <a href="{% url 'shop:products_list' group='category' name=node.slug %}">
                     <div class="CategoriesButton-icon">
                       {% if node.icon %}
                         <img src="{{ node.icon.url }}" alt=""/>
@@ -124,7 +134,7 @@
                     <div class="CategoriesButton-submenu">
 
                       {% for item in node.children.all %}
-                        <a class="CategoriesButton-link" href="{% url 'shop:products_list_one_category' category_name=item.slug %}">
+                        <a class="CategoriesButton-link" href="{% url 'shop:products_list' group='category' name=item.slug %}">
                           <div class="CategoriesButton-icon">
                             {% if item.icon %}
                               <img src="{{ item.icon.url }}" alt=""/>
@@ -149,8 +159,7 @@
           <div class="search">
             <form class="form form_search" action="#" method="post">
               <input class="search-input" id="query" name="query" type="text" placeholder="What are you looking for ..."/>
-              <button class="search-button" type="submit" name="search" id="search"><img src="{% static 'assets/img/icons/search.svg' %}" alt="search.svg"/>Search
-              </button>
+              <button class="search-button" type="submit" name="search" id="search"><img src="{% static 'assets/img/icons/search.svg' %}" alt="search.svg"/>Поиск</button>
             </form>
           </div>
         </div>

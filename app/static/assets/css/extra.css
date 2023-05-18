@@ -41,6 +41,7 @@
 .Account-avatar img {
   max-width: 100%;
   max-height: 100%;
+  object-fit: contain;
 }
 .Account-name {
   font-size: 36px;
@@ -387,6 +388,7 @@
 .BannersHomeBlock-title {
   text-transform: uppercase;
   margin-bottom: 18px;
+  font-size: 20px;
   display: block;
   line-height: 1.2em;
 }
@@ -397,7 +399,7 @@
 .BannersHomeBlock-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 @media screen and (max-width: 1200px) {
   .BannersHomeBlock-row {
@@ -739,11 +741,11 @@
   }
 }
 .Card-picture {
-  min-width: 100%;
+  width: 100%;
   overflow: hidden;
   display: flex;
   line-height: 0;
-  min-height: 226px;
+  height: 226px;
   align-items: center;
   justify-content: center;
 }
@@ -757,7 +759,9 @@
 }
 .Card-picture img {
   width: 100%;
+  height: 100%;
   margin: 0;
+  object-fit: contain;
 }
 .Card-date {
   position: absolute;
@@ -873,6 +877,7 @@
   font-size: 20px;
   border-bottom: 2px solid #fafbfc;
   width: 100%;
+  height: 100px;
   padding-bottom: 8px;
   margin-bottom: 3px;
 }
@@ -1981,6 +1986,7 @@ a.Cart-title {
   background-color: #f3f4f9;
   position: relative;
   display: flex;
+  margin-bottom: 30px;
 }
 .Comment-column + .Comment-column {
   margin-left: 23px;
@@ -2043,6 +2049,13 @@ a.Cart-title {
   border-radius: 100px;
   background: #0063d1 url("../img/icons/user_icon.svg") center center no-repeat;
 }
+
+.Comment-avatar-custom {
+  width: 99px;
+  height: 99px;
+  border-radius: 100px;
+}
+
 .Comment-rating {
   position: absolute;
   right: 24px;
@@ -3365,6 +3378,7 @@ a.Cart-title {
 }
 .ProductCard-look {
   width: 51%;
+  max-height: 800px;
   position: relative;
 }
 @media screen and (max-width: 990px) {
@@ -4251,10 +4265,10 @@ a.Cart-title {
   gap: 50px;
 }
 .Section_columnLeft .Section-content {
-  /*padding-left: 354px;*/
+  padding-left: 354px;
 }
 .Section_columnLeft .Section-column {
-  /*margin-right: -304px;*/
+  margin-right: -304px;
 }
 .Section_columnRight .Section-content {
   padding-right: 354px;
@@ -5179,6 +5193,7 @@ a.Cart-title {
 
 .auth-width {
   max-width: 550px;
+  min-width: 450px;
 }
 
 .Profile-register {
@@ -5209,4 +5224,72 @@ a.Cart-title {
 
 .recovery-password-text p {
   font-size: 16px;
+}
+
+.Section-content-centering {
+  justify-content: center;
+}
+
+.registration-form-width {
+  width: 1250px;
+}
+
+.small-text-for-price {
+  font-size: 14px !important;
+  margin-bottom: 16px !important;
+}
+
+.reset-filters-button {
+  display: inline-block;
+  padding-top: 20px;
+}
+
+.Card-left-alignment {
+  justify-content: flex-start;
+}
+
+.button-margin-bottom {
+  margin-bottom: 20px;
+}
+
+.Card-content-custom {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.product_descr {
+  margin-right: 25px;
+}
+
+.pict_mixin {
+  max-height: 250px;
+  max-width: 250px;
+  margin-top: 0 !important;
+  margin-left: 0;
+  flex-shrink: 0;
+}
+
+.login_text {
+  text-align: center;
+}
+
+.register-text {
+  flex-direction: column;
+}
+
+.text-reset {
+  margin: 0;
+}
+
+.btn-blue {
+  background-color: #0063d1;
+  color: #fff;
+}
+
+.btn-blue:hover {
+  background-color: #1c86ff;
+  border-color: #0063d1;
+  transition: all 300ms;
 }

@@ -1,12 +1,10 @@
-from django.urls import path, include
+from django.urls import path, re_path, include
 
 from .views import (
     MainView,
-    ProductsListCategoryView,
     AboutView,
     ProductsSalesView,
     ProductDetailView,
-    CatalogView,
     ShoppingCartView,
     OrderRegistrationView,
     OrderInformationView,
@@ -14,17 +12,26 @@ from .views import (
     PaymentView,
     PaymentWithInvoiceGenerationView,
     ProgressPaymentView,
+    ProductsListView,
+    load_comments,
 )
 
 app_name = 'shop'
 
 urlpatterns = [
     path('', MainView.as_view(), name='main'),  # Главная
-    path('category/<slug:category_name>', ProductsListCategoryView.as_view(), name='products_list_one_category'),  # Товары определенной категории
+    path('catalog/', include([  # Фильтрация товаров по категории / тегу, параметрам фильтрации и сортировка
+        path('', ProductsListView.as_view(), name='products_list'),
+        re_path(r'^(?P<group>.*)/(?P<name>.*)/', ProductsListView.as_view(), name='products_list'),
+        re_path(r'^(?P<group>.*)/(?P<name>.*)/.+', ProductsListView.as_view(), name='products_list'),
+    ])),
     path('about/', AboutView.as_view(), name='about'),  # О магазине
     path('sale/', ProductsSalesView.as_view(), name='sale'),  # Распродаж
-    path('product/', ProductDetailView.as_view(), name='product'),  # Страница товара
-    path('catalog/', CatalogView.as_view(), name='catalog'),  # Каталог товаров
+    path('product/<int:pk>', ProductDetailView.as_view(), name='product_detail'),  # Страница товара
+    path('load_comments/', load_comments, name='load_comments'),  # Загрузка доп.комментариев к товару через кнопку
+
+    # re_path(r'^product/(?P<pk>[0-9]*)/#(?P<tag>.*)', ProductDetailView.as_view(), name='product_detail'),  # Страница товара
+
     path('shopping_cart/', ShoppingCartView.as_view(), name='shopping_cart'),  # Корзина с товарами
     path('order/', include([
         path('registration/', OrderRegistrationView.as_view(), name='order_registration'),  # Регистрация заказа
