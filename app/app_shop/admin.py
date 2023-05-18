@@ -6,7 +6,7 @@ from django.db.models import JSONField
 from mptt.admin import DraggableMPTTAdmin
 from mptt.querysets import TreeQuerySet
 
-from .models import CategoryProduct, Product, ProductTags, ProductImages, ProductReviews
+from .models import CategoryProduct, Product, ProductTags, ProductImages, ProductReviews, Cart
 from .utils.admin.change_status_delete import soft_deletion_child_records
 
 
@@ -202,3 +202,69 @@ class ProductReviewsAdmin(admin.ModelAdmin):
         return obj.product.name
 
     product_name.short_description = 'Товар'
+
+
+@admin.register(Cart)
+class CartAdmin(admin.ModelAdmin):
+    """
+    Админ-панель для карты с товарами пользователя
+    """
+    # readonly_fields = ['buyer', 'product_name']
+
+    list_display = ('id', 'buyer', 'product_name', 'price', 'count', 'discount', 'position_cost')
+    list_display_links = ('id',)
+    search_fields = ('buyer__profile__full_name', 'product__name')
+
+    def product_name(self, obj):
+        """
+        Человекопонятное название товара
+        """
+        limit = 100
+        product_name = obj.product.name
+
+        if len(product_name) > limit:
+            return obj.product.name[:limit] + '...'
+
+        return product_name
+
+    product_name.short_description = 'Товар'
+
+    def price(self, obj):
+        """
+        Цена товара (без учета скидки)
+        """
+        return obj.product.price
+
+    price.short_description = 'Цена, руб'
+
+    def discount(self, obj):
+        """
+        Скидка на товар
+        """
+        return obj.product.discount
+
+    discount.short_description = 'Скидка, %'
+
+    def position_cost(self, obj):
+        """
+        Стоимость позиции товара с учетом скидки и кол-ва товара
+        """
+        return obj.position_cost
+
+    position_cost.short_description = 'Стоимость позиции, руб'
+
+    def get_readonly_fields(self, request, obj=None):
+        """
+        Запрещаем редактиваровать поля с товаром и покупателем
+        """
+        if obj:
+            return ['buyer', 'product_name']
+
+        return self.readonly_fields
+
+    fieldsets = (
+        ('Запись о товаре в корзине', {
+            'fields': ('buyer', 'product_name', 'count'),
+            'description': 'Покупатель, товар и кол-во товара',
+        }),
+    )

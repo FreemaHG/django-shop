@@ -176,3 +176,30 @@ class ProductReviews(models.Model):
 
     def __str__(self):
         return self.product.name
+
+
+class Cart(models.Model):
+    """
+    Корзина с товарами
+    """
+    buyer = models.ForeignKey('app_user.Buyer', on_delete=models.CASCADE, verbose_name='Покупатель')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Товар')
+    count = models.PositiveIntegerField(default=1, verbose_name='Кол-во')
+
+    class Meta:
+        db_table = 'products_cart'
+        verbose_name = 'Корзина'
+        verbose_name_plural = 'Корзина'
+
+    def __str__(self):
+        return f'Корзина покупателя: {self.buyer.profile.full_name}'
+
+    @property
+    def position_cost(self):
+        """
+        Стоимость одной позиции товара с учетом скидки и кол-ва товара (с округлением до целого)
+        """
+        product = self.product
+        price = product.price
+
+        return int((price - (price * (product.discount / 100))) * self.count)

@@ -2782,6 +2782,552 @@
     }
   },
   {
+    "model": "admin.logentry",
+    "pk": 215,
+    "fields": {
+      "action_time": "2023-05-14T09:45:37.076Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Конфигурация сайта",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 216,
+    "fields": {
+      "action_time": "2023-05-14T09:48:49.946Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Конфигурация сайта",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041a\\u044d\\u0448\\u0438\\u0440\\u043e\\u0432\\u0430\\u043d\\u0438\\u0435 (\\u043a\\u043e\\u043b-\\u0432\\u043e \\u0447\\u0430\\u0441\\u043e\\u0432)\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 217,
+    "fields": {
+      "action_time": "2023-05-14T10:25:48.750Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "1",
+      "object_repr": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 218,
+    "fields": {
+      "action_time": "2023-05-14T10:28:03.774Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "1",
+      "object_repr": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 219,
+    "fields": {
+      "action_time": "2023-05-14T10:29:47.882Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "6",
+      "object_repr": "Умная колонка Яндекс Станция Мини с часами с Алисой, черный оникс, 10Вт",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 220,
+    "fields": {
+      "action_time": "2023-05-14T10:30:37.338Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "6",
+      "object_repr": "Умная колонка Яндекс Станция Мини с часами с Алисой, черный оникс, 10Вт",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 221,
+    "fields": {
+      "action_time": "2023-05-14T10:30:54.361Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "1",
+      "object_repr": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 222,
+    "fields": {
+      "action_time": "2023-05-14T10:34:41.830Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "1",
+      "object_repr": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 223,
+    "fields": {
+      "action_time": "2023-05-14T10:38:23.826Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "1",
+      "object_repr": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 224,
+    "fields": {
+      "action_time": "2023-05-14T10:39:05.536Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "1",
+      "object_repr": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 225,
+    "fields": {
+      "action_time": "2023-05-14T10:42:40.413Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "6",
+      "object_repr": "Умная колонка Яндекс Станция Мини с часами с Алисой, черный оникс, 10Вт",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 226,
+    "fields": {
+      "action_time": "2023-05-14T10:45:24.412Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "6",
+      "object_repr": "Умная колонка Яндекс Станция Мини с часами с Алисой, черный оникс, 10Вт",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 227,
+    "fields": {
+      "action_time": "2023-05-14T10:46:22.117Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "6",
+      "object_repr": "Умная колонка Яндекс Станция Мини с часами с Алисой, черный оникс, 10Вт",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 228,
+    "fields": {
+      "action_time": "2023-05-14T10:47:11.268Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "6",
+      "object_repr": "Умная колонка Яндекс Станция Мини с часами с Алисой, черный оникс, 10Вт",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 229,
+    "fields": {
+      "action_time": "2023-05-14T10:47:31.178Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "1",
+      "object_repr": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 230,
+    "fields": {
+      "action_time": "2023-05-14T10:47:38.707Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "6",
+      "object_repr": "Умная колонка Яндекс Станция Мини с часами с Алисой, черный оникс, 10Вт",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 231,
+    "fields": {
+      "action_time": "2023-05-14T10:47:49.567Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "6",
+      "object_repr": "Умная колонка Яндекс Станция Мини с часами с Алисой, черный оникс, 10Вт",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 232,
+    "fields": {
+      "action_time": "2023-05-14T10:50:04.475Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "6",
+      "object_repr": "Умная колонка Яндекс Станция Мини с часами с Алисой, черный оникс, 10Вт",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 233,
+    "fields": {
+      "action_time": "2023-05-14T10:50:24.558Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "6",
+      "object_repr": "Умная колонка Яндекс Станция Мини с часами с Алисой, черный оникс, 10Вт",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 234,
+    "fields": {
+      "action_time": "2023-05-14T10:52:17.907Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "6",
+      "object_repr": "Умная колонка Яндекс Станция Мини с часами с Алисой, черный оникс, 10Вт",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 235,
+    "fields": {
+      "action_time": "2023-05-14T10:54:11.472Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "1",
+      "object_repr": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 236,
+    "fields": {
+      "action_time": "2023-05-14T18:30:14.981Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "1",
+      "object_repr": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"Sony-WH-1000XM4\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"Sony-WH-1000XM4\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"Sony-WH-1000XM4\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 237,
+    "fields": {
+      "action_time": "2023-05-14T18:35:46.741Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "6",
+      "object_repr": "Умная колонка Яндекс Станция Мини с часами с Алисой, черный оникс, 10Вт",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u042f\\u043d\\u0434\\u0435\\u043a\\u0441 \\u0421\\u0442\\u0430\\u043d\\u0446\\u0438\\u044f \\u041c\\u0438\\u043d\\u0438\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u042f\\u043d\\u0434\\u0435\\u043a\\u0441 \\u0421\\u0442\\u0430\\u043d\\u0446\\u0438\\u044f \\u041c\\u0438\\u043d\\u0438\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u042f\\u043d\\u0434\\u0435\\u043a\\u0441 \\u0421\\u0442\\u0430\\u043d\\u0446\\u0438\\u044f \\u041c\\u0438\\u043d\\u0438\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u042f\\u043d\\u0434\\u0435\\u043a\\u0441 \\u0421\\u0442\\u0430\\u043d\\u0446\\u0438\\u044f \\u041c\\u0438\\u043d\\u0438\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 238,
+    "fields": {
+      "action_time": "2023-05-14T18:37:35.756Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "18",
+      "object_repr": "50\" Телевизор Xiaomi TV A2 50 LED, HDR RU, черный",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"Xiaomi TV A2 50\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"Xiaomi TV A2 50\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"Xiaomi TV A2 50\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 239,
+    "fields": {
+      "action_time": "2023-05-14T18:39:32.719Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "17",
+      "object_repr": "50” Телевизор Tuvio 4K ULTRA HD DLED на платформе Яндекс.ТВ, STV-50FDUBK1R, черный",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"Tuvio 4K ULTRA\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"Tuvio 4K ULTRA\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 240,
+    "fields": {
+      "action_time": "2023-05-14T18:41:10.872Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "16",
+      "object_repr": "Микроволновая печь LG MS2042DB, черный",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"LG MS2042DB\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"LG MS2042DB\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 241,
+    "fields": {
+      "action_time": "2023-05-14T18:42:24.824Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "15",
+      "object_repr": "Микроволновая печь Tuvio MS7M20WE1, белый",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"Tuvio MS7M20WE1\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"Tuvio MS7M20WE1\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 242,
+    "fields": {
+      "action_time": "2023-05-14T18:44:38.379Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "14",
+      "object_repr": "Холодильник Бирюса 70, белый",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0425\\u043e\\u043b\\u043e\\u0434\\u0438\\u043b\\u044c\\u043d\\u0438\\u043a \\u0411\\u0438\\u0440\\u044e\\u0441\\u0430 70\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0425\\u043e\\u043b\\u043e\\u0434\\u0438\\u043b\\u044c\\u043d\\u0438\\u043a \\u0411\\u0438\\u0440\\u044e\\u0441\\u0430 70\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0425\\u043e\\u043b\\u043e\\u0434\\u0438\\u043b\\u044c\\u043d\\u0438\\u043a \\u0411\\u0438\\u0440\\u044e\\u0441\\u0430 70\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 243,
+    "fields": {
+      "action_time": "2023-05-14T18:46:17.355Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "12",
+      "object_repr": "Холодильник Midea MDRD86SLF01 Ретро",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0425\\u043e\\u043b\\u043e\\u0434\\u0438\\u043b\\u044c\\u043d\\u0438\\u043a Midea MDRD86SLF01 \\u0420\\u0435\\u0442\\u0440\\u043e\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0425\\u043e\\u043b\\u043e\\u0434\\u0438\\u043b\\u044c\\u043d\\u0438\\u043a Midea MDRD86SLF01 \\u0420\\u0435\\u0442\\u0440\\u043e\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0425\\u043e\\u043b\\u043e\\u0434\\u0438\\u043b\\u044c\\u043d\\u0438\\u043a Midea MDRD86SLF01 \\u0420\\u0435\\u0442\\u0440\\u043e\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 244,
+    "fields": {
+      "action_time": "2023-05-14T18:47:36.755Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "11",
+      "object_repr": "Холодильник Weissgauff WRK 2000 X Full NoFrost, нержавеющая сталь",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0425\\u043e\\u043b\\u043e\\u0434\\u0438\\u043b\\u044c\\u043d\\u0438\\u043a Weissgauff WRK 2000\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0425\\u043e\\u043b\\u043e\\u0434\\u0438\\u043b\\u044c\\u043d\\u0438\\u043a Weissgauff WRK 2000\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0425\\u043e\\u043b\\u043e\\u0434\\u0438\\u043b\\u044c\\u043d\\u0438\\u043a Weissgauff WRK 2000\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 245,
+    "fields": {
+      "action_time": "2023-05-14T18:48:26.190Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "10",
+      "object_repr": "Микроволновая печь Tuvio MS8S20SM1, серый/серебристый",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u041c\\u0438\\u043a\\u0440\\u043e\\u0432\\u043e\\u043b\\u043d\\u043e\\u0432\\u0430\\u044f \\u043f\\u0435\\u0447\\u044c Tuvio MS8S20SM1\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u041c\\u0438\\u043a\\u0440\\u043e\\u0432\\u043e\\u043b\\u043d\\u043e\\u0432\\u0430\\u044f \\u043f\\u0435\\u0447\\u044c Tuvio MS8S20SM1\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 246,
+    "fields": {
+      "action_time": "2023-05-14T18:49:45.245Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "9",
+      "object_repr": "Чехол силиконовый Deppa для AirPods Pro 2 (D-47340) 1.3мм с ремешком Черный",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0435\\u0445\\u043e\\u043b \\u0441\\u0438\\u043b\\u0438\\u043a\\u043e\\u043d\\u043e\\u0432\\u044b\\u0439 Deppa \\u0434\\u043b\\u044f AirPods Pro 2\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0435\\u0445\\u043e\\u043b \\u0441\\u0438\\u043b\\u0438\\u043a\\u043e\\u043d\\u043e\\u0432\\u044b\\u0439 Deppa \\u0434\\u043b\\u044f AirPods Pro 2\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0435\\u0445\\u043e\\u043b \\u0441\\u0438\\u043b\\u0438\\u043a\\u043e\\u043d\\u043e\\u0432\\u044b\\u0439 Deppa \\u0434\\u043b\\u044f AirPods Pro 2\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 247,
+    "fields": {
+      "action_time": "2023-05-14T18:50:49.582Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "8",
+      "object_repr": "Умный пульт Yandex SmartControl",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0423\\u043c\\u043d\\u044b\\u0439 \\u043f\\u0443\\u043b\\u044c\\u0442 Yandex SmartControl\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0423\\u043c\\u043d\\u044b\\u0439 \\u043f\\u0443\\u043b\\u044c\\u0442 Yandex SmartControl\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0423\\u043c\\u043d\\u044b\\u0439 \\u043f\\u0443\\u043b\\u044c\\u0442 Yandex SmartControl\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0423\\u043c\\u043d\\u044b\\u0439 \\u043f\\u0443\\u043b\\u044c\\u0442 Yandex SmartControl\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 248,
+    "fields": {
+      "action_time": "2023-05-14T18:53:13.378Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "13",
+      "object_repr": "Deppa",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 249,
+    "fields": {
+      "action_time": "2023-05-14T18:53:18.412Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "9",
+      "object_repr": "Чехол силиконовый Deppa для AirPods Pro 2 (D-47340) 1.3мм с ремешком Черный",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0422\\u0435\\u0433\\u0438\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 250,
+    "fields": {
+      "action_time": "2023-05-14T19:00:12.062Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "19",
+      "object_repr": "Смартфон Xiaomi 13 12/256 ГБ Global, Dual nano SIM, черный",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0421\\u043c\\u0430\\u0440\\u0442\\u0444\\u043e\\u043d Xiaomi 13\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0421\\u043c\\u0430\\u0440\\u0442\\u0444\\u043e\\u043d Xiaomi 13\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0421\\u043c\\u0430\\u0440\\u0442\\u0444\\u043e\\u043d Xiaomi 13\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0421\\u043c\\u0430\\u0440\\u0442\\u0444\\u043e\\u043d Xiaomi 13\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0421\\u043c\\u0430\\u0440\\u0442\\u0444\\u043e\\u043d Xiaomi 13\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0421\\u043c\\u0430\\u0440\\u0442\\u0444\\u043e\\u043d Xiaomi 13\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 251,
+    "fields": {
+      "action_time": "2023-05-14T19:00:53.780Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "14",
+      "object_repr": "Nothing",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 252,
+    "fields": {
+      "action_time": "2023-05-14T19:04:45.521Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "20",
+      "object_repr": "Смартфон Nothing Phone (1) 8/256 ГБ, Dual nano SIM, черный",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0421\\u043c\\u0430\\u0440\\u0442\\u0444\\u043e\\u043d Nothing Phone\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0421\\u043c\\u0430\\u0440\\u0442\\u0444\\u043e\\u043d Nothing Phone\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0421\\u043c\\u0430\\u0440\\u0442\\u0444\\u043e\\u043d Nothing Phone\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 253,
+    "fields": {
+      "action_time": "2023-05-14T19:06:13.034Z",
+      "user": 1,
+      "content_type": 14,
+      "object_id": "15",
+      "object_repr": "Samsung",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 254,
+    "fields": {
+      "action_time": "2023-05-14T19:09:28.159Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "21",
+      "object_repr": "Смартфон Samsung Galaxy A33 5G 8/128 ГБ, Dual nano SIM, белый",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"Samsung Galaxy A33\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"Samsung Galaxy A33\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"Samsung Galaxy A33\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"Samsung Galaxy A33\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"Samsung Galaxy A33\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"Samsung Galaxy A33\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 255,
+    "fields": {
+      "action_time": "2023-05-14T19:18:53.521Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "22",
+      "object_repr": "Смартфон Apple iPhone 14 Pro Max 128 ГБ, Dual: nano SIM + eSIM, глубокий фиолетовый",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"Apple iPhone 14 Pro Max\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"Apple iPhone 14 Pro Max\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"Apple iPhone 14 Pro Max\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"Apple iPhone 14 Pro Max\"}}, {\"added\": {\"name\": \"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"Apple iPhone 14 Pro Max\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 256,
+    "fields": {
+      "action_time": "2023-05-15T20:13:47.845Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "7",
+      "object_repr": "Умная розетка Яндекс с Алисой, черный",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"\\u041e\\u0442\\u0437\\u044b\\u0432 \\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0435\", \"object\": \"\\u0423\\u043c\\u043d\\u0430\\u044f \\u0440\\u043e\\u0437\\u0435\\u0442\\u043a\\u0430 \\u042f\\u043d\\u0434\\u0435\\u043a\\u0441 \\u0441 \\u0410\\u043b\\u0438\\u0441\\u043e\\u0439, \\u0447\\u0435\\u0440\\u043d\\u044b\\u0439\"}}, {\"added\": {\"name\": \"\\u041e\\u0442\\u0437\\u044b\\u0432 \\u043e \\u0442\\u043e\\u0432\\u0430\\u0440\\u0435\", \"object\": \"\\u0423\\u043c\\u043d\\u0430\\u044f \\u0440\\u043e\\u0437\\u0435\\u0442\\u043a\\u0430 \\u042f\\u043d\\u0434\\u0435\\u043a\\u0441 \\u0441 \\u0410\\u043b\\u0438\\u0441\\u043e\\u0439, \\u0447\\u0435\\u0440\\u043d\\u044b\\u0439\"}}]"
+    }
+  },
+  {
     "model": "auth.permission",
     "pk": 1,
     "fields": {
@@ -3326,7 +3872,7 @@
     "pk": 1,
     "fields": {
       "password": "pbkdf2_sha256$390000$SmXN9KriRTsDxnQUYw1WKj$y7+pkHzMkULb6drqVqGg9C2sewCbNx9LwU8N3tL60RE=",
-      "last_login": "2023-05-02T11:40:22Z",
+      "last_login": "2023-05-17T19:22:11.581Z",
       "is_superuser": true,
       "username": "admin",
       "first_name": "",
@@ -3621,6 +4167,14 @@
     "fields": {
       "session_data": ".eJxVjEEOgyAQRe_CuiEORLBddt8zkGEY1GogAVw0Te9eTdy4_e-9_xUr1uYIG4-5fMRD8MpLKznNC4qbcLi1yW2Vi5vDTuG6eaSF0wHCG9OYJeXUyuzlociTVvnKgdfn6V4OJqzTXt-tZ6Co0dx9Z8Cb0HuKHbAaWCulQiRjWQGEIWKwvTWkkSMCGj8Y3YvfHwHeQ4I:1pu8Hx:he0JDNOOE0cwNmRIFdYwEdGHplitCqTzR4v13KcOvgA",
       "expire_date": "2023-05-17T08:56:41.865Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "o4nlq5aroqf8ine1rtm513jzewhn9jxp",
+    "fields": {
+      "session_data": ".eJxVjDEOwjAMRe-SGUV1ojopIztnqOzYIQWUSk07Ie4OlTrA-t97_2VG2tYybk2XcRJzNmBOvxtTemjdgdyp3mab5rouE9tdsQdt9jqLPi-H-3dQqJVvPQRWSNkTDtwhMErPKXegLqp3zklOGNQBSMwkoQ-YPGkmIOSIvjfvD_zgOIo:1pzMix:4PTfhI6vhg5JHQoOLVFGt-ym6ViT-50ZQ6Vtu_6yMeY",
+      "expire_date": "2023-05-31T19:22:11.587Z"
     }
   },
   {
@@ -4065,6 +4619,33 @@
     }
   },
   {
+    "model": "app_shop.producttags",
+    "pk": 13,
+    "fields": {
+      "name": "Deppa",
+      "slug": "deppa",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.producttags",
+    "pk": 14,
+    "fields": {
+      "name": "Nothing",
+      "slug": "nothing",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.producttags",
+    "pk": 15,
+    "fields": {
+      "name": "Samsung",
+      "slug": "samsung",
+      "deleted": false
+    }
+  },
+  {
     "model": "app_shop.product",
     "pk": 1,
     "fields": {
@@ -4157,7 +4738,7 @@
       "limited_edition": false,
       "deleted": false,
       "tags": [
-        2
+        13
       ]
     }
   },
@@ -4333,6 +4914,82 @@
     }
   },
   {
+    "model": "app_shop.product",
+    "pk": 19,
+    "fields": {
+      "name": "Смартфон Xiaomi 13 12/256 ГБ Global, Dual nano SIM, черный",
+      "definition": "Xiaomi 13 хорош как внешне, так и на ощупь. Сдержанные линии корпуса и округлые углы подчеркивают его простую красоту, а вертикальная рама из глянцевого металла добавляет элегантный штрих к общему образу. При этом сверхтонкий корпус толщиной около 8 мм легко умещается в ладони, а различные текстуры покрытия позволяют найти свой собственный стиль. Выбирайте вариант телефона с матовой стеклянной панелью или покрытием из новой нано-кожи, более устойчивой к царапинам и грязи, и наслаждайтесь каждым прикосновением к нему.",
+      "created_at": "2023-05-14T19:00:12.027Z",
+      "characteristics": "{\"\\u042d\\u043a\\u0440\\u0430\\u043d\": \"6.36 (2400x1080) OLED 120 \\u0413\\u0446\", \"\\u041f\\u0430\\u043c\\u044f\\u0442\\u044c\": \"\\u0432\\u0441\\u0442\\u0440\\u043e\\u0435\\u043d\\u043d\\u0430\\u044f 256 \\u0413\\u0411, \\u043e\\u043f\\u0435\\u0440\\u0430\\u0442\\u0438\\u0432\\u043d\\u0430\\u044f 12 \\u0413\\u0411\", \"\\u0424\\u043e\\u0442\\u043e\": \"3 \\u043a\\u0430\\u043c\\u0435\\u0440\\u044b, \\u043e\\u0441\\u043d\\u043e\\u0432\\u043d\\u0430\\u044f 50 \\u041c\\u041f\", \"\\u0410\\u043a\\u043a\\u0443\\u043c\\u0443\\u043b\\u044f\\u0442\\u043e\\u0440\": \"4500 \\u043c\\u0410\\u00b7\\u0447\", \"\\u041f\\u0440\\u043e\\u0446\\u0435\\u0441\\u0441\\u043e\\u0440\": \"Qualcomm Snapdragon 8 Gen2\", \"SIM-\\u043a\\u0430\\u0440\\u0442\\u044b\": \"Dual nano SIM\", \"\\u041e\\u043f\\u0435\\u0440\\u0430\\u0446\\u0438\\u043e\\u043d\\u043d\\u0430\\u044f \\u0441\\u0438\\u0441\\u0442\\u0435\\u043c\\u0430\": \"Android 13\", \"\\u0411\\u0435\\u0441\\u043f\\u0440\\u043e\\u0432\\u043e\\u0434\\u043d\\u044b\\u0435 \\u0438\\u043d\\u0442\\u0435\\u0440\\u0444\\u0435\\u0439\\u0441\\u044b\": \"Bluetooth, NFC, Wi-Fi, \\u0438\\u043d\\u0444\\u0440\\u0430\\u043a\\u0440\\u0430\\u0441\\u043d\\u044b\\u0439 \\u043f\\u043e\\u0440\\u0442 (IRDA)\", \"\\u0421\\u0442\\u0430\\u043d\\u0434\\u0430\\u0440\\u0442 \\u0441\\u0432\\u044f\\u0437\\u0438\": \"2G, 3G, 4G LTE, 5G\", \"\\u0421\\u0442\\u0435\\u043f\\u0435\\u043d\\u044c \\u0437\\u0430\\u0449\\u0438\\u0442\\u044b\": \"IP68\", \"\\u0412\\u0435\\u0441\": \"189 \\u0433\"}",
+      "category": 9,
+      "price": 65690.0,
+      "discount": 0,
+      "count": 65,
+      "limited_edition": true,
+      "deleted": false,
+      "tags": [
+        11
+      ]
+    }
+  },
+  {
+    "model": "app_shop.product",
+    "pk": 20,
+    "fields": {
+      "name": "Смартфон Nothing Phone (1) 8/256 ГБ, Dual nano SIM, черный",
+      "definition": "Компания Nothing, которую некогда сооснователь OnePlus Карл Пей открыл в Лондоне, официально представила свой первый смартфон Nothing Phone (1)\r\nГлавной фишкой Nothing Phone (1) является задняя полупрозрачная крышка с подсветкой под названием Glyph. Ее можно гибко настраивать в зависимости от ситуации — звонков, SMS, уведомлений и так далее.",
+      "created_at": "2023-05-14T19:04:45.504Z",
+      "characteristics": "{\"\\u042d\\u043a\\u0440\\u0430\\u043d\": \"6.55 (2400x1080) OLED 120 \\u0413\\u0446\", \"\\u041f\\u0430\\u043c\\u044f\\u0442\\u044c\": \"\\u0432\\u0441\\u0442\\u0440\\u043e\\u0435\\u043d\\u043d\\u0430\\u044f 256 \\u0413\\u0411, \\u043e\\u043f\\u0435\\u0440\\u0430\\u0442\\u0438\\u0432\\u043d\\u0430\\u044f 8 \\u0413\\u0411\", \"\\u0424\\u043e\\u0442\\u043e\": \"\\u0434\\u0432\\u043e\\u0439\\u043d\\u0430\\u044f \\u043a\\u0430\\u043c\\u0435\\u0440\\u0430, \\u043e\\u0441\\u043d\\u043e\\u0432\\u043d\\u0430\\u044f 50 \\u041c\\u041f\", \"\\u0410\\u043a\\u043a\\u0443\\u043c\\u0443\\u043b\\u044f\\u0442\\u043e\\u0440\": \"4500 \\u043c\\u0410\\u00b7\\u0447\", \"\\u041f\\u0440\\u043e\\u0446\\u0435\\u0441\\u0441\\u043e\\u0440\": \"Qualcomm Snapdragon 778G Plus\", \"SIM-\\u043a\\u0430\\u0440\\u0442\\u044b\": \"Dual nano SIM\", \"\\u041e\\u043f\\u0435\\u0440\\u0430\\u0446\\u0438\\u043e\\u043d\\u043d\\u0430\\u044f \\u0441\\u0438\\u0441\\u0442\\u0435\\u043c\\u0430\": \"Android 12\", \"\\u0421\\u0442\\u0430\\u043d\\u0434\\u0430\\u0440\\u0442 \\u0441\\u0432\\u044f\\u0437\\u0438\": \"2G, 3G, 4G LTE, 5G\", \"\\u0411\\u0435\\u0441\\u043f\\u0440\\u043e\\u0432\\u043e\\u0434\\u043d\\u044b\\u0435 \\u0438\\u043d\\u0442\\u0435\\u0440\\u0444\\u0435\\u0439\\u0441\\u044b\": \"Bluetooth, NFC, Wi-Fi\", \"\\u0421\\u0442\\u0435\\u043f\\u0435\\u043d\\u044c \\u0437\\u0430\\u0449\\u0438\\u0442\\u044b\": \"IP53\", \"\\u0412\\u0435\\u0441\": \"193.5 \\u0433\"}",
+      "category": 9,
+      "price": 35990.0,
+      "discount": 9,
+      "count": 66,
+      "limited_edition": true,
+      "deleted": false,
+      "tags": [
+        14
+      ]
+    }
+  },
+  {
+    "model": "app_shop.product",
+    "pk": 21,
+    "fields": {
+      "name": "Смартфон Samsung Galaxy A33 5G 8/128 ГБ, Dual nano SIM, белый",
+      "definition": "Меньше значит больше. Galaxy A33 5G теперь тоньше и элегантнее. Матовый корпус с обновленной рамкой и узнаваемым блоком камер скрывает мощный функционал устройства.\r\nСмартфон, о котором не стоит переживать. Защита от воды и пыли по стандарту IP67 позволяет выдержать пребывание в пресной воде на глубине до 1 м до 30 минут. А защитное покрытие стекла Gorilla Glass 5 делает твой смартфон еще крепче и устойчивее к царапинам.",
+      "created_at": "2023-05-14T19:09:28.134Z",
+      "characteristics": "{\"\\u042d\\u043a\\u0440\\u0430\\u043d\": \"6.4 (2400x1080) Super AMOLED 90 \\u0413\\u0446\", \"\\u041f\\u0430\\u043c\\u044f\\u0442\\u044c\": \"\\u0432\\u0441\\u0442\\u0440\\u043e\\u0435\\u043d\\u043d\\u0430\\u044f 128 \\u0413\\u0411, \\u043e\\u043f\\u0435\\u0440\\u0430\\u0442\\u0438\\u0432\\u043d\\u0430\\u044f 8 \\u0413\\u0411\", \"\\u0424\\u043e\\u0442\\u043e\": \"4 \\u043a\\u0430\\u043c\\u0435\\u0440\\u044b, \\u043e\\u0441\\u043d\\u043e\\u0432\\u043d\\u0430\\u044f 48 \\u041c\\u041f\", \"\\u0410\\u043a\\u043a\\u0443\\u043c\\u0443\\u043b\\u044f\\u0442\\u043e\\u0440\": \"5000 \\u043c\\u0410\\u00b7\\u0447\", \"SIM-\\u043a\\u0430\\u0440\\u0442\\u044b\": \"Dual nano SIM\", \"\\u041e\\u043f\\u0435\\u0440\\u0430\\u0446\\u0438\\u043e\\u043d\\u043d\\u0430\\u044f \\u0441\\u0438\\u0441\\u0442\\u0435\\u043c\\u0430\": \"Android 12\", \"\\u0411\\u0435\\u0441\\u043f\\u0440\\u043e\\u0432\\u043e\\u0434\\u043d\\u044b\\u0435 \\u0438\\u043d\\u0442\\u0435\\u0440\\u0444\\u0435\\u0439\\u0441\\u044b\": \"Bluetooth, NFC, Wi-Fi\", \"\\u0421\\u0442\\u0430\\u043d\\u0434\\u0430\\u0440\\u0442 \\u0441\\u0432\\u044f\\u0437\\u0438\": \"2G, 3G, 4G LTE, 5G\", \"\\u0421\\u0442\\u0435\\u043f\\u0435\\u043d\\u044c \\u0437\\u0430\\u0449\\u0438\\u0442\\u044b\": \"IP67\", \"\\u0412\\u0435\\u0441\": \"186 \\u0433\"}",
+      "category": 9,
+      "price": 23090.0,
+      "discount": 0,
+      "count": 432,
+      "limited_edition": false,
+      "deleted": false,
+      "tags": [
+        15
+      ]
+    }
+  },
+  {
+    "model": "app_shop.product",
+    "pk": 22,
+    "fields": {
+      "name": "Смартфон Apple iPhone 14 Pro Max 128 ГБ, Dual: nano SIM + eSIM, глубокий фиолетовый",
+      "definition": "Новый волшебный способ взаимодействия с iPhone.\r\nНоваторские функции безопасности, призванные спасать жизни.\r\nИнновационная 48-мегапиксельная камера для потрясающей детализации.\r\nВсе они оснащены новейшим чипом для смартфонов.\r\nС керамическим экраном, более прочным, чем стекло любого смартфона. Водонепроницаемость. Нержавеющая сталь хирургического класса.\r\nПредставляем Dynamic Island, по-настоящему инновационную разработку Apple, состоящую из аппаратного и программного обеспечения. Он воспроизводит музыку, спортивные результаты, FaceTime и многое другое — и все это, не отвлекая вас от того, что вы делаете.",
+      "created_at": "2023-05-14T19:18:53.493Z",
+      "characteristics": "{\"\\u042d\\u043a\\u0440\\u0430\\u043d\": \"6.7 (2796x1290) OLED 120 \\u0413\\u0446\", \"\\u041f\\u0430\\u043c\\u044f\\u0442\\u044c\": \"\\u0432\\u0441\\u0442\\u0440\\u043e\\u0435\\u043d\\u043d\\u0430\\u044f 128 \\u0413\\u0411, \\u043e\\u043f\\u0435\\u0440\\u0430\\u0442\\u0438\\u0432\\u043d\\u0430\\u044f 6 \\u0413\\u0411\", \"\\u0424\\u043e\\u0442\\u043e\": \"3 \\u043a\\u0430\\u043c\\u0435\\u0440\\u044b, \\u043e\\u0441\\u043d\\u043e\\u0432\\u043d\\u0430\\u044f 48 \\u041c\\u041f\", \"\\u0410\\u043a\\u043a\\u0443\\u043c\\u0443\\u043b\\u044f\\u0442\\u043e\\u0440\": \"4323 \\u043c\\u0410\\u00b7\\u0447\", \"\\u041f\\u0440\\u043e\\u0446\\u0435\\u0441\\u0441\\u043e\\u0440\": \"Apple A16 Bionic\", \"SIM-\\u043a\\u0430\\u0440\\u0442\\u044b\": \"Dual: nano SIM + eSIM\", \"\\u041e\\u043f\\u0435\\u0440\\u0430\\u0446\\u0438\\u043e\\u043d\\u043d\\u0430\\u044f \\u0441\\u0438\\u0441\\u0442\\u0435\\u043c\\u0430\": \"iOS 16\", \"\\u0421\\u0442\\u0430\\u043d\\u0434\\u0430\\u0440\\u0442 \\u0441\\u0432\\u044f\\u0437\\u0438\": \"2G, 3G, 4G LTE, 5G\", \"\\u0411\\u0435\\u0441\\u043f\\u0440\\u043e\\u0432\\u043e\\u0434\\u043d\\u044b\\u0435 \\u0438\\u043d\\u0442\\u0435\\u0440\\u0444\\u0435\\u0439\\u0441\\u044b\": \"Bluetooth, NFC, Wi-Fi\", \"\\u0421\\u0442\\u0435\\u043f\\u0435\\u043d\\u044c \\u0437\\u0430\\u0449\\u0438\\u0442\\u044b\": \"IP68\", \"\\u0412\\u0435\\u0441\": \"240 \\u0433\"}",
+      "category": 9,
+      "price": 104990.0,
+      "discount": 9,
+      "count": 99,
+      "limited_edition": true,
+      "deleted": false,
+      "tags": [
+        1
+      ]
+    }
+  },
+  {
     "model": "app_shop.productimages",
     "pk": 1,
     "fields": {
@@ -4477,6 +5134,492 @@
     }
   },
   {
+    "model": "app_shop.productimages",
+    "pk": 21,
+    "fields": {
+      "title": "Sony-WH-1000XM4",
+      "image": "images/products/1/Sony-WH-1000XM4-wooden-bench.jpg",
+      "product": 1
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 22,
+    "fields": {
+      "title": "Sony-WH-1000XM4",
+      "image": "images/products/1/bzNJzx8SCgADSAHRRQinY.jpg",
+      "product": 1
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 23,
+    "fields": {
+      "title": "Sony-WH-1000XM4",
+      "image": "images/products/1/sony-wh1000xm3-headphones.jpg",
+      "product": 1
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 24,
+    "fields": {
+      "title": "Яндекс Станция Мини",
+      "image": "images/products/6/7eWIb1UVizKVoxSntDjnZg.jfif",
+      "product": 6
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 25,
+    "fields": {
+      "title": "Яндекс Станция Мини",
+      "image": "images/products/6/_DSC6115.jpg",
+      "product": 6
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 26,
+    "fields": {
+      "title": "Яндекс Станция Мини",
+      "image": "images/products/6/4.jpg",
+      "product": 6
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 27,
+    "fields": {
+      "title": "Яндекс Станция Мини",
+      "image": "images/products/6/sun8e2dtmxlz1agwciw09a328fs5jlgu.jpg",
+      "product": 6
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 28,
+    "fields": {
+      "title": "Xiaomi TV A2 50",
+      "image": "images/products/18/18edbaa9a554aef91e64f69f9ad3cd6d-1536x812.webp",
+      "product": 18
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 29,
+    "fields": {
+      "title": "Xiaomi TV A2 50",
+      "image": "images/products/18/xiaomimitvq1752-870x441.jpg",
+      "product": 18
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 30,
+    "fields": {
+      "title": "Xiaomi TV A2 50",
+      "image": "images/products/18/mi-tv-nuevas-1.jpg",
+      "product": 18
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 31,
+    "fields": {
+      "title": "Tuvio 4K ULTRA",
+      "image": "images/products/17/1152810389fac7ed5d86174053b47dab925aaa16.jpg",
+      "product": 17
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 32,
+    "fields": {
+      "title": "Tuvio 4K ULTRA",
+      "image": "images/products/17/1619860260065_bulletin.jfif",
+      "product": 17
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 33,
+    "fields": {
+      "title": "LG MS2042DB",
+      "image": "images/products/16/lg-ms2042darb_9.jpg",
+      "product": 16
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 34,
+    "fields": {
+      "title": "LG MS2042DB",
+      "image": "images/products/16/norm.jpg",
+      "product": 16
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 35,
+    "fields": {
+      "title": "Tuvio MS7M20WE1",
+      "image": "images/products/15/orig_1.webp",
+      "product": 15
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 36,
+    "fields": {
+      "title": "Tuvio MS7M20WE1",
+      "image": "images/products/15/orig.webp",
+      "product": 15
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 37,
+    "fields": {
+      "title": "Холодильник Бирюса 70",
+      "image": "images/products/14/82935_e79e2e0c43df9038abeeb053f9db9303_.jpg",
+      "product": 14
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 38,
+    "fields": {
+      "title": "Холодильник Бирюса 70",
+      "image": "images/products/14/566264_4.webp",
+      "product": 14
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 39,
+    "fields": {
+      "title": "Холодильник Бирюса 70",
+      "image": "images/products/14/ngvuhrzjqyjzk3t0426lgm243f81bva2.jpg",
+      "product": 14
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 40,
+    "fields": {
+      "title": "Холодильник Midea MDRD86SLF01 Ретро",
+      "image": "images/products/12/orig.webp",
+      "product": 12
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 41,
+    "fields": {
+      "title": "Холодильник Midea MDRD86SLF01 Ретро",
+      "image": "images/products/12/202cb962ac59075b964b07152d234b702021081412153595875G3N0PLXN9p.jpg.webp",
+      "product": 12
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 42,
+    "fields": {
+      "title": "Холодильник Midea MDRD86SLF01 Ретро",
+      "image": "images/products/12/580777_2.webp",
+      "product": 12
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 43,
+    "fields": {
+      "title": "Холодильник Weissgauff WRK 2000",
+      "image": "images/products/11/ab06f9bb9252f6be176a14b14c9cf518.jfif",
+      "product": 11
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 44,
+    "fields": {
+      "title": "Холодильник Weissgauff WRK 2000",
+      "image": "images/products/11/zZ2l9waWN0dXJlOF9pZDE2NTg4NC5qcGcjKiMqIyojMTYwMCMqIyojKiMxNjAwIyojKiMqI2dvbRz.jpg",
+      "product": 11
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 45,
+    "fields": {
+      "title": "Холодильник Weissgauff WRK 2000",
+      "image": "images/products/11/oad-resize_cache-iblock-668-6c4-1900_563_1-2-800x800.jpg",
+      "product": 11
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 46,
+    "fields": {
+      "title": "Микроволновая печь Tuvio MS8S20SM1",
+      "image": "images/products/10/mikrovolnovaya_pech_solo_lg_ms_2042db_1586838819_1.jpg",
+      "product": 10
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 47,
+    "fields": {
+      "title": "Микроволновая печь Tuvio MS8S20SM1",
+      "image": "images/products/10/614701_2-201811271458.jpg",
+      "product": 10
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 48,
+    "fields": {
+      "title": "ехол силиконовый Deppa для AirPods Pro 2",
+      "image": "images/products/9/100024045189b1.webp",
+      "product": 9
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 49,
+    "fields": {
+      "title": "ехол силиконовый Deppa для AirPods Pro 2",
+      "image": "images/products/9/600x800.webp",
+      "product": 9
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 50,
+    "fields": {
+      "title": "ехол силиконовый Deppa для AirPods Pro 2",
+      "image": "images/products/9/HTB198Laa.vrK1RjSszfq6xJNVXah.jpg",
+      "product": 9
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 51,
+    "fields": {
+      "title": "Умный пульт Yandex SmartControl",
+      "image": "images/products/8/umnyy_pult_yandeksa_1601528754_4.jpg",
+      "product": 8
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 52,
+    "fields": {
+      "title": "Умный пульт Yandex SmartControl",
+      "image": "images/products/8/maxresdefault.jpg",
+      "product": 8
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 53,
+    "fields": {
+      "title": "Умный пульт Yandex SmartControl",
+      "image": "images/products/8/1198441_d01_b.jpg",
+      "product": 8
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 54,
+    "fields": {
+      "title": "Умный пульт Yandex SmartControl",
+      "image": "images/products/8/umnyy_pult_yandeksa_1588569147_1.jpg",
+      "product": 8
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 55,
+    "fields": {
+      "title": "Смартфон Xiaomi 13",
+      "image": "images/products/19/orig_5.webp",
+      "product": 19
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 56,
+    "fields": {
+      "title": "Смартфон Xiaomi 13",
+      "image": "images/products/19/orig_4.webp",
+      "product": 19
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 57,
+    "fields": {
+      "title": "Смартфон Xiaomi 13",
+      "image": "images/products/19/orig_3.webp",
+      "product": 19
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 58,
+    "fields": {
+      "title": "Смартфон Xiaomi 13",
+      "image": "images/products/19/orig_2.webp",
+      "product": 19
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 59,
+    "fields": {
+      "title": "Смартфон Xiaomi 13",
+      "image": "images/products/19/orig_1.webp",
+      "product": 19
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 60,
+    "fields": {
+      "title": "Смартфон Xiaomi 13",
+      "image": "images/products/19/orig.webp",
+      "product": 19
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 61,
+    "fields": {
+      "title": "Смартфон Nothing Phone",
+      "image": "images/products/20/orig_2.webp",
+      "product": 20
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 62,
+    "fields": {
+      "title": "Смартфон Nothing Phone",
+      "image": "images/products/20/orig_1.webp",
+      "product": 20
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 63,
+    "fields": {
+      "title": "Смартфон Nothing Phone",
+      "image": "images/products/20/orig.webp",
+      "product": 20
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 64,
+    "fields": {
+      "title": "Samsung Galaxy A33",
+      "image": "images/products/21/orig.webp",
+      "product": 21
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 65,
+    "fields": {
+      "title": "Samsung Galaxy A33",
+      "image": "images/products/21/orig_1.webp",
+      "product": 21
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 66,
+    "fields": {
+      "title": "Samsung Galaxy A33",
+      "image": "images/products/21/orig_2.webp",
+      "product": 21
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 67,
+    "fields": {
+      "title": "Samsung Galaxy A33",
+      "image": "images/products/21/orig_3.webp",
+      "product": 21
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 68,
+    "fields": {
+      "title": "Samsung Galaxy A33",
+      "image": "images/products/21/orig_4.webp",
+      "product": 21
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 69,
+    "fields": {
+      "title": "Samsung Galaxy A33",
+      "image": "images/products/21/orig_5.webp",
+      "product": 21
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 70,
+    "fields": {
+      "title": "Apple iPhone 14 Pro Max",
+      "image": "images/products/22/orig.webp",
+      "product": 22
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 71,
+    "fields": {
+      "title": "Apple iPhone 14 Pro Max",
+      "image": "images/products/22/orig_1.webp",
+      "product": 22
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 72,
+    "fields": {
+      "title": "Apple iPhone 14 Pro Max",
+      "image": "images/products/22/orig_2.webp",
+      "product": 22
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 73,
+    "fields": {
+      "title": "Apple iPhone 14 Pro Max",
+      "image": "images/products/22/orig_3.webp",
+      "product": 22
+    }
+  },
+  {
+    "model": "app_shop.productimages",
+    "pk": 74,
+    "fields": {
+      "title": "Apple iPhone 14 Pro Max",
+      "image": "images/products/22/orig_4.webp",
+      "product": 22
+    }
+  },
+  {
     "model": "app_shop.productreviews",
     "pk": 1,
     "fields": {
@@ -4510,6 +5653,28 @@
     }
   },
   {
+    "model": "app_shop.productreviews",
+    "pk": 24,
+    "fields": {
+      "product": 7,
+      "buyer": 2,
+      "review": "Круто",
+      "created_at": "2023-05-15T20:13:47.837Z",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.productreviews",
+    "pk": 25,
+    "fields": {
+      "product": 7,
+      "buyer": 2,
+      "review": "Круто 2",
+      "created_at": "2023-05-15T20:13:47.845Z",
+      "deleted": false
+    }
+  },
+  {
     "model": "config.siteconfiguration",
     "pk": 1,
     "fields": {
@@ -4521,6 +5686,7 @@
       "shipping_cost": 200,
       "extra_shipping_cost": 500,
       "min_order_cost": 2000,
+      "caching_time": 24,
       "maintenance_mode": false,
       "selected_products": [
         22,
