@@ -264,7 +264,7 @@ class CartAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Запись о товаре в корзине', {
-            'fields': ('buyer', 'product_name', 'count'),
+            'fields': ('buyer', 'product', 'count'),
             'description': 'Покупатель, товар и кол-во товара',
         }),
     )

@@ -14,6 +14,7 @@ from .forms import CommentProductForm
 from .services.products.output_products import ProductsListService
 from .services.products.main import ProductsForMainService
 from .services.products.detail_page import DetailProduct
+from .services.shop_cart import CartProductsListService, Products
 from .utils.input_data import clear_data
 
 
@@ -194,10 +195,20 @@ def load_comments(request):
     return JsonResponse(data=data)
 
 
-class ShoppingCartView(View):
-    """ Тестовая корзина с товарами """
-    def get(self, request):
-        return render(request, '../templates/app_shop/cart.html')
+class ShoppingCartView(TemplateView):
+    """
+    Корзина с товарами пользователя
+     """
+    template_name = '../templates/app_shop/cart.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        records = CartProductsListService.output(self.request)
+        total_cost = Products.total_cost(records)
+        context['records'] = records
+        context['total_cost'] = total_cost
+
+        return context
 
 
 class OrderRegistrationView(View):
