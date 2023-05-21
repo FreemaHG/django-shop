@@ -55,9 +55,9 @@
                       </div>
                     </div>
                     <div class="ProductCard-cartElement">
-                      <a class="btn btn_primary">
+                      <a class="btn btn_primary" id="add-to-cart">
                         <img class="btn-icon" src="{% static 'assets/img/icons/card/cart_white.svg' %}" alt="cart_white.svg"/>
-                        <span class="btn-content" id="add-to-cart">Добавить в корзину</span>
+                        <span class="btn-content">Добавить в корзину</span>
                       </a>
                     </div>
                   </div>
@@ -98,54 +98,8 @@
               <!-- Почему не подключается? -->
 {#              <script type="text/javascript" src="{% static 'assets/js/add-to-cart.js' %}"></script>#}
 
-              <script>
-                const loadBtn = document.getElementById('add-to-cart');  // Получаем элемент по id (кнопка "Добавить в корзину")
-                const spinner = document.getElementById('spinner-product');  // Получаем элемент по id = spinner (сообщение "Загрузка...")
-                const alert = document.getElementById('alert-product');  // Получаем элемент по id = alert (сообщение "Товаров больше нет")
-                const count = document.getElementById('product-count').value;
-
-                const blockNotInCart = document.getElementById('product-not-in-cart')
-                const blockInCart = document.getElementById('product-in-cart')
-
-                function addToCart() {
-                  console.log('Сработала функция addToCart');
-                  var _product_id = {{ object.id }}
-                  {#console.log(`Переменная _product_id - ${_product_id}`);#}
-                  {#console.log(`Переменная count - ${count}`);#}
-                  $.ajax({
-                    url: '{% url "shop:add_to_cart" %}',  // Выполняем ajax-запрос на указанный URL
-
-                    // СДЕЛАТЬ POST-ЗАПРОС!!!
-                    type: 'GET',  // Тип запроса
-                    data: {  // Отправляемые данные
-                      'product_id': _product_id,
-                      'count': count
-                    },
-
-                    beforeSend: function () {  // Функция отправки
-                      blockNotInCart.classList.add('not-visible');  // Скрываем кнопку "Загрузить еще" при отправке запроса, добавив класс для скрытия блока
-                      spinner.classList.remove('not-visible');  // Выводим иконку "Загрузка.."
-                    },
-
-                    success: function (response) {  // Функция успеха, принимает объект ответа из функции
-                      const data = response.res  // Сохраняем полученные данные (новые загружаемые товары)
-                      {#console.log(`Переменная data - ${data}`);#}
-                      spinner.classList.add('not-visible')  // Скрываем сообщение о загрузке, добавив класс для скрытия блока
-                      blockInCart.classList.remove('not-visible');
-                      blockNotInCart.classList.add('not-visible');
-                    },
-
-                    error: function (err) {  // Функция, вызываемая при ошибке. Принимает текст ошибки
-                      console.log(err);
-                    },
-                  });
-                }
-
-                loadBtn.addEventListener('click', () => {  // При событии "нажатие" вызовется функция loadmorePost()
-                  {#console.log('Сработал клик');#}
-                  addToCart()
-                });
-              </script>
+              <!-- JS для добавления товара в корзину -->
+              {% include "app_shop/detail_product/add_to_cart.html" %}
 
               <div class="ProductCard-footer">
                 <div class="ProductCard-tags">
@@ -248,16 +202,16 @@
                     {% endfor %}
                   </div>
 
-                  <div class="spinner-border text-primary mt-2 not-visible" role="status" id="spinner">
+                  <div class="spinner-border text-primary mt-2 not-visible" role="status" id="spinner-comments">
                       <span class="sr-only">Загрузка...</span>
                   </div>
-                  <div class="load-more__btn mt-3" id="btn">
+                  <div class="load-more__btn mt-3" id="btn-load-comments">
                     <button type="button" class="btn btn-success btn_primary btn-blue">Загрузить еще</button>
                   </div>
-                  <div class="alert alert-danger mt-2 not-visible" role="alert" id='alert'>Отзывов больше нет!</div>
+                  <div class="alert alert-danger mt-2 not-visible" role="alert" id='alert-comments'>Отзывов больше нет!</div>
 
-                  <!-- Загрузка доп.комментариев к товару -->
-                  {% include "app_shop/upload_comments.html" %}
+                  <!-- JS для загрузки доп.комментариев к товару -->
+                  {% include "app_shop/detail_product/upload_comments.html" %}
 
                 {% endif %}
 

@@ -117,7 +117,7 @@ class ProductDetailView(DetailView, FormMixin):
     """
     model = Product
     form_class = CommentProductForm
-    template_name = '../templates/app_shop/product.html'
+    template_name = '../templates/app_shop/detail_product/product.html'
 
     def get(self, request, *args, **kwargs):
         """
@@ -171,7 +171,7 @@ class ProductDetailView(DetailView, FormMixin):
         else:
             logger.warning(f'Невалидные данные: {form.errors}')
 
-        return render(request, '../templates/app_shop/product.html', context={
+        return render(request, '../templates/app_shop/detail_product/product.html', context={
             'object': product,
             'comments': comments,
             'form': form
