@@ -5293,3 +5293,22 @@ a.Cart-title {
   border-color: #0063d1;
   transition: all 300ms;
 }
+
+.ProductCard-cart--aline-center {
+  align-items: center;
+}
+
+.btn_primary--grey {
+  background-color: hwb(134 1% 35% / 0.669);
+}
+
+.btn_primary--grey:hover {
+  background-color: hsla(134, 56%, 50%, 0.669);
+}
+
+.product-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}

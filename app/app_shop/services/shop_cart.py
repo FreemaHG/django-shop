@@ -3,11 +3,13 @@ import logging
 from typing import List
 from django.db.models import Sum
 from django.http import HttpRequest
+from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
 
 from app_user.utils.models.buyer import BuyerUtils
 from app_user.utils.models.profile import ProfileUtils
 from app_user.models import Buyer
-from ..models import Cart
+from ..models import Cart, Product
 
 
 logger = logging.getLogger(__name__)
@@ -40,11 +42,23 @@ class Products:
     Сервис для добавления, изменения и удаления товаров из корзины
     """
 
-    def add(self):
+    @classmethod
+    def add(cls, user: User, product_id: int, count: int = 1) -> bool:
         """
         Добавить товар в корзину
         """
-        ...
+        logger.debug('Добавление товара в корзину')
+        profile = ProfileUtils.get(user=user)
+        buyer = BuyerUtils.get(profile=profile)
+        product = Product.objects.get(id=product_id)
+
+        Cart.objects.create(
+            buyer=buyer,
+            product=product,
+            count=count
+        )
+
+        return True
 
     def remove(self):
         """
@@ -57,6 +71,24 @@ class Products:
         Изменить кол-во товара в корзине
         """
         ...
+
+    @classmethod
+    def check(cls, user: User, product: Product) -> bool:
+        """
+        Проверка, есть ли указанный товар в корзине текущего пользователя
+        """
+        logger.debug('Проверка товара в корзине текущего пользователя')
+        profile = ProfileUtils.get(user=user)
+        buyer = BuyerUtils.get(profile=profile)
+
+        try:
+            Cart.objects.get(buyer=buyer, product=product)
+            logger.debug('Товар есть в корзине')
+            return True
+
+        except ObjectDoesNotExist:
+            logger.debug('Товара нет в корзине')
+            return False
 
     @classmethod
     def all(cls, buyer: Buyer):

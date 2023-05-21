@@ -14,6 +14,7 @@ from .views import (
     ProgressPaymentView,
     ProductsListView,
     load_comments,
+    add_to_cart,
 )
 
 app_name = 'shop'
@@ -27,8 +28,11 @@ urlpatterns = [
     ])),
     path('about/', AboutView.as_view(), name='about'),  # О магазине
     path('sale/', ProductsSalesView.as_view(), name='sale'),  # Распродаж
-    path('product/<int:pk>', ProductDetailView.as_view(), name='product_detail'),  # Страница товара
-    path('load_comments/', load_comments, name='load_comments'),  # Загрузка доп.комментариев к товару через кнопку
+    path('product/', include([
+        path('<int:pk>', ProductDetailView.as_view(), name='product_detail'),  # Страница товара
+        path('load_comments/', load_comments, name='load_comments'),  # Загрузка доп.комментариев к товару через кнопку
+        path('add_to_cart/', add_to_cart, name='add_to_cart'),  # Добавление товара в корзину
+    ])),
 
     # re_path(r'^product/(?P<pk>[0-9]*)/#(?P<tag>.*)', ProductDetailView.as_view(), name='product_detail'),  # Страница товара
 

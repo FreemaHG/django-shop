@@ -131,6 +131,12 @@ class ProductDetailView(DetailView, FormMixin):
 
         context = self.get_context_data(object=self.object)
         comments = DetailProduct.all_comments(product=self.object)  # Комментарии к товару
+
+        # Проверка товара в корзине
+        if request.user.is_authenticated:
+            check_cart = Products.check(user=request.user, product=self.object)
+            context['check_cart'] = check_cart
+
         context['comments'] = comments[:1]
         context['total_comments'] = comments.count()
 
@@ -192,6 +198,26 @@ def load_comments(request):
         })
 
     data = {'comments': comments_obj}
+    return JsonResponse(data=data)
+
+
+def add_to_cart(request):
+    """
+    Добавление товара в корзину
+    """
+    logger.debug('Добавление товара в корзину')
+
+    product_id = int(request.GET.get('product_id'))
+    count = int(request.GET.get('count'))
+
+    # logger.info(f'product_id: {product_id}')
+    # logger.info(f'count: {count}')
+
+    if request.user.is_authenticated:
+        res = Products.add(user=request.user, product_id=product_id, count=count)
+        # logger.info(f'res: {res}')
+        data = {'res': res}
+
     return JsonResponse(data=data)
 
 
