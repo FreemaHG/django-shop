@@ -211,6 +211,7 @@
                   <div class="alert alert-danger mt-2 not-visible" role="alert" id='alert-comments'>Отзывов больше нет!</div>
 
                   <!-- JS для загрузки доп.комментариев к товару -->
+{#                  {{ total_comments|json_script:"json-total" }}#}
                   {% include "app_shop/detail_product/upload_comments.html" %}
 
                 {% endif %}
