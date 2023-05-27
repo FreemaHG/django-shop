@@ -2,12 +2,12 @@
   const loadBtnAddToCart = document.getElementById('add-to-cart');  // Получаем элемент по id (кнопка "Добавить в корзину")
   const spinnerProduct = document.getElementById('spinner-product');  // Получаем элемент по id = spinner (сообщение "Загрузка...")
   const alertProduct = document.getElementById('alert-product');  // Получаем элемент по id = alert (сообщение "Товаров больше нет")
-  const countProduct = document.getElementById('product-count').value;  // Некорректное число
 
   const blockNotInCart = document.getElementById('product-not-in-cart')
   const blockInCart = document.getElementById('product-in-cart')
 
   function addToCart() {
+    const countProduct = document.getElementById('product-count').value;  // Некорректное число
     console.debug('%cDEBUG: старт функции addToCart', 'color: grey;');
     var _product_id = {{ object.id }}
 

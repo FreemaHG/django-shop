@@ -43,7 +43,7 @@ class Products:
     """
 
     @classmethod
-    def add(cls, user: User, product_id: int, count: int = 1) -> bool:
+    def add_for_registered(cls, user: User, product_id: int, count: int = 1) -> bool:
         """
         Добавить товар в корзину
         """
@@ -52,6 +52,7 @@ class Products:
         buyer = BuyerUtils.get(profile=profile)
         product = Product.objects.get(id=product_id)
 
+        # FIXME Проверка и увеличении кол-ва, если товар уже есть в корзине
         Cart.objects.create(
             buyer=buyer,
             product=product,
@@ -82,6 +83,7 @@ class Products:
         buyer = BuyerUtils.get(profile=profile)
 
         try:
+            # FIXME Ошибка,если несколько одинаковых товаров
             Cart.objects.get(buyer=buyer, product=product)
             logger.debug('Товар есть в корзине')
             return True

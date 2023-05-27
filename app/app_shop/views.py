@@ -133,6 +133,7 @@ class ProductDetailView(DetailView, FormMixin):
         comments = DetailProduct.all_comments(product=self.object)  # Комментарии к товару
 
         # Проверка товара в корзине
+        # FIXME Добавить проверку для незарегистрированного пользователя
         if request.user.is_authenticated:
             check_cart = Products.check(user=request.user, product=self.object)
             context['check_cart'] = check_cart
@@ -208,15 +209,19 @@ def add_to_cart(request):
     logger.debug('Добавление товара в корзину')
 
     product_id = int(request.GET.get('product_id'))
-    count = int(request.GET.get('count'))
+    count = int(request.GET.get('count', 1))
 
-    # logger.info(f'product_id: {product_id}')
-    # logger.info(f'count: {count}')
+    logger.info(f'id товара: {product_id}, кол-во: {count}')
 
     if request.user.is_authenticated:
-        res = Products.add(user=request.user, product_id=product_id, count=count)
-        # logger.info(f'res: {res}')
-        data = {'res': res}
+        # Добавление товара в корзину зарегистрированного пользователя
+        res = Products.add_for_registered(user=request.user, product_id=product_id, count=count)
+    else:
+        # Добавление товара в корзину гостя (запись в объект сессии)
+        ...
+
+    # logger.info(f'res: {res}')
+    data = {'res': res}
 
     return JsonResponse(data=data)
 
