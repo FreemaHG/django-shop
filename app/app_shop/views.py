@@ -14,8 +14,11 @@ from .forms import CommentProductForm
 from .services.products.output_products import ProductsListService
 from .services.products.main import ProductsForMainService
 from .services.products.detail_page import DetailProduct
-from .services.shop_cart import CartProductsListService, Products
+from .services.shop_cart.logic import CartProductsListService, CartProductsAddService
+from .services.shop_cart.authenticated import ProductsCartUserService
+from .services.shop_cart.quest import ProductsCartQuestService
 from .utils.input_data import clear_data
+from .utils.shop_cart import get_id_products_in_cart
 
 
 logger = logging.getLogger(__name__)
@@ -29,8 +32,9 @@ class MainView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['selected_categories'] = ProductsForMainService.selected_categories()
-        context['limited_products'] = ProductsForMainService.limited_edition()
+        context['selected_categories'] = ProductsForMainService.selected_categories()  # Избранные категории товаров
+        context['limited_products'] = ProductsForMainService.limited_edition()  # Товары ограниченного тиража
+        context['products_id'] = get_id_products_in_cart(self.request)  # id товаров в корзине текущего пользователя
 
         # FIXME Добавить после реализации механики покупки товаров
         # context['popular_products'] = ProductsForMainService.popular_products()
@@ -49,12 +53,14 @@ class ProductsListView(ListView):
     context_object_name = 'products'
     paginate_by = 8
 
+    # FIXME Перевести все в GET с выводом контекста (один метод) - стадия отладки!
     def get_queryset(self):
         """
         Вызов сервиса с бизнес-логикой для вывода товаров по переданным параметрам
         """
-        logger.error(f'Новый запрос: {self.request.build_absolute_uri()}')
+        logger.info(f'Новый запрос: {self.request.build_absolute_uri()}')
 
+        # Сохраняем параметры фильтрации для передачи в контекст
         self.filter_parameters = self.kwargs | clear_data(self.request.GET)
         logger.info(f'Параметры фильтрации: {self.filter_parameters}')
 
@@ -71,6 +77,9 @@ class ProductsListView(ListView):
         class_up = 'Sort-sortBy_dec'
         class_down = 'Sort-sortBy_inc'
 
+        context['products_id'] = get_id_products_in_cart(self.request)  # id товаров в корзине текущего пользователя
+
+        # FIXME Попробовать заменить смену CSS при помощи JS!
         if self.filter_parameters:
 
             # Передача в шаблон параметров фильтрации
@@ -135,7 +144,7 @@ class ProductDetailView(DetailView, FormMixin):
         # Проверка товара в корзине
         # FIXME Добавить проверку для незарегистрированного пользователя
         if request.user.is_authenticated:
-            check_cart = Products.check(user=request.user, product=self.object)
+            check_cart = ProductsCartUserService.check(user=request.user, product_id=self.object.id)
             context['check_cart'] = check_cart
 
         context['comments'] = comments[:1]
@@ -202,28 +211,38 @@ def load_comments(request):
     return JsonResponse(data=data)
 
 
-def add_to_cart(request):
+def add_product(request):
     """
     Добавление товара в корзину
     """
-    logger.debug('Добавление товара в корзину')
+    logger.debug('Добавление товара в корзину (Ajax-запрос)')
+    res = CartProductsAddService.add(request=request)
 
-    product_id = int(request.GET.get('product_id'))
-    count = int(request.GET.get('count', 1))
-
-    logger.info(f'id товара: {product_id}, кол-во: {count}')
-
-    if request.user.is_authenticated:
-        # Добавление товара в корзину зарегистрированного пользователя
-        res = Products.add_for_registered(user=request.user, product_id=product_id, count=count)
-    else:
-        # Добавление товара в корзину гостя (запись в объект сессии)
-        ...
-
-    # logger.info(f'res: {res}')
+    # logger.error(f'res: {res}')
     data = {'res': res}
+    # data = {'res': False}  # Для тестирования сообщения об ошибке
 
     return JsonResponse(data=data)
+
+
+def add_product_in_cart(request, **kwargs):
+    """
+    Добавление товара в корзину (перезагрузка страницы)
+    """
+    logger.debug('Добавление товара в корзину (с обновлением страницы)')
+    CartProductsAddService.add(request=request, product_id=kwargs['product_id'])
+
+    return HttpResponseRedirect(kwargs['next'])
+
+
+def delete_product(request, **kwargs):
+    """
+    Удаление товара из корзины
+    """
+    logger.debug('Удаление товара из корзины (с обновлением страницы)')
+    CartProductsAddService.delete(request=request, product_id=kwargs['product_id'])
+
+    return HttpResponseRedirect(kwargs['next'])
 
 
 class ShoppingCartView(TemplateView):
@@ -235,7 +254,7 @@ class ShoppingCartView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         records = CartProductsListService.output(self.request)
-        total_cost = Products.total_cost(records)
+        total_cost = ProductsCartUserService.total_cost(records)
         context['records'] = records
         context['total_cost'] = total_cost
 

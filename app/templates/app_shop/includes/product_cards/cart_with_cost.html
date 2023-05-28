@@ -4,8 +4,8 @@
 <div class="Card">
   <a class="Card-picture" href="{% url 'shop:product_detail' product.id %}">
     <!-- Тег для получения изображения по переданному id товара -->
-{#    {% product_image product.id as image %}#}
-{#    <img src="{{ image.image.url }}" alt={{ image.title }}/>#}
+    {#    {% product_image product.id as image %}#}
+    {#    <img src="{{ image.image.url }}" alt={{ image.title }}/>#}
     <img src="{{ product.productimages_set.first.image.url }}" alt="{{ product.productimages_set.first.title }}"/>
 
   </a>
@@ -19,9 +19,17 @@
       </div>
       <div class="Card-category">{{ product.category.title }}</div>
       <div class="Card-hover">
-        <a class="Card-btn" href="#">
-          <img src="{% static 'assets/img/icons/card/cart.svg' %}" alt="cart.svg"/>
-        </a>
+
+        {% if product.id not in products_id %}  <!-- Если товара нет в корзине -->
+          <a class="Card-btn" href="{% url 'shop:add_product' product_id=product.id next=request.get_full_path %}">  <!-- Кнопка добавления товара в корзину -->
+            <img src="{% static 'assets/img/icons/card/cart.svg' %}" alt="cart.svg"/>
+          </a>
+        {% else %}  <!-- Если товар в корзине -->
+          <a class="Card-btn" href="{% url 'shop:delete_product' product_id=product.id next=request.get_full_path %}">  <!-- Кнопка удаления товара из корзины -->
+            <img src="{% static 'assets/img/icons/card/delete.svg' %}" alt="cart.svg"/>
+          </a>
+        {% endif %}
+
       </div>
     </div>
   </div>

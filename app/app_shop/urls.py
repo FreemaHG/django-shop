@@ -14,7 +14,9 @@ from .views import (
     ProgressPaymentView,
     ProductsListView,
     load_comments,
-    add_to_cart,
+    add_product,
+    add_product_in_cart,
+    delete_product,
 )
 
 app_name = 'shop'
@@ -31,7 +33,14 @@ urlpatterns = [
     path('product/', include([
         path('<int:pk>', ProductDetailView.as_view(), name='product_detail'),  # Страница товара
         path('load_comments/', load_comments, name='load_comments'),  # Загрузка доп.комментариев к товару через кнопку
-        path('add_to_cart/', add_to_cart, name='add_to_cart'),  # Добавление товара в корзину
+
+        # FIXME Объединить add_product через include
+        # Добавление товара в корзину
+        path('add_product/', add_product, name='add_product'),  # Ajax-запрос
+        re_path(r'^add_product/(?P<product_id>.*)/next=(?P<next>.*)', add_product_in_cart, name='add_product'),  # С перезагрузкой страницы
+
+        # Удаление товара из корзины
+        re_path(r'^delete_product/(?P<product_id>.*)/next=(?P<next>.*)', delete_product, name='delete_product'),  # С перезагрузкой страницы
     ])),
 
     # re_path(r'^product/(?P<pk>[0-9]*)/#(?P<tag>.*)', ProductDetailView.as_view(), name='product_detail'),  # Страница товара

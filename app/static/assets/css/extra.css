@@ -734,12 +734,14 @@
 .Card:after {
   clear: both;
 }
+
 @media screen and (min-width: 990px) {
   .Card:hover .Card-hover {
     top: 0;
     transition: top 300ms;
   }
 }
+
 .Card-picture {
   width: 100%;
   overflow: hidden;
@@ -5295,6 +5297,7 @@ a.Cart-title {
 }
 
 .ProductCard-cart--aline-center {
+  flex-wrap: wrap;
   align-items: center;
 }
 
@@ -5308,6 +5311,7 @@ a.Cart-title {
 
 .product-block {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   width: 100%;

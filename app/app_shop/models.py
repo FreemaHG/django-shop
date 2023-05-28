@@ -1,5 +1,6 @@
 import logging
 
+from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.urls import reverse
@@ -182,7 +183,7 @@ class Cart(models.Model):
     """
     Корзина с товарами
     """
-    buyer = models.ForeignKey('app_user.Buyer', on_delete=models.CASCADE, verbose_name='Покупатель')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Покупатель')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Товар')
     count = models.PositiveIntegerField(default=1, verbose_name='Кол-во')
 
@@ -192,7 +193,7 @@ class Cart(models.Model):
         verbose_name_plural = 'Корзина'
 
     def __str__(self):
-        return f'Корзина покупателя: {self.buyer.profile.full_name}'
+        return f'Корзина покупателя: {self.user.profile.full_name}'
 
     @property
     def position_cost(self):

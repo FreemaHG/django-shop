@@ -211,9 +211,17 @@ class CartAdmin(admin.ModelAdmin):
     """
     # readonly_fields = ['buyer', 'product_name']
 
-    list_display = ('id', 'buyer', 'product_name', 'price', 'count', 'discount', 'position_cost')
+    list_display = ('id', 'full_name', 'product_id', 'product_name', 'price', 'count', 'discount', 'position_cost')
     list_display_links = ('id',)
-    search_fields = ('buyer__profile__full_name', 'product__name')
+    search_fields = ('user__profile__full_name', 'product__name')
+
+    def full_name(self, obj):
+        """
+        Полное имя покупателя
+        """
+        return obj.user.profile.full_name
+
+    full_name.short_description = 'Покупатель'
 
     def product_name(self, obj):
         """
@@ -227,7 +235,13 @@ class CartAdmin(admin.ModelAdmin):
 
         return product_name
 
-    product_name.short_description = 'Товар'
+    def product_id(self, obj):
+        """
+        id товара
+        """
+        return obj.product.id
+
+    product_id.short_description = 'id товара'
 
     def price(self, obj):
         """
@@ -258,13 +272,13 @@ class CartAdmin(admin.ModelAdmin):
         Запрещаем редактиваровать поля с товаром и покупателем
         """
         if obj:
-            return ['buyer', 'product_name']
+            return ['full_name', 'product_name', 'count']
 
         return self.readonly_fields
 
     fieldsets = (
         ('Запись о товаре в корзине', {
-            'fields': ('buyer', 'product', 'count'),
+            'fields': ('full_name', 'product_name', 'count'),
             'description': 'Покупатель, товар и кол-во товара',
         }),
     )

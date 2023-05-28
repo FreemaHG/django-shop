@@ -46,9 +46,11 @@
                   </div>
                 </div>
                 <div class="Cart-block Cart-block_delete">
-                  <a class="Cart-delete" href="#">
+
+                  <a class="Cart-delete" href="{% url 'shop:delete_product' product_id=product.id next=request.get_full_path %}">
                     <img src="{% static 'assets/img/icons/card/delete.svg' %}" alt="delete.svg"/>
                   </a>
+
                 </div>
               </div>
 
