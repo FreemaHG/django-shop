@@ -120,6 +120,13 @@ class Product(models.Model):
         verbose_name_plural = 'Товары'
         ordering = ['id']
 
+    @property
+    def discounted_price(self):
+        """
+        Цена товара с учетом скидки
+        """
+        return int(self.price - ((self.price * self.discount) / 100))
+
     def save(self, *args, **kwargs):
         """
         Меняем поле limited_edition в зависимости от кол-ва товара

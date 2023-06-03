@@ -100,12 +100,13 @@
         </nav>
         <div class="row-block">
           <div class="CartBlock">
+            {% products_cart as data %}
             <a class="CartBlock-block" href="{% url 'shop:shopping_cart' %}">
               <img class="CartBlock-img" src="{% static 'assets/img/icons/cart.svg' %}" alt="cart.svg"/>
-              <span class="CartBlock-amount">0</span>
+              <span class="CartBlock-amount">{{ data.0 }}</span>
             </a>
             <div class="CartBlock-block">
-              <span class="CartBlock-price">0.00 руб</span>
+              <span class="CartBlock-price">{{ data.1 }} руб</span>
             </div>
           </div>
         </div>

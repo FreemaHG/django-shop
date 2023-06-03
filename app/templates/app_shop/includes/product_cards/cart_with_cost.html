@@ -14,9 +14,19 @@
       <a href={% url 'shop:product_detail' product.id %}>{{ product.name }}</a>
     </strong>
     <div class="Card-description">
-      <div class="Card-cost">
-        <span class="Card-price">{{ product.price }} <small>р</small></span>
-      </div>
+      {% if product.discount %}
+        <div class="Card-cost flex price-block">
+          <div class="Card-price discount-price">{{ product.price }}<small> руб</small></div>
+          <div class="discount-block">
+            <div class="discount">—{{ product.discount }}%</div>
+            <div class="old-price">{{ product.price }} р</div>
+          </div>
+        </div>
+      {% else %}
+        <div class="Card-cost">
+          <span class="Card-price">{{ product.price }} <small>руб</small></span>
+        </div>
+      {% endif %}
       <div class="Card-category">{{ product.category.title }}</div>
       <div class="Card-hover">
 

@@ -122,7 +122,7 @@ class ProductsSalesView(View):
 
 class ProductDetailView(DetailView, FormMixin):
     """
-    Детальная страница товара с комментариями.
+    Детальная страница товара с комментариями
     """
     model = Product
     form_class = CommentProductForm
@@ -252,6 +252,7 @@ class ShoppingCartView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        #FIXME кэшировать данные
         records = CartProductsListService.output(self.request)
         context['records'] = records
 

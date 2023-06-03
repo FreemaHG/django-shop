@@ -32,7 +32,13 @@
                 <h2 class="ProductCard-title">{{ object.name }}</h2>
                 <div class="ProductCard-info">
                   <div class="ProductCard-cost">
-                    <div class="ProductCard-price">{{ object.price }} руб</div>
+                    {% if object.discount %}
+                      <div class="ProductCard-price discount-price">{{ object.price }}<small> руб</small></div>
+                      <div class="discount">—{{ object.discount }}%</div>
+                      <div class="old-price">{{ object.discounted_price }} р</div>
+                    {% else %}
+                      <div class="ProductCard-price">{{ object.price }}<small> руб</small></div>
+                    {% endif %}
                   </div>
                 </div>
               </div>

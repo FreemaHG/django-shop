@@ -30,7 +30,7 @@
                   <div class="Cart-desc">{{ product.definition|truncatechars:300 }}</div>
                 </div>
                 <div class="Cart-block Cart-block_price">
-                  <div class="Cart-price">{{ position.position_cost }} руб</div>
+                  <div class="Cart-price">{{ position.position_cost }} <small>руб</small></div>
                 </div>
               </div>
 
@@ -48,21 +48,17 @@
                   </div>
                 </div>
                 <div class="Cart-block Cart-block_delete">
-
                   <a class="Cart-delete" href="{% url 'shop:delete_product' product_id=product.id next=request.get_full_path %}">
                     <img src="{% static 'assets/img/icons/card/delete.svg' %}" alt="delete.svg"/>
                   </a>
-
                 </div>
               </div>
-
             </div>
-
             {%  endwith %}
           {% endfor %}
 
           <div class="Cart-total">
-            <div class="Cart-block Cart-block_total">
+            <div class="Cart-block Cart-block_total flex">
               <strong class="Cart-title">Итого:</strong>
               <span class="Cart-price">{{ total_cost }} руб</span>
             </div>
