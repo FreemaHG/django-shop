@@ -2,13 +2,14 @@ import logging
 
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LogoutView
-from django.db import IntegrityError
+from django.db import IntegrityError, transaction
 from django.urls import reverse
 from django.views.generic.edit import FormView
 from django.shortcuts import render, redirect
 from django.views import View
 from django.core.mail import send_mail, BadHeaderError
 
+from app_shop.services.shop_cart.logic import CartProductsAddService
 from .models import Profile
 from .forms import RegisterUserForm, AuthUserForm, EmailForm
 from .utils.save_new_user import save_username, cleaned_phone_data
@@ -19,6 +20,8 @@ from django.conf import settings
 
 logger = logging.getLogger(__name__)
 
+
+@transaction.atomic
 def register_user_view(request):
     """
     Регистрация пользователя в расширенной форме
@@ -32,12 +35,11 @@ def register_user_view(request):
 
             if form.is_valid():
                 logger.debug(f'Данные валидны: {form.cleaned_data}')
-
                 user = form.save(commit=False)
                 full_name = form.cleaned_data.get('full_name', False)
                 email = form.cleaned_data.get('email', False)
                 phone_number = form.cleaned_data.get('phone_number', None)
-                avatar = request.FILES.get('avatar', False)
+                avatar = request.FILES.get('avatar', None)
                 password = form.cleaned_data.get('password1')
 
                 username = save_username(email)  # Извлекаем и сохраняем username по email
@@ -64,6 +66,9 @@ def register_user_view(request):
                     error_message = 'Пользователь с таким номером телефона уже зарегистрирован'
                     return render(request, 'app_user/registration.html', {'form': form, 'error_message': error_message})
 
+                # Слияние корзин в БД
+                CartProductsAddService.merge_carts(request=request, user=user)
+
                 # Авторизация нового пользователя и редирект в личный кабинет
                 user = authenticate(username=username, password=password)
                 login(request, user)
@@ -82,7 +87,7 @@ class LogoutUserView(LogoutView):
     """
     Выход из учетной записи
     """
-    next_page = 'user:registration'
+    next_page = '/'
 
 
 class LoginUserView(FormView):
@@ -92,6 +97,7 @@ class LoginUserView(FormView):
     form_class = AuthUserForm
     template_name = '../templates/app_user/account/login.html'
 
+    @transaction.atomic
     def form_valid(self, form):
         logger.debug(f'Данные валидны: {form.cleaned_data}')
 
@@ -103,6 +109,9 @@ class LoginUserView(FormView):
         try:
             user = authenticate(username=username, password=password)
             login(self.request, user)
+
+            # Слияние корзин в БД
+            CartProductsAddService.merge_carts(request=self.request, user=user)
 
             if next_page:
                 return redirect(next_page)

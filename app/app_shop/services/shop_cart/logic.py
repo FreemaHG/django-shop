@@ -123,3 +123,46 @@ class CartProductsAddService:
             res = ProductsCartQuestService.remove(request=request, product_id=product_id)
 
         return res
+
+    @classmethod
+    def merge_carts(cls, request: HttpRequest, user=User):
+        """
+        Слияние корзин (если есть записи) при регистрации и авторизации
+        """
+        logger.debug('Слияние корзин при регистрации/авторизации пользователя')
+        records = request.session.get('cart', False)
+        new_records = []
+
+        if records:
+            logger.debug(f'Имеются данные для слияния: {records}')
+            for prod_id, count in records.items():
+                # FIXME Оптимизировать
+                logger.debug(f'Поиск товара в БД по id - {prod_id}')
+                product = Product.objects.get(id=prod_id)
+                logger.debug(f'Товар найден: {product.name}')
+
+                # Проверка, есть ли товар уже в корзине зарегистрированного пользователя
+                deferred_product = Cart.objects.filter(user=user, product=product).first()
+
+                if deferred_product:
+                    logger.warning(f'Товар уже есть в корзине: id - {deferred_product.id}, {deferred_product.count} шт., суммирование кол-ва')
+                    deferred_product.count += count  # Суммируем кол-во товара
+                    deferred_product.save()
+
+                else:
+                    logger.info(f'Добавление нового товара: {product.name}, {count} шт.')
+                    new_records.append(Cart(
+                        user=user,
+                        product=Product.objects.get(id=prod_id),
+                        count=count
+                    ))
+
+            Cart.objects.bulk_create(new_records)
+            logger.info('Данные успешно записаны в БД')
+
+            del request.session['cart']  # Удаляем записи из сессии
+            request.session.save()
+            logger.info('Объект сессии успешно очищен')
+
+        else:
+            logger.warning('Нет записей для слияния')

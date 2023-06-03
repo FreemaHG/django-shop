@@ -24,6 +24,10 @@ class ProductsCartQuestService:
         logger.debug(f'Добавление товара в корзину гостя: id пользователя: {request.user.id}, id - {product_id}, кол-во: {count}')
         ProductsCartQuestService.check_cart(request=request)  # Проверка / создание ключа "cart" в объекте сессии
 
+        if count == 0:
+            logger.warning('Нельзя добавить 0 товаров, увеличение кол-ва на 1')
+            count = 1
+
         logger.debug(f'Корзина ДО: {request.session["cart"]}')
 
         record = request.session['cart'].get(product_id, False)
@@ -107,6 +111,7 @@ class ProductsCartQuestService:
 
         return records_list
 
+    # TODO Используется одноименный метод в ProductsCartUserService!
     @classmethod
     def total_cost(cls, products: List[Cart]):
         """

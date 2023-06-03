@@ -2249,7 +2249,7 @@ a.Cart-title {
   visibility: visible;
   width: 100%;
   background: #f5f5f5;
-  padding-top: 7px;
+  padding-top: 16px;
   padding-bottom: 16px;
   padding-left: 13px;
   margin-bottom: 19px;
@@ -5315,4 +5315,11 @@ a.Cart-title {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+}
+
+.login-separator {
+  display: inline;
+  margin: 0;
+  padding-left: 3px;
+  padding-right: 3px;
 }
