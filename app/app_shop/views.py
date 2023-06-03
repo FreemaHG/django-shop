@@ -244,6 +244,30 @@ def delete_product(request, **kwargs):
     return HttpResponseRedirect(kwargs['next'])
 
 
+def reduce_product(request, **kwargs):
+    """
+    Уменьшение кол-ва товара в корзине
+    """
+    product_id = kwargs["product_id"]
+    logger.debug(f'Уменьшение кол-ва товара в корзине: id - {product_id}')
+
+    CartProductsAddService.reduce_product(request=request, product_id=product_id)
+
+    return redirect('{}#{}'.format(reverse('shop:shopping_cart'), product_id))
+
+
+def increase_product(request, **kwargs):
+    """
+    Увеличение кол-ва товара в корзине
+    """
+    product_id = kwargs["product_id"]
+    logger.debug(f'Увеличение кол-ва товара в корзине: id - {product_id}')
+
+    CartProductsAddService.increase_product(request=request, product_id=product_id)
+
+    return redirect('{}#{}'.format(reverse('shop:shopping_cart'), product_id))
+
+
 class ShoppingCartView(TemplateView):
     """
     Корзина с товарами пользователя

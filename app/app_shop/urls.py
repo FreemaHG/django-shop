@@ -16,6 +16,8 @@ from .views import (
     load_comments,
     add_product,
     add_product_in_cart,
+    reduce_product,
+    increase_product,
     delete_product,
 )
 
@@ -46,6 +48,12 @@ urlpatterns = [
     # re_path(r'^product/(?P<pk>[0-9]*)/#(?P<tag>.*)', ProductDetailView.as_view(), name='product_detail'),  # Страница товара
 
     path('shopping_cart/', ShoppingCartView.as_view(), name='shopping_cart'),  # Корзина с товарами
+    # path('shopping_cart/#<int:id_product>', ShoppingCartView.as_view(), name='shopping_cart'),  # Корзина с товарами
+    re_path(r'^shopping_cart/#(?P<id_product>.*)', ShoppingCartView.as_view(), name='shopping_cart'),  # С перезагрузкой страницы
+
+    path('reduce_product/<int:product_id>', reduce_product, name='reduce_product'),      # Уменьшение кол-ва товара в корзине
+    path('increase_product/<int:product_id>', increase_product, name='increase_product'),      # Увеличение кол-ва товара в корзине
+
     path('order/', include([
         path('registration/', OrderRegistrationView.as_view(), name='order_registration'),  # Регистрация заказа
         path('information/', OrderInformationView.as_view(), name='order_information'),  # Информация о заказе

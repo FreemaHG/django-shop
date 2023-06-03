@@ -109,6 +109,33 @@ class CartProductsAddService:
 
         return res
 
+
+    @classmethod
+    def reduce_product(cls, request: HttpRequest, product_id: int):
+        """
+        Уменьшение кол-ва товара в корзине
+        """
+        if request.user.is_authenticated:
+            logger.debug('Пользователь авторизован')
+            ProductsCartUserService.reduce_product(user=request.user, product_id=product_id)
+        else:
+            logger.debug('Пользователь НЕ авторизован')
+            ProductsCartQuestService.reduce_product(request=request, product_id=product_id)
+
+
+    @classmethod
+    def increase_product(cls, request: HttpRequest, product_id: int):
+        """
+        Уменьшение кол-ва товара в корзине
+        """
+        if request.user.is_authenticated:
+            logger.debug('Пользователь авторизован')
+            ProductsCartUserService.increase_product(user=request.user, product_id=product_id)
+        else:
+            logger.debug('Пользователь НЕ авторизован')
+            ProductsCartQuestService.increase_product(request=request, product_id=product_id)
+
+
     @classmethod
     def delete(cls, request: HttpRequest, product_id: int):
         """

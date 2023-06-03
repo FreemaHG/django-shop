@@ -41,9 +41,14 @@
                 <div class="Cart-block Cart-block_amount">
                   <div class="Cart-amount">
                     <div class="Amount">
-                      <button class="Amount-remove" type="button"></button>
-                      <input class="Amount-input form-input" name="amount" type="text" value="{{ position.count }}"/>
-                      <button class="Amount-add" type="button"></button>
+{#                      <button class="Amount-remove" type="button"></button>#}
+{#                      <input class="Amount-input form-input" name="amount" type="text" value="{{ position.count }}"/>#}
+{#                      <button class="Amount-add" type="button"></button>#}
+
+                        <a href="{% url 'shop:reduce_product' product_id=product.id %}" class="Amount-remove2"></a>  <!-- Уменьшить товар на 1 -->
+                        <input id="{{ product.id }}" class="Amount-input form-input" name="amount" type="text" value="{{ position.count }}"/>
+                        <a href="{% url 'shop:increase_product' product_id=product.id %}" class="Amount-add2"></a>  <!-- Увеличить товар на 1 -->
+
                     </div>
                   </div>
                 </div>
@@ -68,6 +73,8 @@
 
         </form>
 
+      {% else %}
+        <p>В корзине нет товаров...</p>
       {% endif %}
 
     </div>

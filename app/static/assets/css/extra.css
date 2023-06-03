@@ -5372,3 +5372,59 @@ a.Cart-title {
   font-size: 13px;
   line-height: 16px;
 }
+
+.Amount-remove2, .Amount-add2 {
+  min-width: 56px;
+  height: 56px;
+  background: none;
+  display: block;
+  position: relative;
+  margin-right: 10px;
+  padding: 0;
+  cursor: pointer;
+  line-height: 0;
+  border: 1px solid transparent;
+  background-color: #ebebeb;
+  transition: all 300ms;
+}
+
+.Amount-add2:focus,
+.Amount-remove2:focus {
+  outline: none;
+}
+
+@media screen and (min-width: 990px) {
+  .Amount-add2:hover,
+  .Amount-remove2:hover {
+    background-color: #d2e7ff;
+    border-color: #0063d1;
+    transition: all 300ms;
+  }
+}
+.Amount-add2:after,
+.Amount-remove2:after {
+  position: absolute;
+  content: '';
+  display: block;
+  width: 14px;
+  margin-left: -6.9px;
+  height: 1px;
+  top: 50%;
+  left: 50%;
+  background: #424650;
+}
+.Amount-add2 {
+  margin-left: 10px;
+  margin-right: 0;
+}
+.Amount-add2:before {
+  position: absolute;
+  content: '';
+  display: block;
+  height: 14px;
+  width: 1px;
+  left: 50%;
+  top: 50%;
+  margin-top: -6.9px;
+  background: #424650;
+}

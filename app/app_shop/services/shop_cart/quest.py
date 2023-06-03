@@ -61,11 +61,36 @@ class ProductsCartQuestService:
             logger.warning(f'Не найден ключ "cart" в объекте сессии гостя')
 
 
-    def change_quantity(self):
+    @classmethod
+    def reduce_product(cls, request: HttpRequest, product_id: int):
         """
-        Изменить кол-во товара в корзине
+        Уменьшение кол-ва товара на 1
         """
-        ...
+        product_id = str(product_id)
+        count = request.session['cart'][product_id]
+        count -= 1
+
+        if count <= 0:
+            logger.warning('Кол-во товара уменьшено до 0. Удаление товара из корзины')
+            ProductsCartQuestService.remove(request=request, product_id=product_id)
+
+        else:
+            request.session['cart'][product_id] = count
+            request.session.save()
+
+
+    @classmethod
+    def increase_product(cls, request: HttpRequest, product_id: int):
+        """
+        Увеличение кол-ва товара на 1
+        """
+        product_id = str(product_id)
+        count = request.session['cart'][product_id]
+        count += 1
+
+        request.session['cart'][product_id] = count
+        request.session.save()
+
 
     # FIXME Переименовать в check_key!!!
     @classmethod

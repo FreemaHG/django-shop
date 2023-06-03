@@ -70,6 +70,29 @@ class ProductsCartUserService:
             logger.info(f'Товар: id - {product_id}, кол-во (стало): {record.count}')
 
     @classmethod
+    def reduce_product(cls, user: User, product_id: int):
+        """
+        Уменьшение кол-ва товара на 1
+        """
+        record = Cart.objects.get(user=user, product__id=product_id)
+        record.count -= 1
+
+        if record.count > 0:
+            record.save()
+        else:
+            logger.warning('Кол-во товара уменьшено до 0. Удаление товара из корзины')
+            ProductsCartUserService.remove(user=user, product_id=product_id)
+
+    @classmethod
+    def increase_product(cls, user: User, product_id: int):
+        """
+        Увеличение кол-ва товара на 1
+        """
+        record = Cart.objects.get(user=user, product__id=product_id)
+        record.count += 1
+        record.save()
+
+    @classmethod
     def check_product(cls, user: User, product_id: int) -> bool:
         """
         Проверка, есть ли указанный товар в корзине текущего пользователя
