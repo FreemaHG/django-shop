@@ -30,7 +30,7 @@ class ProductsCartUserService:
             logger.warning('Нельзя добавить 0 товаров, увеличение кол-ва на 1')
             count = 1
 
-        if ProductsCartUserService.check(user=user, product_id=product_id):
+        if ProductsCartUserService.check_product(user=user, product_id=product_id):
             logger.warning('Добавляемый товар уже есть в корзине пользователя')
             ProductsCartUserService.change_quantity(user=user, product_id=product_id, count=count)
         else:
@@ -70,7 +70,7 @@ class ProductsCartUserService:
             logger.info(f'Товар: id - {product_id}, кол-во (стало): {record.count}')
 
     @classmethod
-    def check(cls, user: User, product_id: int) -> bool:
+    def check_product(cls, user: User, product_id: int) -> bool:
         """
         Проверка, есть ли указанный товар в корзине текущего пользователя
         """

@@ -11,7 +11,9 @@
     <div class="wrap">
       {% if records %}
         <form class="form Cart" action="#" method="post">
+
           {% for position in records %}
+
             {% with position.product as product %}
             <div class="Cart-product">
 
@@ -55,6 +57,7 @@
               </div>
 
             </div>
+
             {%  endwith %}
           {% endfor %}
 

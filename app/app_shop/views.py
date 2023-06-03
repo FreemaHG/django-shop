@@ -18,7 +18,7 @@ from .services.shop_cart.logic import CartProductsListService, CartProductsAddSe
 from .services.shop_cart.authenticated import ProductsCartUserService
 from .services.shop_cart.quest import ProductsCartQuestService
 from .utils.input_data import clear_data
-from .utils.shop_cart import get_id_products_in_cart
+# from .utils.shop_cart import get_id_products_in_cart
 
 
 logger = logging.getLogger(__name__)
@@ -34,7 +34,7 @@ class MainView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['selected_categories'] = ProductsForMainService.selected_categories()  # Избранные категории товаров
         context['limited_products'] = ProductsForMainService.limited_edition()  # Товары ограниченного тиража
-        context['products_id'] = get_id_products_in_cart(self.request)  # id товаров в корзине текущего пользователя
+        context['products_id'] = CartProductsListService.id_products(request=self.request)  # id товаров в корзине текущего пользователя
 
         # FIXME Добавить после реализации механики покупки товаров
         # context['popular_products'] = ProductsForMainService.popular_products()
@@ -77,7 +77,7 @@ class ProductsListView(ListView):
         class_up = 'Sort-sortBy_dec'
         class_down = 'Sort-sortBy_inc'
 
-        context['products_id'] = get_id_products_in_cart(self.request)  # id товаров в корзине текущего пользователя
+        context['products_id'] = CartProductsListService.id_products(request=self.request)  # id товаров в корзине текущего пользователя
 
         # FIXME Попробовать заменить смену CSS при помощи JS!
         if self.filter_parameters:
@@ -141,12 +141,10 @@ class ProductDetailView(DetailView, FormMixin):
         context = self.get_context_data(object=self.object)
         comments = DetailProduct.all_comments(product=self.object)  # Комментарии к товару
 
-        # Проверка товара в корзине
-        # FIXME Добавить проверку для незарегистрированного пользователя
-        if request.user.is_authenticated:
-            check_cart = ProductsCartUserService.check(user=request.user, product_id=self.object.id)
-            context['check_cart'] = check_cart
+        # id товаров в корзине текущего пользователя
+        cart_products = CartProductsListService.id_products(request=self.request)
 
+        context['cart_products'] = cart_products
         context['comments'] = comments[:1]
         context['total_comments'] = comments.count()
 
@@ -240,6 +238,7 @@ def delete_product(request, **kwargs):
     Удаление товара из корзины
     """
     logger.debug('Удаление товара из корзины (с обновлением страницы)')
+    # TODO Возвращает res, который не используется
     CartProductsAddService.delete(request=request, product_id=kwargs['product_id'])
 
     return HttpResponseRedirect(kwargs['next'])
@@ -254,9 +253,11 @@ class ShoppingCartView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         records = CartProductsListService.output(self.request)
-        total_cost = ProductsCartUserService.total_cost(records)
         context['records'] = records
-        context['total_cost'] = total_cost
+
+        if records:
+            total_cost = ProductsCartUserService.total_cost(records)
+            context['total_cost'] = total_cost
 
         return context
 

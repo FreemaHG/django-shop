@@ -44,7 +44,7 @@
                 </ul>
               </div>
 
-              {% if not check_cart %}  <!-- Если товара нет в корзине -->
+              {% if object.id not in cart_products %}  <!-- Если товара нет в корзине пользователя -->
                 <div class="ProductCard-cart ProductCard-cart--aline-center">
                   <div class="product-block" id="product-not-in-cart">
                     <div class="ProductCard-cartElement ProductCard-cartElement_amount">

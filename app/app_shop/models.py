@@ -183,7 +183,7 @@ class Cart(models.Model):
     """
     Корзина с товарами
     """
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Покупатель')
+    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE, verbose_name='Покупатель')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Товар')
     count = models.PositiveIntegerField(default=1, verbose_name='Кол-во')
 
@@ -193,7 +193,10 @@ class Cart(models.Model):
         verbose_name_plural = 'Корзина'
 
     def __str__(self):
-        return f'Корзина покупателя: {self.user.profile.full_name}'
+        if self.user:
+            return f'Корзина покупателя: {self.user.profile.full_name}'
+        else:
+            return 'Корзина гостя'
 
     @property
     def position_cost(self):
@@ -204,3 +207,4 @@ class Cart(models.Model):
         price = product.price
 
         return int((price - (price * (product.discount / 100))) * self.count)
+
