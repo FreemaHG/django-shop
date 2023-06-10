@@ -54,7 +54,7 @@ def check_for_word_end(number: int) -> str:
 
 
 # @register.simple_tag
-# def order_or_user_registration(request: HttpRequest):
+# def delivery_cost(request: HttpRequest):
 #     """
 #     Возврат нужного urlpatternв для формы зависимости от того, авторизован пользователь или нет
 #     """

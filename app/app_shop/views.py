@@ -291,7 +291,7 @@ class OrderRegistrationView(TemplateView):
     """
     Регистрация заказа
     """
-    template_name = '../templates/app_shop/orders/order.html'
+    template_name = '../templates/app_shop/orders/registration/order.html'
 
     def get(self, request, *args, **kwargs):
         """
@@ -330,10 +330,16 @@ class OrderRegistrationView(TemplateView):
 
         if form.is_valid():
             logger.debug(f'Данные формы валидны: {form.cleaned_data}')
+
+            # res = RegistrationOrder.create_order(request=request)
+
+            # FIXME Редирект на страницу с оплатой
+            return HttpResponse('В работе!')
+
         else:
             logger.error(f'Не валидные данные: {form.errors}')
-
-        return HttpResponse('В работе!')
+            # FIXME Редирект на страницу с заказами с сообщением об ошибке
+            return reverse('shop:order_registration')
 
 
 class OrderInformationView(View):

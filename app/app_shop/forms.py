@@ -19,13 +19,13 @@ class MakingOrderForm(forms.Form):
     full_name = forms.CharField(max_length=150, label='ФИО', help_text='Введите полное имя')
     phone_number = forms.CharField(min_length=10, max_length=12, label='Телефон', help_text='Введите номер телефона')
     email = forms.EmailField(label='E-mail', help_text='Введите корректный email')
-
     password1 = forms.CharField(widget=forms.PasswordInput, required=False, label='Пароль', help_text='Тут можно изменить пароль')
     password2 = forms.CharField(widget=forms.PasswordInput, required=False, label='Подтверждение пароля',
                                       help_text='Введите пароль повторно')
-
+    delivery = forms.CharField(max_length=100)  # Тип доставки
     city = forms.CharField(max_length=100, label='Город', help_text='Введите город доставки')
     address = forms.CharField(max_length=500, label='Адрес', help_text='Введите точный адрес доставки')
+    pay = forms.CharField(max_length=100)  # Вариант оплаты
 
     def clean(self):
         """

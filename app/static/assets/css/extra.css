@@ -5428,3 +5428,8 @@ a.Cart-title {
   margin-top: -6.9px;
   background: #424650;
 }
+
+.Cart-total .Cart-price--margin {
+  margin-left: 0;
+  margin-right: 5px;
+}
