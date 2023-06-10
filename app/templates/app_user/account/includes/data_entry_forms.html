@@ -54,9 +54,9 @@
           <label class="form-label" for="phone">{{ form.phone_number.label }}</label>
           {% with request.user.profile.phone_number as phone_number %}
             {% if phone_number %}
-              <input class="form-input" id="phone" name="phone_number" type="tel" value="+7{{ phone_number }}"/>
+              <input class="form-input" id="phone" name="phone_number" type="tel" value="+7{{ phone_number }}" data-validate="require"/>
             {% else %}
-              <input class="form-input" id="phone" name="phone_number" type="tel"/>
+              <input class="form-input" id="phone" name="phone_number" type="tel" data-validate="require"/>
             {% endif %}
           {% endwith %}
 

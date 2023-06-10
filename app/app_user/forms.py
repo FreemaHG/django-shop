@@ -24,9 +24,9 @@ class RegisterUserForm(UserCreationForm):
     """
     Расширенная форма для регистрации пользователя
     """
-    full_name = forms.CharField(min_length=2, max_length=150, label='ФИО')
-    email = forms.EmailField(label='E-mail')
-    phone_number = forms.CharField(min_length=10, max_length=12, required=False, label='Телефон')
+    full_name = forms.CharField(min_length=2, max_length=150, label='ФИО', help_text='Введите полное имя')
+    email = forms.EmailField(label='E-mail', help_text='Введите корректный email')
+    phone_number = forms.CharField(min_length=10, max_length=12, required=False, label='Телефон', help_text='Введите номер телефона')
     # phone_number = forms.NumberInput()
     avatar = forms.ImageField(required=False, label='Аватар', help_text='Выберите аватар')
     password1 = forms.CharField(widget=forms.PasswordInput, label='Пароль', help_text='Тут можно изменить пароль')

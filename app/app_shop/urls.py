@@ -55,7 +55,11 @@ urlpatterns = [
     path('increase_product/<int:product_id>', increase_product, name='increase_product'),      # Увеличение кол-ва товара в корзине
 
     path('order/', include([
-        path('registration/', OrderRegistrationView.as_view(), name='order_registration'),  # Регистрация заказа
+        path('registration/', include([
+            # TODO Вернуть на уровень выше!
+            path('', OrderRegistrationView.as_view(), name='order_registration'),
+        ])),
+
         path('information/', OrderInformationView.as_view(), name='order_information'),  # Информация о заказе
         path('history/', HistoryOrderView.as_view(), name='history_order'),  # История заказов
         path('payment/', PaymentView.as_view(), name='order_payment'),  # Оплата заказа

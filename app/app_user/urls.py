@@ -15,10 +15,18 @@ from .views import (
 app_name = 'user'
 
 urlpatterns = [
-    path('registration/', register_user_view, name='registration'),
+
+    path('registration/', include([
+        # TODO Убрать лишние
+        path('', register_user_view, name='registration'),
+        path('<str:next_page>/', register_user_view, name='registration'),
+        re_path(r'^.*', register_user_view, name='registration'),  # Обработка ?next
+        re_path(r'^(?P<next_page>.*)', register_user_view, name='registration'),  # Обработка ?next
+    ])),
     path('login/', include([
         path('', LoginUserView.as_view(), name='login'),
         re_path(r'^.*', LoginUserView.as_view(), name='login'),  # Обработка ?next
+        re_path(r'^(?P<next>.*)', LoginUserView.as_view(), name='login'),  # Обработка ?next
     ])),
     path('logout/', LogoutUserView.as_view(), name='logout'),
     path('password_recovery/', PasswordRecovery.as_view(), name='password_recovery'),

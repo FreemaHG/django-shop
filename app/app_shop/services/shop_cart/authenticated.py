@@ -114,7 +114,7 @@ class ProductsCartUserService:
         """
         Вывести все товары в корзине для текущего пользователя
         """
-        logger.debug(f'Вывод товаров для покупателя: {user.profile.full_name}')
+        logger.debug(f'Вывод товаров для покупателя')
         products = Cart.objects.filter(user=user)
 
         return products

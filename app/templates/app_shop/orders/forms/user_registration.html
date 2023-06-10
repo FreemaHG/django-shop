@@ -1,0 +1,95 @@
+<form class="form" action="{% url 'user:registration' %}?next={{ request.get_full_path }}" method="post">
+  {% csrf_token %}
+  <div class="Order-block Order-block_OPEN" id="step1">
+    <header class="Section-header Section-header_sm">
+      <h2 class="Section-title">Шаг 1. Параметры пользователя</h2>
+    </header>
+    <div class="row">
+      <div class="row-block">
+        <div class="form-group">
+          <label class="form-label" for="name">{{ form.full_name.label }}</label>
+          <input class="form-input" id="name" name="full_name" type="text"
+                 value="{{ request.user.profile.full_name }}"
+                 data-validate="require"
+                 placeholder="{{ form.full_name.help_text }}"/>
+
+          {% if form.full_name.errors %}
+            {% for error in form.full_name.errors %}
+              <div class="Profile-success error-message">{{ error | escape }}</div>
+            {% endfor %}
+          {% endif %}
+
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="phone">{{ form.phone_number.label }}</label>
+          <input class="form-input" id="phone" name="phone_number" type="text"
+                 value=""
+                 data-validate="require"
+                 placeholder="{{ form.phone_number.help_text }}"/>
+
+          {% if form.phone_number.errors %}
+            {% for error in form.phone_number.errors %}
+              <div class="Profile-success error-message">{{ error | escape }}</div>
+            {% endfor %}
+          {% endif %}
+
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="mail">{{ form.email.label }}</label>
+          <input class="form-input" id="mail" name="email" type="text"
+                 value="{{ request.user.email }}"
+                 data-validate="require"
+                 placeholder="{{ form.email.help_text }}"/>
+
+          {% if form.email.errors %}
+            {% for error in form.email.errors %}
+              <div class="Profile-success error-message">{{ error | escape }}</div>
+            {% endfor %}
+          {% endif %}
+
+        </div>
+      </div>
+
+      <div class="row-block">
+        <div class="form-group">
+          <label class="form-label" for="password">{{ form.password1.label }}</label>
+          <input class="form-input" id="password" name="password1" type="password"
+                 placeholder="{{ form.password1.help_text }}"
+                 data-validate="require"/>
+
+          {% if form.password1.errors %}
+            {% for error in form.password1.errors %}
+              <div class="Profile-success error-message">{{ error | escape }}</div>
+            {% endfor %}
+          {% endif %}
+
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="passwordReply">{{ form.password2.label }}</label>
+          <input class="form-input" id="passwordReply" name="password2" type="password"
+                 placeholder="{{ form.password2.help_text }}"
+                 data-validate="require"
+          />
+
+          {% if form.password2.errors %}
+            {% for error in form.password2.errors %}
+              <div class="Profile-success error-message">{{ error | escape }}</div>
+            {% endfor %}
+          {% endif %}
+
+        </div>
+        <div class="form-group">
+          <a class="btn btn_muted Order-btnReg"
+             href="{% url 'user:login' %}?next={{ request.get_full_path }}">Я уже зарегистрирован</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="Order-footer">
+      {% if error_message %}  <!-- Текст ошибки при неудачной регистрации -->
+        <div class="Profile-success error-message button-margin-bottom">{{ error_message | escape }}</div>
+      {% endif %}
+      <button class="" type="submit">Зарегистрироваться</button>
+    </div>
+  </div>
+</form>

@@ -10,7 +10,9 @@ from django.core.cache import cache
 from config.admin import config
 
 from .models import Product, ProductReviews
-from .forms import CommentProductForm
+from .forms import CommentProductForm, MakingOrderForm
+from app_user.forms import RegisterUserForm
+from .services.orders import RegistrationOrder
 from .services.products.output_products import ProductsListService
 from .services.products.main import ProductsForMainService
 from .services.products.detail_page import DetailProduct
@@ -67,7 +69,6 @@ class ProductsListView(ListView):
         products = ProductsListService.output(filter_parameters=self.filter_parameters)
 
         return products
-
 
     def get_context_data(self, **kwargs):
         """
@@ -149,7 +150,6 @@ class ProductDetailView(DetailView, FormMixin):
         context['total_comments'] = comments.count()
 
         return self.render_to_response(context)
-
 
     def post(self, request, pk):
         """
@@ -271,7 +271,7 @@ def increase_product(request, **kwargs):
 class ShoppingCartView(TemplateView):
     """
     Корзина с товарами пользователя
-     """
+    """
     template_name = '../templates/app_shop/cart.html'
 
     def get_context_data(self, **kwargs):
@@ -287,10 +287,53 @@ class ShoppingCartView(TemplateView):
         return context
 
 
-class OrderRegistrationView(View):
-    """ Тестовая страница для регистрации заказа """
-    def get(self, request):
-        return render(request, '../templates/app_shop/orders/order.html')
+class OrderRegistrationView(TemplateView):
+    """
+    Регистрация заказа
+    """
+    template_name = '../templates/app_shop/orders/order.html'
+
+    def get(self, request, *args, **kwargs):
+        """
+        Вывод формы для оформления заказа
+        """
+        logger.debug('Регистрация заказа')
+        context = self.get_context_data(**kwargs)
+
+        if request.user.is_authenticated:
+            logger.debug('Пользователь авторизован. Вывод формы для оформления заказа')
+            form = MakingOrderForm()
+            context['form'] = form
+            records = CartProductsListService.output(self.request)
+            context['records'] = records
+
+            if records:
+                total_cost = ProductsCartUserService.total_cost(records)
+                context['total_cost'] = total_cost
+
+            return self.render_to_response(context)
+            # return render(request, '../templates/app_shop/orders/order.html', context={'form': form})
+
+        else:
+            logger.warning('Пользователь не авторизован. Вывод формы для регистрации')
+            form = RegisterUserForm()
+            context['form'] = form
+            return self.render_to_response(context)
+            # return render(request, '../templates/app_shop/orders/order.html', context={'form': form})
+
+    def post(self, request):
+        """
+        Оплата заказа
+        """
+        logger.debug('Оплата заказа')
+        form = MakingOrderForm(request.POST)
+
+        if form.is_valid():
+            logger.debug(f'Данные формы валидны: {form.cleaned_data}')
+        else:
+            logger.error(f'Не валидные данные: {form.errors}')
+
+        return HttpResponse('В работе!')
 
 
 class OrderInformationView(View):

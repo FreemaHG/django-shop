@@ -1,0 +1,62 @@
+<script>
+  // Кнопки
+  const loadBtnStepTwo = document.getElementById('btn-step2');
+  const loadBtnStepFree = document.getElementById('btn-step3');
+  const loadBtnStepFour = document.getElementById('btn-step4');
+
+  function savePersonData() {
+    console.debug('%cDEBUG: Сохранение данных о пользователе', 'color: grey;');
+
+    const full_name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const mail = document.getElementById('mail').value;
+    document.getElementById("name-out").innerHTML = full_name;
+    document.getElementById("phone-out").innerHTML = phone;
+    document.getElementById("email-out").innerHTML = mail;
+  }
+
+  function saveDataDelivery() {
+    console.debug('%cDEBUG: Сохранение данных о доставке', 'color: grey;');
+
+    const city = document.getElementById('city').value;
+    const address = document.getElementById('address').value;
+
+    if (document.getElementById('delivery-ordinary').checked) {
+      document.getElementById("delivery-out").innerHTML = 'Обычная доставка';
+    }
+    else {
+      document.getElementById("delivery-out").innerHTML = 'Экспресс доставка';
+    }
+
+    document.getElementById("city-out").innerHTML = city;
+    document.getElementById("address-out").innerHTML = address;
+  }
+
+  function savePay() {
+    console.debug('%cDEBUG: Сохранение данных об оплате', 'color: grey;');
+
+    if (document.getElementById('pay-online').checked) {
+      document.getElementById("pay-out").innerHTML = 'Онлайн картой';
+    }
+    else {
+      document.getElementById("pay-out").innerHTML = 'Онлайн со случайного чужого счета';
+    }
+  }
+
+  // Обработка кликов
+  loadBtnStepTwo.addEventListener('click', () => {
+    console.debug('%cDEBUG: Переход к шагу 2', 'color: grey;');
+    savePersonData()
+  });
+
+  loadBtnStepFree.addEventListener('click', () => {
+    console.debug('%cDEBUG: Переход к шагу 3', 'color: grey;');
+    saveDataDelivery()
+  });
+
+  loadBtnStepFour.addEventListener('click', () => {
+    console.debug('%cDEBUG: Переход к шагу 4', 'color: grey;');
+    savePay()
+  });
+
+</script>
