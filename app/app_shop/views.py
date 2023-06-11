@@ -19,6 +19,7 @@ from .services.products.detail_page import DetailProduct
 from .services.shop_cart.logic import CartProductsListService, CartProductsAddService
 from .services.shop_cart.authenticated import ProductsCartUserService
 from .services.shop_cart.quest import ProductsCartQuestService
+from .services.orders_payment import Payment
 from .utils.input_data import clear_data
 # from .utils.shop_cart import get_id_products_in_cart
 
@@ -332,12 +333,18 @@ class OrderRegistrationView(TemplateView):
             logger.debug(f'Данные формы валидны: {form.cleaned_data}')
 
             # Регистрация заказа
-            res = RegistrationOrder.create_order(request=request, form=form)
+            order = RegistrationOrder.create_order(request=request, form=form)
 
-            if res:
+            if order:
                 logger.info('Заказ успешно оформлен')
-                # FIXME Редирект на страницу ввода номера карты
-                return HttpResponse('Редирект на страницу ввода номера карты')
+
+                if order.payment == 1:
+                    logger.debug('Перенаправление на страницу ввода номера карты')
+                    return redirect(reverse('shop:online_payment', kwargs={'order_id': order.id}))
+                else:
+                    logger.debug('Перенаправление на страницу генерации случайного чужого счета')
+                    return redirect(reverse('shop:someone_payment', kwargs={'order_id': order.id}))
+
             else:
                 logger.error('Ошибка при оформлении заказа')
                 # FIXME Вывод сообщения о неудачном оформлении заказа
@@ -347,6 +354,33 @@ class OrderRegistrationView(TemplateView):
             logger.error(f'Не валидные данные: {form.errors}')
             # FIXME Редирект на страницу с заказами с сообщением об ошибке
             return reverse('shop:order_registration')
+
+
+class PaymentView(TemplateView):
+    """
+    Вывод и обработка формы для ввода номера карты (генерации случайного чужого счета) для оплаты заказа
+    """
+    template_name = '../templates/app_shop/orders/payment/payment.html'
+
+    def post(self, request, *args, **kwargs):
+        """
+        Оплата заказа с номера введенной карты
+        """
+        logger.debug('Оплата заказа')
+        order_id = kwargs['order_id']
+        cart_number = request.POST['numero1']
+
+        # Оплата заказа
+        Payment.payment(order_id=order_id, cart_number=cart_number)
+
+        return HttpResponse(f'Оплата заказа #{order_id} с карты #{cart_number}')
+
+
+class ProgressPaymentView(TemplateView):
+    """
+    Вывод страницы ожидания оплаты заказа
+    """
+    template_name = '../templates/app_shop/orders/payment/progressPayment.html'
 
 
 class OrderInformationView(View):
@@ -361,19 +395,6 @@ class HistoryOrderView(View):
         return render(request, '../templates/app_shop/orders/historyorder.html')
 
 
-class PaymentView(View):
-    """ Тестовая страница с оплатой """
-    def get(self, request):
-        return render(request, '../templates/app_shop/orders/payment/payment.html')
 
 
-class PaymentWithInvoiceGenerationView(View):
-    """ Тестовая страница с оплатой с генерацией случайного счета """
-    def get(self, request):
-        return render(request, '../templates/app_shop/orders/payment/paymentsomeone.html')
 
-
-class ProgressPaymentView(View):
-    """ Тестовая страница с ожиданием оплаты """
-    def get(self, request):
-        return render(request, '../templates/app_shop/orders/payment/progressPayment.html')

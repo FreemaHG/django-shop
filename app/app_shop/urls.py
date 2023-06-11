@@ -1,5 +1,6 @@
 from django.urls import path, re_path, include
 
+# TODO Структурировать импорты по группам
 from .views import (
     MainView,
     AboutView,
@@ -10,7 +11,6 @@ from .views import (
     OrderInformationView,
     HistoryOrderView,
     PaymentView,
-    PaymentWithInvoiceGenerationView,
     ProgressPaymentView,
     ProductsListView,
     load_comments,
@@ -54,18 +54,17 @@ urlpatterns = [
     path('reduce_product/<int:product_id>', reduce_product, name='reduce_product'),      # Уменьшение кол-ва товара в корзине
     path('increase_product/<int:product_id>', increase_product, name='increase_product'),      # Увеличение кол-ва товара в корзине
 
+    # Заказы
     path('order/', include([
-        path('registration/', include([
-            # TODO Вернуть на уровень выше!
-            path('', OrderRegistrationView.as_view(), name='order_registration'),
-        ])),
-
+        path('registration/', OrderRegistrationView.as_view(), name='order_registration'),  # Регистрация заказа
         path('information/', OrderInformationView.as_view(), name='order_information'),  # Информация о заказе
         path('history/', HistoryOrderView.as_view(), name='history_order'),  # История заказов
-        path('payment/', PaymentView.as_view(), name='order_payment'),  # Оплата заказа
-        path(
-            'payment_with_invoice_generation/', PaymentWithInvoiceGenerationView.as_view(),
-            name='payment_with_invoice_generation'),  # Оплата заказа с генерацией случайного счета
-        path('progress_payment/', ProgressPaymentView.as_view(), name='progress_payment'),  # Ожидание оплаты
+    ])),
+
+    # Оплата заказа
+    path('payment/', include([
+        path('online/<int:order_id>/', PaymentView.as_view(), name='online_payment'),  # Онлайн картой
+        path('someone/<int:order_id>/', PaymentView.as_view(), name='someone_payment'),  # Онлайн со случайного чужого счета
+        path('progress_payment/<int:order_id>/', ProgressPaymentView.as_view(), name='progress_payment'),  # Ожидание оплаты
     ])),
 ]

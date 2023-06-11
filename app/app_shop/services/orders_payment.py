@@ -18,16 +18,16 @@ class Payment:
     """
 
     @classmethod
-    def payment(cls, order_id: int, cart_number: int, amount: int):
+    def payment(cls, order_id: int, cart_number: int):
         """
         Метод оплаты заказа
         """
-        logger.info(f'Запуск сервиса по оплате заказа: заказ №{order_id}, карта №{cart_number}, сумма к оплате - {amount} руб')
+        logger.info(f'Запуск сервиса по оплате заказа: заказ №{order_id}, карта для оплаты №{cart_number}')
         ...
 
     @classmethod
     def order_payment_status(cls, order_id: int):
         """
-        Метод для получения статуса заказа
+        Метод для получения статуса оплаты заказа
         """
         ...

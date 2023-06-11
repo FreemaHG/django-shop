@@ -21,7 +21,7 @@ class RegistrationOrder:
     """
     @classmethod
     @transaction.atomic
-    def create_order(cls, request: HttpRequest, form: MakingOrderForm) -> bool:
+    def create_order(cls, request: HttpRequest, form: MakingOrderForm) -> Order:
         """
         Создание заказа
         """
@@ -71,11 +71,7 @@ class RegistrationOrder:
         amount = order.order_cost + RegistrationOrder.delivery_cost(order=order)
         logger.debug(f'Стоимость заказа с учетом доставки: {amount} руб')
 
-        # FIXME Сделать вызов метода после ввода номера карты!
-        # Оплата заказа
-        Payment.payment(order_id=order.id, cart_number=cart_number, amount=amount)
-
-        return True
+        return order
 
     @classmethod
     def purchase_history(cls, products_cart: List[Cart], order: MakingOrderForm):
