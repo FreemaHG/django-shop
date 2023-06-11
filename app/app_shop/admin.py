@@ -1,14 +1,23 @@
 import json
 import logging
 
+from django import forms
 from django.contrib import admin, messages
 from django.db.models import JSONField
 from mptt.admin import DraggableMPTTAdmin
 from mptt.querysets import TreeQuerySet
 
-from .models import CategoryProduct, Product, ProductTags, ProductImages, ProductReviews, Cart, Order, PurchasedProduct
 from .utils.admin.change_status_delete import soft_deletion_child_records
-
+from .models import (
+    CategoryProduct,
+    Product,
+    ProductTags,
+    ProductImages,
+    ProductReviews,
+    Cart,
+    Order,
+    PurchasedProduct,
+    PaymentErrors)
 
 logger = logging.getLogger(__name__)
 
@@ -351,3 +360,30 @@ class OrderAdmin(admin.ModelAdmin):
             return ['id', 'full_name', 'data_created', 'city', 'address', 'delivery', 'payment', 'status']
 
         return self.readonly_fields
+
+
+@admin.register(PaymentErrors)
+class PaymentErrorsAdmin(admin.ModelAdmin):
+    """
+    Админ-панель для добавления и просмотра сообщений об ошибке при оплате заказа
+    """
+    list_display = ('title', 'short_description')
+    list_display_links = ('title',)
+    search_fields = ('title',)
+
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        """
+        Переопределение виджета для поля с описанием ошибки
+        """
+        formfield = super(PaymentErrorsAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+        if db_field.name == 'description':
+            formfield.widget = forms.Textarea(attrs=formfield.widget.attrs)
+        return formfield
+
+    def short_description(self, obj):
+        """
+        Сокращение текста описания ошибки до 300 символов
+        """
+        return obj.description[0:300]
+
+    short_description.short_description = 'Описание ошибки'

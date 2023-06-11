@@ -114,7 +114,7 @@ class ProductsCartUserService:
         """
         Вывести все товары в корзине для текущего пользователя
         """
-        logger.debug(f'Вывод товаров для покупателя')
+        logger.debug(f'Вывод товаров из корзины покупателя')
         products = Cart.objects.filter(user=user)
 
         return products
@@ -134,3 +134,11 @@ class ProductsCartUserService:
         total_cost = sum(product.position_cost for product in products)
 
         return total_cost
+
+    @classmethod
+    def clear_cart(cls, user: User):
+        """
+        Очистка корзины (после успешного оформления заказа)
+        """
+        logger.debug('Запуск сервиса по очистке корзины')
+        Cart.objects.filter(user=user).delete()

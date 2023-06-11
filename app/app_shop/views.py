@@ -331,10 +331,17 @@ class OrderRegistrationView(TemplateView):
         if form.is_valid():
             logger.debug(f'Данные формы валидны: {form.cleaned_data}')
 
-            # res = RegistrationOrder.create_order(request=request)
+            # Регистрация заказа
+            res = RegistrationOrder.create_order(request=request, form=form)
 
-            # FIXME Редирект на страницу с оплатой
-            return HttpResponse('В работе!')
+            if res:
+                logger.info('Заказ успешно оформлен')
+                # FIXME Редирект на страницу ввода номера карты
+                return HttpResponse('Редирект на страницу ввода номера карты')
+            else:
+                logger.error('Ошибка при оформлении заказа')
+                # FIXME Вывод сообщения о неудачном оформлении заказа
+                return HttpResponse('Какая-то ошибка при оформлении заказа')
 
         else:
             logger.error(f'Не валидные данные: {form.errors}')

@@ -2,6 +2,7 @@ import logging
 
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db.models import Sum, F
 from django.db import models
 from django.urls import reverse
 from pytils.translit import slugify
@@ -246,7 +247,7 @@ class Order(models.Model):
     Заказ
     """
     STATUS_CHOICES = (
-        (1, 'Оформление'),
+        (1, 'Оформлен'),
         (2, 'Не оплачен'),
         (3, 'Подтверждение оплаты'),
         (4, 'Оплачен'),
@@ -272,8 +273,20 @@ class Order(models.Model):
     delivery = models.IntegerField(choices=DELIVERY_CHOICES, default=1, verbose_name='Тип доставки')
     payment = models.IntegerField(choices=PAYMENT_CHOICES, default=1, verbose_name='Оплата')
     status = models.IntegerField(choices=STATUS_CHOICES, default=1, verbose_name='Статус')
-
     error_message = models.ForeignKey(PaymentErrors, on_delete=models.SET_NULL, null=True, verbose_name='Сообщение об ошибке')
+
+    @property
+    def order_cost(self):
+        """
+        Стоимость заказа
+        """
+        # FIXME Оптимизировать в одну строку
+        products = PurchasedProduct.objects.filter(order__id=self.id)
+        amount = products.aggregate(amount=Sum(F('count') * F('price')))
+
+        logger.warning(f'Рассчитанная стоимость заказа: {amount}')
+
+        return amount['amount']
 
     class Meta:
         verbose_name = 'Заказ'
