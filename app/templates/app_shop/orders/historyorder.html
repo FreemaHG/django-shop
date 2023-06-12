@@ -10,114 +10,86 @@
 {% block account_content %}
   <div class="Section-content">
     <div class="Orders">
-      <div class="Order Order_anons">
-        <div class="Order-personal">
-          <div class="row">
-            <div class="row-block"><a class="Order-title" href="oneorder.html">Заказ&#32;<span class="Order-numberOrder">№200</span>&#32;от&#32;<span class="Order-dateOrder">21.07.2020</span></a>
-            </div>
-            <div class="row-block">
-              <div class="Order-info Order-info_delivery">
-                <div class="Order-infoType">Тип доставки:
-                </div>
-                <div class="Order-infoContent">Обычная доставка
-                </div>
+
+      {% for order in object_list %}
+        <div class="Order Order_anons">
+          <div class="Order-personal">
+            <div class="row">
+              <div class="row-block">
+                <a class="Order-title" href="{% url 'shop:order_detail' pk=order.id %}">Заказ&#32;
+                  <span class="Order-numberOrder">{{ order.id }}</span>
+                  &#32;от&#32;
+                  <span class="Order-dateOrder">{{ order.data_created }}</span>
+                  </a>
               </div>
-              <div class="Order-info Order-info_pay">
-                <div class="Order-infoType">Оплата:
+              <div class="row-block">
+                <div class="Order-info Order-info_delivery">
+                  <div class="Order-infoType">Тип доставки:</div>
+                  <div class="Order-infoContent">{{ order.get_delivery_display }}</div>
                 </div>
-                <div class="Order-infoContent">Онлайн картой
+                <div class="Order-info Order-info_pay">
+                  <div class="Order-infoType">Оплата:</div>
+                  <div class="Order-infoContent">{{ order.get_payment_display }}</div>
                 </div>
-              </div>
-              <div class="Order-info">
-                <div class="Order-infoType">Общая стоимость:
+                <div class="Order-info">
+                  <div class="Order-infoType">Общая стоимость:</div>
+                  <div class="Order-infoContent">
+                    <span class="Order-price">{{ order.order_cost }} <small>руб</small></span>
+                  </div>
                 </div>
-                <div class="Order-infoContent"><span class="Order-price">200.99$</span>
+                <div class="Order-info Order-info_status">
+                  <div class="Order-infoType">Статус:</div>
+                    {% if order.status == 4 %}
+                      <div class="Order-infoContent color-green">{{ order.get_status_display }}</div>
+                    {% elif order.status == 2 %}
+                      <div class="Order-infoContent discount-price">{{ order.get_status_display }}</div>
+                    {% else %}
+                      <div class="Order-infoContent">{{ order.get_status_display }}</div>
+                    {% endif %}
                 </div>
-              </div>
-              <div class="Order-info Order-info_status">
-                <div class="Order-infoType">Статус:
-                </div>
-                <div class="Order-infoContent">Не оплачен
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="Order Order_anons">
-        <div class="Order-personal">
-          <div class="row">
-            <div class="row-block"><a class="Order-title" href="oneorder.html">Заказ&#32;<span class="Order-numberOrder">№199</span>&#32;от&#32;<span class="Order-dateOrder">20.07.2020</span></a>
-            </div>
-            <div class="row-block">
-              <div class="Order-info Order-info_delivery">
-                <div class="Order-infoType">Тип доставки:
-                </div>
-                <div class="Order-infoContent">Обычная доставка
-                </div>
-              </div>
-              <div class="Order-info Order-info_pay">
-                <div class="Order-infoType">Оплата:
-                </div>
-                <div class="Order-infoContent">Онлайн картой
-                </div>
-              </div>
-              <div class="Order-info">
-                <div class="Order-infoType">Общая стоимость:
-                </div>
-                <div class="Order-infoContent"><span class="Order-price">100.99$</span>
-                </div>
-              </div>
-              <div class="Order-info Order-info_status">
-                <div class="Order-infoType">Статус:
-                </div>
-                <div class="Order-infoContent">Оплачен
-                </div>
-              </div>
-              <div class="Order-info Order-info_error">
-                <div class="Order-infoType">Оплата не прошла:
-                </div>
-                <div class="Order-infoContent">Оплата не выполнена, т.к. вы подозреваетесь в нетолерантности
-                </div>
+                {% if order.error_message %}
+                  <div class="Order-info Order-info_error">
+                    <div class="Order-infoType">{{ order.error_message.title }}:</div>
+                    <div class="Order-infoContent">{{ order.error_message.description }}</div>
+                  </div>
+                {% endif %}
               </div>
             </div>
           </div>
         </div>
+      {% endfor %}
+
+    <!-- Пагинация -->
+    <div class="Pagination">
+      <div class="Pagination-ins">
+
+        {% if page_obj.has_previous %}
+          <a class="Pagination-element Pagination-element_prev" href="?page=1">
+            <img src="{% static 'assets/img/icons/prevPagination.svg' %}" alt="prevPagination.svg"/>
+          </a>
+        {% endif %}
+
+        {% for p in page_obj.paginator.page_range %}
+          {% if page_obj.number == p %}
+            <a class="Pagination-element Pagination-element_current" href="#">
+              <span class="Pagination-text">{{ p }}</span>
+            </a>
+          {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+            <a class="Pagination-element" href="?page={{ p }}">
+              <span class="Pagination-text">{{ p }}</span>
+            </a>
+          {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+          <a class="Pagination-element Pagination-element_prev" href="?page={{ page_obj.paginator.num_pages }}">
+            <img src="{% static 'assets/img/icons/nextPagination.svg' %}" alt="nextPagination.svg"/>
+          </a>
+        {% endif %}
+
       </div>
-      <div class="Order Order_anons">
-        <div class="Order-personal">
-          <div class="row">
-            <div class="row-block"><a class="Order-title" href="oneorder.html">Заказ&#32;<span class="Order-numberOrder">№194</span>&#32;от&#32;<span class="Order-dateOrder">01.07.2020</span></a>
-            </div>
-            <div class="row-block">
-              <div class="Order-info Order-info_delivery">
-                <div class="Order-infoType">Тип доставки:
-                </div>
-                <div class="Order-infoContent">Обычная доставка
-                </div>
-              </div>
-              <div class="Order-info Order-info_pay">
-                <div class="Order-infoType">Оплата:
-                </div>
-                <div class="Order-infoContent">Онлайн картой
-                </div>
-              </div>
-              <div class="Order-info">
-                <div class="Order-infoType">Общая стоимость:
-                </div>
-                <div class="Order-infoContent"><span class="Order-price">20.00$</span>
-                </div>
-              </div>
-              <div class="Order-info Order-info_status">
-                <div class="Order-infoType">Статус:
-                </div>
-                <div class="Order-infoContent">Доставляется
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    </div>
+
     </div>
   </div>
 {% endblock %}

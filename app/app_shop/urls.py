@@ -57,8 +57,8 @@ urlpatterns = [
     # Заказы
     path('order/', include([
         path('registration/', OrderRegistrationView.as_view(), name='order_registration'),  # Регистрация заказа
-        path('information/', OrderInformationView.as_view(), name='order_information'),  # Информация о заказе
         path('history/', HistoryOrderView.as_view(), name='history_order'),  # История заказов
+        path('detail/<int:pk>', OrderInformationView.as_view(), name='order_detail'),  # Информация о заказе
     ])),
 
     # Оплата заказа

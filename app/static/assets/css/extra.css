@@ -5328,7 +5328,7 @@ a.Cart-title {
 }
 
 .discount-price {
-  color: rgba(245, 61, 10, 0.84);
+  color: rgba(245, 61, 10, 0.84) !important;
 }
 
 .discount {
@@ -5432,4 +5432,8 @@ a.Cart-title {
 .Cart-total .Cart-price--margin {
   margin-left: 0;
   margin-right: 5px;
+}
+
+.color-green {
+  color: #3cb878 !important;
 }

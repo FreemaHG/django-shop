@@ -284,13 +284,12 @@ class Order(models.Model):
         products = PurchasedProduct.objects.filter(order__id=self.id)
         amount = products.aggregate(amount=Sum(F('count') * F('price')))
 
-        logger.warning(f'Рассчитанная стоимость заказа: {amount}')
-
         return amount['amount']
 
     class Meta:
         verbose_name = 'Заказ'
         verbose_name_plural = 'Заказы'
+        ordering = ['-data_created']
 
     def __str__(self):
         return f'Заказ №{self.id}'

@@ -335,7 +335,7 @@ class OrderAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Данные о заказе', {
-            'fields': ('payment', 'status'),
+            'fields': ('payment', 'status', 'error_message'),
             'description': 'Номер заказа, тип оплаты и статус заказа',
         }),
         ('Данные о покупателе и доставке', {
@@ -357,7 +357,8 @@ class OrderAdmin(admin.ModelAdmin):
         Запрещаем редактировать поля заказа
         """
         if obj:
-            return ['id', 'full_name', 'data_created', 'city', 'address', 'delivery', 'payment', 'status']
+            return ['id', 'full_name', 'data_created', 'city', 'address', 'delivery', 'payment', 'status', 'error_message']
+            # return ['id', 'full_name', 'data_created', 'city', 'address', 'delivery', 'payment']
 
         return self.readonly_fields
 

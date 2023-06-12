@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.core.cache import cache
 from config.admin import config
 
-from .models import Product, ProductReviews
+from .models import Product, ProductReviews, Order, PurchasedProduct
 from .forms import CommentProductForm, MakingOrderForm
 from app_user.forms import RegisterUserForm
 from .services.orders import RegistrationOrder
@@ -368,11 +368,12 @@ class PaymentView(TemplateView):
         """
         logger.debug('Оплата заказа')
         order_id = kwargs['order_id']
-        cart_number = request.POST['numero1']
+        cart_number = int(request.POST['numero1'])
 
         # Оплата заказа
-        Payment.payment(order_id=order_id, cart_number=cart_number)
+        res = Payment.payment_processing(order_id=order_id, cart_number=cart_number)
 
+        # FIXME Вывод заглушки при ожидании оплаты, после получения res редирект на страницу заказа
         return HttpResponse(f'Оплата заказа #{order_id} с карты #{cart_number}')
 
 
@@ -383,18 +384,27 @@ class ProgressPaymentView(TemplateView):
     template_name = '../templates/app_shop/orders/payment/progressPayment.html'
 
 
-class OrderInformationView(View):
-    """ Тестовая страница с информацией о заказе """
-    def get(self, request):
-        return render(request, '../templates/app_shop/orders/oneorder.html')
+class HistoryOrderView(ListView):
+    """
+    Страница с заказами текущего пользователя
+    """
+    model = Order
+    template_name = '../templates/app_shop/orders/historyorder.html'
+    paginate_by = 4
 
 
-class HistoryOrderView(View):
-    """ Тестовая страница с историей заказов """
-    def get(self, request):
-        return render(request, '../templates/app_shop/orders/historyorder.html')
+class OrderInformationView(DetailView):
+    """
+    Детальная страница заказа
+    """
+    model = Order
+    template_name = '../templates/app_shop/orders/oneorder.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        self.object = self.get_object()
 
+        products = PurchasedProduct.objects.filter(order=self.object)
+        context['products'] = products
 
-
-
+        return context
