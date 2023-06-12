@@ -357,8 +357,9 @@ class OrderAdmin(admin.ModelAdmin):
         Запрещаем редактировать поля заказа
         """
         if obj:
-            return ['id', 'full_name', 'data_created', 'city', 'address', 'delivery', 'payment', 'status', 'error_message']
-            # return ['id', 'full_name', 'data_created', 'city', 'address', 'delivery', 'payment']
+            # FIXME Вернуть обратно после тестирования асинхронной оплаты заказов
+            # return ['id', 'full_name', 'data_created', 'city', 'address', 'delivery', 'payment', 'status', 'error_message']
+            return ['id', 'full_name', 'data_created', 'city', 'address', 'delivery', 'payment']
 
         return self.readonly_fields
 

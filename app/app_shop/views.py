@@ -368,20 +368,23 @@ class PaymentView(TemplateView):
         """
         logger.debug('Оплата заказа')
         order_id = kwargs['order_id']
-        cart_number = int(request.POST['numero1'])
+        cart_number = request.POST['numero1']
 
         # Оплата заказа
-        res = Payment.payment_processing(order_id=order_id, cart_number=cart_number)
+        Payment.payment_processing(order_id=order_id, cart_number=cart_number)
 
-        # FIXME Вывод заглушки при ожидании оплаты, после получения res редирект на страницу заказа
-        return HttpResponse(f'Оплата заказа #{order_id} с карты #{cart_number}')
+        return redirect(reverse('shop:progress_payment', kwargs={'order_id': order_id}))
+        # return redirect(reverse('shop:order_detail', kwargs={'order_id': order_id}))
 
-
+# TODO Ожидание ассинхронного результата оплаты (с timeout!!!) с редиректом на страницу заказа
 class ProgressPaymentView(TemplateView):
     """
     Вывод страницы ожидания оплаты заказа
     """
     template_name = '../templates/app_shop/orders/payment/progressPayment.html'
+
+    # TODO Редирект на страницу заказа после получения результата оплаты
+    # return redirect(reverse('shop:order_detail', kwargs={'pk': order_id}))
 
 
 class HistoryOrderView(ListView):
