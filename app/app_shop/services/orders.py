@@ -120,3 +120,14 @@ class RegistrationOrder:
 
             logger.debug(f'Экспресс доставка. Стоимость: {delivery_cost} руб')
             return delivery_cost
+
+    @classmethod
+    def last_order(cls, request: HttpRequest):
+        """
+        Метод возвращает последний заказ пользователя
+        """
+        logger.debug(f'Возврат последнего заказа для пользователя: {request.user.profile.full_name}')
+
+        # По умолчанию у заказов обратная сортировка по дате создания,
+        # поэтому для возврата последнего заказа используем first()
+        return Order.objects.filter(user=request.user).first()

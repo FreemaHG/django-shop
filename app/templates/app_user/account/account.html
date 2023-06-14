@@ -39,12 +39,12 @@
                 <div class="row">
                   <div class="row-block">
                     <a class="Order-title" href="oneorder.html">Заказ&#32;
-{#                    <a class="Order-title" href="{% url 'shop:order_information' %}">Заказ&#32;#}
-                      <span class="Order-numberOrder">№200</span>&#32;от&#32;
-                      <span class="Order-dateOrder">21.07.2020</span>
+                    <a class="Order-title" href="{% url 'shop:order_detail' pk=last_order.id %}">Заказ&#32;
+                      <span class="Order-numberOrder">{{ last_order.id }}</span>&#32;от&#32;
+                      <span class="Order-dateOrder">{{ last_order.data_created }}</span>
                     </a>
                     <div class="Account-editLink">
-                      <a href="../../app_shop/orders/historyorder.html">История заказов</a>
+                      <a href="{% url 'shop:history_order' %}">История заказов</a>
 {#                      <a href="{% url 'shop:history_order' %}">История заказов</a>#}
                     </div>
                   </div>

@@ -17,6 +17,7 @@ from .utils.check_users import check_for_email
 from .utils.password_recovery import password_generation
 from django.conf import settings
 
+from app_shop.services.orders import RegistrationOrder
 
 logger = logging.getLogger(__name__)
 
@@ -190,16 +191,21 @@ def account_view(request):
     """
     Личный кабинет пользователя
     """
+    logger.debug('Личный кабинет пользователя')
+
     if request.user.is_authenticated:
-        return render(request, '../templates/app_user/account/account.html')
+        last_order = RegistrationOrder.last_order(request=request)
+        return render(request, '../templates/app_user/account/account.html', context={'last_order': last_order})
 
     return redirect('%s?next=%s' % (reverse('user:login'), request.path))
 
 
 class ProfileView(View):
     """
-    Тестовая страница с данными пользователя
+    Профайл: редактирование данных пользователя
     """
+    logger.debug('Профайл: редактирование данных пользователя')
+
     def get(self, request):
         if request.user.is_authenticated:
             form = RegisterUserForm()
