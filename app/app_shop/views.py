@@ -20,6 +20,7 @@ from .services.shop_cart.logic import CartProductsListService, CartProductsAddSe
 from .services.shop_cart.authenticated import ProductsCartUserService
 from .services.shop_cart.quest import ProductsCartQuestService
 from .services.orders_payment import Payment
+from .services.products.search import ProductsListSearchService
 from .utils.input_data import clear_data
 # from .utils.shop_cart import get_id_products_in_cart
 
@@ -124,6 +125,27 @@ class ProductsListView(ListView):
             logger.debug(f'Передача параметров в шаблон: {context["filter_parameters"]}')
 
         return context
+
+
+class ProductsLisSearchView(View):
+    """
+    Поиск товаров
+    """
+    # model = Product
+    # template_name = '../templates/app_shop/catalog.html'
+    # context_object_name = 'products'
+    # paginate_by = 8
+
+    def post(self, request):
+        """
+        Вывод товаров, найденных по поисковой фразе
+        """
+        query = request.POST['query']
+        logger.debug(f'Поиск товаров по фразе: {query}')
+
+        products = ProductsListSearchService.search(query=query)
+
+        return render(request, '../templates/app_shop/catalog.html', {'products': products})
 
 
 class AboutView(View):

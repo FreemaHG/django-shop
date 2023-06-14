@@ -19,6 +19,7 @@ from .views import (
     reduce_product,
     increase_product,
     delete_product,
+    ProductsLisSearchView,
 )
 
 app_name = 'shop'
@@ -30,6 +31,7 @@ urlpatterns = [
         re_path(r'^(?P<group>.*)/(?P<name>.*)/', ProductsListView.as_view(), name='products_list'),
         re_path(r'^(?P<group>.*)/(?P<name>.*)/.+', ProductsListView.as_view(), name='products_list'),
     ])),
+    path('search/', ProductsLisSearchView.as_view(), name='search'),  # Поиск товаров
     path('about/', AboutView.as_view(), name='about'),  # О магазине
     path('sale/', ProductsSalesView.as_view(), name='sale'),  # Распродаж
     path('product/', include([

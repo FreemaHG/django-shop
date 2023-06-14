@@ -5437,3 +5437,7 @@ a.Cart-title {
 .color-green {
   color: #3cb878 !important;
 }
+
+.CartBlock-price--width {
+  width: 40px;
+}
