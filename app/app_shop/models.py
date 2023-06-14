@@ -114,6 +114,7 @@ class Product(models.Model):
     count = models.PositiveIntegerField(default=0, verbose_name='Кол-во')
     limited_edition = models.BooleanField(default=False, verbose_name='Ограниченный тираж')
     deleted = models.BooleanField(choices=STATUS_CHOICES, default=False, verbose_name='Статус')  # Мягкое удаление
+    purchases = models.PositiveIntegerField(default=0, verbose_name='Покупок')
 
     class Meta:
         db_table = 'products'

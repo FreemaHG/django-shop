@@ -39,7 +39,12 @@
               {% clear_link_for_sort request.get_full_path as sort_link%}
               <div class="Sort-title">Сортировать по:</div>
               <div class="Sort-variants">
-                <a class="Sort-sortBy {{ sorting_indicator_by_popularity }}" href="#">Популярности</a>
+
+                {% if not filter_parameters.sort or filter_parameters.sort == 'by_popularity_up' %}
+                  <a class="Sort-sortBy {{ sorting_indicator_by_popularity }}" href="{{ sort_link }}sort=by_popularity_down">Популярности</a>
+                {% else %}
+                  <a class="Sort-sortBy {{ sorting_indicator_by_popularity }}" href="{{ sort_link }}sort=by_popularity_up">Популярности</a>
+                {% endif %}
 
                 {% if not filter_parameters.sort or filter_parameters.sort == 'by_price_up' %}
                   <a class="Sort-sortBy {{ sorting_indicator_by_price }}" href="{{ sort_link }}sort=by_price_down">Цене</a>
@@ -47,13 +52,18 @@
                   <a class="Sort-sortBy {{ sorting_indicator_by_price }}" href="{{ sort_link }}sort=by_price_up">Цене</a>
                 {% endif %}
 
-                <a class="Sort-sortBy {{ sorting_indicator_by_reviews }}" href="#">Отзывам</a>
+                {% if not filter_parameters.sort or filter_parameters.sort == 'by_reviews_up' %}
+                  <a class="Sort-sortBy {{ sorting_indicator_by_reviews }}" href="{{ sort_link }}sort=by_reviews_down">Отзывам</a>
+                {% else %}
+                  <a class="Sort-sortBy {{ sorting_indicator_by_reviews }}" href="{{ sort_link }}sort=by_reviews_up">Отзывам</a>
+                {% endif %}
 
                 {% if not filter_parameters.sort or filter_parameters.sort == 'by_novelty_up' %}
                   <a class="Sort-sortBy {{ sorting_indicator_by_novelty }}" href="{{ sort_link }}sort=by_novelty_down">Новизне</a>
                 {% else %}
                   <a class="Sort-sortBy {{ sorting_indicator_by_novelty }}" href="{{ sort_link }}sort=by_novelty_up">Новизне</a>
                 {% endif %}
+
               </div>
             </div>
           {% endblock %}

@@ -41,12 +41,28 @@ class ProductsListService:
 
         # Сортировка
         if sort:
+            # Сортировка по цене
             if sort == 'by_price_down':
                 products = ProductSort.by_price_down(products=products)
 
             elif sort == 'by_price_up':
                 products = ProductSort.by_price_up(products=products)
 
+            # Сортировка по популярности (кол-ву продаж)
+            elif sort == 'by_popularity_down':
+                products = ProductSort.by_popularity_down(products=products)
+
+            elif sort == 'by_popularity_up':
+                products = ProductSort.by_popularity_up(products=products)
+
+            # Сортировка по отзывам
+            elif sort == 'by_reviews_down':
+                products = ProductSort.by_reviews_down(products=products)
+
+            elif sort == 'by_reviews_up':
+                products = ProductSort.by_reviews_up(products=products)
+
+            # Сортировка по новизне
             elif sort == 'by_novelty_down':
                 products = ProductSort.by_novelty_down(products=products)
 

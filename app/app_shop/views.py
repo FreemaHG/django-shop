@@ -93,17 +93,33 @@ class ProductsListView(ListView):
             if not sort_param is False:
                 context['filter_parameters']['sort'] = sort_param
 
+                # Сортировка по цене
                 if sort_param == 'by_price_down':
                     context['sorting_indicator_by_price'] = class_up  # Сортировка вверх
 
                 elif sort_param == 'by_price_up':
                     context['sorting_indicator_by_price'] = class_down  # Сортировка вниз
 
+                # Сортировка по популярности (кол-ву продаж)
+                elif sort_param == 'by_popularity_down':
+                    context['sorting_indicator_by_popularity'] = class_up
+
+                elif sort_param == 'by_popularity_up':
+                    context['sorting_indicator_by_popularity'] = class_down
+
+                # Сортировка по отзывам
+                elif sort_param == 'by_reviews_down':
+                    context['sorting_indicator_by_reviews'] = class_up
+
+                elif sort_param == 'by_reviews_up':
+                    context['sorting_indicator_by_reviews'] = class_down
+
+                # Сортировка по новизне
                 elif sort_param == 'by_novelty_down':
-                    context['sorting_indicator_by_novelty'] = class_up  # Сортировка вверх
+                    context['sorting_indicator_by_novelty'] = class_up
 
                 elif sort_param == 'by_novelty_up':
-                    context['sorting_indicator_by_novelty'] = class_down  # Сортировка вниз
+                    context['sorting_indicator_by_novelty'] = class_down
 
             logger.debug(f'Передача параметров в шаблон: {context["filter_parameters"]}')
 

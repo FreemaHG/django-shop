@@ -142,7 +142,7 @@ class ProductAdmin(admin.ModelAdmin):
     """
     Админ-панель для товаров
     """
-    list_display = ('id', 'short_name', 'category', 'price', 'discount', 'count', 'limited_edition', 'created_at', 'deleted')
+    list_display = ('id', 'short_name', 'category', 'price', 'discount', 'count', 'purchases', 'limited_edition', 'created_at', 'deleted')
     list_display_links = ('short_name',)
     list_filter = ('limited_edition', 'category', 'tags')
     search_fields = ('name',)
@@ -158,8 +158,8 @@ class ProductAdmin(admin.ModelAdmin):
         ('Категория и теги', {'fields': ('category', 'tags')}),
         ('Стоимость и скидка', {'fields': ('price', 'discount')}),
         ('Кол-во товара', {
-            'fields': ('count', 'limited_edition'),
-            'description': 'Оставшееся кол-во товара на складе, а также принадлежность товара к ограниченному тиражу',
+            'fields': ('count', 'purchases', 'limited_edition'),
+            'description': 'Оставшееся кол-во товара на складе, кол-во покупок, а также принадлежность товара к ограниченному тиражу',
         }),
         ('Статус', {
             'fields': ('deleted',),
@@ -178,6 +178,15 @@ class ProductAdmin(admin.ModelAdmin):
         return obj.name
 
     short_name.short_description = 'Название товара'
+
+    def get_readonly_fields(self, request, obj=None):
+        """
+        Запрещаем редактировать поле с кол-вом проданных экземпляров
+        """
+        if obj:
+            return ['purchases']
+
+        return self.readonly_fields
 
 
 @admin.register(ProductReviews)
