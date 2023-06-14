@@ -2,13 +2,14 @@ import logging
 
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LogoutView
-from django.db import IntegrityError
+from django.db import IntegrityError, transaction
 from django.urls import reverse
 from django.views.generic.edit import FormView
 from django.shortcuts import render, redirect
 from django.views import View
 from django.core.mail import send_mail, BadHeaderError
 
+from app_shop.services.shop_cart.logic import CartProductsAddService
 from .models import Profile
 from .forms import RegisterUserForm, AuthUserForm, EmailForm
 from .utils.save_new_user import save_username, cleaned_phone_data
@@ -19,11 +20,16 @@ from django.conf import settings
 
 logger = logging.getLogger(__name__)
 
+# TODO При неуспешной транзакции ниже не выполняется запрос в base.html get_solo при извлечении данных о сайте (ошибка при выводе шаблона)
+# @transaction.atomic
 def register_user_view(request):
     """
     Регистрация пользователя в расширенной форме
     """
+    logger.debug('Регистрация пользователя')
+
     if request.user.is_authenticated:
+        logger.warning('Пользователь уже зарегистрирован')
         return redirect('user:account')
 
     else:
@@ -32,13 +38,13 @@ def register_user_view(request):
 
             if form.is_valid():
                 logger.debug(f'Данные валидны: {form.cleaned_data}')
-
                 user = form.save(commit=False)
                 full_name = form.cleaned_data.get('full_name', False)
                 email = form.cleaned_data.get('email', False)
                 phone_number = form.cleaned_data.get('phone_number', None)
-                avatar = request.FILES.get('avatar', False)
+                avatar = request.FILES.get('avatar', None)
                 password = form.cleaned_data.get('password1')
+                next_page = request.GET.get('next', False)
 
                 username = save_username(email)  # Извлекаем и сохраняем username по email
                 user.username = username
@@ -48,8 +54,13 @@ def register_user_view(request):
                     user.set_password(password)
                     user.save()
                 except IntegrityError:
-                    logger.warning(f'Регистрация - дублирующийся email')
+                    logger.error(f'Регистрация - дублирующийся email')
                     error_message = 'Пользователь с таким email уже зарегистрирован'
+
+                    if next_page and 'order' in next_page:
+                        logger.debug(f'Возврат на страницу: {next_page}')
+                        return render(request, 'app_shop/orders/order.html', {'form': form, 'error_message': error_message})
+
                     return render(request, 'app_user/registration.html', {'form': form, 'error_message': error_message})
 
                 try:
@@ -60,13 +71,26 @@ def register_user_view(request):
                         avatar=avatar
                     )
                 except IntegrityError:
-                    logger.warning(f'Регистрация - дублирующийся phone_number')
+                    logger.error(f'Регистрация - дублирующийся phone_number')
                     error_message = 'Пользователь с таким номером телефона уже зарегистрирован'
+
+                    if next_page and 'order' in next_page:
+                        logger.debug(f'Возврат на страницу: {next_page}')
+                        return render(request, 'app_shop/orders/order.html', {'form': form, 'error_message': error_message})
+
                     return render(request, 'app_user/registration.html', {'form': form, 'error_message': error_message})
+
+                # Слияние корзин в БД
+                CartProductsAddService.merge_carts(request=request, user=user)
 
                 # Авторизация нового пользователя и редирект в личный кабинет
                 user = authenticate(username=username, password=password)
                 login(request, user)
+
+                if next_page:
+                    logger.debug(f'Возврат на страницу: {next_page}')
+                    return redirect(next_page)
+
                 return redirect('user:account')
 
             logger.error(f'Регистрация - не валидные данные: {form.errors}')
@@ -82,7 +106,7 @@ class LogoutUserView(LogoutView):
     """
     Выход из учетной записи
     """
-    next_page = 'user:registration'
+    next_page = '/'
 
 
 class LoginUserView(FormView):
@@ -92,6 +116,7 @@ class LoginUserView(FormView):
     form_class = AuthUserForm
     template_name = '../templates/app_user/account/login.html'
 
+    @transaction.atomic
     def form_valid(self, form):
         logger.debug(f'Данные валидны: {form.cleaned_data}')
 
@@ -104,7 +129,11 @@ class LoginUserView(FormView):
             user = authenticate(username=username, password=password)
             login(self.request, user)
 
+            # Слияние корзин в БД
+            CartProductsAddService.merge_carts(request=self.request, user=user)
+
             if next_page:
+                logger.debug(f'Возврат на страницу: {next_page}')
                 return redirect(next_page)
 
             return redirect('user:account')

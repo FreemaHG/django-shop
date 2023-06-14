@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% load tags %}
+
+{% block content %}
+
+  {% block junior_header %}
+    {% include "includes/junior_header.html" with title="Оформление заказа" %}
+  {% endblock %}
+
+  <div class="Section Section_column Section_columnRight Section_columnWide Order">
+    <div class="wrap">
+      <div class="Section-column">
+        <div class="Section-columnSection">
+          <header class="Section-header">
+            <strong class="Section-title">Прогресс заполнения</strong>
+          </header>
+          <div class="Section-columnContent">
+            <ul class="menu menu_vt Order-navigate">
+              <li class="menu-item_ACTIVE menu-item">
+                <a class="menu-link" href="#step1">Шаг 1. Параметры пользователя</a>
+              </li>
+              <li class="menu-item">
+                <a class="menu-link" href="#step2">Шаг 2. Способ доставки</a>
+              </li>
+              <li class="menu-item">
+                <a class="menu-link" href="#step3">Шаг 3. Способ оплаты</a>
+              </li>
+              <li class="menu-item">
+                <a class="menu-link" href="#step4">Шаг 4. Подтверждение заказа</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="Section-content">
+
+      {% block order_form %}
+        {% if request.user.is_authenticated %}
+          {% include "app_shop/orders/forms/order_registration.html" %}
+        {% else %}
+          {% include "app_shop/orders/forms/user_registration.html" %}
+        {% endif %}
+      {% endblock %}
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

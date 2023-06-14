@@ -10,7 +10,8 @@
         <div class="row ControlPanel-row">
           <div class="row-block">
             <div class="row ControlPanel-rowSplit">
-              <div class="row-block"><a class="ControlPanel-title" href="#">Free Delivery</a>
+              <div class="row-block">
+                <a class="ControlPanel-title" href="#">Free Delivery</a>
               </div>
               <div class="row-block hide_700">
                   <span class="ControlPanel-title">Follow Us</span>
@@ -42,9 +43,16 @@
           <nav class="row-block">
             <div class="row ControlPanel-rowSplit">
               {% if request.user.is_authenticated %}
-                <div class="row-block"><a class="ControlPanel-title" href="{% url 'user:account' %}">Account</a></div>
+                <div class="row-block">
+                  <a class="ControlPanel-title" href="{% url 'user:account' %}">Личный кабинет</a>
+                </div>
               {% else %}
-                <div class="row-block"><a class="ControlPanel-title" href="#">Login / Register</a></div>
+                <div class="row-block">
+{#                  <a class="ControlPanel-title" href="#">Login / Register</a>#}
+                  <a class="ControlPanel-title" href="{% url 'user:login' %}">Войти</a>
+                  <p class="login-separator">/</p>
+                  <a class="ControlPanel-title" href="{% url 'user:registration' %}">Регистрация</a>
+                </div>
               {% endif %}
             </div>
           </nav>
@@ -92,11 +100,13 @@
         </nav>
         <div class="row-block">
           <div class="CartBlock">
+            {% products_cart as data %}
             <a class="CartBlock-block" href="{% url 'shop:shopping_cart' %}">
               <img class="CartBlock-img" src="{% static 'assets/img/icons/cart.svg' %}" alt="cart.svg"/>
-              <span class="CartBlock-amount">0</span>
+              <span class="CartBlock-amount">{{ data.0 }}</span>
             </a>
-            <div class="CartBlock-block"><span class="CartBlock-price">0.00$</span>
+            <div class="CartBlock-block">
+              <span class="CartBlock-price">{{ data.1 }} руб</span>
             </div>
           </div>
         </div>

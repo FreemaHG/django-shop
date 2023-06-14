@@ -20,8 +20,7 @@
                 <img src="{{ first_img.image.url }}" alt="{{ first_img.title }}"/>
               </div>
               <div class="ProductCard-picts">
-                <!-- Не более 7 изображений к товару -->
-                {% for img in images|slice:":7" %}
+                {% for img in images|slice:":7" %}  <!-- Не более 7 изображений к товару -->
                   <a class="ProductCard-pict ProductCard-pict_ACTIVE" href="{{ img.image.url }}">
                     <img src="{{ img.image.url }}" alt="{{ img.title }}"/>
                   </a>
@@ -33,7 +32,13 @@
                 <h2 class="ProductCard-title">{{ object.name }}</h2>
                 <div class="ProductCard-info">
                   <div class="ProductCard-cost">
-                    <div class="ProductCard-price">{{ object.price }} руб</div>
+                    {% if object.discount %}
+                      <div class="ProductCard-price discount-price">{{ object.price }}<small> руб</small></div>
+                      <div class="discount">—{{ object.discount }}%</div>
+                      <div class="old-price">{{ object.discounted_price }} р</div>
+                    {% else %}
+                      <div class="ProductCard-price">{{ object.price }}<small> руб</small></div>
+                    {% endif %}
                   </div>
                 </div>
               </div>
@@ -44,21 +49,64 @@
                   {% endfor %}
                 </ul>
               </div>
-              <div class="ProductCard-cart">
-                <div class="ProductCard-cartElement ProductCard-cartElement_amount">
-                  <div class="Amount Amount_product">
-                    <button class="Amount-remove" type="button"></button>
-                    <input class="Amount-input form-input" name="amount" type="text" value="1"/>
-                    <button class="Amount-add" type="button"></button>
+
+              {% if object.id not in cart_products %}  <!-- Если товара нет в корзине пользователя -->
+                <div class="ProductCard-cart ProductCard-cart--aline-center">
+                  <div class="product-block" id="product-not-in-cart">
+                    <div class="ProductCard-cartElement ProductCard-cartElement_amount">
+                      <div class="Amount Amount_product">
+                        <button id="Amount-remove" class="Amount-remove" type="button"></button>
+                        <input class="Amount-input form-input" name="amount" type="text" value="1" id="product-count"/>
+                        <button id="Amount-add" class="Amount-add" type="button"></button>
+                      </div>
+                    </div>
+                    <div class="ProductCard-cartElement">
+                      <a class="btn btn_primary" id="add-to-cart">
+                        <img class="btn-icon" src="{% static 'assets/img/icons/card/cart_white.svg' %}" alt="cart_white.svg"/>
+                        <span class="btn-content">Добавить в корзину</span>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="spinner-border text-primary mt-2 not-visible" role="status" id="spinner-product">
+                    <span class="sr-only">Загрузка...</span>
+                  </div>
+
+                  <div class="alert alert-danger mt-2 not-visible" role="alert" id='alert-product'>Произошла ошибка</div>
+
+                  <div class="product-block not-visible" id="product-in-cart">
+                    <div class="ProductCard-cartElement ProductCard-cartElement_amount">
+                        <p class="btn_narrow">Товар в корзине</p>
+                      </div>
+                      <div class="ProductCard-cartElement">
+                        <a class="btn btn_primary btn_primary--grey" href="{% url 'shop:shopping_cart' %}">
+                          <img class="btn-icon" src="{% static 'assets/img/icons/card/cart_white.svg' %}" alt="cart_white.svg"/>
+                          <span class="btn-content">Перейти в корзину</span>
+                        </a>
+                      </div>
                   </div>
                 </div>
-                <div class="ProductCard-cartElement">
-                  <a class="btn btn_primary" href="#">
-                    <img class="btn-icon" src="{% static 'assets/img/icons/card/cart_white.svg' %}" alt="cart_white.svg"/>
-                    <span class="btn-content">Добавить в корзину</span>
-                  </a>
+
+              {% else %}  <!-- Если товар в корзине -->
+                <div class="ProductCard-cart ProductCard-cart--aline-center">
+                    <div class="ProductCard-cartElement ProductCard-cartElement_amount">
+                      <p class="btn_narrow">Товар в корзине</p>
+                    </div>
+                    <div class="ProductCard-cartElement">
+                      <a class="btn btn_primary btn_primary--grey" href="{% url 'shop:shopping_cart' %}">
+                        <img class="btn-icon" src="{% static 'assets/img/icons/card/cart_white.svg' %}" alt="cart_white.svg"/>
+                        <span class="btn-content">Перейти в корзину</span>
+                      </a>
+                    </div>
                 </div>
-              </div>
+              {% endif %}
+
+              <!-- Почему не подключается? -->
+{#              <script type="text/javascript" src="{% static 'assets/js/add-to-cart.js' %}"></script>#}
+
+              <!-- JS для добавления товара в корзину -->
+              {% include "app_shop/detail_product/add_to_cart.html" %}
+
               <div class="ProductCard-footer">
                 <div class="ProductCard-tags">
                   {% tags_for_product object as tags_list %}
@@ -160,16 +208,17 @@
                     {% endfor %}
                   </div>
 
-                  <div class="spinner-border text-primary mt-2 not-visible" role="status" id="spinner">
+                  <div class="spinner-border text-primary mt-2 not-visible" role="status" id="spinner-comments">
                       <span class="sr-only">Загрузка...</span>
                   </div>
-                  <div class="load-more__btn mt-3" id="btn">
+                  <div class="load-more__btn mt-3" id="btn-load-comments">
                     <button type="button" class="btn btn-success btn_primary btn-blue">Загрузить еще</button>
                   </div>
-                  <div class="alert alert-danger mt-2 not-visible" role="alert" id='alert'>Отзывов больше нет!</div>
+                  <div class="alert alert-danger mt-2 not-visible" role="alert" id='alert-comments'>Отзывов больше нет!</div>
 
-                  <!-- Загрузка доп.комментариев к товару -->
-                  {% include "app_shop/upload_comments.html" %}
+                  <!-- JS для загрузки доп.комментариев к товару -->
+{#                  {{ total_comments|json_script:"json-total" }}#}
+                  {% include "app_shop/detail_product/upload_comments.html" %}
 
                 {% endif %}
 

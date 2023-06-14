@@ -1,0 +1,91 @@
+<script>
+  // Кнопки
+  const loadBtnStepTwo = document.getElementById('btn-step2');
+  const loadBtnStepFree = document.getElementById('btn-step3');
+  const loadBtnStepFour = document.getElementById('btn-step4');
+
+  function savePersonData() {
+    console.debug('%cDEBUG: Сохранение данных о пользователе', 'color: grey;');
+
+    const full_name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const mail = document.getElementById('mail').value;
+    document.getElementById("name-out").innerHTML = full_name;
+    document.getElementById("phone-out").innerHTML = phone;
+    document.getElementById("email-out").innerHTML = mail;
+  }
+
+  function saveDataDelivery() {
+    console.debug('%cDEBUG: Сохранение данных о доставке, расчет стоимости доставки', 'color: grey;');
+
+    const city = document.getElementById('city').value;
+    const address = document.getElementById('address').value;
+    const totalCost = Number(JSON.parse(document.getElementById('total-cost').textContent));
+    console.info(`%cINFO: Стоимость корзины: ${totalCost}`, 'color: green;');
+    console.info(`%cINFO: Лимит бесплатной доставки {{ site_config.shipping_cost }}`, 'color: green;');
+
+    if (document.getElementById('delivery-ordinary').checked) {
+      console.debug('%cDEBUG: Выбрана обычная доставка', 'color: grey;');
+      document.getElementById("delivery-out").innerHTML = 'Обычная доставка';
+
+      if (totalCost < Number({{ site_config.min_order_cost }})) {
+        console.debug('%cDEBUG: Стоимость товаров < {{ site_config.shipping_cost }}', 'color: grey;');
+        const totalCostDelivery = Number({{ site_config.shipping_cost }});
+        console.info(`%cINFO: Рассчитанная стоимость доставки: ${totalCostDelivery}`, 'color: green;');
+        document.getElementById("delivery-cost").innerHTML = `${totalCostDelivery}`;
+      }
+      else {
+        document.getElementById("delivery-cost").innerHTML = '0';
+        console.info('%cINFO: Рассчитанная стоимость доставки: 0', 'color: green;');
+      }
+
+    }
+    else {
+      console.debug('%cDEBUG: Выбрана экспресс доставка', 'color: grey;');
+      document.getElementById("delivery-out").innerHTML = 'Экспресс доставка';
+
+      if (totalCost < Number({{ site_config.min_order_cost }})) {
+        console.debug(`%cDEBUG: Стоимость товаров < {{ site_config.shipping_cost }}`, 'color: grey;');
+        const totalCostDelivery = Number({{ site_config.shipping_cost }}) + Number({{ site_config.extra_shipping_cost }});
+        console.info(`%cINFO: Рассчитанная стоимость доставки: ${totalCostDelivery}`, 'color: green;');
+        document.getElementById("delivery-cost").innerHTML = `${totalCostDelivery}`;
+      }
+      else {
+        const totalCostDelivery = Number({{ site_config.extra_shipping_cost }});
+        document.getElementById("delivery-cost").innerHTML = `${totalCostDelivery}`;
+        console.info('%cINFO: Рассчитанная стоимость доставки: 0', 'color: green;');
+      }
+    }
+
+    document.getElementById("city-out").innerHTML = city;
+    document.getElementById("address-out").innerHTML = address;
+  }
+
+  function savePay() {
+    console.debug('%cDEBUG: Сохранение данных об оплате', 'color: grey;');
+
+    if (document.getElementById('pay-online').checked) {
+      document.getElementById("pay-out").innerHTML = 'Онлайн картой';
+    }
+    else {
+      document.getElementById("pay-out").innerHTML = 'Онлайн со случайного чужого счета';
+    }
+  }
+
+  // Обработка кликов
+  loadBtnStepTwo.addEventListener('click', () => {
+    console.debug('%cDEBUG: Переход к шагу 2', 'color: grey;');
+    savePersonData()
+  });
+
+  loadBtnStepFree.addEventListener('click', () => {
+    console.debug('%cDEBUG: Переход к шагу 3', 'color: grey;');
+    saveDataDelivery()
+  });
+
+  loadBtnStepFour.addEventListener('click', () => {
+    console.debug('%cDEBUG: Переход к шагу 4', 'color: grey;');
+    savePay()
+  });
+
+</script>

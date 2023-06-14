@@ -1,0 +1,223 @@
+{% load static %}
+{% load solo_tags %}
+
+<form class="form" action="{% url 'shop:order_registration' %}" method="post">
+  {% csrf_token %}
+  <div class="Order-block Order-block_OPEN" id="step1">
+    <header class="Section-header Section-header_sm">
+      <h2 class="Section-title">Шаг 1. Параметры пользователя</h2>
+    </header>
+    <div class="row">
+      <div class="row-block">
+        <div class="form-group">
+          <label class="form-label" for="name">{{ form.full_name.label }}</label>
+          <input class="form-input" id="name" name="full_name" type="text" readonly
+             value="{{ request.user.profile.full_name }}"
+             data-validate="require"
+             placeholder="{{ form.full_name.help_text }}"/>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="phone">{{ form.phone_number.label }}</label>
+          {% if request.user.profile.phone_number %}
+            <input class="form-input" id="phone" name="phone_number" type="tel" readonly
+               value="+7{{ request.user.profile.phone_number }}"
+               data-validate="require"
+               placeholder="{{ form.phone_number.help_text }}"/>
+          {% else %}
+            <input class="form-input" id="phone" name="phone" type="tel"
+               value=""
+               data-validate="require"
+               placeholder="{{ form.phone_number.help_text }}"/>
+          {% endif %}
+
+          {% if form.phone_number.errors %}
+            {% for error in form.phone_number.errors %}
+              <div class="Profile-success error-message">{{ error | escape }}</div>
+            {% endfor %}
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="mail">{{ form.email.label }}</label>
+          <input class="form-input" id="mail" name="email" type="email" readonly
+             value="{{ request.user.email }}"
+             data-validate="require"
+             placeholder="{{ form.email.help_text }}"/>
+
+          {% if form.email.errors %}
+            {% for error in form.email.errors %}
+              <div class="Profile-success error-message">{{ error | escape }}</div>
+            {% endfor %}
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+    <div class="Order-footer">
+      <a class="btn btn_success Order-next" id="btn-step2" href="#step2">Дальше</a>
+    </div>
+  </div>
+
+  <div class="Order-block" id="step2">
+    <header class="Section-header Section-header_sm">
+      <h2 class="Section-title">Шаг 2. Способ доставки</h2>
+    </header>
+    <div class="form-group">
+      <div>
+        <label class="toggle">
+          <input type="radio" name="delivery" id="delivery-ordinary" value="ordinary" checked="checked"/>
+          <span class="toggle-box"></span>
+          <span class="toggle-text">Обычная доставка</span>
+        </label>
+      </div>
+      <div>
+        <label class="toggle">
+          <input type="radio" name="delivery" id="delivery" value="express"/>
+          <span class="toggle-box"></span>
+          <span class="toggle-text">Экспресс доставка</span>
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="city">{{ form.city.label }}</label>
+      <input class="form-input" id="city" name="city" type="text" data-validate="require"/>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="address">{{ form.address.label }}</label>
+{#              <textarea class="form-textarea" name="address" id="address" data-validate="require">{{ request.user.profile.address }}</textarea>#}
+      <textarea class="form-textarea" name="address" id="address">{{ request.user.profile.address }}</textarea>
+    </div>
+    <div class="Order-footer">
+      <a class="btn btn_success Order-next" id="btn-step3" href="#step3">Дальше</a>
+    </div>
+  </div>
+  <div class="Order-block" id="step3">
+    <header class="Section-header Section-header_sm">
+      <h2 class="Section-title">Шаг 3. Способ оплаты</h2>
+    </header>
+    <div class="form-group">
+      <div>
+        <label class="toggle">
+          <input type="radio" name="pay" id="pay-online" value="online" checked="checked"/>
+          <span class="toggle-box"></span>
+          <span class="toggle-text">Онлайн картой</span>
+        </label>
+      </div>
+      <div>
+        <label class="toggle">
+          <input type="radio" name="pay" value="someone"/>
+          <span class="toggle-box"></span>
+          <span class="toggle-text">Онлайн со случайного чужого счета</span>
+        </label>
+      </div>
+    </div>
+    <div class="Order-footer">
+      <a class="btn btn_success Order-next" id="btn-step4" href="#step4">Дальше</a>
+    </div>
+  </div>
+
+  <!-- JS для сохранения вводимых данных и отображения на этапе подтверждения заказа -->
+  {% include "app_shop/orders/registration/save_order_data.html" %}
+
+  <div class="Order-block" id="step4">
+    <header class="Section-header Section-header_sm">
+      <h2 class="Section-title">Шаг 4. Подтверждение заказа</h2>
+    </header>
+    <!--+div.Order.-confirmation-->
+    <div class="Order-infoBlock">
+
+      <div class="Order-personal">
+        <div class="row">
+
+          <div class="row-block">
+            <div class="Order-info">
+              <div class="Order-infoType">ФИО:</div>
+{#              <div id="name-out" class="Order-infoContent">Иванов Иван Иванович</div>#}
+              <div id="name-out" class="Order-infoContent"></div>
+            </div>
+            <div class="Order-info">
+              <div class="Order-infoType">Телефон:</div>
+{#              <div id="phone-out" class="Order-infoContent">+7000000000</div>#}
+              <div id="phone-out" class="Order-infoContent"></div>
+            </div>
+            <div class="Order-info">
+              <div class="Order-infoType">E-mail:</div>
+{#              <div id="email-out" class="Order-infoContent">send@test.test</div>#}
+              <div id="email-out" class="Order-infoContent"></div>
+            </div>
+          </div>
+
+          <div class="row-block">
+            <div class="Order-info Order-info_delivery">
+              <div class="Order-infoType">Тип доставки:</div>
+{#              <div id="delivery-out" class="Order-infoContent">Обычная доставка</div>#}
+              <div id="delivery-out" class="Order-infoContent"></div>
+            </div>
+            <div class="Order-info">
+              <div class="Order-infoType">Город:</div>
+{#              <div id="city-out" class="Order-infoContent">Москва</div>#}
+              <div id="city-out" class="Order-infoContent"></div>
+            </div>
+            <div class="Order-info">
+              <div class="Order-infoType">Адрес:</div>
+{#              <div id="address-out" class="Order-infoContent">Ул. Академика Арцимовича, д. 10, кв. 10</div>#}
+              <div id="address-out" class="Order-infoContent"></div>
+            </div>
+            <div class="Order-info Order-info_pay">
+              <div class="Order-infoType">Оплата:</div>
+{#              <div id="pay-out" class="Order-infoContent">Онлайн картой</div>#}
+              <div id="pay-out" class="Order-infoContent"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="Cart Cart_order">
+        {% for position in records %}
+          {% with position.product as product %}
+          <div class="Cart-product">
+            <div class="Cart-block Cart-block_row">
+              <div class="Cart-block Cart-block_pict">
+                <a class="Cart-pict" href="{% url 'shop:product_detail' pk=product.id %}">
+                  {% with product.productimages_set.first as img %}
+                    <img class="Cart-img" src="{{ img.image.url }}" alt="{{ img.title }}"/></a>
+                  {% endwith %}
+              </div>
+              <div class="Cart-block Cart-block_info">
+                <a class="Cart-title" href="{% url 'shop:product_detail' pk=product.id %}">{{ product.name }}</a>
+                <div class="Cart-desc">{{ product.definition|truncatechars:200 }}</div>
+              </div>
+              <div class="Cart-block Cart-block_price">
+                <div class="Cart-price">{{ position.position_cost }} <small>руб</small></div>
+              </div>
+            </div>
+            <div class="Cart-block Cart-block_row">
+              <div class="Cart-block Cart-block_amount">{{ position.count }} шт.</div>
+            </div>
+          </div>
+          {% endwith %}
+        {% endfor %}
+
+        <div class="Cart-total">
+          <div class="Cart-block Cart-block_total flex">
+            <strong class="Cart-title">Итого:</strong>
+            <span id="total-cost" class="Cart-price Cart-price--margin">{{ total_cost }}</span><small> руб</small>
+          </div>
+          <div class="Cart-block Cart-block_total flex">
+            <strong class="Cart-title">Доставка:</strong>
+            {% get_solo "config.SiteConfiguration" as site_config %}
+            <span id="delivery-cost" class="Cart-price Cart-price--margin"></span><small> руб</small>
+          </div>
+
+          <div class="Cart-block">
+            <button class="btn btn_primary btn_lg" type="submit">Оплатить</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</form>

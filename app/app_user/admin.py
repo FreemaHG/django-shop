@@ -24,7 +24,7 @@ def restore_records(adminmodel, request, queryset):
 class ProfileAdmin(admin.ModelAdmin):
     """ Профайл пользователя """
 
-    list_display = ['user', 'name', 'phone_number', 'address', 'deleted']
+    list_display = ['user', 'name', 'email', 'phone_number', 'address', 'deleted']
     list_display_links = ['user', 'name']
     search_fields = ['user']
     actions = (deleted_records, restore_records)  # Мягкое удаление/восстановление записей
@@ -33,6 +33,11 @@ class ProfileAdmin(admin.ModelAdmin):
         return output_name(object)
 
     name.short_description = 'Имя'
+
+    def email(self, object):
+        return object.user.email
+
+    email.short_description = 'Email'
 
 
 @admin.register(Seller)

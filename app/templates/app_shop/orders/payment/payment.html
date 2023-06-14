@@ -1,33 +1,44 @@
 {% extends "base.html" %}
 
 {% block content %}
-
   <div class="Middle-top">
     <div class="wrap">
       <div class="Middle-header">
-        <h1 class="Middle-title">Оплата
-        </h1>
+        <h1 class="Middle-title">Оплата</h1>
         <ul class="breadcrumbs Middle-breadcrumbs">
-          <li class="breadcrumbs-item"><a href="index.html">home</a>
+          <li class="breadcrumbs-item">
+            <a href="{% url 'shop:main' %}">Главная</a>
           </li>
-          <li class="breadcrumbs-item breadcrumbs-item_current"><span>Оплата</span>
+          <li class="breadcrumbs-item breadcrumbs-item_current">
+            <span>Оплата</span>
           </li>
         </ul>
       </div>
     </div>
   </div>
-
   <div class="Section">
     <div class="wrap">
-      <form class="form Payment" action="#" method="post">
+      <form class="form Payment" action="." method="post">
+        {% csrf_token %}
         <div class="Payment-card">
-          <div class="form-group">
-            <label class="form-label">Номер карты
-            </label>
-            <input class="form-input Payment-bill" id="numero1" name="numero1" type="text" placeholder="9999 9999" data-mask="9999 9999" data-validate="require pay"/>
-          </div>
+          {% with request.get_full_path as page_link %}
+            <div class="form-group">
+              {% if 'someone' in page_link %}
+                <label class="form-label">Номер счета</label>
+              {% else %}
+                <label class="form-label">Номер карты</label>
+              {% endif %}
+              <input class="form-input Payment-bill" id="numero1" name="numero1" type="text" placeholder="9999 9999" data-mask="9999 9999" data-validate="require pay"/>
+            </div>
+            {% if 'someone' in page_link %}
+              <div class="form-group">
+                <a class="btn btn_success Payment-generate" href="#">Сгенерировать случайный счет</a>
+              </div>
+            {% endif %}
+          {% endwith %}
         </div>
-        <div class="Payment-pay"><a class="btn btn_primary" href="progressPayment.html">Оплатить</a>
+        <div class="Payment-pay">
+          <button class="btn btn_primary">Оплатить</button>
         </div>
       </form>
     </div>

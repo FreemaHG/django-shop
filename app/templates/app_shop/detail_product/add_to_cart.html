@@ -1,0 +1,60 @@
+ <script>
+  const loadBtnAddToCart = document.getElementById('add-to-cart');  // Кнопка "Добавить в корзину"
+  const spinnerProduct = document.getElementById('spinner-product');  // Сообщение "Загрузка..."
+  const alertProduct = document.getElementById('alert-product');  // Сообщение "Произошла ошибка"
+
+  const blockNotInCart = document.getElementById('product-not-in-cart')  // Блок добавления товара в корзину
+  const blockInCart = document.getElementById('product-in-cart')  // Блок перехода в корзину
+
+  function addToCart() {
+    const countProduct = document.getElementById('product-count').value;  // Введенное кол-во товара
+    console.debug('%cDEBUG: старт функции addToCart', 'color: grey;');
+
+    var _product_id = {{ object.id }}
+    console.log(`%cINFO: id товара - ${_product_id}, кол-во товара - ${countProduct}`, 'color: green;');
+
+    $.ajax({
+      url: '{% url "shop:add_product" %}',  // Выполняем ajax-запрос на указанный URL
+      type: 'GET',  // Тип запроса
+      data: {  // Отправляемые данные
+        'product_id': _product_id,
+        'count': countProduct
+      },
+
+      // Перед выполнением запроса
+      beforeSend: function () {
+        blockNotInCart.classList.add('not-visible');  // Скрываем блок с добавлением товара в корзину
+        spinnerProduct.classList.remove('not-visible');  // Выводим иконку "Загрузка"
+      },
+
+      // После выполнения запроса
+      success: function (response) {  // Функция успеха, принимает объект ответа из функции
+        const data = response.res  // Сохраняем ответ (true / false - успех / обработанная ошибка)
+
+        spinnerProduct.classList.add('not-visible')  // Скрываем кнопку "Загрузка"
+
+        if (data === true) {  // Успешный ответ
+          console.info('%cINFO: Товар добавлен в корзину', 'color: green;');
+          blockInCart.classList.remove('not-visible');  // Делаем видимым блок перехода в корзину
+          blockNotInCart.classList.add('not-visible');  // Скрываем блок добавления товара в корзину
+        }
+
+        else {  // Неуспешный ответе
+          console.error('%cERROR: Ошибка при добавлении товара в корзину', 'color: red;');
+          blockNotInCart.classList.remove('not-visible');  // Делаем видимым блок добавления товара в корзину
+          alertProduct.classList.remove('not-visible');  // Делаем видимым сообщение об ошибке
+        }
+      },
+
+      error: function (err) {  // Функция, вызываемая при ошибке. Принимает текст ошибки
+        console.error(`%cERROR: Необработанная ошибка: ${err}`, 'color: red;');
+      },
+    });
+  }
+
+  // При событии "нажатие" вызовется функция addToCart()
+  loadBtnAddToCart.addEventListener('click', () => {
+    console.debug('%cDEBUG: добавление товара в корзину', 'color: grey;');
+    addToCart()
+  });
+</script>

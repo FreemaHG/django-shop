@@ -1,14 +1,23 @@
 import json
 import logging
 
+from django import forms
 from django.contrib import admin, messages
 from django.db.models import JSONField
 from mptt.admin import DraggableMPTTAdmin
 from mptt.querysets import TreeQuerySet
 
-from .models import CategoryProduct, Product, ProductTags, ProductImages, ProductReviews
 from .utils.admin.change_status_delete import soft_deletion_child_records
-
+from .models import (
+    CategoryProduct,
+    Product,
+    ProductTags,
+    ProductImages,
+    ProductReviews,
+    Cart,
+    Order,
+    PurchasedProduct,
+    PaymentErrors)
 
 logger = logging.getLogger(__name__)
 
@@ -202,3 +211,181 @@ class ProductReviewsAdmin(admin.ModelAdmin):
         return obj.product.name
 
     product_name.short_description = 'Товар'
+
+
+@admin.register(Cart)
+class CartAdmin(admin.ModelAdmin):
+    """
+    Админ-панель для карты с товарами пользователя
+    """
+    # readonly_fields = ['buyer', 'product_name']
+
+    list_display = ('id', 'full_name', 'product_id', 'product_name', 'price', 'count', 'discount', 'position_cost')
+    list_display_links = ('id',)
+    search_fields = ('user__profile__full_name', 'product__name')
+
+    def full_name(self, obj):
+        """
+        Полное имя покупателя
+        """
+        return obj.user.profile.full_name
+
+    full_name.short_description = 'Покупатель'
+
+    def product_name(self, obj):
+        """
+        Человекопонятное название товара
+        """
+        limit = 100
+        product_name = obj.product.name
+
+        if len(product_name) > limit:
+            return obj.product.name[:limit] + '...'
+
+        return product_name
+
+    product_name.short_description = 'Товар'
+
+    def product_id(self, obj):
+        """
+        id товара
+        """
+        return obj.product.id
+
+    product_id.short_description = 'id товара'
+
+    def price(self, obj):
+        """
+        Цена товара (без учета скидки)
+        """
+        return obj.product.price
+
+    price.short_description = 'Цена, руб'
+
+    def discount(self, obj):
+        """
+        Скидка на товар
+        """
+        return obj.product.discount
+
+    discount.short_description = 'Скидка, %'
+
+    def position_cost(self, obj):
+        """
+        Стоимость позиции товара с учетом скидки и кол-ва товара
+        """
+        return obj.position_cost
+
+    position_cost.short_description = 'Стоимость позиции, руб'
+
+    def get_readonly_fields(self, request, obj=None):
+        """
+        Запрещаем редактировать поля с товаром и покупателем
+        """
+        if obj:
+            return ['full_name', 'product_name', 'count']
+
+        return self.readonly_fields
+
+    fieldsets = (
+        ('Запись о товаре в корзине', {
+            'fields': ('full_name', 'product_name', 'count'),
+            'description': 'Покупатель, товар и кол-во товара',
+        }),
+    )
+
+
+class ProductsInOrder(admin.TabularInline):
+    """
+    Вывод товаров в текущем заказе
+    """
+    model = PurchasedProduct
+    can_delete = False
+    extra = 0
+
+    def get_readonly_fields(self, request, obj=None):
+        """
+        Запрещаем редактировать поля заказа
+        """
+        if obj:
+            return ['order', 'product', 'count', 'price']
+
+        return self.readonly_fields
+
+    def has_add_permission(self, request, obj=None):
+      return False
+
+    def has_change_permission(self, request, obj=None):
+      return False
+
+    def has_delete_permission(self, request, obj=None):
+      return False
+
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    """
+    Админ-панель для вывода данных об оформленных заказах
+    """
+    list_display = ('id', 'full_name', 'data_created', 'city', 'address', 'delivery', 'payment', 'status')
+    list_display_links = ('id',)
+    search_fields = ('id', 'user__profile__full_name', 'city', 'address')
+    list_filter = ('delivery', 'payment', 'status')
+    inlines = (ProductsInOrder,)
+
+    fieldsets = (
+        ('Данные о заказе', {
+            'fields': ('payment', 'status', 'error_message'),
+            'description': 'Номер заказа, тип оплаты и статус заказа',
+        }),
+        ('Данные о покупателе и доставке', {
+            'fields': ('full_name', 'city', 'address', 'delivery'),
+            'description': 'ФИО покупателя, город, адрес и тип доставки',
+        }),
+    )
+
+    def full_name(self, obj):
+        """
+        Полное имя покупателя
+        """
+        return obj.user.profile.full_name
+
+    full_name.short_description = 'Покупатель'
+
+    def get_readonly_fields(self, request, obj=None):
+        """
+        Запрещаем редактировать поля заказа
+        """
+        if obj:
+            # FIXME Вернуть обратно после тестирования асинхронной оплаты заказов
+            # return ['id', 'full_name', 'data_created', 'city', 'address', 'delivery', 'payment', 'status', 'error_message']
+            return ['id', 'full_name', 'data_created', 'city', 'address', 'delivery', 'payment']
+
+        return self.readonly_fields
+
+
+@admin.register(PaymentErrors)
+class PaymentErrorsAdmin(admin.ModelAdmin):
+    """
+    Админ-панель для добавления и просмотра сообщений об ошибке при оплате заказа
+    """
+    list_display = ('title', 'short_description')
+    list_display_links = ('title',)
+    search_fields = ('title',)
+
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        """
+        Переопределение виджета для поля с описанием ошибки
+        """
+        formfield = super(PaymentErrorsAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+        if db_field.name == 'description':
+            formfield.widget = forms.Textarea(attrs=formfield.widget.attrs)
+        return formfield
+
+    def short_description(self, obj):
+        """
+        Сокращение текста описания ошибки до 300 символов
+        """
+        return obj.description[0:300]
+
+    short_description.short_description = 'Описание ошибки'

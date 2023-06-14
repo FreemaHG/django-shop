@@ -191,3 +191,5 @@ MPTT_ADMIN_LEVEL_INDENT = 20  # Размер отступа при выводе 
 RECIPIENTS_EMAIL = []
 DEFAULT_FROM_EMAIL = 'support@megano.ru'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+SESSION_COOKIE_AGE = 7 * 24 * 60 * 60  # Время жизни сессии (7 дней)
