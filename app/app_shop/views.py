@@ -21,6 +21,7 @@ from .services.shop_cart.authenticated import ProductsCartUserService
 from .services.shop_cart.quest import ProductsCartQuestService
 from .services.orders_payment import Payment
 from .services.products.search import ProductsListSearchService
+from .services.products.browsing_history import ProductBrowsingHistoryServices
 from .utils.input_data import clear_data
 # from .utils.shop_cart import get_id_products_in_cart
 
@@ -131,11 +132,6 @@ class ProductsLisSearchView(View):
     """
     Поиск товаров
     """
-    # model = Product
-    # template_name = '../templates/app_shop/catalog.html'
-    # context_object_name = 'products'
-    # paginate_by = 8
-
     def post(self, request):
         """
         Вывод товаров, найденных по поисковой фразе
@@ -155,7 +151,9 @@ class AboutView(View):
 
 
 class ProductsSalesView(View):
-    """ Тестовая страница с распродажей товаров """
+    """
+    Тестовая страница блога
+    """
     def get(self, request):
         return render(request, '../templates/app_shop/sale.html')
 
@@ -187,6 +185,9 @@ class ProductDetailView(DetailView, FormMixin):
         context['cart_products'] = cart_products
         context['comments'] = comments[:1]
         context['total_comments'] = comments.count()
+
+        # Сохранение истории просмотренных товаров
+        ProductBrowsingHistoryServices.save_view(request=request, product=self.object)
 
         return self.render_to_response(context)
 
@@ -315,7 +316,7 @@ class ShoppingCartView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        #FIXME кэшировать данные
+        # FIXME кэшировать данные
         records = CartProductsListService.output(self.request)
         context['records'] = records
 

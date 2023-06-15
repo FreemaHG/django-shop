@@ -1,0 +1,27 @@
+{% extends "app_user/account/account_base.html" %}
+{% load static %}
+
+{% block junior_header %}
+    {% include "includes/junior_header.html" with title="Профиль" %}
+{% endblock %}
+
+{% block activation_status_for_browsing_history %}menu-item_ACTIVE{% endblock %}
+
+{% block account_content %}
+  <div class="Section-content">
+  {% if records %}
+    <div class="Cards Card-left-alignment">
+      {% for record in records %}
+        {% with record.product as product %}
+          {% include "app_shop/includes/product_cards/cart_with_cost.html" with product=product %}
+        {% endwith %}
+      {% endfor %}
+    </div>
+    {% block paginate_block %}
+      {% include "app_shop/includes/catalog/paginate_block.html" %}
+    {% endblock %}
+  {% else %}
+    <p>Вы еще не смотрели товары ...</p>
+  {% endif %}
+  </div>
+{% endblock %}

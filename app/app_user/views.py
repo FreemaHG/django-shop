@@ -2,14 +2,17 @@ import logging
 
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LogoutView
+from django.core.paginator import Paginator
 from django.db import IntegrityError, transaction
 from django.urls import reverse
+from django.views.generic import ListView
 from django.views.generic.edit import FormView
 from django.shortcuts import render, redirect
 from django.views import View
 from django.core.mail import send_mail, BadHeaderError
 
 from app_shop.services.shop_cart.logic import CartProductsAddService
+from app_shop.services.products.browsing_history import ProductBrowsingHistoryServices
 from .models import Profile
 from .forms import RegisterUserForm, AuthUserForm, EmailForm
 from .utils.save_new_user import save_username, cleaned_phone_data
@@ -18,6 +21,7 @@ from .utils.password_recovery import password_generation
 from django.conf import settings
 
 from app_shop.services.orders import RegistrationOrder
+from app_shop.models import ProductBrowsingHistory
 
 logger = logging.getLogger(__name__)
 
@@ -36,6 +40,9 @@ def register_user_view(request):
     else:
         if request.method == 'POST':
             form = RegisterUserForm(request.POST, request.FILES)
+            next_page = request.GET.get('next', False)
+
+            logger.warning(f'next_page: {next_page}')
 
             if form.is_valid():
                 logger.debug(f'Данные валидны: {form.cleaned_data}')
@@ -45,7 +52,6 @@ def register_user_view(request):
                 phone_number = form.cleaned_data.get('phone_number', None)
                 avatar = request.FILES.get('avatar', None)
                 password = form.cleaned_data.get('password1')
-                next_page = request.GET.get('next', False)
 
                 username = save_username(email)  # Извлекаем и сохраняем username по email
                 user.username = username
@@ -58,9 +64,13 @@ def register_user_view(request):
                     logger.error(f'Регистрация - дублирующийся email')
                     error_message = 'Пользователь с таким email уже зарегистрирован'
 
-                    if next_page and 'order' in next_page:
+                    if next_page:
                         logger.debug(f'Возврат на страницу: {next_page}')
-                        return render(request, 'app_shop/orders/order.html', {'form': form, 'error_message': error_message})
+
+                        if next_page and 'order' in next_page:
+                            return render(request, 'app_shop/orders/registration/order.html', {'form': form, 'error_message': error_message})
+
+                        return redirect(next_page)
 
                     return render(request, 'app_user/registration.html', {'form': form, 'error_message': error_message})
 
@@ -77,7 +87,7 @@ def register_user_view(request):
 
                     if next_page and 'order' in next_page:
                         logger.debug(f'Возврат на страницу: {next_page}')
-                        return render(request, 'app_shop/orders/order.html', {'form': form, 'error_message': error_message})
+                        return render(request, 'app_shop/orders/registration/order.html', {'form': form, 'error_message': error_message})
 
                     return render(request, 'app_user/registration.html', {'form': form, 'error_message': error_message})
 
@@ -95,6 +105,11 @@ def register_user_view(request):
                 return redirect('user:account')
 
             logger.error(f'Регистрация - не валидные данные: {form.errors}')
+
+            if next_page and 'order' in next_page:
+                logger.debug(f'Возврат на страницу: {next_page}')
+                return render(request, 'app_shop/orders/registration/order.html', {'form': form})
+
             return render(request, 'app_user/registration.html', {'form': form})
 
         else:
@@ -258,12 +273,15 @@ class UpdateAccountView(FormView):
         })
 
 
-
-
-class ProfileWithAvatarView(View):
+class BrowsingHistoryView(ListView):
     """
-    Тестовая страница с данными пользователя 2
+    История просмотров
     """
+    model = ProductBrowsingHistory
+    template_name = '../templates/app_user/account/browsing_history.html'
+    context_object_name = 'records'
+    paginate_by = 8
 
-    def get(self, request):
-        return render(request, '../templates/app_user/account/profileAvatar.html')
+    def get_queryset(self):
+        records = ProductBrowsingHistoryServices.history_products(request=self.request)
+        return records

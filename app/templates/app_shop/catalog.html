@@ -71,30 +71,17 @@
 {#          <p>Текущая ссылка: {{ request.get_full_path }}</p>#}
 
           {% if products %}
-
             <div class="Cards Card-left-alignment">
               {% for product in products %}
                 {% include "app_shop/includes/product_cards/cart_with_cost.html" with product=product %}
               {% endfor %}
             </div>
-
-{#            <h3>Тестовые товары</h3>#}
-{##}
-{#            <div class="Cards">#}
-{#              {% for product in page_obj.object_list %}#}
-{#                {% include "app_shop/includes/product_cards/cart_with_cost.html" with product=product %}#}
-{#              {% endfor %}#}
-{#            </div>#}
-
             {% block paginate_block %}
               {% include "app_shop/includes/catalog/paginate_block.html" %}
-{#              {% include "app_shop/includes/catalog/paginate_block.html" with page_obj=page_obj %}#}
             {% endblock %}
-
           {% else %}
             <p>Товаров нет...</p>
           {% endif %}
-
         </div>
       </div>
     </div>

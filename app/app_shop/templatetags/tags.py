@@ -51,20 +51,3 @@ def check_for_word_end(number: int) -> str:
     else:
         # logger.debug('Нет окончания')
         return ''
-
-
-# @register.simple_tag
-# def delivery_cost(request: HttpRequest):
-#     """
-#     Возврат нужного urlpatternв для формы зависимости от того, авторизован пользователь или нет
-#     """
-#     logger.debug(f'Определение ссылки для формы')
-#
-#     if request.user.is_authenticated:
-#         logger.debug('Пользователь авторизован. Возврат ссылки для регистрации заказа')
-#         return 'shop:order_registration', ''
-#     else:
-#         current_url = request.path
-#         logger.debug(f'Пользователь не авторизован. Возврат ссылки для авторизации с перенаправлением на: {current_url}')
-#         # return f'user:registration?next={current_url}'
-#         return 'user:registration', f'{current_url}'

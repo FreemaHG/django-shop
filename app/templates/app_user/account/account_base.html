@@ -32,8 +32,8 @@
                     <li class="{% block activation_status_for_order_history %}{% endblock %} menu-item">
                       <a class="menu-link" href="{% url 'shop:history_order' %}">История заказов</a>
                     </li>
-                    <li class="menu-item">
-                      <a class="menu-link" href="historyview.html">История просмотра</a>
+                    <li class="{% block activation_status_for_browsing_history %}{% endblock %} menu-item">
+                      <a class="menu-link" href="{% url 'user:browsing_history' %}">История просмотра</a>
                     </li>
                   </ul>
                 </div>

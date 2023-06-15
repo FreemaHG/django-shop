@@ -1,12 +1,9 @@
 import logging
 
 from typing import Dict, List
-
 from django.db.models import Q
 
 from ...models import Product
-from ...services.products.products_list.filter import ProductFilter
-from ...services.products.products_list.sorting import ProductSort
 
 
 logger = logging.getLogger(__name__)
@@ -23,6 +20,8 @@ class ProductsListSearchService:
         совпадение в начале / в конце названия товара
         """
         logger.debug(f'Поиск товаров по фразе: {query}')
+
+        # TODO В SQLite icontains работает как contains - проверить и переписать с учетом работы в MySQL!!!
         products = Product.objects.filter(
             Q(name__icontains=query) | Q(name__contains=query) | Q(name__startswith=query) | Q(name__endswith=query) |
             Q(name__icontains=query.capitalize()) | Q(name__contains=query.capitalize()) |

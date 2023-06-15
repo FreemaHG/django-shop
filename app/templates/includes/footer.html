@@ -94,7 +94,9 @@
     <div class="Footer-copy">
       <div class="wrap">
         <div class="row row_space">
-          <div class="row-block">© Copyright&#32;<a href="#">Megano Store.</a>&#32;All rights reserved.</div>
+          <div class="row-block">© Copyright&#32;
+            <a href="{% url 'shop:main' %}">Megano Store.</a>&#32;All rights reserved.
+          </div>
           <div class="row-block"><span>Accepted Payments</span>
             <div class="Footer-payments">
               <div><img src="{% static 'assets/img/payments/visa.png' %}" alt="visa.png"/>

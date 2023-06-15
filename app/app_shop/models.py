@@ -149,6 +149,18 @@ class Product(models.Model):
         return self.name
 
 
+class ProductBrowsingHistory(models.Model):
+    """
+    История просмотров товаров пользователя
+    """
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Товар')
+    viewing_time = models.DateTimeField(auto_now_add=True, verbose_name='Время просмотра')
+
+    class Meta:
+        ordering = ['-viewing_time']
+
+
 class ProductImages(models.Model):
     """
     Модель для хранения изображений к товарам

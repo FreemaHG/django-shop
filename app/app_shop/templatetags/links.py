@@ -59,3 +59,17 @@ def clear_link_for_paginate(link: str) -> str:
         link += '&'
 
     return link
+
+
+@register.simple_tag
+def clear_link_for_next(link: str) -> str:
+    """
+    Очистка входящей строки от текста ДО ключевой фразы '?next'.
+    """
+    # logger.info(f'Очистка ссылки от "?next": {link}')
+
+    if '?next' in link:
+        link = link.split('?next=')[-1]
+
+    # logger.debug(f'Возврат очищенной ссылки: {link}')
+    return link
