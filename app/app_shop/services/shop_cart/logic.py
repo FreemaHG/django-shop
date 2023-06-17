@@ -5,6 +5,7 @@ from django.db.models import Sum
 from django.http import HttpRequest
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.cache import cache
 
 from ...models import Cart, Product
 from .authenticated import ProductsCartUserService
@@ -45,6 +46,7 @@ class CartProductsListService:
 
         if request.user.is_authenticated:
             logger.debug('Пользователь авторизован')
+
             products = CartProductsListService.output(request=request)
 
             # FIXME Сделать умнее!

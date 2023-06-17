@@ -11,6 +11,7 @@ from ...models import Cart, Product
 
 logger = logging.getLogger(__name__)
 
+# TODO Очищать кэш при изменении данных в корзине!!!
 class ProductsCartUserService:
     """
     Сервис для добавления, изменения и удаления товаров из корзины (БД)

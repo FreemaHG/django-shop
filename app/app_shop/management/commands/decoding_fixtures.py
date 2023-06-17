@@ -8,8 +8,9 @@ from django.conf import settings
 PATH = os.path.join(settings.BASE_DIR, 'fixtures')  # Директория с фикстурами
 
 class Command(BaseCommand):
-    """ Перекодируем файл с фикстурами для последующего импорта в БД """
-    
+    """
+    Команда для перекодирования файл с фикстурами для последующего импорта в БД
+    """
     def handle(self, *args, **options):
         with open(os.path.join(PATH, 'db.json'), encoding='windows-1251') as f:  # Открываем старый файл с фикстурами
             data = json.load(f)  # Подгружаем json-данные

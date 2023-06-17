@@ -12,7 +12,7 @@ from django.views import View
 from django.core.mail import send_mail, BadHeaderError
 
 from app_shop.services.shop_cart.logic import CartProductsAddService
-from app_shop.services.products.browsing_history import ProductBrowsingHistoryServices
+from app_shop.services.products.browsing_history import ProductBrowsingHistoryService
 from .models import Profile
 from .forms import RegisterUserForm, AuthUserForm, EmailForm
 from .utils.save_new_user import save_username, cleaned_phone_data
@@ -283,5 +283,5 @@ class BrowsingHistoryView(ListView):
     paginate_by = 8
 
     def get_queryset(self):
-        records = ProductBrowsingHistoryServices.history_products(request=self.request)
+        records = ProductBrowsingHistoryService.history_products(request=self.request)
         return records

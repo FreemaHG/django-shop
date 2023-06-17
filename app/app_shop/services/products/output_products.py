@@ -27,11 +27,11 @@ class ProductsListService:
             # Фильтрация по категории / тегу
             if group == 'category':
                 logger.debug(f'Вывод товаров категории: {name}')
-                products = ProductFilter.output_by_category(category_name=name, products=products)
+                products = ProductFilter.output_by_category(category_name=name)
 
             elif group == 'tag':
                 logger.debug(f'Вывод товаров по тегу: {name}')
-                products = ProductFilter.output_by_tag(tag_name=name, products=products)
+                products = ProductFilter.output_by_tag(tag_name=name)
 
             else:
                 logger.debug('Возврат всех товаров')

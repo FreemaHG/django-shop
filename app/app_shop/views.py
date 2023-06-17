@@ -5,23 +5,21 @@ from django.urls import reverse
 from django.views.generic import View, TemplateView, ListView, DetailView
 from django.shortcuts import render, redirect
 from django.views.generic.edit import FormMixin
-from django.contrib import messages
 from django.core.cache import cache
-from config.admin import config
 
+from config.admin import config
+from app_user.forms import RegisterUserForm
 from .models import Product, ProductReviews, Order, PurchasedProduct
 from .forms import CommentProductForm, MakingOrderForm
-from app_user.forms import RegisterUserForm
 from .services.orders import RegistrationOrder
 from .services.products.output_products import ProductsListService
-from .services.products.main import ProductsForMainService
-from .services.products.detail_page import DetailProduct
+from .services.products.detail_page import ProductCommentsService
 from .services.shop_cart.logic import CartProductsListService, CartProductsAddService
 from .services.shop_cart.authenticated import ProductsCartUserService
-from .services.shop_cart.quest import ProductsCartQuestService
 from .services.orders_payment import Payment
 from .services.products.search import ProductsListSearchService
-from .services.products.browsing_history import ProductBrowsingHistoryServices
+from .services.products.browsing_history import ProductBrowsingHistoryService
+from .services.main import ProductsForMainService
 from .utils.input_data import clear_data
 # from .utils.shop_cart import get_id_products_in_cart
 
@@ -31,19 +29,14 @@ logger = logging.getLogger(__name__)
 
 class MainView(TemplateView):
     """
-    Главная страница
+    Представление главной страницы сайта
     """
+
     template_name = '../templates/app_shop/index.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['selected_categories'] = ProductsForMainService.selected_categories()  # Избранные категории товаров
-        context['limited_products'] = ProductsForMainService.limited_edition()  # Товары ограниченного тиража
-        context['products_id'] = CartProductsListService.id_products(request=self.request)  # id товаров в корзине текущего пользователя
-
-        # FIXME Добавить после реализации механики покупки товаров
-        # context['popular_products'] = ProductsForMainService.popular_products()
-        context['popular_products'] = Product.objects.all()[:8]
+        context = ProductsForMainService.save_data(context=context, request=self.request)
 
         return context
 
@@ -187,7 +180,7 @@ class ProductDetailView(DetailView, FormMixin):
         logger.info(f'Товар добавлен в кэш: id - {id}')
 
         context = self.get_context_data(object=self.object)
-        comments = DetailProduct.all_comments(product=self.object)  # Комментарии к товару
+        comments = ProductCommentsService.all_comments(product=self.object)  # Комментарии к товару
 
         # id товаров в корзине текущего пользователя
         cart_products = CartProductsListService.id_products(request=self.request)
@@ -197,7 +190,7 @@ class ProductDetailView(DetailView, FormMixin):
         context['total_comments'] = comments.count()
 
         # Сохранение истории просмотренных товаров
-        ProductBrowsingHistoryServices.save_view(request=request, product=self.object)
+        ProductBrowsingHistoryService.save_view(request=request, product=self.object)
 
         return self.render_to_response(context)
 
@@ -207,13 +200,13 @@ class ProductDetailView(DetailView, FormMixin):
         """
         form = CommentProductForm(request.POST)
         product = self.get_object()  # FIXME Извлекать объект из GET, проверить!!!
-        comments = DetailProduct.all_comments(product=product)
+        comments = ProductCommentsService.all_comments(product=product)
 
         if form.is_valid():
             logger.debug(f'Данные формы валидны: {form.cleaned_data}')
 
             # Добавляем новый комментарий к товару
-            result = DetailProduct.add_new_comments(
+            result = ProductCommentsService.add_new_comments(
                 form=form,
                 product=product,
                 user=request.user
