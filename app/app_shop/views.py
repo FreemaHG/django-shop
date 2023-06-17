@@ -128,20 +128,30 @@ class ProductsListView(ListView):
         return context
 
 
-class ProductsLisSearchView(View):
+class ProductsLisSearchView(ProductsListView):
     """
     Поиск товаров
     """
-    def post(self, request):
+    def get_queryset(self):
         """
         Вывод товаров, найденных по поисковой фразе
         """
-        query = request.POST['query']
+        current_url = self.request.build_absolute_uri()
+        logger.info(f'Новый запрос: {current_url}')
+
+        query = self.request.GET['query']
         logger.debug(f'Поиск товаров по фразе: {query}')
 
         products = ProductsListSearchService.search(query=query)
 
-        return render(request, '../templates/app_shop/catalog.html', {'products': products})
+        # Сохраняем параметры фильтрации для передачи в контекст
+        self.filter_parameters = self.kwargs | clear_data(self.request.GET)
+        logger.info(f'Параметры фильтрации: {self.filter_parameters}')
+
+        if 'sort' in current_url or 'filter' in current_url:
+            products = ProductsListService.output(filter_parameters=self.filter_parameters, products=products)
+
+        return products
 
 
 class AboutView(View):

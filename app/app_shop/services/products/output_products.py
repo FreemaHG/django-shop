@@ -1,6 +1,6 @@
 import logging
 
-from typing import Dict
+from typing import Dict, List
 
 from ...models import Product
 from ...services.products.products_list.filter import ProductFilter
@@ -16,25 +16,26 @@ class ProductsListService:
     Фильтрация и сортировка товаров по входящим параметрам.
     """
     @classmethod
-    def output(cls, filter_parameters: Dict):
+    def output(cls, filter_parameters: Dict, products: List[Product] = None):
         logger.debug('Запуск сервиса по выводу товаров')
 
         group = filter_parameters.get('group', False)
         name = filter_parameters.get('name', False)
         sort = filter_parameters.get('sort', False)
 
-        # Фильтрация по категории / тегу
-        if group == 'category':
-            logger.debug(f'Вывод товаров категории: {name}')
-            products = ProductFilter.output_by_category(category_name=name)
+        if not products:
+            # Фильтрация по категории / тегу
+            if group == 'category':
+                logger.debug(f'Вывод товаров категории: {name}')
+                products = ProductFilter.output_by_category(category_name=name, products=products)
 
-        elif group == 'tag':
-            logger.debug(f'Вывод товаров по тегу: {name}')
-            products = ProductFilter.output_by_tag(tag_name=name)
+            elif group == 'tag':
+                logger.debug(f'Вывод товаров по тегу: {name}')
+                products = ProductFilter.output_by_tag(tag_name=name, products=products)
 
-        else:
-            logger.debug('Возврат всех товаров')
-            products = Product.objects.all()
+            else:
+                logger.debug('Возврат всех товаров')
+                products = Product.objects.all()
 
         # Фильтрация по переданным параметрам
         products = ProductFilter.output_by_filter(products=products, filters=filter_parameters)
