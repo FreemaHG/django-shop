@@ -5441,3 +5441,7 @@ a.Cart-title {
 .CartBlock-price--width {
   width: 40px;
 }
+
+.hidden {
+  display: none;
+}

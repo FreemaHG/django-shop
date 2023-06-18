@@ -13,7 +13,7 @@ def clear_link_for_sort(link: str) -> str:
     Очистка входящей строки от текста после ключевой фразы 'sort'.
     Добавление спец.символа в конце для корректного парсинга параметров из URL.
     """
-    # logger.info(f'Очистка ссылки для сортировки: {link}')
+    logger.warning(f'Очистка ссылки для сортировки: {link}')
 
     if '&sort' in link:
         link = link.split('&sort')[0]
@@ -34,6 +34,8 @@ def clear_link_for_sort(link: str) -> str:
     else:
         link += '&'
 
+    logger.warning(f'Возврат: {link}')
+
     return link
 
 
@@ -43,7 +45,7 @@ def clear_link_for_paginate(link: str) -> str:
     Очистка входящей строки от текста после ключевой фразы 'page'.
     Добавление спец.символа в конце для корректного парсинга параметров из URL.
     """
-    # logger.info(f'Очистка ссылки для пагинации: {link}')
+    logger.warning(f'Очистка ссылки для пагинации: {link}')
 
     if '&page=' in link:
         link = link.split('&page=')[0]
@@ -57,6 +59,8 @@ def clear_link_for_paginate(link: str) -> str:
         link += '?'
     else:
         link += '&'
+
+    logger.warning(f'Возврат: {link}')
 
     return link
 

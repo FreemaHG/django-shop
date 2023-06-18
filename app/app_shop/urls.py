@@ -42,10 +42,15 @@ urlpatterns = [
     # Фильтрация товаров по категории / тегу, параметрам фильтрации, сортировка товаров
     path('catalog/', include([
         path('', ProductsListView.as_view(), name='products_list'),
+        # path('^.*', ProductsListView.as_view(), name='products_list'),  # TODO Проверить вместо нижнего
         re_path(r'^(?P<group>.*)/(?P<name>.*)/.*', ProductsListView.as_view(), name='products_list'),
     ])),
 
-    path('search/', ProductsLisSearchView.as_view(), name='search'),  # Поиск товаров
+    # Поиск товаров с фильтрацией и сортировкой результатов
+    path('search/', include([
+        path('', ProductsLisSearchView.as_view(), name='search'),
+        re_path(r'^.*', ProductsLisSearchView.as_view(), name='search'),
+    ])),
 
     path('product/', include([
         path('<int:pk>', ProductDetailView.as_view(), name='product_detail'),  # Страница товара

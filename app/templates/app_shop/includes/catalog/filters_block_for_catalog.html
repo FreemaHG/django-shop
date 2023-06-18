@@ -8,7 +8,9 @@
       <strong class="Section-title">Фильтр</strong>
     </header>
     <div class="Section-columnContent">
-      <form class="form" action="{% url 'shop:products_list' %}" method="get">
+      {{ request.get_full_path }}
+{#      <form class="form" action="{% url 'shop:products_list' %}" method="get">#}
+      <form class="form" action="{{ request.get_full_path }}" method="get">
 {#        {% csrf_token %}#}
 
 {#        <div class="form-group">#}
@@ -23,6 +25,10 @@
         <div class="form-group">
           <strong class="Section-title small-text-for-price">Цена, <small>руб</small></strong>
           <div class="block">
+
+            {% if query %}
+              <input name="query" type="hidden" value="{{ query }}"/>
+            {% endif %}
 
             {% if filter_parameters.min_price %}
               <input class="form-input form-input_full" id="title" name="min_price" type="text"

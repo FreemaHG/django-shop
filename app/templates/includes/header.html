@@ -167,8 +167,11 @@
         <div class="Header-search">
           <div class="search">
             <form class="form form_search" action="{% url 'shop:search' %}" method="get">
-{#              {% csrf_token %}#}
-              <input class="search-input" id="query" name="query" type="text" placeholder="Искать товары..."/>
+              {% if query %}
+                <input class="search-input" id="query" name="query" type="text" placeholder="Искать товары..." value="{{ query }}"/>
+              {% else %}
+                <input class="search-input" id="query" name="query" type="text" placeholder="Искать товары..."/>
+              {% endif %}
               <button class="search-button" type="submit" id="search">
                 <img src="{% static 'assets/img/icons/search.svg' %}" alt="search.svg"/>Поиск</button>
             </form>

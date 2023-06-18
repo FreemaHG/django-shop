@@ -1,5 +1,7 @@
 import logging
+from typing import List, Dict
 
+from django.db.models import QuerySet
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from django.views.generic import View, TemplateView, ListView, DetailView
@@ -14,6 +16,8 @@ from .forms import CommentProductForm, MakingOrderForm
 from .services.orders import RegistrationOrder
 from .services.products.output_products import ProductsListService
 from .services.products.detail_page import ProductCommentsService
+from .services.products.products_list.filter import ProductFilter
+from .services.products.products_list.sorting import ProductSort
 from .services.shop_cart.logic import CartProductsListService, CartProductsAddService
 from .services.shop_cart.authenticated import ProductsCartUserService
 from .services.orders_payment import Payment
@@ -21,6 +25,7 @@ from .services.products.search import ProductsListSearchService
 from .services.products.browsing_history import ProductBrowsingHistoryService
 from .services.main import ProductsForMainService
 from .utils.input_data import clear_data
+from .services.products.context import SaveContextDataService
 # from .utils.shop_cart import get_id_products_in_cart
 
 
@@ -41,108 +46,80 @@ class MainView(TemplateView):
         return context
 
 
-class ProductsListView(ListView):
+class BaseListView(ListView):
     """
-    Вывод каталога товаров (определенной категории, тега или всех).
-    Фильтрация и сортировка по переданным в URL параметрам.
+    Базовое представление
     """
     model = Product
     template_name = '../templates/app_shop/catalog.html'
     context_object_name = 'products'
     paginate_by = 8
 
-    # FIXME Перевести все в GET с выводом контекста (один метод) - стадия отладки!
-    def get_queryset(self):
-        """
-        Вызов сервиса с бизнес-логикой для вывода товаров по переданным параметрам
-        """
-        logger.info(f'Новый запрос: {self.request.build_absolute_uri()}')
-
-        # Сохраняем параметры фильтрации для передачи в контекст
-        self.filter_parameters = self.kwargs | clear_data(self.request.GET)
-        logger.info(f'Параметры фильтрации: {self.filter_parameters}')
-
-        products = ProductsListService.output(filter_parameters=self.filter_parameters)
-
-        return products
-
     def get_context_data(self, **kwargs):
         """
         Передача в шаблон параметров вывода товаров
         """
         context = super().get_context_data(**kwargs)
-        class_up = 'Sort-sortBy_dec'
-        class_down = 'Sort-sortBy_inc'
-
-        context['products_id'] = CartProductsListService.id_products(request=self.request)  # id товаров в корзине текущего пользователя
-
-        # FIXME Попробовать заменить смену CSS при помощи JS!
-        if self.filter_parameters:
-
-            # Передача в шаблон параметров фильтрации
-            context['filter_parameters'] = self.filter_parameters
-
-            # Передача в шаблон индикатора сортировки
-            sort_param = self.filter_parameters.get('sort', False)
-
-            if not sort_param is False:
-                context['filter_parameters']['sort'] = sort_param
-
-                # Сортировка по цене
-                if sort_param == 'by_price_down':
-                    context['sorting_indicator_by_price'] = class_up  # Сортировка вверх
-
-                elif sort_param == 'by_price_up':
-                    context['sorting_indicator_by_price'] = class_down  # Сортировка вниз
-
-                # Сортировка по популярности (кол-ву продаж)
-                elif sort_param == 'by_popularity_down':
-                    context['sorting_indicator_by_popularity'] = class_up
-
-                elif sort_param == 'by_popularity_up':
-                    context['sorting_indicator_by_popularity'] = class_down
-
-                # Сортировка по отзывам
-                elif sort_param == 'by_reviews_down':
-                    context['sorting_indicator_by_reviews'] = class_up
-
-                elif sort_param == 'by_reviews_up':
-                    context['sorting_indicator_by_reviews'] = class_down
-
-                # Сортировка по новизне
-                elif sort_param == 'by_novelty_down':
-                    context['sorting_indicator_by_novelty'] = class_up
-
-                elif sort_param == 'by_novelty_up':
-                    context['sorting_indicator_by_novelty'] = class_down
-
-            logger.debug(f'Передача параметров в шаблон: {context["filter_parameters"]}')
+        context = SaveContextDataService.save_data(context=context, filter_parameters=self.filter_parameters, request=self.request)
 
         return context
 
 
-class ProductsLisSearchView(ProductsListView):
+class ProductsListView(BaseListView):
     """
-    Поиск товаров
+    Представление для вывода каталога товаров (определенной категории, тега или всех).
+    Фильтрация и сортировка по переданным в URL параметрам.
     """
+
     def get_queryset(self):
         """
-        Вывод товаров, найденных по поисковой фразе
+        Вызов сервиса с бизнес-логикой для вывода товаров по переданным параметрам
         """
-        current_url = self.request.build_absolute_uri()
-        logger.info(f'Новый запрос: {current_url}')
 
-        query = self.request.GET['query']
-        logger.debug(f'Поиск товаров по фразе: {query}')
+        logger.info(f'Новый запрос: {self.request.build_absolute_uri()}')
 
-        products = ProductsListSearchService.search(query=query)
-
-        # Сохраняем параметры фильтрации для передачи в контекст
+        # Сохраняем параметры фильтрации
         self.filter_parameters = self.kwargs | clear_data(self.request.GET)
         logger.info(f'Параметры фильтрации: {self.filter_parameters}')
 
-        if 'sort' in current_url or 'filter' in current_url:
-            products = ProductsListService.output(filter_parameters=self.filter_parameters, products=products)
+        # Фильтрация по категории / тегу
+        products = ProductsListService.output(filter_parameters=self.filter_parameters)
+
+        # Фильтрация по переданным в форме параметрам
+        products = ProductFilter.output(products=products, filters=self.filter_parameters)
+
+        # Сортировка по переданным параметрам
+        products = ProductSort.output(products=products, filters=self.filter_parameters)
+
+        return products
+
+
+class ProductsLisSearchView(BaseListView):
+    """
+    Поиск товаров
+    """
+
+    def get_queryset(self) -> QuerySet:
+        """
+        Вывод товаров, найденных по поисковой фразе
+
+        @return: список с товарами
+        """
+
+        logger.info(f'Новый запрос: {self.request.build_absolute_uri()}')
+
+        # Сохраняем параметры фильтрации
+        self.filter_parameters = self.kwargs | clear_data(self.request.GET)
+        logger.info(f'Параметры фильтрации: {self.filter_parameters}')
+
+        # Поиск товаров по названию
+        products = ProductsListSearchService.search(request=self.request)
+
+        # Фильтрация по переданным в форме параметрам
+        products = ProductFilter.output(products=products, filters=self.filter_parameters)
+
+        # Сортировка по переданным параметрам
+        products = ProductSort.output(products=products, filters=self.filter_parameters)
 
         return products
 

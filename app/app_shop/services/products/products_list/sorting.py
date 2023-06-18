@@ -1,4 +1,5 @@
 import logging
+from typing import Dict
 
 from django.db.models import QuerySet, Count
 
@@ -10,6 +11,48 @@ class ProductSort:
     """
     Сервис с бизнес-логикой по сортировке товаров по популярности, цене, отзывам и новизне
     """
+
+    @classmethod
+    def output(cls, products: QuerySet, filters: Dict) -> QuerySet:
+        """
+        Возврат отсортированных товаров
+        """
+        sort = filters.get('sort', False)
+
+        # Сортировка
+        if sort:
+            # Сортировка по цене
+            if sort == 'by_price_down':
+                products = cls.by_price_down(products=products)
+
+            elif sort == 'by_price_up':
+                products = cls.by_price_up(products=products)
+
+            # Сортировка по популярности (кол-ву продаж)
+            elif sort == 'by_popularity_down':
+                products = cls.by_popularity_down(products=products)
+
+            elif sort == 'by_popularity_up':
+                products = cls.by_popularity_up(products=products)
+
+            # Сортировка по отзывам
+            elif sort == 'by_reviews_down':
+                products = cls.by_reviews_down(products=products)
+
+            elif sort == 'by_reviews_up':
+                products = cls.by_reviews_up(products=products)
+
+            # Сортировка по новизне
+            elif sort == 'by_novelty_down':
+                products = cls.by_novelty_down(products=products)
+
+            elif sort == 'by_novelty_up':
+                products = cls.by_novelty_up(products=products)
+        else:
+            logger.warning('Параметр сортировки не задан')
+
+        return products
+
 
     @classmethod
     def by_popularity_up(cls, products: QuerySet) -> QuerySet:

@@ -1,8 +1,10 @@
 import logging
 
-from typing import Dict, List
+from typing import Dict, List, Union
 
-from ...models import Product
+from django.core.exceptions import ObjectDoesNotExist
+
+from ...models import Product, CategoryProduct
 from ...services.products.products_list.filter import ProductFilter
 from ...services.products.products_list.sorting import ProductSort
 
@@ -15,62 +17,57 @@ class ProductsListService:
     Сервис по выводу товаров определенной категории, тегу либо всех.
     Фильтрация и сортировка товаров по входящим параметрам.
     """
+
     @classmethod
-    def output(cls, filter_parameters: Dict, products: List[Product] = None):
+    def output(cls, filter_parameters: Dict):
         logger.debug('Запуск сервиса по выводу товаров')
 
         group = filter_parameters.get('group', False)
         name = filter_parameters.get('name', False)
-        sort = filter_parameters.get('sort', False)
+        # sort = filter_parameters.get('sort', False)
 
-        if not products:
-            # Фильтрация по категории / тегу
-            if group == 'category':
-                logger.debug(f'Вывод товаров категории: {name}')
-                products = ProductFilter.output_by_category(category_name=name)
+        # Фильтрация по категории / тегу
+        if group == 'category':
+            logger.debug(f'Вывод товаров категории: {name}')
+            products = cls.output_by_category(category_name=name)
 
-            elif group == 'tag':
-                logger.debug(f'Вывод товаров по тегу: {name}')
-                products = ProductFilter.output_by_tag(tag_name=name)
-
-            else:
-                logger.debug('Возврат всех товаров')
-                products = Product.objects.all()
-
-        # Фильтрация по переданным параметрам
-        products = ProductFilter.output_by_filter(products=products, filters=filter_parameters)
-
-        # Сортировка
-        if sort:
-            # Сортировка по цене
-            if sort == 'by_price_down':
-                products = ProductSort.by_price_down(products=products)
-
-            elif sort == 'by_price_up':
-                products = ProductSort.by_price_up(products=products)
-
-            # Сортировка по популярности (кол-ву продаж)
-            elif sort == 'by_popularity_down':
-                products = ProductSort.by_popularity_down(products=products)
-
-            elif sort == 'by_popularity_up':
-                products = ProductSort.by_popularity_up(products=products)
-
-            # Сортировка по отзывам
-            elif sort == 'by_reviews_down':
-                products = ProductSort.by_reviews_down(products=products)
-
-            elif sort == 'by_reviews_up':
-                products = ProductSort.by_reviews_up(products=products)
-
-            # Сортировка по новизне
-            elif sort == 'by_novelty_down':
-                products = ProductSort.by_novelty_down(products=products)
-
-            elif sort == 'by_novelty_up':
-                products = ProductSort.by_novelty_up(products=products)
+        elif group == 'tag':
+            logger.debug(f'Вывод товаров по тегу: {name}')
+            products = cls.output_by_tag(tag_name=name)
 
         else:
-            logger.warning('Параметр сортировки не задан')
+            logger.debug('Возврат всех товаров')
+            products = Product.objects.all()
+
+        return products
+
+
+    @classmethod
+    def output_by_category(cls, category_name: Union[str, bool]) -> Union[Product, List]:
+        """
+        Вывод товаров определенной категории
+        """
+        try:
+            category = CategoryProduct.objects.get(slug=category_name)
+            logger.debug(f'Категория найдена: {category.title}')
+
+        except ObjectDoesNotExist:
+            logger.warning('Категория не найдена')
+            return []
+
+        sub_categories = category.get_descendants(include_self=True)  # Дочерние категории
+        products = Product.objects.filter(category__in=sub_categories, deleted=False)
+        # products = Product.objects.filter(category__slug=category_name, deleted=False)
+
+        return products
+
+
+    @classmethod
+    def output_by_tag(cls, tag_name: Union[str, bool]) -> Union[Product, bool]:
+        """
+        Вывод товаров по определенному тегу
+        """
+        products = Product.objects.filter(tags__slug=tag_name, deleted=False)
+        logger.debug(f'Фильтр: возврат товаров по тегу: {tag_name}. Найдено товаров: {len(products)}')
 
         return products
