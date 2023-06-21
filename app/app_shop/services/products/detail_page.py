@@ -2,6 +2,7 @@ import logging
 
 from typing import List
 from django.core.exceptions import ObjectDoesNotExist
+from django.http import HttpRequest
 
 from ...models import Product, ProductReviews
 from ...forms import CommentProductForm
@@ -35,8 +36,7 @@ class ProductCommentsService:
         """
         Метод для добавления нового комментария к товару
         """
-
-        logger.debug(f'Публикация комментария к статье: {product.name}')
+        logger.debug(f'Добавление комментария к товару: {product.name}')
 
         input_email = form.cleaned_data["email"]
         user_email = user.email
@@ -61,3 +61,33 @@ class ProductCommentsService:
 
         logger.info('Комментарий успешно опубликован')
         return True
+
+    @classmethod
+    def load_comment(cls, request: HttpRequest) -> List:
+        """
+        Метод для загрузки и вывода доп.комментариев к товару
+
+        @param request: объект http-запроса
+        @return: список с новыми загружаемыми комментариями и данными по ним
+        """
+        _LOADED_ITEM = 'loaded_item'
+        _PRODUCT_ID = 'product_id'
+        _LIMIT = 1
+
+        logger.debug('Загрузка новых комментариев к товару')
+
+        loaded_item = int(request.GET.get(_LOADED_ITEM))
+        product_id = int(request.GET.get(_PRODUCT_ID))
+
+        comments = ProductReviews.objects.filter(product=product_id)[loaded_item:loaded_item + _LIMIT]
+        comments_obj = []
+
+        for comment in comments:
+            comments_obj.append({
+                'avatar': comment.buyer.profile.avatar.url,
+                'name': comment.buyer.profile.full_name,
+                'created_at': comment.created_at,
+                'review': comment.review
+            })
+
+        return comments_obj

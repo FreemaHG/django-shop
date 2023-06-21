@@ -1,6 +1,6 @@
 import logging
 
-from typing import List
+from typing import List, Dict
 
 from django.db import transaction
 from django.http import HttpRequest
@@ -19,11 +19,12 @@ class RegistrationOrder:
     """
     Сервис для оформления заказа
     """
+
     @classmethod
     @transaction.atomic
     def create_order(cls, request: HttpRequest, form: MakingOrderForm) -> Order:
         """
-        Создание заказа
+        Метод для регистрации нового заказа
         """
         logger.debug('Создание заказа')
         # full_name = form.cleaned_data.get('full_name', False)
@@ -131,3 +132,20 @@ class RegistrationOrder:
         # По умолчанию у заказов обратная сортировка по дате создания,
         # поэтому для возврата последнего заказа используем first()
         return Order.objects.filter(user=request.user).first()
+
+    @classmethod
+    def save_order_products_in_context(cls, context: Dict, order: Order) -> Dict:
+        """
+        Метод сохраняет в переменную контекста товары текущего заказа
+
+        @param context: словарь - контекстная переменная представления
+        @param order: объект заказа
+        @return: словарь - контекстная переменная представления с сохраненными данными по товарам
+        """
+        logger.debug(f'Сохранение в контексте товаров заказа №{order.id}')
+
+        products = PurchasedProduct.objects.filter(order=order)
+        context['products'] = products
+
+        return context
+

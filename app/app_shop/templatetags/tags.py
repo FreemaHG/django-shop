@@ -1,6 +1,6 @@
 import logging
 
-from typing import List
+from typing import List, Union
 from django import template
 from django.http import HttpRequest
 
@@ -34,20 +34,22 @@ def tags_for_product(product: Product) -> List[ProductTags]:
 
 
 @register.simple_tag
-def check_for_word_end(number: int) -> str:
+def check_for_word_end(number: int = None) -> Union[str, None]:
     """
-    Проверка входящего числа для вывода корректного окончания в шаблоне
+    Проверка входящего числа для вывода корректного окончания слова в шаблоне
+    для обозначения кол-ва комментариев к товару
     """
-    logger.debug(f'Проверка входного числа: {number}')
+    logger.debug(f'Проверка входящего числа: {number}')
 
-    if str(number)[-1] in ['5', '6', '7', '8', '9', '0'] or str(number)[-2:] in ['11', '12', '13', '14']:
-        # logger.debug('Возврат окончания: "ов"')
-        return 'ов'
+    if number:
+        if str(number)[-1] in ['5', '6', '7', '8', '9', '0'] or str(number)[-2:] in ['11', '12', '13', '14']:
+            return 'ов'
 
-    elif str(number)[-1] in ['2', '3', '4']:
-        # logger.debug('Возврат окончания: "а"')
-        return 'а'
+        elif str(number)[-1] in ['2', '3', '4']:
+            return 'а'
+
+        else:
+            return ''
 
     else:
-        # logger.debug('Нет окончания')
-        return ''
+        logger.warning('Не передан числовой аргумент')

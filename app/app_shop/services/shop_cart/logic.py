@@ -26,6 +26,7 @@ class CartProductsListService:
         logger.debug('Возврат товаров текущего пользователя')
         user = request.user
 
+        # FIXME кэшировать данные
         if user.is_authenticated:
             logger.info('Пользователь авторизован')
             products = ProductsCartUserService.all(user=user)
@@ -76,7 +77,7 @@ class CartProductsAddService:
     @classmethod
     def add(cls, request: HttpRequest, product_id: int = None, count: int = 1):
         """
-        Добавление товара в корзину
+        Метод для добавления товара в корзину
         """
         if not product_id:
             logger.warning('id товара не передан в качестве аргумента функции')
@@ -128,30 +129,31 @@ class CartProductsAddService:
     @classmethod
     def increase_product(cls, request: HttpRequest, product_id: int):
         """
-        Уменьшение кол-ва товара в корзине
+        Метод для увеличения кол-ва товара в корзине
         """
         if request.user.is_authenticated:
             logger.debug('Пользователь авторизован')
             ProductsCartUserService.increase_product(user=request.user, product_id=product_id)
+
         else:
             logger.debug('Пользователь НЕ авторизован')
             ProductsCartQuestService.increase_product(request=request, product_id=product_id)
 
 
     @classmethod
-    def delete(cls, request: HttpRequest, product_id: int):
+    def delete(cls, request: HttpRequest, product_id: int) -> None:
         """
         Удаление товара из корзины
         """
         # FIXME НУжен ли res?
         if request.user.is_authenticated:
             # Удаление товара из корзины зарегистрированного пользователя
-            res = ProductsCartUserService.remove(user=request.user, product_id=product_id)
+            ProductsCartUserService.remove(user=request.user, product_id=product_id)
+
         else:
             # Удаление товара из корзины гостя (объект сессии)
-            res = ProductsCartQuestService.remove(request=request, product_id=product_id)
+            ProductsCartQuestService.remove(request=request, product_id=product_id)
 
-        return res
 
     @classmethod
     def merge_carts(cls, request: HttpRequest, user=User):

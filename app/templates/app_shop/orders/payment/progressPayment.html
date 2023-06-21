@@ -5,12 +5,13 @@
     <div class="Middle-top">
       <div class="wrap">
         <div class="Middle-header">
-          <h1 class="Middle-title">Ожидание оплаты
-          </h1>
+          <h1 class="Middle-title">Ожидание оплаты</h1>
           <ul class="breadcrumbs Middle-breadcrumbs">
-            <li class="breadcrumbs-item"><a href="index.html">home</a>
+            <li class="breadcrumbs-item">
+              <a href="index.html">home</a>
             </li>
-            <li class="breadcrumbs-item breadcrumbs-item_current"><span>Ожидание оплаты</span>
+            <li class="breadcrumbs-item breadcrumbs-item_current">
+              <span>Ожидание оплаты</span>
             </li>
           </ul>
         </div>
@@ -19,8 +20,7 @@
     <div class="Section">
       <div class="wrap">
         <div class="ProgressPayment">
-          <div class="ProgressPayment-title">Ждем подтверждения оплаты платежной системой
-          </div>
+          <div class="ProgressPayment-title">Ждем подтверждения оплаты платежной системой</div>
           <div class="ProgressPayment-icon">
             <div class="cssload-thecube">
               <div class="cssload-cube cssload-c1"></div>
@@ -33,4 +33,11 @@
       </div>
     </div>
   </div>
+
+  <script>
+   setTimeout(function(){
+        window.location.href = "{% url 'shop:order_detail' pk=order_id %}";
+     }, 4000);
+  </script>
+
 {% endblock %}

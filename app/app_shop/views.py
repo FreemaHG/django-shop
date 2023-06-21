@@ -34,9 +34,8 @@ logger = logging.getLogger(__name__)
 
 class MainView(TemplateView):
     """
-    Представление главной страницы сайта
+    Представление для вывода главной страницы сайта
     """
-
     template_name = '../templates/app_shop/index.html'
 
     def get_context_data(self, **kwargs):
@@ -48,7 +47,7 @@ class MainView(TemplateView):
 
 class BaseListView(ListView):
     """
-    Базовое представление
+    Базовое представление для вывода списка товаров (используется в ProductsListView и ProductsLisSearchView)
     """
     model = Product
     template_name = '../templates/app_shop/catalog.html'
@@ -75,7 +74,6 @@ class ProductsListView(BaseListView):
         """
         Вызов сервиса с бизнес-логикой для вывода товаров по переданным параметрам
         """
-
         logger.info(f'Новый запрос: {self.request.build_absolute_uri()}')
 
         # Сохраняем параметры фильтрации
@@ -96,16 +94,14 @@ class ProductsListView(BaseListView):
 
 class ProductsLisSearchView(BaseListView):
     """
-    Поиск товаров
+    Представление для вывода найденных товаров по фразе в поисковой строке
     """
 
     def get_queryset(self) -> QuerySet:
         """
         Вывод товаров, найденных по поисковой фразе
-
         @return: список с товарами
         """
-
         logger.info(f'Новый запрос: {self.request.build_absolute_uri()}')
 
         # Сохраняем параметры фильтрации
@@ -124,23 +120,23 @@ class ProductsLisSearchView(BaseListView):
         return products
 
 
-class AboutView(View):
-    """ Тестовая страница о магазине """
-    def get(self, request):
-        return render(request, '../templates/app_shop/about.html')
+class AboutView(TemplateView):
+    """
+    Представление для вывода страницы с информацией о магазине
+    """
+    template_name = '../templates/app_shop/about.html'
 
 
-class ProductsSalesView(View):
+class ProductsSalesView(TemplateView):
     """
-    Тестовая страница блога
+    Представление для вывода страницы блога
     """
-    def get(self, request):
-        return render(request, '../templates/app_shop/sale.html')
+    template_name = '../templates/app_shop/sale.html'
 
 
 class ProductDetailView(DetailView, FormMixin):
     """
-    Детальная страница товара с комментариями
+    Представление для вывода детальной страницы товара с комментариями
     """
     model = Product
     form_class = CommentProductForm
@@ -153,36 +149,37 @@ class ProductDetailView(DetailView, FormMixin):
         id = self.kwargs["pk"]  # id товара из URL
 
         # Возвращаем объект из кэша / кэшируем объект
+        # (кэш товара автоматически очищается в model.save() при редактировании товара)
         self.object = cache.get_or_set(f'product_{id}', self.get_object(), 60 * config.caching_time)
-        logger.info(f'Товар добавлен в кэш: id - {id}')
 
         context = self.get_context_data(object=self.object)
         comments = ProductCommentsService.all_comments(product=self.object)  # Комментарии к товару
 
         # id товаров в корзине текущего пользователя
+        # (для корректного отображения кнопки добавления товара/перехода в корзину)
         cart_products = CartProductsListService.id_products(request=self.request)
 
         context['cart_products'] = cart_products
         context['comments'] = comments[:1]
         context['total_comments'] = comments.count()
 
-        # Сохранение истории просмотренных товаров
-        ProductBrowsingHistoryService.save_view(request=request, product=self.object)
+        # Добавление записи в истории просмотра авторизованного пользователя
+        if request.user.is_authenticated:
+            ProductBrowsingHistoryService.save_view(request=request, product=self.object)
 
         return self.render_to_response(context)
 
     def post(self, request, pk):
         """
-        Обработка формы с новым комментарием
+        Валидация и обработка данных формы с новым комментарием к товару
         """
         form = CommentProductForm(request.POST)
-        product = self.get_object()  # FIXME Извлекать объект из GET, проверить!!!
+        product = self.get_object()
         comments = ProductCommentsService.all_comments(product=product)
 
         if form.is_valid():
             logger.debug(f'Данные формы валидны: {form.cleaned_data}')
 
-            # Добавляем новый комментарий к товару
             result = ProductCommentsService.add_new_comments(
                 form=form,
                 product=product,
@@ -191,61 +188,45 @@ class ProductDetailView(DetailView, FormMixin):
 
             if result:
                 return HttpResponseRedirect(reverse('shop:product_detail', kwargs={'pk': pk}))
-                # return redirect(reverse(reverse('shop:product_detail', kwargs={'pk': pk, 'tag': 'comment'})))
-
             else:
                 logger.error(f'Ошибка при публикации комментария')
+                return HttpResponse('При публикации комментария произошла ошибка, попробуйте позже...')
 
         else:
             logger.warning(f'Невалидные данные: {form.errors}')
 
-        return render(request, '../templates/app_shop/detail_product/product.html', context={
-            'object': product,
-            'comments': comments,
-            'form': form
-        })
+            return render(request, '../templates/app_shop/detail_product/product.html', context={
+                'object': product,
+                'comments': comments,
+                'total_comments': comments.count(),
+                'form': form
+            })
 
 
 def load_comments(request):
     """
-    Загрузка доп.комментариев к товару
+    Обработка запроса для загрузки доп.комментариев к товару
     """
-    loaded_item = int(request.GET.get('loaded_item'))
-    product_id = int(request.GET.get('product_id'))
-    limit = 1
-
-    comments = ProductReviews.objects.filter(product=product_id)[loaded_item:loaded_item+limit]
-    comments_obj = []
-
-    for comment in comments:
-        comments_obj.append({
-            'avatar': comment.buyer.profile.avatar.url,
-            'name': comment.buyer.profile.full_name,
-            'created_at': comment.created_at,
-            'review': comment.review
-        })
-
+    comments_obj = ProductCommentsService.load_comment(request=request)
     data = {'comments': comments_obj}
+
     return JsonResponse(data=data)
 
 
 def add_product(request):
     """
-    Добавление товара в корзину
+    Обработка Ajax-запроса на добавление товара в корзину
     """
     logger.debug('Добавление товара в корзину (Ajax-запрос)')
     res = CartProductsAddService.add(request=request)
-
-    # logger.error(f'res: {res}')
     data = {'res': res}
-    # data = {'res': False}  # Для тестирования сообщения об ошибке
 
     return JsonResponse(data=data)
 
 
 def add_product_in_cart(request, **kwargs):
     """
-    Добавление товара в корзину (перезагрузка страницы)
+    Обработка запроса на добавление товара в корзину (с перезагрузкой страницы)
     """
     logger.debug('Добавление товара в корзину (с обновлением страницы)')
     CartProductsAddService.add(request=request, product_id=kwargs['product_id'])
@@ -255,10 +236,9 @@ def add_product_in_cart(request, **kwargs):
 
 def delete_product(request, **kwargs):
     """
-    Удаление товара из корзины
+    Обработка запроса на удаление товара из корзины
     """
-    logger.debug('Удаление товара из корзины (с обновлением страницы)')
-    # TODO Возвращает res, который не используется
+    logger.debug('Удаление товара из корзины')
     CartProductsAddService.delete(request=request, product_id=kwargs['product_id'])
 
     return HttpResponseRedirect(kwargs['next'])
@@ -266,11 +246,10 @@ def delete_product(request, **kwargs):
 
 def reduce_product(request, **kwargs):
     """
-    Уменьшение кол-ва товара в корзине
+    Обработка запроса на уменьшение кол-ва товара в корзине
     """
     product_id = kwargs["product_id"]
     logger.debug(f'Уменьшение кол-ва товара в корзине: id - {product_id}')
-
     CartProductsAddService.reduce_product(request=request, product_id=product_id)
 
     return redirect('{}#{}'.format(reverse('shop:shopping_cart'), product_id))
@@ -278,11 +257,10 @@ def reduce_product(request, **kwargs):
 
 def increase_product(request, **kwargs):
     """
-    Увеличение кол-ва товара в корзине
+    Обработка запроса на увеличение кол-ва товара в корзине
     """
     product_id = kwargs["product_id"]
     logger.debug(f'Увеличение кол-ва товара в корзине: id - {product_id}')
-
     CartProductsAddService.increase_product(request=request, product_id=product_id)
 
     return redirect('{}#{}'.format(reverse('shop:shopping_cart'), product_id))
@@ -290,17 +268,16 @@ def increase_product(request, **kwargs):
 
 class ShoppingCartView(TemplateView):
     """
-    Корзина с товарами пользователя
+    Представление для вывода корзины с товарами пользователя
     """
     template_name = '../templates/app_shop/cart.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # FIXME кэшировать данные
         records = CartProductsListService.output(self.request)
-        context['records'] = records
 
         if records:
+            context['records'] = records
             total_cost = ProductsCartUserService.total_cost(records)
             context['total_cost'] = total_cost
 
@@ -309,43 +286,39 @@ class ShoppingCartView(TemplateView):
 
 class OrderRegistrationView(TemplateView):
     """
-    Регистрация заказа
+    Представление для вывода и обработки формы при регистрации заказа
     """
     template_name = '../templates/app_shop/orders/registration/order.html'
 
     def get(self, request, *args, **kwargs):
         """
-        Вывод формы для оформления заказа
+        Вывод формы для оформления заказа для авторизованного пользователя
+        либо формы для регистрации для неавторизованного.
         """
-        logger.debug('Регистрация заказа')
         context = self.get_context_data(**kwargs)
 
         if request.user.is_authenticated:
-            logger.debug('Пользователь авторизован. Вывод формы для оформления заказа')
-            form = MakingOrderForm()
-            context['form'] = form
-            records = CartProductsListService.output(self.request)
-            context['records'] = records
+            logger.debug('Вывод формы для оформления заказа')
+            context['form'] = MakingOrderForm()
+            records = CartProductsListService.output(request=request)
 
             if records:
+                context['records'] = records
                 total_cost = ProductsCartUserService.total_cost(records)
                 context['total_cost'] = total_cost
 
             return self.render_to_response(context)
-            # return render(request, '../templates/app_shop/orders/order.html', context={'form': form})
 
         else:
-            logger.warning('Пользователь не авторизован. Вывод формы для регистрации')
-            form = RegisterUserForm()
-            context['form'] = form
+            logger.warning('Пользователь не авторизован. Вывод формы для регистрации пользователя')
+            context['form'] = RegisterUserForm()
+
             return self.render_to_response(context)
-            # return render(request, '../templates/app_shop/orders/order.html', context={'form': form})
 
     def post(self, request):
         """
-        Оплата заказа
+        Проверка и обработка входных данных, регистрация заказа, перенаправление на страницу ввода реквизитов
         """
-        logger.debug('Оплата заказа')
         form = MakingOrderForm(request.POST)
 
         if form.is_valid():
@@ -360,55 +333,54 @@ class OrderRegistrationView(TemplateView):
                 if order.payment == 1:
                     logger.debug('Перенаправление на страницу ввода номера карты')
                     return redirect(reverse('shop:online_payment', kwargs={'order_id': order.id}))
+
                 else:
                     logger.debug('Перенаправление на страницу генерации случайного чужого счета')
                     return redirect(reverse('shop:someone_payment', kwargs={'order_id': order.id}))
 
             else:
                 logger.error('Ошибка при оформлении заказа')
-                # FIXME Вывод сообщения о неудачном оформлении заказа
-                return HttpResponse('Какая-то ошибка при оформлении заказа')
+                return HttpResponse('При оформлении заказа произошла ошибка, попробуйте позже...')
 
         else:
             logger.error(f'Не валидные данные: {form.errors}')
-            # FIXME Редирект на страницу с заказами с сообщением об ошибке
             return reverse('shop:order_registration')
 
 
 class PaymentView(TemplateView):
     """
-    Вывод и обработка формы для ввода номера карты (генерации случайного чужого счета) для оплаты заказа
+    Представление для вывода и обработки формы для ввода номера карты
+    (генерации случайного чужого счета) для оплаты заказа
     """
     template_name = '../templates/app_shop/orders/payment/payment.html'
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request, **kwargs):
         """
-        Оплата заказа с номера введенной карты
+        Вызов метода для оплаты заказа с номера введенной карты.
+        Перенаправление на страницу-загрушки для ожидания фиктивной оплаты.
         """
-        logger.debug('Оплата заказа')
         order_id = kwargs['order_id']
         cart_number = request.POST['numero1']
 
-        # Оплата заказа
         Payment.payment_processing(order_id=order_id, cart_number=cart_number)
 
         return redirect(reverse('shop:progress_payment', kwargs={'order_id': order_id}))
-        # return redirect(reverse('shop:order_detail', kwargs={'order_id': order_id}))
 
-# TODO Ожидание ассинхронного результата оплаты (с timeout!!!) с редиректом на страницу заказа
-class ProgressPaymentView(TemplateView):
-    """
-    Вывод страницы ожидания оплаты заказа
-    """
-    template_name = '../templates/app_shop/orders/payment/progressPayment.html'
 
-    # TODO Редирект на страницу заказа после получения результата оплаты
-    # return redirect(reverse('shop:order_detail', kwargs={'pk': order_id}))
+class ProgressPaymentView(View):
+    """
+    Представление для вывода заглушки, имитирующей ожидание от сервиса оплаты.
+    Автоматический редирект на страницу заказа через 4 сек при помощи JS-скрипта.
+    """
+
+    def get(self, request, **kwargs):
+        order_id = kwargs['order_id']
+        return render(request, '../templates/app_shop/orders/payment/progressPayment.html', {'order_id': order_id})
 
 
 class HistoryOrderView(ListView):
     """
-    Страница с заказами текущего пользователя
+    Представление для вывода страницы с заказами текущего пользователя
     """
     model = Order
     template_name = '../templates/app_shop/orders/historyorder.html'
@@ -417,16 +389,16 @@ class HistoryOrderView(ListView):
 
 class OrderInformationView(DetailView):
     """
-    Детальная страница заказа
+    Представление для вывода детальной страницы заказа
     """
     model = Order
     template_name = '../templates/app_shop/orders/oneorder.html'
 
     def get_context_data(self, **kwargs):
+        """
+        Сохранение в контексте товаров текущего заказа для вывода в шаблоне
+        """
         context = super().get_context_data(**kwargs)
-        self.object = self.get_object()
-
-        products = PurchasedProduct.objects.filter(order=self.object)
-        context['products'] = products
+        context = RegistrationOrder.save_order_products_in_context(context=context, order=self.get_object())
 
         return context

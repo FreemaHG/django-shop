@@ -46,13 +46,13 @@
                 <a class="menu-link" href="#">Checkout</a>
             </li>
             <li class="menu-item">
-                <a class="menu-link" href="#">My Cart</a>
+                <a class="menu-link" href="{% url 'shop:shopping_cart' %}">My Cart</a>
             </li>
             <li class="menu-item">
                 <a class="menu-link" href="#">Delivery</a>
             </li>
             <li class="menu-item">
-                <a class="menu-link" href="#">Order Info</a>
+                <a class="menu-link" href="{% url 'shop:history_order' %}">Order Info</a>
             </li>
             <li class="menu-item">
                 <a class="menu-link" href="#">Terms</a>
@@ -95,27 +95,37 @@
       <div class="wrap">
         <div class="row row_space">
           <div class="row-block">© Copyright&#32;
-            <a href="{% url 'shop:main' %}">Megano Store.</a>&#32;All rights reserved.
+            <a href="{% url 'shop:main' %}">Megano Store.</a>
+            &#32;All rights reserved.
           </div>
           <div class="row-block"><span>Accepted Payments</span>
             <div class="Footer-payments">
-              <div><img src="{% static 'assets/img/payments/visa.png' %}" alt="visa.png"/>
+              <div>
+                <img src="{% static 'assets/img/payments/visa.png' %}" alt="visa.png"/>
               </div>
-              <div><img src="{% static 'assets/img/payments/mastercard.png' %}" alt="mastercard.png"/>
+              <div>
+                <img src="{% static 'assets/img/payments/mastercard.png' %}" alt="mastercard.png"/>
               </div>
-              <div><img src="{% static 'assets/img/payments/paypal.png' %}" alt="paypal.png"/>
+              <div>
+                <img src="{% static 'assets/img/payments/paypal.png' %}" alt="paypal.png"/>
               </div>
-              <div><img src="{% static 'assets/img/payments/american.png' %}" alt="american.png"/>
+              <div>
+                <img src="{% static 'assets/img/payments/american.png' %}" alt="american.png"/>
               </div>
-              <div><img src="{% static 'assets/img/payments/electron.png' %}" alt="electron.png"/>
+              <div>
+                <img src="{% static 'assets/img/payments/electron.png' %}" alt="electron.png"/>
               </div>
-              <div><img src="{% static 'assets/img/payments/maestro.png' %}" alt="maestro.png"/>
+              <div>
+                <img src="{% static 'assets/img/payments/maestro.png' %}" alt="maestro.png"/>
               </div>
-              <div><img src="{% static 'assets/img/payments/delta.png' %}" alt="delta.png"/>
+              <div>
+                <img src="{% static 'assets/img/payments/delta.png' %}" alt="delta.png"/>
               </div>
-              <div><img src="{% static 'assets/img/payments/e.png' %}" alt="e.png"/>
+              <div>
+                <img src="{% static 'assets/img/payments/e.png' %}" alt="e.png"/>
               </div>
-              <div><img src="{% static 'assets/img/payments/dk.png' %}" alt="dk.png"/>
+              <div>
+                <img src="{% static 'assets/img/payments/dk.png' %}" alt="dk.png"/>
               </div>
             </div>
           </div>

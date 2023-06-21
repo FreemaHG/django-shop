@@ -40,14 +40,12 @@ class ProductsCartUserService:
         return True
 
     @classmethod
-    def remove(cls, user: User, product_id: int) -> bool:
+    def remove(cls, user: User, product_id: int) -> None:
         """
         Удалить товар из корзины
         """
         logger.debug(f'Удаление товара из корзины: user: {user.profile.full_name}, id - {product_id}')
         Cart.objects.filter(user=user, product__id=product_id).delete()
-
-        return True
 
     @classmethod
     def change_quantity(cls, user: User, product_id: int, count: int):

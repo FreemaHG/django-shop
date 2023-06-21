@@ -48,7 +48,7 @@ class ProductsCartQuestService:
 
 
     @classmethod
-    def remove(cls, request: HttpRequest, product_id: int):
+    def remove(cls, request: HttpRequest, product_id: int) -> None:
         """
         Удалить товар из корзины
         """

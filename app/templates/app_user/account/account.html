@@ -33,43 +33,51 @@
 
         <!-- Блок с последним заказом -->
         <div class="Account-group">
-          <div class="Account-column Account-column_full">
-            <div class="Order Order_anons">
-              <div class="Order-personal">
-                <div class="row">
-                  <div class="row-block">
-                    <a class="Order-title" href="oneorder.html">Заказ&#32;
-                    <a class="Order-title" href="{% url 'shop:order_detail' pk=last_order.id %}">Заказ&#32;
-                      <span class="Order-numberOrder">{{ last_order.id }}</span>&#32;от&#32;
-                      <span class="Order-dateOrder">{{ last_order.data_created }}</span>
-                    </a>
-                    <div class="Account-editLink">
-                      <a href="{% url 'shop:history_order' %}">История заказов</a>
-{#                      <a href="{% url 'shop:history_order' %}">История заказов</a>#}
+          {% if last_order %}
+            <div class="Account-column Account-column_full">
+              <div class="Order Order_anons">
+                <div class="Order-personal">
+                  <div class="row">
+                    <div class="row-block">
+                      <a class="Order-title" href="{% url 'shop:order_detail' pk=last_order.id %}">Заказ&#32;
+                        <span class="Order-numberOrder">{{ last_order.id }}</span>&#32;от&#32;
+                        <span class="Order-dateOrder">{{ last_order.data_created }}</span>
+                      </a>
+                      <div class="Account-editLink">
+                        <a href="{% url 'shop:history_order' %}">История заказов</a>
+                      </div>
                     </div>
-                  </div>
-                  <div class="row-block">
-                    <div class="Order-info Order-info_delivery">
-                      <div class="Order-infoType">Тип доставки:</div>
-                      <div class="Order-infoContent">Обычная доставка</div>
-                    </div>
-                    <div class="Order-info Order-info_pay">
-                      <div class="Order-infoType">Оплата:</div>
-                      <div class="Order-infoContent">Онлайн картой</div>
-                    </div>
-                    <div class="Order-info">
-                      <div class="Order-infoType">Общая стоимость:</div>
-                      <div class="Order-infoContent">200.99$</div>
-                    </div>
-                    <div class="Order-info Order-info_status">
-                      <div class="Order-infoType">Статус:</div>
-                      <div class="Order-infoContent">Не оплачен</div>
+                    <div class="row-block">
+                      <div class="Order-info Order-info_delivery">
+                        <div class="Order-infoType">Тип доставки:</div>
+                        <div class="Order-infoContent">{{ last_order.get_delivery_display }}</div>
+                      </div>
+                      <div class="Order-info Order-info_pay">
+                        <div class="Order-infoType">Оплата:</div>
+                        <div class="Order-infoContent">{{ last_order.get_payment_display }}</div>
+                      </div>
+                      <div class="Order-info">
+                        <div class="Order-infoType">Общая стоимость:</div>
+                        <div class="Order-infoContent">{{ last_order.order_cost }}<small> руб</small></div>
+                      </div>
+                      <div class="Order-info Order-info_status">
+                        <div class="Order-infoType">Статус:</div>
+                        {% if last_order.status == 4 %}
+                          <div class="Order-infoContent color-green">{{ last_order.get_status_display }}</div>
+                        {% elif last_order.status == 2 %}
+                          <div class="Order-infoContent discount-price">{{ last_order.get_status_display }}</div>
+                        {% else %}
+                          <div class="Order-infoContent">{{ last_order.get_status_display }}</div>
+                        {% endif %}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          {% else %}
+            <p>Вы еще не совершали заказов...</p>
+          {% endif %}
         </div>
 
 

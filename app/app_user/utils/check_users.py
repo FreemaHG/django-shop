@@ -13,8 +13,10 @@ def check_for_email(email: str) -> Union[User, bool]:
     try:
         user = User.objects.get(email=email)
         logger.debug(f'Пользователь с email: {email} найден')
+
         return user
 
     except ObjectDoesNotExist:
         logger.warning(f'Пользователь с email: {email} не найден')
+
         return False

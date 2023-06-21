@@ -1617,6 +1617,7 @@ label.toggle {
   font-size: 14px;
   padding: 10px;
   letter-spacing: 1.4px;
+  white-space: nowrap;
 }
 @media screen and (max-width: 990px) {
   .menu_main {
