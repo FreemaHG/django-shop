@@ -1,38 +1,38 @@
 from django.urls import path, re_path, include
 
-from .views import (
-    # Страницы
+from .views.page import (
     MainView,
     AboutView,
     ProductsSalesView,
+)
 
-    # Товары
+from .views.products import (
     ProductsLisSearchView,
     ProductsListView,
     ProductDetailView,
+)
 
-    # Корзина
-    ShoppingCartView,
+from .views.request import (
     add_product_in_cart,
     reduce_product,
     increase_product,
     delete_product,
-
-    # Заказы
-    OrderRegistrationView,
-    OrderInformationView,
-    HistoryOrderView,
-
-    # Оплата
-    PaymentView,
-    ProgressPaymentView,
-
-    # Ajax-запросы
     load_comments,
     add_product,
 )
 
+from .views.cart_and_order import (
+    ShoppingCartView,
+    OrderRegistrationView,
+    OrderInformationView,
+    HistoryOrderView,
+    PaymentView,
+    ProgressPaymentView,
+)
+
+
 app_name = 'shop'
+
 
 urlpatterns = [
     path('', MainView.as_view(), name='main'),
