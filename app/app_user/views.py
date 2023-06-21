@@ -10,7 +10,7 @@ from django.views import View
 
 from app_shop.services.products.browsing_history import ProductBrowsingHistoryService
 from app_shop.services.orders import RegistrationOrder
-from app_shop.models import ProductBrowsingHistory
+from app_shop.models.products import ProductBrowsingHistory
 from .forms import RegisterUserForm, AuthUserForm, EmailForm
 from .services.user import UserRegistrationService
 

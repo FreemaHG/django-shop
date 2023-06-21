@@ -4,7 +4,7 @@ from typing import List
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpRequest
 
-from ...models import Product, ProductReviews
+from ...models.products import Product, ProductReviews
 from ...forms import CommentProductForm
 from app_user.models import Buyer, Profile
 

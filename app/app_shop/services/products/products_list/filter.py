@@ -5,7 +5,7 @@ from django.db.models import QuerySet
 from django.core.exceptions import ObjectDoesNotExist
 
 from config.admin import config
-from ....models import Product, CategoryProduct
+from ....models.products import Product, CategoryProduct
 
 
 logger = logging.getLogger(__name__)

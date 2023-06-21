@@ -6,7 +6,7 @@ from solo.models import SingletonModel
 from functools import lru_cache
 
 from .utils.saving_fales import saving_logo  # Сохранение картинки в media
-from app_shop.models import CategoryProduct  # Категории товаров
+from app_shop.models.products import CategoryProduct  # Категории товаров
 
 
 logger = logging.getLogger(__name__)

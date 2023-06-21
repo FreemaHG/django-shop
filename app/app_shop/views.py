@@ -11,7 +11,8 @@ from django.core.cache import cache
 
 from config.admin import config
 from app_user.forms import RegisterUserForm
-from .models import Product, ProductReviews, Order, PurchasedProduct
+from .models.products import Product
+from .models.cart_and_orders import Order
 from .forms import CommentProductForm, MakingOrderForm
 from .services.orders import RegistrationOrder
 from .services.products.output_products import ProductsListService
@@ -26,7 +27,6 @@ from .services.products.browsing_history import ProductBrowsingHistoryService
 from .services.main import ProductsForMainService
 from .utils.input_data import clear_data
 from .services.products.context import SaveContextDataService
-# from .utils.shop_cart import get_id_products_in_cart
 
 
 logger = logging.getLogger(__name__)

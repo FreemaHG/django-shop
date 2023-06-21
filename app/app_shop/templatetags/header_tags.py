@@ -3,7 +3,7 @@ import logging
 from django import template
 from django.http import HttpRequest
 
-from ..models import CategoryProduct, Product
+from ..models.products import CategoryProduct, Product
 from ..services.shop_cart.logic import CartProductsListService, ProductsCartUserService
 # from ..utils.models.check import check_active_products
 

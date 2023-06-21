@@ -3,7 +3,7 @@ import logging
 from typing import List
 from django.http import HttpRequest
 
-from ...models import ProductBrowsingHistory, Product
+from ...models.products import ProductBrowsingHistory, Product
 
 
 logger = logging.getLogger(__name__)

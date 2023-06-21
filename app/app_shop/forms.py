@@ -1,5 +1,4 @@
 from django import forms
-from django.core.exceptions import ValidationError
 
 
 class CommentProductForm(forms.Form):
@@ -11,10 +10,9 @@ class CommentProductForm(forms.Form):
     email = forms.EmailField(label='Email', help_text='Email')
 
 
-# FIXME Добавить поля доставки и оплаты
 class MakingOrderForm(forms.Form):
     """
-    Форма оформления заказа
+    Форма для оформления заказа
     """
     full_name = forms.CharField(max_length=150, label='ФИО', help_text='Введите полное имя')
     phone_number = forms.CharField(min_length=10, max_length=12, label='Телефон', help_text='Введите номер телефона')

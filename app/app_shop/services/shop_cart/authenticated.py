@@ -6,7 +6,8 @@ from django.http import HttpRequest
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 
-from ...models import Cart, Product
+from ...models.products import Product
+from ...models.cart_and_orders import Cart
 
 
 logger = logging.getLogger(__name__)

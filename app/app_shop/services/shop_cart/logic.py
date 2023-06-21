@@ -7,7 +7,8 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.cache import cache
 
-from ...models import Cart, Product
+from ...models.products import Product
+from ...models.cart_and_orders import Cart
 from .authenticated import ProductsCartUserService
 from .quest import ProductsCartQuestService
 

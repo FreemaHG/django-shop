@@ -1,4 +1,4 @@
-from ...models import CategoryProduct, Product
+from ...models.products import CategoryProduct, Product
 
 
 def active_products(category: CategoryProduct) -> bool:

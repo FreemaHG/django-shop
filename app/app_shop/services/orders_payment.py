@@ -9,7 +9,7 @@ from django.http import HttpRequest
 from django.core.exceptions import ObjectDoesNotExist
 
 from ..services.shop_cart.authenticated import ProductsCartUserService
-from ..models import PurchasedProduct, Cart, Order, PaymentErrors
+from ..models.cart_and_orders import PurchasedProduct, Cart, Order, PaymentErrors
 # from ..tasks import payment
 
 

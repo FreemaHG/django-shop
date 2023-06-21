@@ -8,16 +8,20 @@ from mptt.admin import DraggableMPTTAdmin
 from mptt.querysets import TreeQuerySet
 
 from .utils.admin.change_status_delete import soft_deletion_child_records
-from .models import (
+from .models.products import (
     CategoryProduct,
     Product,
     ProductTags,
     ProductImages,
     ProductReviews,
+)
+
+from .models.cart_and_orders import (
     Cart,
     Order,
     PurchasedProduct,
-    PaymentErrors)
+    PaymentErrors
+)
 
 logger = logging.getLogger(__name__)
 

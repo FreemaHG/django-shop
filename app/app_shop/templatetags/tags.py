@@ -4,7 +4,7 @@ from typing import List, Union
 from django import template
 from django.http import HttpRequest
 
-from ..models import ProductTags, Product
+from ..models.products import ProductTags, Product
 
 
 logger = logging.getLogger(__name__)

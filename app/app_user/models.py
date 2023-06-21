@@ -12,7 +12,7 @@ STATUS_CHOICES = [
 
 class Profile(models.Model):
     """
-    Профайл пользователя с расширенными данными
+    Модель для хранения доп.данных о пользователе (профайл)
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Пользователь')
     full_name = models.CharField(max_length=150, verbose_name='ФИО')
@@ -27,9 +27,6 @@ class Profile(models.Model):
         verbose_name_plural = 'Учетные записи'
 
     def __str__(self):
-        """
-        Вывод имени пользователя
-        """
         return output_name(self)
 
 
@@ -56,16 +53,12 @@ class Buyer(models.Model):
     Модель для роли покупателя
     """
     profile = models.OneToOneField(Profile, on_delete=models.CASCADE, verbose_name='Пользователь')
-    # FIXME Раскомментировать после добавления модели с товарами
-    # views = models.ManyToManyField(Product, verbose_name='Просмотренные товары')
-    # viewing_time = models.DateTimeField(auto_now_add=True, verbose_name='Дата и время просмотра')
     deleted = models.BooleanField(choices=STATUS_CHOICES, default=False, verbose_name='Статус')  # Мягкое удаление
 
     class Meta:
         db_table = 'buyer'
         verbose_name = 'Покупатель'
         verbose_name_plural = 'Покупатели'
-        # ordering = ['-viewing_time']  # FIXME Раскомментировать после добавления модели с товарами
 
     def __str__(self):
         return output_name(self.profile)

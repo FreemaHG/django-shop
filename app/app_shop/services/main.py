@@ -7,7 +7,7 @@ from django.http import HttpRequest
 from django.core.cache import cache
 
 from ..services.shop_cart.logic import CartProductsListService
-from ..models import Product, CategoryProduct
+from ..models.products import Product, CategoryProduct
 
 
 logger = logging.getLogger(__name__)

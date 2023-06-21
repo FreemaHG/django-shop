@@ -4,7 +4,7 @@ from typing import Dict, List
 from django.db.models import Q, QuerySet
 from django.http import HttpRequest
 
-from ...models import Product
+from ...models.products import Product
 from .context import SaveContextDataService
 
 

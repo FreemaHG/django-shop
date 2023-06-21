@@ -2,7 +2,7 @@ import logging
 
 from django import template
 
-from ..models import ProductImages, Product
+from ..models.products import ProductImages, Product
 
 
 logger = logging.getLogger(__name__)

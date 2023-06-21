@@ -2,7 +2,7 @@ import logging
 
 from django.db.models import QuerySet
 
-from ...models import CategoryProduct
+from ...models.products import CategoryProduct
 
 
 logger = logging.getLogger(__name__)

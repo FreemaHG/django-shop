@@ -8,7 +8,7 @@ from django.http import HttpRequest
 from config.admin import config
 from ..services.shop_cart.authenticated import ProductsCartUserService
 from ..services.orders_payment import Payment
-from ..models import PurchasedProduct, Cart, Order
+from ..models.cart_and_orders import PurchasedProduct, Cart, Order
 from ..forms import MakingOrderForm
 
 
