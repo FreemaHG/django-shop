@@ -5,8 +5,8 @@ from typing import Dict, List, Union
 from django.core.exceptions import ObjectDoesNotExist
 
 from ...models.products import Product, CategoryProduct
-from ...services.products.products_list.filter import ProductFilter
-from ...services.products.products_list.sorting import ProductSort
+from ...services.products.products_list.filter import ProductFilterService
+from ...services.products.products_list.sorting import ProductSortService
 
 
 logger = logging.getLogger(__name__)

@@ -8,7 +8,7 @@ from ..models.products import CategoryProduct
 
 logger = logging.getLogger(__name__)
 
-class GetCategory:
+class GetCategoryUtil:
 
     @classmethod
     def get_category_id(cls, category_name: str) -> Union[int, bool]:

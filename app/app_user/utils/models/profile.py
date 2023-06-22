@@ -9,7 +9,7 @@ from ...models import Profile
 logger = logging.getLogger(__name__)
 
 
-class ProfileUtils:
+class ProfileUtil:
     """
     Проверка и возврат профайла пользователя
     """

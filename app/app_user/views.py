@@ -9,7 +9,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 
 from app_shop.services.products.browsing_history import ProductBrowsingHistoryService
-from app_shop.services.orders import RegistrationOrder
+from app_shop.services.orders import RegistrationOrderService
 from app_shop.models.products import ProductBrowsingHistory
 from .forms import RegisterUserForm, AuthUserForm, EmailForm
 from .services.user import UserRegistrationService
@@ -86,7 +86,7 @@ class LoginUserView(FormView):
             })
 
 
-class PasswordRecovery(FormView):
+class PasswordRecoveryView(FormView):
     """
     Представление для восстановления пароля от личного кабинета пользователя
     """
@@ -110,7 +110,7 @@ def account_view(request):
     """
     if request.user.is_authenticated:
         logger.debug('Вывод личного кабинета пользователя')
-        last_order = RegistrationOrder.last_order(request=request)
+        last_order = RegistrationOrderService.last_order(request=request)
 
         logger.warning(f'last_order: {last_order}')
 

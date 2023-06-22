@@ -10,7 +10,8 @@ from ....models.products import Product, CategoryProduct
 
 logger = logging.getLogger(__name__)
 
-class ProductFilter:
+
+class ProductFilterService:
     """
     Сервис с бизнес-логикой по выводу отфильтрованных товаров
     """

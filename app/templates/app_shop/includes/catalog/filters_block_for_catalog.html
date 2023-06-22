@@ -8,7 +8,6 @@
       <strong class="Section-title">Фильтр</strong>
     </header>
     <div class="Section-columnContent">
-      {{ request.get_full_path }}
 {#      <form class="form" action="{% url 'shop:products_list' %}" method="get">#}
       <form class="form" action="{{ request.get_full_path }}" method="get">
 {#        {% csrf_token %}#}

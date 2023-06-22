@@ -9,10 +9,10 @@ from django.shortcuts import render, redirect
 from app_user.forms import RegisterUserForm
 from ..models.cart_and_orders import Order
 from ..forms import MakingOrderForm
-from ..services.orders import RegistrationOrder
+from ..services.orders import RegistrationOrderService
 from ..services.shop_cart.logic import CartProductsListService
 from ..services.shop_cart.authenticated import ProductsCartUserService
-from ..services.orders_payment import Payment
+from ..services.orders_payment import PaymentService
 
 
 logger = logging.getLogger(__name__)
@@ -77,7 +77,7 @@ class OrderRegistrationView(TemplateView):
             logger.debug(f'Данные формы валидны: {form.cleaned_data}')
 
             # Регистрация заказа
-            order = RegistrationOrder.create_order(request=request, form=form)
+            order = RegistrationOrderService.create_order(request=request, form=form)
 
             if order:
                 logger.info('Заказ успешно оформлен')
@@ -151,6 +151,6 @@ class OrderInformationView(DetailView):
         Сохранение в контексте товаров текущего заказа для вывода в шаблоне
         """
         context = super().get_context_data(**kwargs)
-        context = RegistrationOrder.save_order_products_in_context(context=context, order=self.get_object())
+        context = RegistrationOrderService.save_order_products_in_context(context=context, order=self.get_object())
 
         return context

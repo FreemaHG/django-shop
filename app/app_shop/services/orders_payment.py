@@ -15,7 +15,7 @@ from ..models.cart_and_orders import PurchasedProduct, Cart, Order, PaymentError
 
 logger = logging.getLogger(__name__)
 
-class Payment:
+class PaymentService:
     """
     Сервис для оплаты получения статуса заказов
     """
@@ -26,7 +26,7 @@ class Payment:
         Обработка оплаты заказа
         """
         logger.info(f'Запуск обработки оплаты заказа')
-        order = Payment.check_order(order_id=order_id)
+        order = PaymentService.check_order(order_id=order_id)
 
         # Убираем пробелы и преобразуем в число
         cart_number = int(cart_number.replace(' ', ''))
@@ -34,7 +34,7 @@ class Payment:
         if not order is False:
             order.status=3  # Смена статуса заказа на "Подтверждение оплаты"
             order.save()
-            res = Payment.payment(order=order, cart_number=cart_number)  # Прямой вызов метода
+            res = PaymentService.PaymentService(order=order, cart_number=cart_number)  # Прямой вызов метода
             # payment(order=order, cart_number=cart_number)  # Добавление оплаты в очередь задач
             return res
         else:

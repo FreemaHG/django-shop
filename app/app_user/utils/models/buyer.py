@@ -8,7 +8,7 @@ from ...models import Buyer, Profile
 logger = logging.getLogger(__name__)
 
 
-class BuyerUtils:
+class BuyerUtil:
     """
     Проверка и возврат объекта покупателя
     """

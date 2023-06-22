@@ -4,7 +4,7 @@ from .views import (
     register_user_view,  # Регистрация пользователя
     LoginUserView,  # Авторизация
     LogoutUserView,  # Выход
-    PasswordRecovery,  # Восстановление пароля
+    PasswordRecoveryView,  # Восстановление пароля
 
     account_view,  # Личный кабинет
     ProfileView,  # Профайл
@@ -35,7 +35,7 @@ urlpatterns = [
     ])),
     path('logout/', LogoutUserView.as_view(), name='logout'),
 
-    path('password_recovery/', PasswordRecovery.as_view(), name='password_recovery'),  # Восстановление пароля
+    path('password_recovery/', PasswordRecoveryView.as_view(), name='password_recovery'),  # Восстановление пароля
 
     # Личный кабинет
     path('account/', account_view, name='account'),

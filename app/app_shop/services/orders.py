@@ -7,7 +7,7 @@ from django.http import HttpRequest
 
 from config.admin import config
 from ..services.shop_cart.authenticated import ProductsCartUserService
-from ..services.orders_payment import Payment
+from ..services.orders_payment import PaymentService
 from ..models.cart_and_orders import PurchasedProduct, Cart, Order
 from ..forms import MakingOrderForm
 
@@ -15,7 +15,7 @@ from ..forms import MakingOrderForm
 logger = logging.getLogger(__name__)
 
 
-class RegistrationOrder:
+class RegistrationOrderService:
     """
     Сервис для оформления заказа
     """
@@ -60,7 +60,7 @@ class RegistrationOrder:
 
         # Сохранение товаров заказа
         products_cart = ProductsCartUserService.all(user=request.user)
-        RegistrationOrder.purchase_history(products_cart=products_cart, order=order)
+        RegistrationOrderService.purchase_history(products_cart=products_cart, order=order)
 
         # Очистка корзины
         ProductsCartUserService.clear_cart(user=request.user)
@@ -69,7 +69,7 @@ class RegistrationOrder:
         cart_number = 12345678
 
         # Стоимость оплаты = стоимость товаров + стоимость доставки
-        amount = order.order_cost + RegistrationOrder.delivery_cost(order=order)
+        amount = order.order_cost + RegistrationOrderService.delivery_cost(order=order)
         logger.debug(f'Стоимость заказа с учетом доставки: {amount} руб')
 
         return order

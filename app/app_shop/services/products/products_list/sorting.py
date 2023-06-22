@@ -7,7 +7,7 @@ from django.db.models import QuerySet, Count
 logger = logging.getLogger(__name__)
 
 
-class ProductSort:
+class ProductSortService:
     """
     Сервис с бизнес-логикой по сортировке товаров по популярности, цене, отзывам и новизне
     """

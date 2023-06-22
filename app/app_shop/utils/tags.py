@@ -8,7 +8,7 @@ from ..models.products import ProductTags
 
 logger = logging.getLogger(__name__)
 
-class GetTag:
+class GetTagUtil:
 
     @classmethod
     def get_tag_id(cls, tag_name: str) -> Union[int, bool]:

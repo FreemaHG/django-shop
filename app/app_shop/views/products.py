@@ -14,8 +14,8 @@ from ..models.products import Product
 from ..forms import CommentProductForm
 from ..services.products.output_products import ProductsListService
 from ..services.products.detail_page import ProductCommentsService
-from ..services.products.products_list.filter import ProductFilter
-from ..services.products.products_list.sorting import ProductSort
+from ..services.products.products_list.filter import ProductFilterService
+from ..services.products.products_list.sorting import ProductSortService
 from ..services.shop_cart.logic import CartProductsListService
 from ..services.products.search import ProductsListSearchService
 from ..services.products.browsing_history import ProductBrowsingHistoryService
@@ -65,10 +65,10 @@ class ProductsListView(BaseListView):
         products = ProductsListService.output(filter_parameters=self.filter_parameters)
 
         # Фильтрация по переданным в форме параметрам
-        products = ProductFilter.output(products=products, filters=self.filter_parameters)
+        products = ProductFilterService.output(products=products, filters=self.filter_parameters)
 
         # Сортировка по переданным параметрам
-        products = ProductSort.output(products=products, filters=self.filter_parameters)
+        products = ProductSortService.output(products=products, filters=self.filter_parameters)
 
         return products
 
@@ -93,10 +93,10 @@ class ProductsLisSearchView(BaseListView):
         products = ProductsListSearchService.search(request=self.request)
 
         # Фильтрация по переданным в форме параметрам
-        products = ProductFilter.output(products=products, filters=self.filter_parameters)
+        products = ProductFilterService.output(products=products, filters=self.filter_parameters)
 
         # Сортировка по переданным параметрам
-        products = ProductSort.output(products=products, filters=self.filter_parameters)
+        products = ProductSortService.output(products=products, filters=self.filter_parameters)
 
         return products
 
