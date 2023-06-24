@@ -1,4 +1,5 @@
 {% load static %}
+{% load cache %}
 {% load header_tags %}
 {% load mptt_tags %}
 {% load solo_tags %}  <!-- Загрузка тегов solo -->
@@ -131,36 +132,38 @@
             <!-- Сделать, чтобы при отсутствии категорий кнопка не работала (не запускался скрипт) -->
             <div class="CategoriesButton-content">
             {% if categories_list %}
-              {% recursetree categories_list %}
-                <div class="CategoriesButton-link">
-                  <a href="{% url 'shop:products_list' group='category' name=node.slug %}">
-                    <div class="CategoriesButton-icon">
-                      {% if node.icon %}
-                        <img src="{{ node.icon.url }}" alt=""/>
-                      {% endif %}
-                    </div>
-                    <span class="CategoriesButton-text">{{ node.title }}</span>
-                  </a>
+              {% cache 60 * site_config.caching_time categories %}
+                {% recursetree categories_list %}
+                  <div class="CategoriesButton-link">
+                    <a href="{% url 'shop:products_list' group='category' name=node.slug %}">
+                      <div class="CategoriesButton-icon">
+                        {% if node.icon %}
+                          <img src="{{ node.icon.url }}" alt=""/>
+                        {% endif %}
+                      </div>
+                      <span class="CategoriesButton-text">{{ node.title }}</span>
+                    </a>
 
-                  {% if node.children.count != 0 %}
-                    <a class="CategoriesButton-arrow" href="#"></a>
-                    <div class="CategoriesButton-submenu">
+                    {% if node.children.count != 0 %}
+                      <a class="CategoriesButton-arrow" href="#"></a>
+                      <div class="CategoriesButton-submenu">
 
-                      {% for item in node.children.all %}
-                        <a class="CategoriesButton-link" href="{% url 'shop:products_list' group='category' name=item.slug %}">
-                          <div class="CategoriesButton-icon">
-                            {% if item.icon %}
-                              <img src="{{ item.icon.url }}" alt=""/>
-                            {% endif %}
-                          </div>
-                          <span class="CategoriesButton-text">{{ item.title }}</span>
-                        </a>
-                      {% endfor %}
+                        {% for item in node.children.all %}
+                          <a class="CategoriesButton-link" href="{% url 'shop:products_list' group='category' name=item.slug %}">
+                            <div class="CategoriesButton-icon">
+                              {% if item.icon %}
+                                <img src="{{ item.icon.url }}" alt=""/>
+                              {% endif %}
+                            </div>
+                            <span class="CategoriesButton-text">{{ item.title }}</span>
+                          </a>
+                        {% endfor %}
 
-                    </div>
-                  {% endif %}
-                </div>
-              {% endrecursetree %}
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endrecursetree %}
+              {% endcache %}
             {% endif %}
 
             </div>

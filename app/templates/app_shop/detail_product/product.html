@@ -9,7 +9,7 @@
   {% endblock %}
 
 {#  {% with object.productimages_set.all|first as image %}#}
-  {% with object.productimages_set.all as images %}
+  {% with object.images.all as images %}
     {% with images|first as first_img %}
     <div class="Section">
       <div class="wrap">

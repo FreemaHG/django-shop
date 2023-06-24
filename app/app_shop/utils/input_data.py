@@ -8,7 +8,10 @@ logger = logging.getLogger(__name__)
 
 def clear_data(data: Dict) -> Dict:
     """
-    Очистка входных данных (извлечение единичных значений из списков)
+    Функция для очистки входных данных (извлечение единичных значений из списков)
+
+    @param data: словарь с данными
+    @return: очищенный словарь с данными
     """
     cleared_data = {}
 
@@ -16,4 +19,5 @@ def clear_data(data: Dict) -> Dict:
         cleared_data[key] = value
 
     logger.debug(f'Данные после очистки: {cleared_data}')
+
     return cleared_data

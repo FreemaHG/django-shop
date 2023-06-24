@@ -1,5 +1,4 @@
 import logging
-from typing import List, Dict
 
 from django.db.models import QuerySet
 from django.http import HttpResponse, HttpResponseRedirect
@@ -40,7 +39,11 @@ class BaseListView(ListView):
         Передача в шаблон параметров вывода товаров
         """
         context = super().get_context_data(**kwargs)
-        context = SaveContextDataService.save_data(context=context, filter_parameters=self.filter_parameters, request=self.request)
+        context = SaveContextDataService.save_data(
+            context=context,
+            filter_parameters=self.filter_parameters,
+            request=self.request
+        )
 
         return context
 
@@ -51,9 +54,11 @@ class ProductsListView(BaseListView):
     Фильтрация и сортировка по переданным в URL параметрам.
     """
 
-    def get_queryset(self):
+    def get_queryset(self) -> QuerySet:
         """
-        Вызов сервиса с бизнес-логикой для вывода товаров по переданным параметрам
+        Вызов сервиса для вывода товаров по переданным параметрам
+
+        @return: QuerySet с товарами
         """
         logger.info(f'Новый запрос: {self.request.build_absolute_uri()}')
 
@@ -81,7 +86,8 @@ class ProductsLisSearchView(BaseListView):
     def get_queryset(self) -> QuerySet:
         """
         Вывод товаров, найденных по поисковой фразе
-        @return: список с товарами
+        
+        @return: QuerySet с товарами
         """
         logger.info(f'Новый запрос: {self.request.build_absolute_uri()}')
 
@@ -117,7 +123,7 @@ class ProductDetailView(DetailView, FormMixin):
 
         # Возвращаем объект из кэша / кэшируем объект
         # (кэш товара автоматически очищается в model.save() при редактировании товара)
-        self.object = cache.get_or_set(f'product_{id}', self.get_object(), 60 * config.caching_time)
+        self.object = cache.get_or_set(f'product_{id}', Product.objects.prefetch_related('images').get(id=id), 60 * config.caching_time)
 
         context = self.get_context_data(object=self.object)
         comments = ProductCommentsService.all_comments(product=self.object)  # Комментарии к товару

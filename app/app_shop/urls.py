@@ -1,5 +1,7 @@
 from django.urls import path, re_path, include
+from django.views.decorators.cache import cache_page
 
+from config.admin import config
 from .views.page import (
     MainView,
     AboutView,
@@ -36,19 +38,17 @@ app_name = 'shop'
 
 urlpatterns = [
     path('', MainView.as_view(), name='main'),
-    path('about/', AboutView.as_view(), name='about'),
-    path('sale/', ProductsSalesView.as_view(), name='sale'),
+    path('about/', cache_page(60 * config.caching_time)(AboutView.as_view()), name='about'),
+    path('sale/', cache_page(60 * config.caching_time)(ProductsSalesView.as_view()), name='sale'),
 
     # Фильтрация товаров по категории / тегу, параметрам фильтрации, сортировка товаров
     path('catalog/', include([
-        path('', ProductsListView.as_view(), name='products_list'),
-        # path('^.*', ProductsListView.as_view(), name='products_list'),  # TODO Проверить вместо нижнего
+        path('', cache_page(60 * config.caching_time)(ProductsListView.as_view()), name='products_list'),
         re_path(r'^(?P<group>.*)/(?P<name>.*)/.*', ProductsListView.as_view(), name='products_list'),
     ])),
 
     # Поиск товаров с фильтрацией и сортировкой результатов
     path('search/', include([
-        path('', ProductsLisSearchView.as_view(), name='search'),
         re_path(r'^.*', ProductsLisSearchView.as_view(), name='search'),
     ])),
 
@@ -67,8 +67,6 @@ urlpatterns = [
 
     # Корзина
     path('shopping_cart/', ShoppingCartView.as_view(), name='shopping_cart'),  # Корзина с товарами
-    # TODO Нужно ли?
-    # re_path(r'^shopping_cart/#(?P<id_product>.*)', ShoppingCartView.as_view(), name='shopping_cart'),  # С перезагрузкой страницы
     path('reduce_product/<int:product_id>', reduce_product, name='reduce_product'),  # Уменьшение кол-ва товара в корзине
     path('increase_product/<int:product_id>', increase_product, name='increase_product'),  # Увеличение кол-ва товара в корзине
 
@@ -81,8 +79,8 @@ urlpatterns = [
 
     # Оплата заказа
     path('payment/', include([
-        path('online/<int:order_id>/', PaymentView.as_view(), name='online_payment'),  # Онлайн картой
-        path('someone/<int:order_id>/', PaymentView.as_view(), name='someone_payment'),  # Онлайн со случайного чужого счета
-        path('progress_payment/<int:order_id>/', ProgressPaymentView.as_view(), name='progress_payment'),  # Ожидание оплаты
+        path('online/<int:order_id>/', cache_page(60 * config.caching_time)(PaymentView.as_view()), name='online_payment'),  # Онлайн картой
+        path('someone/<int:order_id>/', cache_page(60 * config.caching_time)(PaymentView.as_view()), name='someone_payment'),  # Онлайн со случайного чужого счета
+        path('progress_payment/<int:order_id>/', cache_page(60 * config.caching_time)(ProgressPaymentView.as_view()), name='progress_payment'),  # Ожидание оплаты
     ])),
 ]

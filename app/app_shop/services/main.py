@@ -2,7 +2,7 @@ import random
 import logging
 
 from typing import Dict, List
-from django.db.models import Min
+from django.db.models import Min, QuerySet
 from django.http import HttpRequest
 from django.core.cache import cache
 
@@ -23,12 +23,11 @@ class ProductsForMainService:
     @classmethod
     def save_data(cls, context: Dict, request: HttpRequest) -> Dict:
         """
-        Метод для сохранения данных в переданной из представления переменной контекста
-        для последующего вывода данных в шаблоне главной страницы
+        Метод для сохранения данных в переменную контекста для последующего вывода в шаблоне главной страницы
 
         @param context: словарь
-        @param request: http-запрос
-        @return: словарь
+        @param request: объект http-запроса
+        @return: словарь с данными по товарам и категориям
         """
 
         context['selected_categories'] = ProductsForMainService.selected_categories()
@@ -41,48 +40,56 @@ class ProductsForMainService:
 
         return context
 
-    @classmethod
-    def selected_categories(cls) -> List[CategoryProduct]:
-        """
-        Возврат 3-ех избранных категорий товаров, указанных в конфигурации сайта
 
-        @return: список с категориями
+    @classmethod
+    def selected_categories(cls) -> QuerySet:
+        """
+        Метод для возврата 3-ех избранных категорий товаров, указанных в конфигурации сайта
+
+        @return: QuerySet с избранными категориями
         """
 
         categories = cache.get_or_set(
             'selected_categories',
-            CategoryProduct.objects.filter(selected=True).annotate(min_price=Min('product__price'))[:3],
+            CategoryProduct.objects.only('title', 'slug', 'image').filter(selected=True)
+            .annotate(min_price=Min('product__price'))[:3],
             cls._CACHING_TIME
         )
 
         return categories
 
+
     @classmethod
-    def popular_products(cls) -> List[Product]:
+    def popular_products(cls) -> QuerySet:
         """
         Метод возвращает ТОП 8 популярных продуктов (ТОП по продажам).
         Сначала отбирается 30 наиболее популярных товаров, из которых случайным образом возвращается 8
 
-        @return: список с товарами
+        @return: QuerySet с товарами
         """
 
         most_popular_products = cache.get_or_set(
             'popular_products',
-            list(Product.objects.order_by('-purchases')[:30]),
+            list(Product.objects.select_related('category').only('id', 'name', 'category__title', 'price', 'discount')
+                 .order_by('-purchases')[:30]),
             cls._CACHING_TIME)
 
         random.shuffle(most_popular_products)
 
         return most_popular_products[:8]
 
+
     @classmethod
-    def limited_edition(cls) -> List[Product]:
+    def limited_edition(cls) -> QuerySet:
         """
         Метод возвращает товары, помеченные 'ограниченным тиражом'
 
-        @return: список с товарами
+        @return: QuerySet с товарами
         """
-
-        products = cache.get_or_set('limited_edition', Product.objects.filter(limited_edition=True), cls._CACHING_TIME)
+        products = cache.get_or_set(
+            'limited_edition',
+            Product.objects.select_related('category').only('id', 'name', 'category__title', 'price', 'discount')
+            .filter(limited_edition=True),
+            cls._CACHING_TIME)
 
         return products

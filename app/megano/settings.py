@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'config.apps.ConfigConfig',  # Конфигурация сайта
     'django_cleanup.apps.CleanupConfig',  # Очистка файлов при удалении записи
     'solo',
-    # 'debug_toolbar',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'megano.urls'

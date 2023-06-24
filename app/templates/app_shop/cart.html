@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load header_tags %}
 
 {% block content %}
 
@@ -16,11 +17,10 @@
 
             {% with position.product as product %}
             <div class="Cart-product">
-
               <div class="Cart-block Cart-block_row">
                 <div class="Cart-block Cart-block_pict">
                   <a class="Cart-pict" href="{% url 'shop:product_detail' pk=product.id %}">
-                    {% with product.productimages_set.first as img %}
+                    {% with product.images.first as img %}
                       <img class="Cart-img" src="{{ img.image.url }}" alt="{{ img.title }}"/>
                     {% endwith %}
                   </a>
@@ -65,7 +65,8 @@
           <div class="Cart-total">
             <div class="Cart-block Cart-block_total flex">
               <strong class="Cart-title">Итого:</strong>
-              <span class="Cart-price">{{ total_cost }} <small>руб</small></span>
+              {% products_cart as data %}
+              <span class="Cart-price">{{ data.1 }} <small>руб</small></span>
             </div>
             <div class="Cart-block">
               <a class="btn btn_success btn_lg" href="{% url 'shop:order_registration' %}">Оформить заказ</a>

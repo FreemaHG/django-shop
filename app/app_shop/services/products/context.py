@@ -23,12 +23,11 @@ class SaveContextDataService:
         """
         Метод для сохранения данных в контексте представления
 
-        @param request:
+        @param request: объект http-запроса
         @param filter_parameters: словарь с данными для сохранения
         @param context: словарь с контекстными данными из представления
         @return: словарь с обновленными контекстными данными из представления
         """
-
         context = cls.save_products_id(context=context, request=request)
 
         if filter_parameters:
@@ -45,34 +44,70 @@ class SaveContextDataService:
             if query:
                 context = cls.save_query(context=context, query=query)
 
-            logger.warning(f'Передача параметров в шаблон: {context["filter_parameters"]}')
+            logger.info(f'Передача параметров в шаблон: {context["filter_parameters"]}')
 
-        logger.warning('Параметры фильтрации не заданы')
+        else:
+            logger.warning('Параметры фильтрации не заданы')
 
         return context
 
+
     @classmethod
-    def save_query(cls, context: Dict, query: str):
+    def save_query(cls, context: Dict, query: str) -> Dict:
+        """
+        Метод для сохранения поисковой фразы в контексте представления
+
+        @param context: словарь с контекстными данными
+        @param query: поисковая строка
+        @return: словарь с контекстными данными
+        """
         logger.debug(f'Сохранение поисковой фразы в контексте: {query}')
+
         context['query'] = query
-
         return context
 
+
     @classmethod
-    def save_products_id(cls, context: Dict, request: HttpRequest):
+    def save_products_id(cls, context: Dict, request: HttpRequest) -> Dict:
+        """
+        Метод для сохранения в контексте списка с id товаров, находящихся в корзине текущего пользователя,
+        для корректного отображения иконки добавления / удаления товара из корзины в карточке товара
+
+        @param context: словарь с контекстными данными
+        @param request: словарь с контекстными данными
+        @return:
+        """
+        logger.debug('Сохранение в контексте id товаров в корзине пользователя')
+
         context['products_id'] = CartProductsListService.id_products(request=request)  # id товаров в корзине текущего пользователя
-
         return context
 
+
     @classmethod
-    def save_filter_param(cls, context: Dict, filter_parameters: Dict):
-        # Передача в шаблон параметров фильтрации
+    def save_filter_param(cls, context: Dict, filter_parameters: Dict) -> Dict:
+        """
+        Метод для сохранения в контексте параметров фильтрации
+
+        @param context: словарь с контекстными данными
+        @param filter_parameters: словарь с параметрами фильтрации
+        @return: словарь с контекстными данными
+        """
+        logger.debug('Сохранение в контексте параметров фильтрации')
+
         context['filter_parameters'] = filter_parameters
-
         return context
 
     @classmethod
-    def save_sorting_param(cls, context: Dict, sort_param: Dict):
+    def save_sorting_param(cls, context: Dict, sort_param: Dict) -> Dict:
+        """
+        Метод для сохранения в контексте параметров сортировки
+
+        @param context: словарь с контекстными данными
+        @param sort_param: словарь с параметрами сортировки
+        @return: словарь с контекстными данными
+        """
+        logger.debug('Сохранение в контексте параметров сортировки')
+
         context['filter_parameters']['sort'] = sort_param
 
         # Сортировка по цене

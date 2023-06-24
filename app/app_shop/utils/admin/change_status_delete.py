@@ -1,21 +1,25 @@
 import logging
 
-from django.db.models import QuerySet
+from typing import List
 
 from ...models.products import CategoryProduct
 
 
 logger = logging.getLogger(__name__)
 
-def soft_deletion_child_records(queryset: QuerySet):
+
+def soft_deletion_child_records(categories: List[CategoryProduct]) -> None:
     """
-    Мягкое удаление дочерних записей
+    Мягкое удаление дочерних категорий (смена статуса на неактивный)
+
+    @param categories: список с категориями товаров
+    @return: None
     """
-    logger.debug('Утилиты: мягкое удаление дочерних записей')
+    logger.debug('Мягкое удаление дочерних записей')
 
     deleted_objects = []
 
-    for record in queryset:
+    for record in categories:
         children = record.get_descendants(include_self=False)  # Получаем все дочерние записи
 
         for child in children:

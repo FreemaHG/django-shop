@@ -1,13 +1,13 @@
 import logging
 
 from typing import List, Dict
-
+from django.core.cache import cache
 from django.db import transaction
+from django.db.models import QuerySet
 from django.http import HttpRequest
 
 from config.admin import config
 from ..services.shop_cart.authenticated import ProductsCartUserService
-from ..services.orders_payment import PaymentService
 from ..models.cart_and_orders import PurchasedProduct, Cart, Order
 from ..forms import MakingOrderForm
 
@@ -25,11 +25,13 @@ class RegistrationOrderService:
     def create_order(cls, request: HttpRequest, form: MakingOrderForm) -> Order:
         """
         Метод для регистрации нового заказа
+
+        @param request: объект http-запроса
+        @param form: объект формы с данными заказа
+        @return: объект созданного заказа
         """
         logger.debug('Создание заказа')
-        # full_name = form.cleaned_data.get('full_name', False)
-        # phone_number = form.cleaned_data.get('phone_number', False)
-        # email = form.cleaned_data.get('email', False)
+
         delivery = form.cleaned_data.get('delivery', False)
         city = form.cleaned_data.get('city', False)
         address = form.cleaned_data.get('address', False)
@@ -65,19 +67,21 @@ class RegistrationOrderService:
         # Очистка корзины
         ProductsCartUserService.clear_cart(user=request.user)
 
-        # FIXME Тестовое значение. Изменить на введенное пользователем значение!!!
-        cart_number = 12345678
-
         # Стоимость оплаты = стоимость товаров + стоимость доставки
         amount = order.order_cost + RegistrationOrderService.delivery_cost(order=order)
         logger.debug(f'Стоимость заказа с учетом доставки: {amount} руб')
 
         return order
 
+
     @classmethod
-    def purchase_history(cls, products_cart: List[Cart], order: MakingOrderForm):
+    def purchase_history(cls, products_cart: List[Cart], order: Order) -> None:
         """
         Метод для сохранения товаров заказа
+
+        @param products_cart: список с позициями товаров в заказе (товар и его кол-во)
+        @param order: объект заказа
+        @return: None
         """
         logger.debug('Сохранение товаров в заказе')
 
@@ -93,12 +97,16 @@ class RegistrationOrderService:
 
         PurchasedProduct.objects.bulk_create(purchase_products)
 
+
     @classmethod
-    def delivery_cost(cls, order: Order):
+    def delivery_cost(cls, order: Order) -> int:
         """
         Метод для расчета стоимости доставки заказа:
             - Обычная: если сумма заказа > 2000 - доставка 0 руб, иначе 200 (стоимость обычной доставки);
             - Экспресс: если сумма заказа > 2000 - доставка 500 (стоимость экспресс доставки), иначе 700 (200 + 500).
+
+        @param order: объект заказа
+        @return: стоимость доставки
         """
         logger.debug('Расчет стоимости доставки')
 
@@ -110,6 +118,7 @@ class RegistrationOrderService:
                 delivery_cost = config.shipping_cost
 
             logger.debug(f'Обычная доставка. Стоимость: {delivery_cost} руб')
+
             return delivery_cost
 
         # Экспресс доставка
@@ -120,18 +129,24 @@ class RegistrationOrderService:
                 delivery_cost = config.shipping_cost + config.extra_shipping_cost
 
             logger.debug(f'Экспресс доставка. Стоимость: {delivery_cost} руб')
+
             return delivery_cost
 
+
     @classmethod
-    def last_order(cls, request: HttpRequest):
+    def last_order(cls, request: HttpRequest) -> Order:
         """
-        Метод возвращает последний заказ пользователя
+        Метод для возврата последнего заказа пользователя
+
+        @param request: объект http-запроса
+        @return: объект последнего заказа текущего пользователя
         """
         logger.debug(f'Возврат последнего заказа для пользователя: {request.user.profile.full_name}')
 
         # По умолчанию у заказов обратная сортировка по дате создания,
         # поэтому для возврата последнего заказа используем first()
         return Order.objects.filter(user=request.user).first()
+
 
     @classmethod
     def save_order_products_in_context(cls, context: Dict, order: Order) -> Dict:
@@ -144,8 +159,11 @@ class RegistrationOrderService:
         """
         logger.debug(f'Сохранение в контексте товаров заказа №{order.id}')
 
-        products = PurchasedProduct.objects.filter(order=order)
+        products = cache.get_or_set(
+            f'order_{order.id}',
+            PurchasedProduct.objects.select_related('product').only('id', 'count', 'price', 'product__id', 'product__name', 'product__price', 'product__definition').filter(order=order),
+            60 * config.caching_time)
+
         context['products'] = products
 
         return context
-

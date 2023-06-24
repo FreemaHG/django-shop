@@ -1,11 +1,10 @@
 import logging
 
-from typing import List
-from django.db.models import Sum
+from django.db.models import QuerySet
 from django.http import HttpRequest
-from django.contrib.auth.models import User
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.cache import cache
 
+from config.admin import config
 from ...models.products import Product
 from ...models.cart_and_orders import Cart
 
@@ -13,26 +12,30 @@ from ...models.cart_and_orders import Cart
 logger = logging.getLogger(__name__)
 
 
-# TODO Очищать кэш при изменении данных в корзине!!!
 class ProductsCartQuestService:
     """
-    Сервис для добавления, изменения и удаления товаров из корзины неавторизованного пользователя (session)
+    Сервис для добавления, изменения и удаления товаров в корзине неавторизованного пользователя (session)
     """
-    ...
+
     @classmethod
     def add(cls, request: HttpRequest, product_id: str, count: int = 1) -> bool:
         """
-        Добавить товар в корзину
+        Метод для добавления товара в корзину пользователя (объект сессии)
+        
+        @param request: объект http-запроса
+        @param product_id: id товара
+        @param count: кол-во товара
+        @return: bool-значение
         """
-        logger.debug(f'Добавление товара в корзину гостя: id пользователя: {request.user.id}, id - {product_id}, кол-во: {count}')
-        ProductsCartQuestService.check_cart(request=request)  # Проверка / создание ключа "cart" в объекте сессии
+        logger.debug(f'Добавление товара в корзину гостя: id пользователя: {request.user.id}, id товара - {product_id}, кол-во: {count}')
+        
+        ProductsCartQuestService.check_key(request=request)  # Проверка / создание ключа "cart" в объекте сессии
 
         if count == 0:
             logger.warning('Нельзя добавить 0 товаров, увеличение кол-ва на 1')
             count = 1
 
         logger.debug(f'Корзина ДО: {request.session["cart"]}')
-
         record = request.session['cart'].get(product_id, False)
 
         if record:
@@ -45,30 +48,46 @@ class ProductsCartQuestService:
         request.session.save()
         logger.debug(f'Корзина ПОСЛЕ: {request.session["cart"]}')
 
+        # Очистка кэша с товарами корзины
+        cls.clear_cache_cart(request=request)
+
         return True
 
 
     @classmethod
     def remove(cls, request: HttpRequest, product_id: int) -> None:
         """
-        Удалить товар из корзины
+        Метод для удаления товара из корзины (объекта сессии)
+        
+        @param request: объект http-запроса
+        @param product_id: id товара
+        @return: None
         """
-        logger.debug(f'Удаление товара из объекта сессии: id = {product_id}')
+        logger.debug(f'Удаление товара из объекта сессии: id товара - {product_id}')
 
         try:
             del request.session['cart'][product_id]
             request.session.save()
             logger.info('Товар удален из объекта сессии')
 
+            # Очистка кэша с товарами корзины
+            cls.clear_cache_cart(request=request)
+
         except KeyError:
             logger.warning(f'Не найден ключ "cart" в объекте сессии гостя')
 
 
     @classmethod
-    def reduce_product(cls, request: HttpRequest, product_id: int):
+    def reduce_product(cls, request: HttpRequest, product_id: int) -> None:
         """
-        Уменьшение кол-ва товара на 1
+        Метод для уменьшения кол-ва товара на 1 (в объекте сессии)
+        
+        @param request: объект http-запроса
+        @param product_id: id товара
+        @return: None
         """
+        logger.debug(f'Уменьшение товара на 1: id товара - {product_id}')
+
         product_id = str(product_id)
         count = request.session['cart'][product_id]
         count -= 1
@@ -76,17 +95,25 @@ class ProductsCartQuestService:
         if count <= 0:
             logger.warning('Кол-во товара уменьшено до 0. Удаление товара из корзины')
             ProductsCartQuestService.remove(request=request, product_id=product_id)
-
         else:
             request.session['cart'][product_id] = count
             request.session.save()
 
+        # Очистка кэша с товарами корзины
+        cls.clear_cache_cart(request=request)
+
 
     @classmethod
-    def increase_product(cls, request: HttpRequest, product_id: int):
+    def increase_product(cls, request: HttpRequest, product_id: int) -> None:
         """
-        Увеличение кол-ва товара на 1
+        Метод для увеличения кол-ва товара на 1 (в объекте сессии)
+        
+        @param request: объект http-запроса
+        @param product_id: id товара
+        @return: None
         """
+        logger.debug(f'Увеличение товара на 1: id товара - {product_id}')
+
         product_id = str(product_id)
         count = request.session['cart'][product_id]
         count += 1
@@ -94,12 +121,17 @@ class ProductsCartQuestService:
         request.session['cart'][product_id] = count
         request.session.save()
 
+        # Очистка кэша с товарами корзины
+        cls.clear_cache_cart(request=request)
 
-    # FIXME Переименовать в check_key!!!
+
     @classmethod
-    def check_cart(cls, request: HttpRequest):
+    def check_key(cls, request: HttpRequest) -> None:
         """
-        Проверка ключа в объекте сессии (создание при необходимости) для записи, чтения и удаления товаров
+        Метод для проверки ключа в объекте сессии (создание при необходимости) для записи, чтения и удаления товаров
+        
+        @param request: объект http-запроса
+        @return: None
         """
         logger.debug('Проверка ключа "cart" в объекте сессии текущего пользователя')
 
@@ -107,42 +139,67 @@ class ProductsCartQuestService:
             logger.warning('Ключ не найден, создание ключа')
             request.session['cart'] = {}
 
-    # FIXME Возможно метод не нужен, перепроверить!
-    @classmethod
-    def check_product(cls, request: HttpRequest, product_id: int) -> bool:
-        """
-        Проверка, есть ли указанный товар в корзине текущего пользователя
-        """
-        logger.debug('Проверка товара в корзине гостя')
-        ...
 
     @classmethod
-    def all(cls, request: HttpRequest):
+    def all(cls, request: HttpRequest) -> QuerySet:
         """
-        Вывести все товары в корзине для текущего пользователя
+        Метод для вывода всех товаров в корзине текущего пользователя (объекте сессии)
+        
+        @param request: объект http-запроса
+        @return: QuerySet с товарами
         """
         logger.debug(f'Вывод товаров корзины гостя: {request.user}')
+
         records_list = []
+        session_key = request.session.session_key
+        cart_cache_key = f'cart_{session_key}'
 
-        products = request.session.get('cart', False)
+        if cart_cache_key not in cache:
+            logger.warning('В кэше для текущей сессии нет данных о товарах в корзине')
+            products = request.session.get('cart', False)
 
-        if products:
-            logger.debug(f'Записи о товарах в объекте сессии гостя: {products}')
+            if products:
+                logger.debug(f'Записи о товарах в текущей сессии гостя: {products}')
 
-            for prod_id, count in products.items():
-                records_list.append(Cart(
-                    product=Product.objects.get(id=prod_id),
-                    count=count
-                ))
+                for prod_id, count in products.items():
+                    records_list.append(Cart(
+                        product=Product.objects.only(
+                            'id',
+                            'name',
+                            'definition',
+                            'price',
+                            'discount'
+                        ).get(id=prod_id),
+                        count=count
+                    ))
+
+                cache.set(cart_cache_key, records_list, 60 * config.caching_time)
+                logger.info('Товары сохранены в кэш')
+
+            else:
+                logger.warning('Записи о товарах не найдены')
         else:
-            logger.warning('Записи о товарах не найдены')
+            records_list = cache.get(cart_cache_key)
 
         return records_list
 
-    # TODO Используется одноименный метод в ProductsCartUserService!
+
     @classmethod
-    def total_cost(cls, products: List[Cart]):
+    def clear_cache_cart(cls, request: HttpRequest) -> None:
         """
-        Возврат общей стоимости всех товаров в корзине
+        Метод для очистки кэша с товарами в корзине
+
+        @param request: объект http-запроса
+        @return: None
         """
-        ...
+        logger.debug('Очистка кэша с товарами в корзине')
+
+        session_key = request.session.session_key
+        cart_cache_key = f'cart_{session_key}'
+
+        res = cache.delete(cart_cache_key)
+
+        if res:
+            logger.info('Кэш с товарами успешно очищен')
+        else:
+            logger.error('Кэш с товарами не очищен')

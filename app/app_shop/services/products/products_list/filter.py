@@ -1,11 +1,9 @@
 import logging
 
-from typing import Union, Dict, List
+from typing import Dict
 from django.db.models import QuerySet
-from django.core.exceptions import ObjectDoesNotExist
 
 from config.admin import config
-from ....models.products import Product, CategoryProduct
 
 
 logger = logging.getLogger(__name__)
@@ -13,13 +11,17 @@ logger = logging.getLogger(__name__)
 
 class ProductFilterService:
     """
-    Сервис с бизнес-логикой по выводу отфильтрованных товаров
+    Сервис по выводу отфильтрованных товаров
     """
 
     @classmethod
     def output(cls, products: QuerySet, filters: Dict) -> QuerySet:
         """
-        Возврат отфильтрованных товаров
+        Метод возвращает отфильтрованные товары по переданным параметрам
+
+        @param products: QuerySet с товарами для фильтрации
+        @param filters: словарь с параметрами фильтрации
+        @return: QuerySet с отфильтрованными товарами
         """
 
         if filters:
@@ -50,7 +52,15 @@ class ProductFilterService:
 
     @classmethod
     def by_min_price(cls, products: QuerySet, min_price: str) -> QuerySet:
+        """
+        Метод для фильтрации товаров по минимальной цене
+
+        @param products: QuerySet с товарами для фильтрации
+        @param min_price: минимальное значение цены
+        @return: QuerySet с отфильтрованными товарами
+        """
         logger.debug(f'Фильтрация по минимальной цене: {min_price}')
+
         filtered_products =  products.filter(price__gte=min_price)
         logger.debug(f'Найдено товаров: {len(filtered_products)}')
 
@@ -58,7 +68,15 @@ class ProductFilterService:
 
     @classmethod
     def by_max_price(cls, products: QuerySet, max_price: str) -> QuerySet:
+        """
+        Метод для фильтрации товаров по максимальной цене
+
+        @param products: QuerySet с товарами для фильтрации
+        @param max_price: максимальное значение цены
+        @return: QuerySet с отфильтрованными товарами
+        """
         logger.debug(f'Фильтрация по максимальной цене {max_price}')
+
         filtered_products = products.filter(price__lte=max_price)
         logger.debug(f'Найдено товаров: {len(filtered_products)}')
 
@@ -66,7 +84,15 @@ class ProductFilterService:
 
     @classmethod
     def by_title(cls, products: QuerySet, title: str) -> QuerySet:
+        """
+        Метод для фильтрации товаров по названию
+
+        @param products: QuerySet с товарами для фильтрации
+        @param title: название товара для фильтрации
+        @return: QuerySet с отфильтрованными товарами
+        """
         logger.debug(f'Фильтрация по названию: {title}')
+
         filtered_products = products.filter(name__icontains=f'{title}')
         logger.debug(f'Найдено товаров: {len(filtered_products)}')
 
@@ -74,7 +100,14 @@ class ProductFilterService:
 
     @classmethod
     def by_in_stock(cls, products: QuerySet) -> QuerySet:
+        """
+        Метод для фильтрации товаров по наличию товара
+
+        @param products: QuerySet с товарами для фильтрации
+        @return: QuerySet с отфильтрованными товарами
+        """
         logger.debug('Фильтрация по наличию')
+
         filtered_products = products.filter(count__gt=0)
         logger.debug(f'Найдено товаров: {len(filtered_products)}')
 
@@ -82,9 +115,15 @@ class ProductFilterService:
 
     @classmethod
     def by_free_shipping(cls, products: QuerySet) -> QuerySet:
+        """
+        Метод для фильтрации товаров по возможности бесплатной доставки (цена товара > установленного минимума)
+
+        @param products: QuerySet с товарами для фильтрации
+        @return: QuerySet с отфильтрованными товарами
+        """
         logger.debug('Фильтрация по бесплатной доставке')
+
         filtered_products = products.filter(price__gt=config.min_order_cost)
         logger.debug(f'Найдено товаров: {len(filtered_products)}')
 
         return filtered_products
-

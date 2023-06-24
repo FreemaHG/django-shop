@@ -1,12 +1,16 @@
 import logging
 
-from typing import List
+from typing import List, Dict
+from django.contrib.auth.models import User
+from django.core.cache import cache
 from django.core.exceptions import ObjectDoesNotExist
+from django.db.models import QuerySet
 from django.http import HttpRequest
 
+from config.admin import config
+from app_user.models import Buyer, Profile
 from ...models.products import Product, ProductReviews
 from ...forms import CommentProductForm
-from app_user.models import Buyer, Profile
 
 
 logger = logging.getLogger(__name__)
@@ -18,23 +22,46 @@ class ProductCommentsService:
     """
 
     @classmethod
-    def all_comments(cls, product = Product) -> List[ProductReviews]:
+    def all_comments(cls, product: Product = None, product_id: int = None) -> QuerySet:
         """
-        Метод для вывода всех комментариев (активных) к товару
+        Метод для вывода всех (активных) комментариев к товару
 
-        @param product: объект товара
-        @return: список с отзывами к переданному товару
+        @param product_id: id товара (не обязательный параметр)
+        @param product: объект товара (не обязательный параметр)
+        @return: список с отзывами для указанного товара
         """
+        logger.debug('Вывод комментариев к товару')
 
-        comments = ProductReviews.objects.filter(product=product, deleted=False)
-        logger.debug(f'Вывод комментариев к товару: {product.name}. Комментариев: {len(comments)}')
+        if product_id:
+            comments = cache.get_or_set(
+                f'comments_product_{product_id}',
+                ProductReviews.objects.select_related('buyer__profile', 'buyer__profile__user')
+                .only('created_at', 'review', 'buyer__profile__full_name', 'buyer__profile__avatar',
+                      'buyer__profile__user__id')
+                .filter(product__id=product_id, deleted=False),
+                60 * config.caching_time
+            )
+        else:
+            comments = cache.get_or_set(
+                f'comments_product_{product.id}',
+                ProductReviews.objects.select_related('buyer').filter(product=product, deleted=False),
+                60 * config.caching_time
+            )
+
+        logger.debug(f'Кол-во комментариев: {len(comments)}')
 
         return comments
 
+
     @classmethod
-    def add_new_comments(cls, form: CommentProductForm, product: Product, user) -> bool:
+    def add_new_comments(cls, form: CommentProductForm, product: Product, user: User) -> bool:
         """
         Метод для добавления нового комментария к товару
+
+        @param form: объект формы с данными для добавления нового комментария
+        @param product: объект товара, к которому оставляется комментарий
+        @param user: текущий пользователь
+        @return: True / False в зависимости от успешности
         """
         logger.debug(f'Добавление комментария к товару: {product.name}')
 
@@ -46,6 +73,7 @@ class ProductCommentsService:
 
         try:
            profile = Profile.objects.get(user=user)
+           logger.debug('Профайл пользователя найден')
 
         except ObjectDoesNotExist:
             logger.error('Профайл пользователя не найден')
@@ -59,27 +87,31 @@ class ProductCommentsService:
             review=form.cleaned_data['review']
         )
 
-        logger.info('Комментарий успешно опубликован')
+        # Очистка кэша с комментариями к текущему товару
+        cache.delete(f'comments_product_{product.id}')
+
+        logger.info('Комментарий успешно создан')
         return True
 
+
     @classmethod
-    def load_comment(cls, request: HttpRequest) -> List:
+    def load_comment(cls, request: HttpRequest) -> List[Dict]:
         """
         Метод для загрузки и вывода доп.комментариев к товару
 
         @param request: объект http-запроса
         @return: список с новыми загружаемыми комментариями и данными по ним
         """
+        logger.debug('Загрузка новых комментариев к товару')
+
         _LOADED_ITEM = 'loaded_item'
         _PRODUCT_ID = 'product_id'
         _LIMIT = 1
 
-        logger.debug('Загрузка новых комментариев к товару')
-
         loaded_item = int(request.GET.get(_LOADED_ITEM))
         product_id = int(request.GET.get(_PRODUCT_ID))
 
-        comments = ProductReviews.objects.filter(product=product_id)[loaded_item:loaded_item + _LIMIT]
+        comments = cls.all_comments(product_id=product_id)[loaded_item:loaded_item + _LIMIT]
         comments_obj = []
 
         for comment in comments:

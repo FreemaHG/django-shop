@@ -4,7 +4,7 @@ from typing import Union, Tuple, Any
 from django.conf import settings
 from django.contrib.auth import authenticate, login
 from django.http import HttpRequest, BadHeaderError
-from django.db import IntegrityError
+from django.db import IntegrityError, transaction
 from django.core.mail import send_mail, BadHeaderError
 
 from ..models import Profile
@@ -12,7 +12,7 @@ from ..forms import RegisterUserForm, EmailForm, AuthUserForm
 from ..utils.save_new_user import save_username, cleaned_phone_data
 from ..utils.check_users import check_for_email
 from ..utils.password_recovery import password_generation
-from app_shop.services.shop_cart.logic import CartProductsAddService
+from app_shop.services.shop_cart.logic import CartProductsService
 
 
 logger = logging.getLogger(__name__)
@@ -24,6 +24,7 @@ class UserRegistrationService:
     """
 
     @classmethod
+    @transaction.atomic
     def registration(cls, request: HttpRequest) -> Any:
         """ Регистрация нового пользователя """
 
@@ -68,7 +69,7 @@ class UserRegistrationService:
                 return next_page, form, _ERROR_MESSAGE_PHONE
 
             # Слияние корзин в БД
-            CartProductsAddService.merge_carts(request=request, user=user)
+            CartProductsService.merge_carts(request=request, user=user)
 
             # Авторизация нового пользователя
             user = authenticate(username=username, password=password)
@@ -105,7 +106,7 @@ class UserRegistrationService:
             login(request, user)
 
             # Слияние корзин в БД
-            CartProductsAddService.merge_carts(request=request, user=user)
+            CartProductsService.merge_carts(request=request, user=user)
 
             if next_page:
                 logger.debug(f'Возврат на страницу: {next_page}')

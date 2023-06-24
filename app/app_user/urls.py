@@ -1,5 +1,7 @@
 from django.urls import path, re_path, include
+from django.views.decorators.cache import cache_page
 
+from config.admin import config
 from .views import (
     register_user_view,  # Регистрация пользователя
     LoginUserView,  # Авторизация
@@ -18,24 +20,18 @@ app_name = 'user'
 urlpatterns = [
     # Регистрация
     path('registration/', include([
-        # TODO Убрать лишние!!
-        path('', register_user_view, name='registration'),
-        # path('<str:next_page>/', register_user_view, name='registration'),
-        # re_path(r'^.*', register_user_view, name='registration'),  # Обработка ?next
-        # re_path(r'^(?P<next_page>.*)', register_user_view, name='registration'),  # Обработка ?next
+        path('', cache_page(60 * config.caching_time)(register_user_view), name='registration'),
         re_path(r'^(?P<next>.*)', register_user_view, name='registration'),  # Обработка ?next
     ])),
 
     # Авторизация и выход
     path('login/', include([
-        path('', LoginUserView.as_view(), name='login'),
-        # TODO Убрать лишние!!
-        # re_path(r'^.*', LoginUserView.as_view(), name='login'),  # Обработка ?next
+        path('', cache_page(60 * config.caching_time)(LoginUserView.as_view()), name='login'),
         re_path(r'^(?P<next>.*)', LoginUserView.as_view(), name='login'),  # Обработка ?next
     ])),
-    path('logout/', LogoutUserView.as_view(), name='logout'),
+    path('logout/', cache_page(60 * config.caching_time)(LogoutUserView.as_view()), name='logout'),
 
-    path('password_recovery/', PasswordRecoveryView.as_view(), name='password_recovery'),  # Восстановление пароля
+    path('password_recovery/', cache_page(60 * config.caching_time)(PasswordRecoveryView.as_view()), name='password_recovery'),  # Восстановление пароля
 
     # Личный кабинет
     path('account/', account_view, name='account'),

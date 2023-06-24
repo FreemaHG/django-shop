@@ -1,7 +1,7 @@
 import logging
 
 from django.contrib.auth.views import LogoutView
-from django.db import IntegrityError, transaction
+from django.db import transaction
 from django.urls import reverse
 from django.views.generic import ListView
 from django.views.generic.edit import FormView
@@ -18,8 +18,7 @@ from .services.user import UserRegistrationService
 logger = logging.getLogger(__name__)
 
 
-# TODO При неуспешной транзакции ниже не выполняется запрос в base.html get_solo при извлечении данных о сайте (ошибка при выводе шаблона)
-# @transaction.atomic
+@transaction.atomic
 def register_user_view(request):
     """
     Представление для регистрации пользователя в расширенной форме

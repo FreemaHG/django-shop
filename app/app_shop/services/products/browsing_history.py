@@ -1,6 +1,6 @@
 import logging
 
-from typing import List
+from django.db.models import QuerySet
 from django.http import HttpRequest
 
 from ...models.products import ProductBrowsingHistory, Product
@@ -15,16 +15,15 @@ class ProductBrowsingHistoryService:
     """
 
     @classmethod
-    def history_products(cls, request: HttpRequest) -> List[ProductBrowsingHistory]:
+    def history_products(cls, request: HttpRequest) -> QuerySet:
         """
         Метод для вывода истории просмотренных товаров
 
-        @param request: http-запрос
+        @param request: объект http-запроса
         @return: список с отфильтрованными записями по текущему пользователю из запроса
         """
-
         logger.debug('Вывод истории просмотров товаров')
-        records = ProductBrowsingHistory.objects.filter(user=request.user)
+        records = ProductBrowsingHistory.objects.select_related('product', 'product__category').filter(user=request.user)
 
         return records
 
@@ -33,11 +32,10 @@ class ProductBrowsingHistoryService:
         """
         Метод для сохранения записи о просмотренном товаре
 
-        @param request: http-запрос
-        @param product: объект товара
+        @param request: объект http-запроса
+        @param product: просмотренный товар
         @return: None
         """
-
         logger.debug('Сохранение записи о просмотренном товаре')
 
         # Выполняем проверку, сравнивая id текущего товара с id последних 8-ми сохраненных товаров в истории текущего

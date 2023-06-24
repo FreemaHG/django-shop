@@ -1,36 +1,48 @@
 import logging
 
+from typing import Dict, Tuple
 from django import template
-from django.http import HttpRequest
+from django.core.cache import cache
+from django.db.models import QuerySet
 
-from ..models.products import CategoryProduct, Product
+from config.admin import config
+from ..models.products import CategoryProduct
 from ..services.shop_cart.logic import CartProductsListService, ProductsCartUserService
-# from ..utils.models.check import check_active_products
 
 
 logger = logging.getLogger(__name__)
 register = template.Library()
 
+
 @register.simple_tag()
-def output_categories():
+def output_categories() -> QuerySet:
     """
-    Возвращаем активные родительские категории товаров, в которых есть активные товары
+    Функция возвращает активные родительские категории товаров, в которых есть активные товары
+
+    @return: QuerySet с категориями товаров
     """
-    # FIXME: Добавить проверку на наличие активных товаров в категории (после добавления товаров)!!!
-    return CategoryProduct.objects.filter(deleted=False, parent=None).order_by('id')
+    categories = cache.get_or_set(
+        'categories',
+        CategoryProduct.objects.filter(deleted=False, parent=None).order_by('id'),
+        60 * config.caching_time)
+
+    return categories
 
 
 @register.simple_tag(takes_context=True)
-def products_cart(context):
+def products_cart(context: Dict) -> Tuple[int, int]:
     """
-    Возвращает кол-во товаров в корзине текущего пользователя
+    Функция возвращает кол-во товаров в корзине текущего пользователя и их общую стоимость
+
+    @param context: словарь - контекстная переменная
+    @return: кол-во записей, общая стоимость товаров
     """
     logger.debug('Вывод в header кол-ва и стоимости товаров в корзине пользователя')
+
     records_number = 0
     total_cost = 0
 
-    # FIXME Кэшировать данные
-    records = CartProductsListService.output(context['request'])
+    records = CartProductsListService.all_products(context['request'])
 
     if records:
         for record in records:

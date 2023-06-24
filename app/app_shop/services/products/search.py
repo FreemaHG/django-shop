@@ -1,11 +1,9 @@
 import logging
 
-from typing import Dict, List
 from django.db.models import Q, QuerySet
 from django.http import HttpRequest
 
 from ...models.products import Product
-from .context import SaveContextDataService
 
 
 logger = logging.getLogger(__name__)
@@ -13,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 class ProductsListSearchService:
     """
-    Поиск товаров
+    Сервис для поиска товаров по названию
     """
 
     @classmethod
@@ -23,13 +21,12 @@ class ProductsListSearchService:
         совпадение в начале / в конце наименования товара
 
         @param request: http-запрос с URL вида /search/?query=смартфон
-        @return: список товаров
+        @return: QuerySet с товарами
         """
 
         query = request.GET['query']
         logger.debug(f'Поиск товаров по фразе: {query}')
 
-        # TODO В SQLite icontains работает как contains - проверить и переписать с учетом работы в MySQL!!!
         products = Product.objects.filter(
             Q(name__icontains=query) | Q(name__contains=query) | Q(name__startswith=query) | Q(name__endswith=query) |
             Q(name__icontains=query.capitalize()) | Q(name__contains=query.capitalize()) |

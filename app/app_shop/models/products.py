@@ -64,12 +64,12 @@ class CategoryProduct(MPTTModel):
 
     def save(self, *args, **kwargs):
         """
-        Сохраняем URL по названию категории
+        Сохранение поля slug по названию категории
         """
         self.slug = slugify(self.title)
         super(CategoryProduct, self).save(*args, **kwargs)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.title
 
 
@@ -88,7 +88,7 @@ class ProductTags(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        Сохраняем URL по названию тега
+        Сохранение поля slug по названию тега
         """
         if not self.slug:
             self.slug = slugify(self.name)
@@ -123,15 +123,20 @@ class Product(models.Model):
         ordering = ['id']
 
     @property
-    def discounted_price(self):
+    def image(self):
+        return self.productimages_set.first()
+
+    @property
+    def discounted_price(self) -> int:
         """
-        Цена товара с учетом скидки
+        Расчет стоимости товара с учетом скидки
         """
         return int(self.price - ((self.price * self.discount) / 100))
 
     def save(self, *args, **kwargs):
         """
-        Меняем поле limited_edition в зависимости от кол-ва товара
+        Автоматическое обновление поля limited_edition в зависимости от кол-ва товара.
+        Очистка кэша с данными о товаре при обновлении товара.
         """
         if 0 <= self.count <= 100:
             self.limited_edition = True
@@ -144,13 +149,13 @@ class Product(models.Model):
         if cache.delete(f"product_{self.id}"):
             logger.info('Кэш товара очищен')
 
-    def __str__(self):
-        return self.name
+    def __str__(self) -> str:
+        return str(self.name)
 
 
 class ProductBrowsingHistory(models.Model):
     """
-    История просмотров товаров пользователем
+    Модель для хранения данных об истории просмотров товаров пользователем
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Товар')
@@ -166,15 +171,15 @@ class ProductImages(models.Model):
     """
     title = models.CharField(max_length=250, verbose_name='Название изображения')
     image = models.ImageField(upload_to=saving_images_for_product, verbose_name='Изображение')
-    product = models.ForeignKey('Product', on_delete=models.CASCADE, verbose_name='Товар')
+    product = models.ForeignKey('Product', on_delete=models.CASCADE, verbose_name='Товар', related_name='images')
 
     class Meta:
         db_table = 'product_images'
         verbose_name = 'Изображение товара'
         verbose_name_plural = 'Изображения товара'
 
-    def __str__(self):
-        return self.title
+    def __str__(self) -> str:
+        return str(self.title)
 
 
 class ProductReviews(models.Model):
@@ -193,5 +198,5 @@ class ProductReviews(models.Model):
         verbose_name_plural = 'Отзывы о товаре'
         ordering = ['created_at']
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.product.name

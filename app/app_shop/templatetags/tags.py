@@ -1,8 +1,8 @@
 import logging
 
-from typing import List, Union
+from typing import Union
 from django import template
-from django.http import HttpRequest
+from django.db.models import QuerySet
 
 from ..models.products import ProductTags, Product
 
@@ -10,26 +10,29 @@ from ..models.products import ProductTags, Product
 logger = logging.getLogger(__name__)
 register = template.Library()
 
+
 @register.simple_tag
 def output_tags():
     """
     Вывод всех тегов
     """
-    # FIXME Переделать на вывод популярных тегов для выводимых товаров
     tags = ProductTags.objects.all()
-
     return tags
 
 
 @register.simple_tag
-def tags_for_product(product: Product) -> List[ProductTags]:
+def tags_for_product(product: Product) -> QuerySet:
     """
     Вывод всех активных тегов товара
+
+    @param product: объект товара
+    @return: QuerySet с активными тегами
     """
     logger.debug(f'Возврат активных тегов товара: {product.name}')
-    tags = product.tags.filter(deleted=False)
 
-    logger.debug(f'Найдено тегов: {len(tags)}')
+    tags = product.tags.filter(deleted=False)
+    logger.debug(f'Найдено тегов: {tags.count()}')
+
     return tags
 
 
@@ -38,6 +41,9 @@ def check_for_word_end(number: int = None) -> Union[str, None]:
     """
     Проверка входящего числа для вывода корректного окончания слова в шаблоне
     для обозначения кол-ва комментариев к товару
+
+    @param number: число - кол-во товара
+    @return: строка - окончание слова
     """
     logger.debug(f'Проверка входящего числа: {number}')
 

@@ -1,5 +1,6 @@
 import logging
 
+from typing import Dict
 from django.contrib.auth.models import User
 from django.db.models import Sum, F
 from django.db import models
@@ -25,11 +26,11 @@ class Cart(models.Model):
         verbose_name = 'Корзина'
         verbose_name_plural = 'Корзина'
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'Корзина покупателя'
 
     @property
-    def position_cost(self):
+    def position_cost(self) -> int:
         """
         Стоимость одной позиции товара с учетом скидки и кол-ва товара (с округлением до целого)
         """
@@ -51,7 +52,7 @@ class PaymentErrors(models.Model):
         verbose_name = 'Ошибка оплаты'
         verbose_name_plural = 'Ошибки оплаты'
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.title
 
 
@@ -87,11 +88,10 @@ class Order(models.Model):
     error_message = models.ForeignKey(PaymentErrors, on_delete=models.SET_NULL, null=True, verbose_name='Сообщение об ошибке')
 
     @property
-    def order_cost(self):
+    def order_cost(self) -> Dict:
         """
-        Стоимость заказа
+        Расчет стоимости заказа с учетом кол-ва каждого товара и текущей цены с учетом скидки
         """
-        # FIXME Оптимизировать в одну строку
         products = PurchasedProduct.objects.filter(order__id=self.id)
         amount = products.aggregate(amount=Sum(F('count') * F('price')))
 
@@ -102,7 +102,7 @@ class Order(models.Model):
         verbose_name_plural = 'Заказы'
         ordering = ['-data_created']
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'Заказ №{self.id}'
 
 
@@ -120,11 +120,11 @@ class PurchasedProduct(models.Model):
         verbose_name = 'Товар в заказе'
         verbose_name_plural = 'Товары в заказе'
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.product.name
 
     @property
-    def position_cost(self):
+    def position_cost(self) -> int:
         """
         Стоимость одной позиции товара с кол-ва (с округлением до целого)
         """

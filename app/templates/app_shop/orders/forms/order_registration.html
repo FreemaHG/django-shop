@@ -181,7 +181,7 @@
             <div class="Cart-block Cart-block_row">
               <div class="Cart-block Cart-block_pict">
                 <a class="Cart-pict" href="{% url 'shop:product_detail' pk=product.id %}">
-                  {% with product.productimages_set.first as img %}
+                  {% with product.images.first as img %}
                     <img class="Cart-img" src="{{ img.image.url }}" alt="{{ img.title }}"/></a>
                   {% endwith %}
               </div>

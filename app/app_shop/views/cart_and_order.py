@@ -1,5 +1,4 @@
 import logging
-from typing import List, Dict
 
 from django.http import HttpResponse
 from django.urls import reverse
@@ -26,7 +25,7 @@ class ShoppingCartView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        records = CartProductsListService.output(self.request)
+        records = CartProductsListService.all_products(self.request)
 
         if records:
             context['records'] = records
@@ -52,12 +51,8 @@ class OrderRegistrationView(TemplateView):
         if request.user.is_authenticated:
             logger.debug('Вывод формы для оформления заказа')
             context['form'] = MakingOrderForm()
-            records = CartProductsListService.output(request=request)
-
-            if records:
-                context['records'] = records
-                total_cost = ProductsCartUserService.total_cost(records)
-                context['total_cost'] = total_cost
+            records = CartProductsListService.all_products(request=request)
+            context['records'] = records
 
             return self.render_to_response(context)
 
@@ -109,12 +104,12 @@ class PaymentView(TemplateView):
     def post(self, request, **kwargs):
         """
         Вызов метода для оплаты заказа с номера введенной карты.
-        Перенаправление на страницу-загрушки для ожидания фиктивной оплаты.
+        Перенаправление на страницу-загрушку для ожидания фиктивной оплаты.
         """
         order_id = kwargs['order_id']
         cart_number = request.POST['numero1']
 
-        Payment.payment_processing(order_id=order_id, cart_number=cart_number)
+        PaymentService.payment_processing(order_id=order_id, cart_number=cart_number)
 
         return redirect(reverse('shop:progress_payment', kwargs={'order_id': order_id}))
 
@@ -124,7 +119,6 @@ class ProgressPaymentView(View):
     Представление для вывода заглушки, имитирующей ожидание от сервиса оплаты.
     Автоматический редирект на страницу заказа через 4 сек при помощи JS-скрипта.
     """
-
     def get(self, request, **kwargs):
         order_id = kwargs['order_id']
         return render(request, '../templates/app_shop/orders/payment/progressPayment.html', {'order_id': order_id})
@@ -146,11 +140,13 @@ class OrderInformationView(DetailView):
     model = Order
     template_name = '../templates/app_shop/orders/oneorder.html'
 
-    def get_context_data(self, **kwargs):
+    def get(self, request, *args, **kwargs):
         """
-        Сохранение в контексте товаров текущего заказа для вывода в шаблоне
+        Возврат заказа и сохранение в контексте товаров текущего заказа для вывода в шаблоне
         """
-        context = super().get_context_data(**kwargs)
-        context = RegistrationOrderService.save_order_products_in_context(context=context, order=self.get_object())
+        self.object = Order.objects.select_related('user', 'user__profile').get(id=self.kwargs['pk'])
 
-        return context
+        context = self.get_context_data(object=self.object)
+        context = RegistrationOrderService.save_order_products_in_context(context=context, order=self.object)
+
+        return self.render_to_response(context)

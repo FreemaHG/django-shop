@@ -8,11 +8,14 @@ from ..models.products import ProductImages, Product
 logger = logging.getLogger(__name__)
 register = template.Library()
 
-# Не используется!!!
+
 @register.simple_tag
 def product_image(product_id: int) -> ProductImages:
     """
-    Возвращает изображение по id переданного товара
+    Функция возвращает изображение по id переданного товара
+
+    @param product_id: id товара
+    @return: объект изображения
     """
     image = ProductImages.objects.filter(product=product_id).first()
 

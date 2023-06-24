@@ -12,8 +12,11 @@ def clear_link_for_sort(link: str) -> str:
     """
     Очистка входящей строки от текста после ключевой фразы 'sort'.
     Добавление спец.символа в конце для корректного парсинга параметров из URL.
+
+    @param link: строка-ссылка
+    @return: очищенная строка
     """
-    logger.warning(f'Очистка ссылки для сортировки: {link}')
+    logger.debug(f'Очистка ссылки для сортировки: {link}')
 
     if '&sort' in link:
         link = link.split('&sort')[0]
@@ -27,14 +30,12 @@ def clear_link_for_sort(link: str) -> str:
     elif '?page=' in link:
         link = link.split('?page=')[0]
 
-    # logger.debug(f'Возврат очищенной ссылки: {link}')
-
     if '?' not in link:
         link += '?'
     else:
         link += '&'
 
-    logger.warning(f'Возврат: {link}')
+    logger.info(f'Возврат очищенной ссылки: {link}')
 
     return link
 
@@ -44,6 +45,9 @@ def clear_link_for_paginate(link: str) -> str:
     """
     Очистка входящей строки от текста после ключевой фразы 'page'.
     Добавление спец.символа в конце для корректного парсинга параметров из URL.
+
+    @param link: строка-ссылка
+    @return: очищенная строка
     """
     logger.warning(f'Очистка ссылки для пагинации: {link}')
 
@@ -53,14 +57,12 @@ def clear_link_for_paginate(link: str) -> str:
     elif '?page=' in link:
         link = link.split('?page=')[0]
 
-    # logger.debug(f'Возврат очищенной ссылки: {link}')
-
     if '?' not in link:
         link += '?'
     else:
         link += '&'
 
-    logger.warning(f'Возврат: {link}')
+    logger.info(f'Возврат очищенной ссылки: {link}')
 
     return link
 
@@ -68,12 +70,16 @@ def clear_link_for_paginate(link: str) -> str:
 @register.simple_tag
 def clear_link_for_next(link: str) -> str:
     """
-    Очистка входящей строки от текста ДО ключевой фразы '?next'.
+    Очистка входящей строки от текста ДО ключевой фразы '?next'
+
+    @param link: строка-ссылка
+    @return: очищенная строка
     """
-    # logger.info(f'Очистка ссылки от "?next": {link}')
+    logger.debug(f'Очистка ссылки от "?next": {link}')
 
     if '?next' in link:
         link = link.split('?next=')[-1]
 
-    # logger.debug(f'Возврат очищенной ссылки: {link}')
+    logger.info(f'Возврат очищенной ссылки: {link}')
+
     return link

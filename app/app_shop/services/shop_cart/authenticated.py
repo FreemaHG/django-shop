@@ -1,35 +1,45 @@
 import logging
 
-from typing import List
-from django.db.models import Sum
-from django.http import HttpRequest
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.cache import cache
 
+from config.admin import config
+from django.db.models import QuerySet
 from ...models.products import Product
 from ...models.cart_and_orders import Cart
 
 
 logger = logging.getLogger(__name__)
 
-# TODO Очищать кэш при изменении данных в корзине!!!
+
 class ProductsCartUserService:
     """
-    Сервис для добавления, изменения и удаления товаров из корзины (БД)
+    Сервис для добавления, изменения и удаления товаров в корзине авторизованного пользователя (БД)
     """
 
     @classmethod
     def add(cls, user: User, product_id: int, count: int = 1) -> bool:
         """
-        Добавить товар в корзину
-        """
-        logger.debug(f'Добавление товара в корзину: user: {user.profile.full_name}, id - {product_id}, кол-во: {count}')
+        Метод для добавления товара в корзину пользователя
 
-        product = Product.objects.get(id=product_id)
-        logger.info(f'Товар найден: {product.name}')
+        @param user: объект пользователя
+        @param product_id: id товара
+        @param count: кол-во добавляемого товара
+        @return:
+        """
+        logger.debug(f'Добавление товара в корзину: user - {user.id}, id товара - {product_id}, кол-во: {count}')
+
+        try:
+            product = Product.objects.get(id=product_id)
+            logger.info(f'Товар найден: {product.name}')
+
+        except ObjectDoesNotExist:
+            logger.error('Товар не найден')
+            return False
 
         if count == 0:
-            logger.warning('Нельзя добавить 0 товаров, увеличение кол-ва на 1')
+            logger.warning('Нельзя добавить 0 товаров в корзину, увеличение кол-ва на 1')
             count = 1
 
         if ProductsCartUserService.check_product(user=user, product_id=product_id):
@@ -38,107 +48,170 @@ class ProductsCartUserService:
         else:
             Cart.objects.create(user=user, product=product, count=count)
 
+        # Очистка кэша с товарами в корзине пользователя
+        cache.delete(f'cart_{user.id}')
+
         return True
+
 
     @classmethod
     def remove(cls, user: User, product_id: int) -> None:
         """
-        Удалить товар из корзины
+        Метод для удаления товара из корзины
+
+        @param user: объект пользователя
+        @param product_id: id товара
+        @return: None
         """
-        logger.debug(f'Удаление товара из корзины: user: {user.profile.full_name}, id - {product_id}')
+        logger.debug(f'Удаление товара из корзины: user - {user.id}, id - {product_id}')
+
         Cart.objects.filter(user=user, product__id=product_id).delete()
 
+        # Очистка кэша с товарами в корзине пользователя
+        cache.delete(f'cart_{user.id}')
+
+
     @classmethod
-    def change_quantity(cls, user: User, product_id: int, count: int):
+    def change_quantity(cls, user: User, product_id: int, count: int) -> None:
         """
-        Изменить кол-во товара в корзине
-        """
-        logger.debug('Изменение кол-ва товара в корзине')
-        logger.debug(f'Изменить кол-во на: {count}')
+        Метод для изменения кол-во товара в корзине пользователя
 
-        # FIXME Обработать ошибку, если товаров несколько!
+        @param user: объект пользователя
+        @param product_id: id товара
+        @param count: кол-во товара (может быть > 0 / < 0)
+        @return: None
+        """
+        logger.debug(f'Изменение кол-ва товара в корзине: пользователь - {user.id}, id товара - {product_id}, изменить на - {count}')
+
         record = Cart.objects.get(user=user, product__id=product_id)
-        logger.info(f'Товар: id - {product_id}, кол-во (было): {record.count}')
-
         record.count += count
 
         if record.count <= 0:
             logger.warning('Кол-во товара меньше или равно 0. Удаление товара из корзины')
             ProductsCartUserService.remove(user=user, product_id=product_id)
+
         else:
-            record.save()
-            logger.info(f'Товар: id - {product_id}, кол-во (стало): {record.count}')
+            record.save(update_fields=['count'])
+            logger.info(f'Товар: id - {product_id}, кол-во: {record.count}')
+
+        # Очистка кэша с товарами в корзине пользователя
+        cache.delete(f'cart_{user.id}')
+
 
     @classmethod
-    def reduce_product(cls, user: User, product_id: int):
+    def reduce_product(cls, user: User, product_id: int) -> None:
         """
-        Уменьшение кол-ва товара на 1
+        Метод для уменьшения кол-ва товара на 1
+
+        @param user: объект пользователя
+        @param product_id: id товара
+        @return: None
         """
+        logger.debug(f'Уменьшение товара в корзине пользователя на 1: id товара - {product_id}')
+
         record = Cart.objects.get(user=user, product__id=product_id)
         record.count -= 1
 
         if record.count > 0:
-            record.save()
+            record.save(update_fields=['count'])
+
         else:
             logger.warning('Кол-во товара уменьшено до 0. Удаление товара из корзины')
             ProductsCartUserService.remove(user=user, product_id=product_id)
 
+        # Очистка кэша с товарами в корзине пользователя
+        cache.delete(f'cart_{user.id}')
+
+
     @classmethod
-    def increase_product(cls, user: User, product_id: int):
+    def increase_product(cls, user: User, product_id: int) -> None:
         """
-        Увеличение кол-ва товара на 1
+        Метод для увеличения кол-ва товара на 1
+
+        @param user: объект пользователя
+        @param product_id: id товара
+        @return: None
         """
+        logger.debug(f'Увеличение товара в корзине пользователя на 1: id товара - {product_id}')
+
         record = Cart.objects.get(user=user, product__id=product_id)
         record.count += 1
-        record.save()
+        record.save(update_fields=['count'])
+
+        # Очистка кэша с товарами в корзине пользователя
+        cache.delete(f'cart_{user.id}')
+
 
     @classmethod
     def check_product(cls, user: User, product_id: int) -> bool:
         """
-        Проверка, есть ли указанный товар в корзине текущего пользователя
+        Метод для проверки, есть ли указанный товар в корзине текущего пользователя
+
+        @param user: объект пользователя
+        @param product_id: id товара
+        @return: True / False в зависимости от проверки
         """
         logger.debug('Проверка товара в корзине текущего пользователя')
 
         try:
-            # FIXME Ошибка,если несколько одинаковых товаров
             Cart.objects.get(user=user, product__id=product_id)
-            logger.info('Товар есть в корзине')
+            logger.debug('Товар есть в корзине')
             return True
 
         except ObjectDoesNotExist:
-            logger.info('Товара нет в корзине')
+            logger.debug('Товара нет в корзине')
             return False
 
+
     @classmethod
-    def all(cls, user: User):
+    def all(cls, user: User) -> QuerySet:
         """
-        Вывести все товары в корзине для текущего пользователя
+        Метод для вывода всех товаров в корзине текущего пользователя
+
+        @param user: объект пользователя
+        @return: QuerySet с товарами в корзине пользователя
         """
         logger.debug(f'Вывод товаров из корзины покупателя')
-        products = Cart.objects.filter(user=user)
+
+        products = cache.get_or_set(
+            f'cart_{user.id}',
+            Cart.objects.select_related('product').only(
+                'id',
+                'count',
+                'product__id',
+                'product__name',
+                'product__definition',
+                'product__price',
+                'product__discount'
+            ).filter(user=user),
+            60 * config.caching_time)
 
         return products
 
-    def count(self):
-        """
-        Вывести кол-во товара в корзине
-        """
-        ...
 
     @classmethod
-    def total_cost(cls, products: List[Cart]):
+    def total_cost(cls, products: QuerySet) -> int:
         """
-        Возврат общей стоимости всех товаров в корзине
+        Метод для возврата общей стоимости товаров в корзине пользователя
+
+        @param products: QuerySet с товарами
+        @return: число - общая стоимость товаров
         """
         logger.debug('Подсчет общей стоимости товаров в корзине')
-        total_cost = sum(product.position_cost for product in products)
 
+        total_cost = sum(product.position_cost for product in products)
         return total_cost
 
+
     @classmethod
-    def clear_cart(cls, user: User):
+    def clear_cart(cls, user: User) -> None:
         """
-        Очистка корзины (после успешного оформления заказа)
+        Метод для очистки корзины (после успешного оформления заказа)
+
+        @param user: объект пользователя
+        @return: None
         """
         logger.debug('Запуск сервиса по очистке корзины')
+
         Cart.objects.filter(user=user).delete()
+        cache.delete(f'cart_{user.id}')

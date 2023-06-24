@@ -1,19 +1,15 @@
 import logging
 import random
-import time
 
-from typing import List
-
+from typing import Tuple
 from django.db import transaction
-from django.http import HttpRequest
 from django.core.exceptions import ObjectDoesNotExist
 
-from ..services.shop_cart.authenticated import ProductsCartUserService
-from ..models.cart_and_orders import PurchasedProduct, Cart, Order, PaymentErrors
-# from ..tasks import payment
+from ..models.cart_and_orders import Order, PaymentErrors
 
 
 logger = logging.getLogger(__name__)
+
 
 class PaymentService:
     """
@@ -21,11 +17,16 @@ class PaymentService:
     """
 
     @classmethod
-    def payment_processing(cls, order_id: int, cart_number: str):
+    def payment_processing(cls, order_id: int, cart_number: str) -> bool:
         """
-        Обработка оплаты заказа
+        Метод для оплаты заказа
+
+        @param order_id: id заказа
+        @param cart_number: номер карты в виде строки
+        @return: bool-значение
         """
         logger.info(f'Запуск обработки оплаты заказа')
+
         order = PaymentService.check_order(order_id=order_id)
 
         # Убираем пробелы и преобразуем в число
@@ -34,38 +35,46 @@ class PaymentService:
         if not order is False:
             order.status=3  # Смена статуса заказа на "Подтверждение оплаты"
             order.save()
-            res = PaymentService.PaymentService(order=order, cart_number=cart_number)  # Прямой вызов метода
+            res = PaymentService.payment(order=order, cart_number=cart_number)  # Прямой вызов метода
             # payment(order=order, cart_number=cart_number)  # Добавление оплаты в очередь задач
+
             return res
+
         else:
             return False
 
+
     @classmethod
-    def check_order(cls, order_id: int):
+    def check_order(cls, order_id: int) -> Tuple[Order, bool]:
         """
         Метод для поиска заказа по переданному номеру
+
+        @param order_id: id заказа
+        @return: объект заказа / False, если заказ не найден
         """
-        logger.debug(f'Поиск заказа #{order_id}')
+        logger.debug(f'Поиск заказа №{order_id}')
 
         try:
             order = Order.objects.get(id=order_id)
-            logger.debug(f'Заказ #{order_id} найден')
+            logger.debug(f'Заказ №{order_id} найден')
             return order
+
         except ObjectDoesNotExist:
             logger.error('Заказ не найден')
             return False
 
+
     @classmethod
-    def payment(cls, order: Order, cart_number: int):
+    @transaction.atomic
+    def payment(cls, order: Order, cart_number: int) -> bool:
         """
         Метод оплаты заказа
+
+        @param order: объект заказа
+        @param cart_number: номер карты
+        @return: bool-значение
         """
         logger.info(f'Оплата заказа: №{order.id}, карта №{cart_number}, сумма к оплате - {order.order_cost} руб')
-
-        # Задержка для имитации работы сервиса оплаты
-        # logger.warning('Начало задержки')
-        # time.sleep(3)
-        # logger.warning('Окончание задержки')
 
         if order:
             if cart_number % 2 == 0 and cart_number % 10 != 0:
@@ -84,13 +93,8 @@ class PaymentService:
                 order.save()
 
                 logger.error(f'Заказ #{order.id} не оплачен. Ошибка: "{random_error_message.title}"')
+
                 return False
+
         else:
             return False
-
-    @classmethod
-    def order_payment_status(cls, order_id: int):
-        """
-        Метод для получения статуса оплаты заказа
-        """
-        ...

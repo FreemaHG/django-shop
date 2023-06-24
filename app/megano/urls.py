@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app_shop.urls')),
     path('my/', include('app_user.urls')),
-    # path('__debug__', include(debug_toolbar.urls)),  # TODO Удалить после отладки
+    path('__debug__', include(debug_toolbar.urls)),  # TODO Удалить после отладки
 ]
 
 if settings.DEBUG:
