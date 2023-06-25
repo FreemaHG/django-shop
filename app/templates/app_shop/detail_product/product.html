@@ -32,9 +32,9 @@
                 <div class="ProductCard-info">
                   <div class="ProductCard-cost">
                     {% if object.discount %}
-                      <div class="ProductCard-price discount-price">{{ object.price }}<small> руб</small></div>
+                      <div class="ProductCard-price discount-price">{{ object.discounted_price }}<small> руб</small></div>
                       <div class="discount">—{{ object.discount }}%</div>
-                      <div class="old-price">{{ object.discounted_price }} р</div>
+                      <div class="old-price">{{ object.price }} р</div>
                     {% else %}
                       <div class="ProductCard-price">{{ object.price }}<small> руб</small></div>
                     {% endif %}
