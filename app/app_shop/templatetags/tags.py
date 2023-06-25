@@ -37,7 +37,7 @@ def tags_for_product(product: Product) -> QuerySet:
 
 
 @register.simple_tag
-def check_for_word_end(number: int = None) -> Union[str, None]:
+def check_for_word_end(number: int = False) -> Union[str, None]:
     """
     Проверка входящего числа для вывода корректного окончания слова в шаблоне
     для обозначения кол-ва комментариев к товару
@@ -47,7 +47,7 @@ def check_for_word_end(number: int = None) -> Union[str, None]:
     """
     logger.debug(f'Проверка входящего числа: {number}')
 
-    if number:
+    if number is not False:
         if str(number)[-1] in ['5', '6', '7', '8', '9', '0'] or str(number)[-2:] in ['11', '12', '13', '14']:
             return 'ов'
 
@@ -59,3 +59,4 @@ def check_for_word_end(number: int = None) -> Union[str, None]:
 
     else:
         logger.warning('Не передан числовой аргумент')
+        return ''

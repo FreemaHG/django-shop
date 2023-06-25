@@ -7,5 +7,6 @@ django-solo==2.0.0
 psycopg2==2.9.6
 jsonfield==3.1.0
 colorlog==6.7.0
-django-debug-toolbar==4.1.0
+django-environ==0.10.0
+mysqlclient==2.2.0
 DjangoColorsFormatter @ git+https://github.com/tiliv/django-colors-formatter.git
