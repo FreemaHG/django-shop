@@ -31,7 +31,6 @@ class SiteConfigurationAdmin(SingletonModelAdmin):
         }),
     )
 
-
 try:
     # Получить один имеющийся элемент из таблицы можно следующим образом
     config = SiteConfiguration.objects.get()
