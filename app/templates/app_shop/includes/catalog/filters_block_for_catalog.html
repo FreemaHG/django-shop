@@ -8,19 +8,7 @@
       <strong class="Section-title">Фильтр</strong>
     </header>
     <div class="Section-columnContent">
-{#      <form class="form" action="{% url 'shop:products_list' %}" method="get">#}
       <form class="form" action="{{ request.get_full_path }}" method="get">
-{#        {% csrf_token %}#}
-
-{#        <div class="form-group">#}
-{#          <div class="range Section-columnRange">#}
-{#            <input class="range-line" id="price" name="price" type="text" data-type="double" data-min="1" data-max="100000" data-from="17" data-to="127"/>#}
-{#            <div class="range-price">Цена:&#32;#}
-{#              <div class="rangePrice"></div>#}
-{#            </div>#}
-{#          </div>#}
-{#        </div>#}
-
         <div class="form-group">
           <strong class="Section-title small-text-for-price">Цена, <small>руб</small></strong>
           <div class="block">

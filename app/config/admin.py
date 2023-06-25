@@ -7,7 +7,7 @@ from .models import SiteConfiguration
 
 
 @admin.register(SiteConfiguration)
-class SiteConfigurationAdmin(SingletonModelAdmin):  # Создаем класс, наследуясь от SingletonModelAdmin
+class SiteConfigurationAdmin(SingletonModelAdmin):
 
     # Описываем поля для группировки
     fieldsets = (

@@ -29,11 +29,13 @@
       <div class="Card-hover">
 
         {% if product.id not in products_id %}  <!-- Если товара нет в корзине -->
-          <a class="Card-btn" href="{% url 'shop:add_product' product_id=product.id next=request.get_full_path %}">  <!-- Кнопка добавления товара в корзину -->
+          <!-- Кнопка добавления товара в корзину -->
+          <a class="Card-btn" href="{% url 'shop:add_product' product_id=product.id next=request.get_full_path %}">
             <img src="{% static 'assets/img/icons/card/cart.svg' %}" alt="cart.svg"/>
           </a>
         {% else %}  <!-- Если товар в корзине -->
-          <a class="Card-btn" href="{% url 'shop:delete_product' product_id=product.id next=request.get_full_path %}">  <!-- Кнопка удаления товара из корзины -->
+          <!-- Кнопка удаления товара из корзины -->
+          <a class="Card-btn" href="{% url 'shop:delete_product' product_id=product.id next=request.get_full_path %}">
             <img src="{% static 'assets/img/icons/card/delete.svg' %}" alt="cart.svg"/>
           </a>
         {% endif %}

@@ -1,5 +1,10 @@
 def output_name(profile) -> str:
-    """ Вывод имени пользователя """
+    """
+    Функция для вывода имени пользователя
+
+    @param profile: объект профайла
+    @return: имя пользователя
+    """
 
     if profile.full_name:
         return f'{profile.full_name}'

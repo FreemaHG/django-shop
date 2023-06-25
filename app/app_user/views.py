@@ -2,6 +2,7 @@ import logging
 
 from django.contrib.auth.views import LogoutView
 from django.db import transaction
+from django.http import HttpResponse
 from django.urls import reverse
 from django.views.generic import ListView
 from django.views.generic.edit import FormView
@@ -16,6 +17,7 @@ from .services.user import UserRegistrationService
 
 
 logger = logging.getLogger(__name__)
+
 
 
 @transaction.atomic

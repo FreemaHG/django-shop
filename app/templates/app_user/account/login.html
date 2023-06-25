@@ -9,7 +9,6 @@
 
 {% block account_content %}
   <div class="Profile">
-{#    <form class="form Profile-form auth-block" action="{% url 'user:login' %}" method="post">#}
     <form class="form Profile-form auth-block" action="{{ request.get_full_path }}" method="post">
       {% csrf_token %}
       <div class="row">

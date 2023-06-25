@@ -6,8 +6,6 @@
     {% clear_link_for_paginate request.get_full_path as page_link %}
 
     {% if page_obj.has_previous %}
-{#      <a class="Pagination-element Pagination-element_prev" href="?page=1">#}
-      <!-- Сделать вызов другого тега -->
       <a class="Pagination-element Pagination-element_prev" href="{{ page_link }}page=1">
         <img src="{% static 'assets/img/icons/prevPagination.svg' %}" alt="prevPagination.svg"/>
       </a>
@@ -19,8 +17,6 @@
           <span class="Pagination-text">{{ p }}</span>
         </a>
       {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
-{#        <a class="Pagination-element" href="?page={{ p }}">#}
-        <!-- Сделать вызов другого тега -->
         <a class="Pagination-element" href="{{ page_link }}page={{ p }}">
           <span class="Pagination-text">{{ p }}</span>
         </a>
@@ -28,8 +24,6 @@
     {% endfor %}
 
     {% if page_obj.has_next %}
-{#      <a class="Pagination-element Pagination-element_prev" href="?page={{ page_obj.paginator.num_pages }}">#}
-      <!-- Сделать вызов другого тега -->
       <a class="Pagination-element Pagination-element_prev" href="{{ page_link }}page={{ page_obj.paginator.num_pages }}">
         <img src="{% static 'assets/img/icons/nextPagination.svg' %}" alt="nextPagination.svg"/>
       </a>

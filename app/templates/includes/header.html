@@ -87,10 +87,6 @@
               <li class="menu-item">
                 <a class="menu-link" href="{% url 'shop:sale' %}">Блог</a>
               </li>
-{#              <li class="menu-item">#}
-{#                <span class="menu-label menu-label_success">Распродажа</span>#}
-{#                <a class="menu-link" href="#">Галерея</a>#}
-{#              </li>#}
 
               <li class="menu-item">
                 <a class="menu-link" href="{% url 'shop:products_list' %}">Каталог</a>
@@ -104,6 +100,7 @@
         </nav>
         <div class="row-block">
           <div class="CartBlock">
+            <!-- Возвращает: 1 аргумент - кол-во товаров в корзине; 2 аргумент - общая стоимость товаров с учетом скидок -->
             {% products_cart as data %}
             <a class="CartBlock-block" href="{% url 'shop:shopping_cart' %}">
               <img class="CartBlock-img" src="{% static 'assets/img/icons/cart.svg' %}" alt="cart.svg"/>
@@ -129,7 +126,6 @@
               <div class="CategoriesButton-arrow"></div>
             </div>
 
-            <!-- Сделать, чтобы при отсутствии категорий кнопка не работала (не запускался скрипт) -->
             <div class="CategoriesButton-content">
             {% if categories_list %}
               {% cache 60 * site_config.caching_time categories %}

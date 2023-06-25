@@ -8,7 +8,6 @@
     {% include "includes/junior_header.html" with title='Продукт' %}
   {% endblock %}
 
-{#  {% with object.productimages_set.all|first as image %}#}
   {% with object.images.all as images %}
     {% with images|first as first_img %}
     <div class="Section">
@@ -100,9 +99,6 @@
                     </div>
                 </div>
               {% endif %}
-
-              <!-- Почему не подключается? -->
-{#              <script type="text/javascript" src="{% static 'assets/js/add-to-cart.js' %}"></script>#}
 
               <!-- JS для добавления товара в корзину -->
               {% include "app_shop/detail_product/add_to_cart.html" %}
@@ -217,7 +213,6 @@
                   <div class="alert alert-danger mt-2 not-visible" role="alert" id='alert-comments'>Отзывов больше нет!</div>
 
                   <!-- JS для загрузки доп.комментариев к товару -->
-{#                  {{ total_comments|json_script:"json-total" }}#}
                   {% include "app_shop/detail_product/upload_comments.html" %}
 
                 {% endif %}
@@ -228,9 +223,6 @@
 
                 <!-- Проверка, что пользователь авторизован -->
                 {% if request.user.is_authenticated %}
-
-                  <!-- Если товар есть в истории покупок, то можно оставить отзыв к товару -->
-  {#                {% if product_verification == True %}#}
 
                     {% if form.errors %}  <!-- Текст ошибки для полей с невалидными данными -->
                       {% for field in form %}
@@ -248,7 +240,6 @@
                       <form class="form" action="{% url 'shop:product_detail' object.id %}" method="post">
                         {% csrf_token %}
                         <div class="form-group">
-      {#                    <textarea class="form-textarea" name="review" id="review" placeholder="Review"></textarea>#}
                           <textarea class="form-textarea" name="review" id="review" placeholder="{{ form.review.label }}" data-validate="require"></textarea>
                         </div>
                         <div class="form-group">
@@ -267,10 +258,10 @@
                       </form>
                     </div>
 
-  {#                {% endif %}#}
-
                 {% else %}
-                  <p class="login_text">Только авторизованные пользователи могут оставлять комментарии. Пожалуйста, <a href="{% url 'user:login' %}">авторизуйтесь</a>.</p>
+                  <p class="login_text">Только авторизованные пользователи могут оставлять комментарии. Пожалуйста,
+                    <a href="{% url 'user:login' %}">авторизуйтесь</a>.
+                  </p>
                 {% endif %}
 
               </div>

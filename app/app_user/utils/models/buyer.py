@@ -12,10 +12,14 @@ class BuyerUtil:
     """
     Проверка и возврат объекта покупателя
     """
+
     @classmethod
-    def get(cls, profile: Profile):
+    def get(cls, profile: Profile) -> bool | Buyer:
         """
-        Проверка на наличие профайла в БД
+        Метод для проверки на наличие профайла в БД
+
+        @param profile: объект профайла
+        @return: объект покупателя / False, если не найден
         """
         logger.debug('Поиск объекта "Покупатель" в БД по профилю')
 

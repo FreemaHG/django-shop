@@ -1,11 +1,9 @@
-import json
 import logging
 
 from django import forms
 from django.contrib import admin, messages
-from django.db.models import JSONField
+from django.db.models import QuerySet
 from mptt.admin import DraggableMPTTAdmin
-from mptt.querysets import TreeQuerySet
 
 from .utils.admin.change_status_delete import soft_deletion_child_records
 from .models.products import (
@@ -22,6 +20,7 @@ from .models.cart_and_orders import (
     PurchasedProduct,
     PaymentErrors
 )
+
 
 logger = logging.getLogger(__name__)
 
@@ -90,7 +89,6 @@ class CategoryProductAdmin(DraggableMPTTAdmin):
         """
         Проверяем уровень вложенности категории перед сохранением
         """
-
         if obj.parent:
             max_indent = 2
             lvl = obj.parent.level + 1
@@ -346,6 +344,9 @@ class OrderAdmin(admin.ModelAdmin):
     list_filter = ('delivery', 'payment', 'status')
     inlines = (ProductsInOrder,)
 
+    def get_queryset(self, request) -> QuerySet:
+        return Order.objects.select_related('user__profile')
+
     fieldsets = (
         ('Данные о заказе', {
             'fields': ('payment', 'status', 'error_message'),
@@ -370,9 +371,9 @@ class OrderAdmin(admin.ModelAdmin):
         Запрещаем редактировать поля заказа
         """
         if obj:
-            # FIXME Вернуть обратно после тестирования асинхронной оплаты заказов
-            # return ['id', 'full_name', 'data_created', 'city', 'address', 'delivery', 'payment', 'status', 'error_message']
-            return ['id', 'full_name', 'data_created', 'city', 'address', 'delivery', 'payment']
+            return ['id', 'full_name', 'data_created', 'city', 'address', 'delivery', 'payment', 'status', 'error_message']
+            # Снимаем запрет на изменение статуса оплаты (для тестирования)
+            # return ['id', 'full_name', 'data_created', 'city', 'address', 'delivery', 'payment']
 
         return self.readonly_fields
 

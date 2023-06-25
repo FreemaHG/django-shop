@@ -12,14 +12,6 @@
     <div class="Section Section_column Section_columnLeft">
       <div class="wrap">
 
-{#        {% block filter_block %}#}
-{#          {% if parameters.category_name %}#}
-{#            {% include "app_shop/includes/catalog/filters_block.html" with filter_parameters=filter_parameters category=parameters.category_name %}#}
-{#          {% elif parameters.tag_name %}#}
-{#            {% include "app_shop/includes/catalog/filters_block.html" with filter_parameters=filter_parameters category=parameters.tag_name %}#}
-{#          {% endif %}#}
-{#        {% endblock %}#}
-
         {% block filter_block %}
           {% if filter_parameters.group and filter_parameters.name%}
             {% include "app_shop/includes/catalog/filters_block.html" with filter_parameters=filter_parameters %}
@@ -28,12 +20,7 @@
           {% endif %}
         {% endblock %}
 
-{#        {% block filter_block %}#}
-{#          {% include "app_shop/includes/catalog/filters_block.html" with filter_parameters=filter_parameters %}#}
-{#        {% endblock %}#}
-
         <div class="Section-content">
-
           {% block sorting_block %}
             <div class="Sort">
               {% clear_link_for_sort request.get_full_path as sort_link%}
@@ -68,8 +55,6 @@
             </div>
           {% endblock %}
 
-{#          <p>Текущая ссылка: {{ request.get_full_path }}</p>#}
-
           {% if products %}
             <div class="Cards Card-left-alignment">
               {% for product in products %}
@@ -82,6 +67,7 @@
           {% else %}
             <p>Товаров нет...</p>
           {% endif %}
+
         </div>
       </div>
     </div>

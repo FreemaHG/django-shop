@@ -1,5 +1,5 @@
 import logging
-from typing import Union, Tuple, Any
+from typing import Tuple, Any
 
 from django.conf import settings
 from django.contrib.auth import authenticate, login
@@ -26,7 +26,12 @@ class UserRegistrationService:
     @classmethod
     @transaction.atomic
     def registration(cls, request: HttpRequest) -> Any:
-        """ Регистрация нового пользователя """
+        """
+        Метод для регистрации нового пользователя
+
+        @param request: объект http-запроса
+        @return: строка для редиректа на след.страницу (если есть), объект формы, сообщение об ошибке
+        """
 
         _ERROR_MESSAGE_EMAIL = 'Пользователь с таким email уже зарегистрирован'
         _ERROR_MESSAGE_PHONE = 'Пользователь с таким номером телефона уже зарегистрирован'
@@ -90,7 +95,8 @@ class UserRegistrationService:
 
         @param request: объект http-запроса
         @param form: форма для ввода логина и пароля
-        @return: сообщение об успешной/неуспешной отправке инструкций на указанный Email
+        @return: строка для редиректа (если есть), объект формы,
+            сообщение об успешной/неуспешной отправке инструкций на указанный Email
         """
         logger.debug('Авторизация пользователя')
 

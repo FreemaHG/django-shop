@@ -1,5 +1,6 @@
 {% load static %}
 {% load solo_tags %}
+{% load header_tags %}
 
 <form class="form" action="{% url 'shop:order_registration' %}" method="post">
   {% csrf_token %}
@@ -85,7 +86,6 @@
     </div>
     <div class="form-group">
       <label class="form-label" for="address">{{ form.address.label }}</label>
-{#              <textarea class="form-textarea" name="address" id="address" data-validate="require">{{ request.user.profile.address }}</textarea>#}
       <textarea class="form-textarea" name="address" id="address">{{ request.user.profile.address }}</textarea>
     </div>
     <div class="Order-footer">
@@ -117,6 +117,7 @@
     </div>
   </div>
 
+  {% get_solo "config.SiteConfiguration" as site_config %}
   <!-- JS для сохранения вводимых данных и отображения на этапе подтверждения заказа -->
   {% include "app_shop/orders/registration/save_order_data.html" %}
 
@@ -130,20 +131,18 @@
       <div class="Order-personal">
         <div class="row">
 
+          <!-- ВАЖНО: данные сохраняются и переписываются в JS -->
           <div class="row-block">
             <div class="Order-info">
               <div class="Order-infoType">ФИО:</div>
-{#              <div id="name-out" class="Order-infoContent">Иванов Иван Иванович</div>#}
               <div id="name-out" class="Order-infoContent"></div>
             </div>
             <div class="Order-info">
               <div class="Order-infoType">Телефон:</div>
-{#              <div id="phone-out" class="Order-infoContent">+7000000000</div>#}
               <div id="phone-out" class="Order-infoContent"></div>
             </div>
             <div class="Order-info">
               <div class="Order-infoType">E-mail:</div>
-{#              <div id="email-out" class="Order-infoContent">send@test.test</div>#}
               <div id="email-out" class="Order-infoContent"></div>
             </div>
           </div>
@@ -151,22 +150,18 @@
           <div class="row-block">
             <div class="Order-info Order-info_delivery">
               <div class="Order-infoType">Тип доставки:</div>
-{#              <div id="delivery-out" class="Order-infoContent">Обычная доставка</div>#}
               <div id="delivery-out" class="Order-infoContent"></div>
             </div>
             <div class="Order-info">
               <div class="Order-infoType">Город:</div>
-{#              <div id="city-out" class="Order-infoContent">Москва</div>#}
               <div id="city-out" class="Order-infoContent"></div>
             </div>
             <div class="Order-info">
               <div class="Order-infoType">Адрес:</div>
-{#              <div id="address-out" class="Order-infoContent">Ул. Академика Арцимовича, д. 10, кв. 10</div>#}
               <div id="address-out" class="Order-infoContent"></div>
             </div>
             <div class="Order-info Order-info_pay">
               <div class="Order-infoType">Оплата:</div>
-{#              <div id="pay-out" class="Order-infoContent">Онлайн картой</div>#}
               <div id="pay-out" class="Order-infoContent"></div>
             </div>
           </div>
@@ -202,12 +197,13 @@
 
         <div class="Cart-total">
           <div class="Cart-block Cart-block_total flex">
+            <!-- Возвращает: 1 аргумент - кол-во товаров в корзине; 2 аргумент - общая стоимость товаров с учетом скидок -->
+            {% products_cart as data %}
             <strong class="Cart-title">Итого:</strong>
-            <span id="total-cost" class="Cart-price Cart-price--margin">{{ total_cost }}</span><small> руб</small>
+            <span id="total-cost" class="Cart-price Cart-price--margin">{{ data.1 }}</span><small> руб</small>
           </div>
           <div class="Cart-block Cart-block_total flex">
             <strong class="Cart-title">Доставка:</strong>
-            {% get_solo "config.SiteConfiguration" as site_config %}
             <span id="delivery-cost" class="Cart-price Cart-price--margin"></span><small> руб</small>
           </div>
 

@@ -1,6 +1,8 @@
 import logging
 
+from typing import Dict
 from django.http import HttpResponse
+from django.template.response import TemplateResponse
 from django.urls import reverse
 from django.views.generic import View, TemplateView, ListView, DetailView
 from django.shortcuts import render, redirect
@@ -23,7 +25,7 @@ class ShoppingCartView(TemplateView):
     """
     template_name = '../templates/app_shop/cart.html'
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs) -> Dict:
         context = super().get_context_data(**kwargs)
         records = CartProductsListService.all_products(self.request)
 
