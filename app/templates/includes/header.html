@@ -74,7 +74,9 @@
         <div class="row-block Header-logo">
           <a class="logo" href="{% url 'shop:main' %}">
             {% get_solo "config.SiteConfiguration" as site_config %}  <!-- Подгружаем тег -->
-            <img class="logo-image" src="{{ site_config.logo_head.url }}" alt="logo.png"/>  <!-- Выводим логотип из модели -->
+              {% if site_config.logo_head %}
+                <img class="logo-image" src="{{ site_config.logo_head.url }}" alt="logo.png"/>  <!-- Выводим логотип из модели -->
+              {% endif %}
           </a>
         </div>
         <nav class="row-block row-block_right Header-menu">

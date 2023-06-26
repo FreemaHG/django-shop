@@ -15,11 +15,11 @@ class SiteConfiguration(SingletonModel):
     """
     Ключевые настройки сайта
     """
-    title = models.CharField(max_length=200, verbose_name='Название')
-    description = models.TextField(max_length=500, verbose_name='Описание')
+    title = models.CharField(max_length=200, default='', verbose_name='Название')
+    description = models.TextField(max_length=500, default='', verbose_name='Описание')
     site_url = models.URLField(max_length=150, null=True, verbose_name='URL')
-    logo_head = models.ImageField(upload_to=saving_logo, verbose_name='Логотип в шапке')
-    logo_footer = models.ImageField(upload_to=saving_logo, verbose_name='Логотип в футере')
+    logo_head = models.ImageField(upload_to=saving_logo, default='', verbose_name='Логотип в шапке')
+    logo_footer = models.ImageField(upload_to=saving_logo, default='', verbose_name='Логотип в футере')
 
     # Для вывода избранных категорий товаров на главной
     selected_products = models.ManyToManyField(CategoryProduct, verbose_name='Избранные товары')
@@ -43,7 +43,10 @@ class SiteConfiguration(SingletonModel):
         """
         Создание объекта
         """
-        return super().get_solo()
+        try:
+            return super().get_solo()
+        except:
+            return cls()
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)

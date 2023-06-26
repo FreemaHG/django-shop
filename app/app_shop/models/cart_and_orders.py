@@ -93,9 +93,11 @@ class Order(models.Model):
         Расчет стоимости заказа с учетом кол-ва каждого товара и текущей цены с учетом скидки
         """
         products = PurchasedProduct.objects.filter(order__id=self.id)
-        amount = products.aggregate(amount=Sum(F('count') * F('price')))
+        # amount = products.aggregate(amount=Sum(F('count') * F('price')))
+        amount = sum(record.position_cost for record in products)
 
-        return amount['amount']
+        # return amount['amount']
+        return amount
 
     class Meta:
         verbose_name = 'Заказ'

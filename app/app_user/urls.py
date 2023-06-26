@@ -1,7 +1,8 @@
 from django.urls import path, re_path, include
 from django.views.decorators.cache import cache_page
 
-from config.admin import config
+# from config.admin import config
+from config.utils.configuration import get_config
 from .views import (
     register_user_view,  # Регистрация пользователя
     LoginUserView,  # Авторизация
@@ -16,6 +17,7 @@ from .views import (
 
 
 app_name = 'user'
+config = get_config()  # Настройки сайта с параметрами кэширования
 
 urlpatterns = [
     # Регистрация

@@ -5,7 +5,8 @@ from django import template
 from django.core.cache import cache
 from django.db.models import QuerySet
 
-from config.admin import config
+# from config.admin import config
+from config.utils.configuration import get_config
 from ..models.products import CategoryProduct
 from ..services.shop_cart.logic import CartProductsListService, ProductsCartUserService
 
@@ -21,6 +22,8 @@ def output_categories() -> QuerySet:
 
     @return: QuerySet с категориями товаров
     """
+    config = get_config()
+
     categories = cache.get_or_set(
         'categories',
         CategoryProduct.objects.filter(deleted=False, parent=None).order_by('id'),

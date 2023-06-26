@@ -3,8 +3,8 @@ import logging
 from typing import Dict
 from django.db.models import QuerySet
 
-from config.admin import config
-
+# from config.admin import config
+from config.utils.configuration import get_config
 
 logger = logging.getLogger(__name__)
 
@@ -122,6 +122,8 @@ class ProductFilterService:
         @return: QuerySet с отфильтрованными товарами
         """
         logger.debug('Фильтрация по бесплатной доставке')
+
+        config = get_config()
 
         filtered_products = products.filter(price__gt=config.min_order_cost)
         logger.debug(f'Найдено товаров: {len(filtered_products)}')

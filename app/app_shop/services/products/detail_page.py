@@ -7,7 +7,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import QuerySet
 from django.http import HttpRequest
 
-from config.admin import config
+# from config.admin import config
+from config.utils.configuration import get_config
 from app_user.models import Buyer, Profile
 from ...models.products import Product, ProductReviews
 from ...forms import CommentProductForm
@@ -31,6 +32,8 @@ class ProductCommentsService:
         @return: список с отзывами для указанного товара
         """
         logger.debug('Вывод комментариев к товару')
+
+        config = get_config()
 
         if product_id:
             comments = cache.get_or_set(

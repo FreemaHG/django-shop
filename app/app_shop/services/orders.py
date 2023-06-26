@@ -3,10 +3,9 @@ import logging
 from typing import List, Dict
 from django.core.cache import cache
 from django.db import transaction
-from django.db.models import QuerySet
 from django.http import HttpRequest
 
-from config.admin import config
+from config.utils.configuration import get_config
 from ..services.shop_cart.authenticated import ProductsCartUserService
 from ..models.cart_and_orders import PurchasedProduct, Cart, Order
 from ..forms import MakingOrderForm
@@ -110,6 +109,8 @@ class RegistrationOrderService:
         """
         logger.debug('Расчет стоимости доставки')
 
+        config = get_config()
+
         # Обычная доставка
         if order.delivery == 1:
             if order.order_cost > config.min_order_cost:
@@ -158,6 +159,8 @@ class RegistrationOrderService:
         @return: словарь - контекстная переменная представления с сохраненными данными по товарам
         """
         logger.debug(f'Сохранение в контексте товаров заказа №{order.id}')
+
+        config = get_config()
 
         products = cache.get_or_set(
             f'order_{order.id}',

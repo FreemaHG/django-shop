@@ -3393,11 +3393,1350 @@
     }
   },
   {
+    "model": "admin.logentry",
+    "pk": 262,
+    "fields": {
+      "action_time": "2023-05-27T17:59:15.623Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "15",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 263,
+    "fields": {
+      "action_time": "2023-05-27T17:59:29.882Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "10",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 264,
+    "fields": {
+      "action_time": "2023-05-27T18:00:01.862Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "16",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 265,
+    "fields": {
+      "action_time": "2023-05-27T18:01:20.113Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "17",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 266,
+    "fields": {
+      "action_time": "2023-05-27T18:01:31.779Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "14",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 267,
+    "fields": {
+      "action_time": "2023-05-27T18:01:31.795Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "13",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 268,
+    "fields": {
+      "action_time": "2023-05-27T18:01:31.795Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "12",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 269,
+    "fields": {
+      "action_time": "2023-05-27T18:01:31.809Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "11",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 270,
+    "fields": {
+      "action_time": "2023-05-27T18:01:31.815Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "9",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 271,
+    "fields": {
+      "action_time": "2023-05-27T18:01:31.819Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "8",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 272,
+    "fields": {
+      "action_time": "2023-05-27T18:01:31.821Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "6",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 273,
+    "fields": {
+      "action_time": "2023-05-27T18:01:31.828Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "2",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 274,
+    "fields": {
+      "action_time": "2023-05-27T18:15:48.834Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "18",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 275,
+    "fields": {
+      "action_time": "2023-05-27T18:48:10.948Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "4",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 276,
+    "fields": {
+      "action_time": "2023-05-27T18:52:12.214Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "5",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 277,
+    "fields": {
+      "action_time": "2023-05-28T08:32:25.404Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "6",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 278,
+    "fields": {
+      "action_time": "2023-05-28T08:58:55.021Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "3",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 279,
+    "fields": {
+      "action_time": "2023-05-28T08:58:55.043Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "2",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 280,
+    "fields": {
+      "action_time": "2023-05-28T08:58:55.049Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "1",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 281,
+    "fields": {
+      "action_time": "2023-05-28T08:59:01.958Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "8",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 282,
+    "fields": {
+      "action_time": "2023-05-28T08:59:01.981Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "7",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 283,
+    "fields": {
+      "action_time": "2023-05-28T09:10:54.477Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "10",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 284,
+    "fields": {
+      "action_time": "2023-05-28T09:10:54.486Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "9",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 285,
+    "fields": {
+      "action_time": "2023-05-28T09:13:45.321Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "12",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 286,
+    "fields": {
+      "action_time": "2023-05-28T09:13:45.342Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "11",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 287,
+    "fields": {
+      "action_time": "2023-05-28T09:15:43.799Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "14",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 288,
+    "fields": {
+      "action_time": "2023-05-28T09:15:43.821Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "13",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 289,
+    "fields": {
+      "action_time": "2023-05-28T09:21:25.493Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "16",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 290,
+    "fields": {
+      "action_time": "2023-05-28T09:21:25.500Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "15",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 291,
+    "fields": {
+      "action_time": "2023-05-28T10:04:01.168Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "19",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 292,
+    "fields": {
+      "action_time": "2023-05-28T11:18:48.979Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "21",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 293,
+    "fields": {
+      "action_time": "2023-05-28T11:18:48.984Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "20",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 294,
+    "fields": {
+      "action_time": "2023-05-28T11:18:48.987Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "18",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 295,
+    "fields": {
+      "action_time": "2023-05-28T11:18:48.993Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "17",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 296,
+    "fields": {
+      "action_time": "2023-05-28T11:37:37.069Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "24",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 297,
+    "fields": {
+      "action_time": "2023-05-28T11:37:37.087Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "23",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 298,
+    "fields": {
+      "action_time": "2023-05-28T11:37:37.092Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "22",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 299,
+    "fields": {
+      "action_time": "2023-05-28T14:01:11.402Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "33",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 300,
+    "fields": {
+      "action_time": "2023-05-28T14:01:11.421Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "32",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 301,
+    "fields": {
+      "action_time": "2023-05-28T14:01:11.426Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "31",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 302,
+    "fields": {
+      "action_time": "2023-05-28T14:01:11.432Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "30",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 303,
+    "fields": {
+      "action_time": "2023-05-28T14:01:11.436Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "29",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 304,
+    "fields": {
+      "action_time": "2023-05-28T14:01:11.445Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "28",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 305,
+    "fields": {
+      "action_time": "2023-05-28T14:01:11.447Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "27",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 306,
+    "fields": {
+      "action_time": "2023-05-28T14:01:11.455Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "26",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 307,
+    "fields": {
+      "action_time": "2023-05-28T14:11:47.163Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "36",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 308,
+    "fields": {
+      "action_time": "2023-06-03T11:45:11.967Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "4",
+      "object_repr": "Валя",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 309,
+    "fields": {
+      "action_time": "2023-06-03T11:45:11.991Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "1",
+      "object_repr": "Тестовый пользователь",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 310,
+    "fields": {
+      "action_time": "2023-06-07T19:18:38.353Z",
+      "user": 1,
+      "content_type": 18,
+      "object_id": "1",
+      "object_repr": "Order object (1)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0422\\u043e\\u0432\\u0430\\u0440 \\u0434\\u043b\\u044f \\u0437\\u0430\\u043a\\u0430\\u0437\\u0430\", \"object\": \"PurchasedProduct object (1)\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 311,
+    "fields": {
+      "action_time": "2023-06-07T19:32:33.852Z",
+      "user": 1,
+      "content_type": 18,
+      "object_id": "1",
+      "object_repr": "Заказ №1",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 312,
+    "fields": {
+      "action_time": "2023-06-10T10:21:44.658Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "20",
+      "object_repr": "Любовь Ивановна Антонова",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 313,
+    "fields": {
+      "action_time": "2023-06-10T10:21:44.662Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "19",
+      "object_repr": "Dmitriy Olegovich Stafeev",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 314,
+    "fields": {
+      "action_time": "2023-06-10T10:21:44.671Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "18",
+      "object_repr": "Дмитрий Олегович Стафеев",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 315,
+    "fields": {
+      "action_time": "2023-06-10T10:21:44.676Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "17",
+      "object_repr": "Дмитрий Лже",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 316,
+    "fields": {
+      "action_time": "2023-06-10T10:21:44.683Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "16",
+      "object_repr": "Любовь Ивановна Антонова",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 317,
+    "fields": {
+      "action_time": "2023-06-10T10:21:44.689Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "15",
+      "object_repr": "Любовь Ивановна Антонова",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 318,
+    "fields": {
+      "action_time": "2023-06-10T10:21:44.695Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "14",
+      "object_repr": "Любовь Ивановна Антонова",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 319,
+    "fields": {
+      "action_time": "2023-06-10T10:21:44.700Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "13",
+      "object_repr": "Любовь Ивановна Антонова",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 320,
+    "fields": {
+      "action_time": "2023-06-10T10:21:44.705Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "12",
+      "object_repr": "Любовь Ивановна Антонова",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 321,
+    "fields": {
+      "action_time": "2023-06-10T10:21:44.708Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "11",
+      "object_repr": "1-комн. квартира, 37,16 м²",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 322,
+    "fields": {
+      "action_time": "2023-06-10T10:21:44.714Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "10",
+      "object_repr": "Тестовый пользователь для регистрации заказа",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 323,
+    "fields": {
+      "action_time": "2023-06-10T10:21:44.720Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "9",
+      "object_repr": "Дмитрий Олегович Стафеев",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 324,
+    "fields": {
+      "action_time": "2023-06-10T10:21:44.723Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "8",
+      "object_repr": "Дмитрий Тестировщик",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 325,
+    "fields": {
+      "action_time": "2023-06-10T10:21:44.728Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "7",
+      "object_repr": "Натали",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 326,
+    "fields": {
+      "action_time": "2023-06-10T10:21:44.734Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "6",
+      "object_repr": "Димитрия",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 327,
+    "fields": {
+      "action_time": "2023-06-10T10:21:44.739Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "5",
+      "object_repr": "Дима",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 328,
+    "fields": {
+      "action_time": "2023-06-10T10:23:57.723Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "60",
+      "object_repr": "Корзина покупателя: Стафеев Дмитрий Олегович",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 329,
+    "fields": {
+      "action_time": "2023-06-10T10:24:54.000Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "67",
+      "object_repr": "Cart object (67)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 330,
+    "fields": {
+      "action_time": "2023-06-10T10:36:44.623Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "66",
+      "object_repr": "Корзина покупателя",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 331,
+    "fields": {
+      "action_time": "2023-06-10T10:36:44.631Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "65",
+      "object_repr": "Корзина покупателя",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 332,
+    "fields": {
+      "action_time": "2023-06-10T10:36:44.640Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "64",
+      "object_repr": "Корзина покупателя",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 333,
+    "fields": {
+      "action_time": "2023-06-10T10:36:44.645Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "63",
+      "object_repr": "Корзина покупателя",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 334,
+    "fields": {
+      "action_time": "2023-06-10T10:36:44.650Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "62",
+      "object_repr": "Корзина покупателя",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 335,
+    "fields": {
+      "action_time": "2023-06-10T10:36:44.654Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "61",
+      "object_repr": "Корзина покупателя",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 336,
+    "fields": {
+      "action_time": "2023-06-10T10:36:44.660Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "59",
+      "object_repr": "Корзина покупателя",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 337,
+    "fields": {
+      "action_time": "2023-06-10T10:36:44.665Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "58",
+      "object_repr": "Корзина покупателя",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 338,
+    "fields": {
+      "action_time": "2023-06-10T10:36:44.671Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "55",
+      "object_repr": "Корзина покупателя",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 339,
+    "fields": {
+      "action_time": "2023-06-10T10:36:44.676Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "54",
+      "object_repr": "Корзина покупателя",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 340,
+    "fields": {
+      "action_time": "2023-06-10T10:36:44.682Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "53",
+      "object_repr": "Корзина покупателя",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 341,
+    "fields": {
+      "action_time": "2023-06-10T10:36:44.687Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "52",
+      "object_repr": "Корзина покупателя",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 342,
+    "fields": {
+      "action_time": "2023-06-10T10:36:44.691Z",
+      "user": 1,
+      "content_type": 15,
+      "object_id": "51",
+      "object_repr": "Корзина покупателя",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 343,
+    "fields": {
+      "action_time": "2023-06-10T11:33:48.231Z",
+      "user": 1,
+      "content_type": 4,
+      "object_id": "14",
+      "object_repr": "e.sovagt",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 344,
+    "fields": {
+      "action_time": "2023-06-10T15:11:35.371Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "21",
+      "object_repr": "Валера",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0422\\u0435\\u043b\\u0435\\u0444\\u043e\\u043d\", \"\\u0410\\u0434\\u0440\\u0435\\u0441\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 345,
+    "fields": {
+      "action_time": "2023-06-11T10:26:22.521Z",
+      "user": 1,
+      "content_type": 19,
+      "object_id": "1",
+      "object_repr": "Оплата не прошла",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 346,
+    "fields": {
+      "action_time": "2023-06-11T10:27:19.949Z",
+      "user": 1,
+      "content_type": 19,
+      "object_id": "2",
+      "object_repr": "Недостаточно средств на счете",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 347,
+    "fields": {
+      "action_time": "2023-06-12T10:24:07.936Z",
+      "user": 1,
+      "content_type": 18,
+      "object_id": "7",
+      "object_repr": "Заказ №7",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\", \"\\u0421\\u043e\\u043e\\u0431\\u0449\\u0435\\u043d\\u0438\\u0435 \\u043e\\u0431 \\u043e\\u0448\\u0438\\u0431\\u043a\\u0435\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 348,
+    "fields": {
+      "action_time": "2023-06-12T11:12:27.199Z",
+      "user": 1,
+      "content_type": 18,
+      "object_id": "6",
+      "object_repr": "Заказ №6",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\", \"\\u0421\\u043e\\u043e\\u0431\\u0449\\u0435\\u043d\\u0438\\u0435 \\u043e\\u0431 \\u043e\\u0448\\u0438\\u0431\\u043a\\u0435\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 349,
+    "fields": {
+      "action_time": "2023-06-12T11:14:39.907Z",
+      "user": 1,
+      "content_type": 18,
+      "object_id": "5",
+      "object_repr": "Заказ №5",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 350,
+    "fields": {
+      "action_time": "2023-06-12T11:14:47.037Z",
+      "user": 1,
+      "content_type": 18,
+      "object_id": "4",
+      "object_repr": "Заказ №4",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 351,
+    "fields": {
+      "action_time": "2023-06-12T11:14:51.519Z",
+      "user": 1,
+      "content_type": 18,
+      "object_id": "3",
+      "object_repr": "Заказ №3",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 352,
+    "fields": {
+      "action_time": "2023-06-12T11:14:56.335Z",
+      "user": 1,
+      "content_type": 18,
+      "object_id": "2",
+      "object_repr": "Заказ №2",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 353,
+    "fields": {
+      "action_time": "2023-06-12T11:15:02.820Z",
+      "user": 1,
+      "content_type": 18,
+      "object_id": "1",
+      "object_repr": "Заказ №1",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 354,
+    "fields": {
+      "action_time": "2023-06-12T12:11:34.449Z",
+      "user": 1,
+      "content_type": 18,
+      "object_id": "7",
+      "object_repr": "Заказ №7",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 355,
+    "fields": {
+      "action_time": "2023-06-12T12:15:00.505Z",
+      "user": 1,
+      "content_type": 18,
+      "object_id": "7",
+      "object_repr": "Заказ №7",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 356,
+    "fields": {
+      "action_time": "2023-06-12T12:16:46.105Z",
+      "user": 1,
+      "content_type": 18,
+      "object_id": "7",
+      "object_repr": "Заказ №7",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\", \"\\u0421\\u043e\\u043e\\u0431\\u0449\\u0435\\u043d\\u0438\\u0435 \\u043e\\u0431 \\u043e\\u0448\\u0438\\u0431\\u043a\\u0435\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 357,
+    "fields": {
+      "action_time": "2023-06-12T12:19:37.141Z",
+      "user": 1,
+      "content_type": 18,
+      "object_id": "7",
+      "object_repr": "Заказ №7",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\", \"\\u0421\\u043e\\u043e\\u0431\\u0449\\u0435\\u043d\\u0438\\u0435 \\u043e\\u0431 \\u043e\\u0448\\u0438\\u0431\\u043a\\u0435\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 358,
+    "fields": {
+      "action_time": "2023-06-14T19:47:58.156Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u043a\\u0443\\u043f\\u043e\\u043a\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 359,
+    "fields": {
+      "action_time": "2023-06-14T19:48:05.009Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "6",
+      "object_repr": "Умная колонка Яндекс Станция Мини с часами с Алисой, черный оникс, 10Вт",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u043a\\u0443\\u043f\\u043e\\u043a\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 360,
+    "fields": {
+      "action_time": "2023-06-14T19:49:54.672Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "Беспроводные накладные наушники Sony Wh1000xm4b.e Black",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 361,
+    "fields": {
+      "action_time": "2023-06-14T19:56:09.892Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "8",
+      "object_repr": "Умный пульт Yandex SmartControl",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u043a\\u0443\\u043f\\u043e\\u043a\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 362,
+    "fields": {
+      "action_time": "2023-06-14T19:56:24.820Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "18",
+      "object_repr": "50\" Телевизор Xiaomi TV A2 50 LED, HDR RU, черный",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u043a\\u0443\\u043f\\u043e\\u043a\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 363,
+    "fields": {
+      "action_time": "2023-06-25T12:06:28.307Z",
+      "user": 1,
+      "content_type": 18,
+      "object_id": "16",
+      "object_repr": "Заказ №16",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\", \"\\u0421\\u043e\\u043e\\u0431\\u0449\\u0435\\u043d\\u0438\\u0435 \\u043e\\u0431 \\u043e\\u0448\\u0438\\u0431\\u043a\\u0435\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 364,
+    "fields": {
+      "action_time": "2023-06-25T12:06:59.819Z",
+      "user": 1,
+      "content_type": 18,
+      "object_id": "14",
+      "object_repr": "Заказ №14",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+  },
+  {
     "model": "auth.user",
     "pk": 1,
     "fields": {
       "password": "pbkdf2_sha256$390000$SmXN9KriRTsDxnQUYw1WKj$y7+pkHzMkULb6drqVqGg9C2sewCbNx9LwU8N3tL60RE=",
-      "last_login": "2023-05-21T15:17:32.929Z",
+      "last_login": "2023-06-24T13:20:32.742Z",
       "is_superuser": true,
       "username": "admin",
       "first_name": "",
@@ -3519,6 +4858,438 @@
     }
   },
   {
+    "model": "auth.user",
+    "pk": 8,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$uoori4RepZyv8Jz7dKb0zv$dBVeCUFgm8L5syXfATVfBJDfLe3Ta4ktsOcnMc2lDQc=",
+      "last_login": "2023-06-03T12:04:50.716Z",
+      "is_superuser": false,
+      "username": "stafeecsvsv",
+      "first_name": "",
+      "last_name": "",
+      "email": "stafeecsvsv@mail.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-03T11:49:59.336Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 9,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$7VzOmJ8NKyU8CFOwJqAv8L$U0FxAKf4vKR+/3RtaBC6b5E8abSN2hoKoAzvrqqOYxU=",
+      "last_login": "2023-06-03T12:08:51.729Z",
+      "is_superuser": false,
+      "username": "supertester",
+      "first_name": "",
+      "last_name": "",
+      "email": "supertester@mail.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-03T12:08:50.385Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 10,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$1ublpCAWnfVRQbeu4Wh9rl$GcyiRmxmAuUEqNYnTbNDoP63UGAgoXNSHaTOPZdhL7E=",
+      "last_login": "2023-06-03T12:23:33.934Z",
+      "is_superuser": false,
+      "username": "testersupertest",
+      "first_name": "",
+      "last_name": "",
+      "email": "testersupertest@mail.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-03T12:23:32.676Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 11,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$wRVU99se6Ly79JZdKTIG25$kJS7d+1z2w6+Twt9131l4AOWDo7VN4yf7DjW0M3K0h8=",
+      "last_login": "2023-06-10T14:51:49.363Z",
+      "is_superuser": false,
+      "username": "send2",
+      "first_name": "",
+      "last_name": "",
+      "email": "send2@test.test",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-08T20:35:48.559Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 12,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$WNWYpK7y5B7FR7jpsabJIA$7q04e0kOD3XGdLuMXFw78dXAw1ZngZHXcetICk9EwOs=",
+      "last_login": "2023-06-08T20:39:39.232Z",
+      "is_superuser": false,
+      "username": "adminn",
+      "first_name": "",
+      "last_name": "",
+      "email": "adminn@mail.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-08T20:39:38.801Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 13,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$Mg9y8RlKw3mVIdqBx31sCu$y4E5fpJL228zZMNsTfxL0uN4+o7/qCoXLmSYKQB2FlI=",
+      "last_login": "2023-06-08T20:52:02.405Z",
+      "is_superuser": false,
+      "username": "send1ssss",
+      "first_name": "",
+      "last_name": "",
+      "email": "send1ssss@test.test",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-08T20:52:01.194Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 14,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$mOTuzRg4QgoGvoTfMCz5c0$akX87b4pljW/boTAHDP9QfhH0jlFISN/I35J6qK1e6Q=",
+      "last_login": "2023-06-10T11:31:31Z",
+      "is_superuser": false,
+      "username": "e.sovagt",
+      "first_name": "Ева",
+      "last_name": "Текучева",
+      "email": "e.sovagt@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-08T20:54:36Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 15,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$s54IYAVhni3kBUxkAn5Cs2$6rkB9tM3RVYwjrSvzbPQvdmhSOEgFbe+0wrxJ9iQPYU=",
+      "last_login": "2023-06-08T21:00:26.907Z",
+      "is_superuser": false,
+      "username": "e.sovagaaat",
+      "first_name": "",
+      "last_name": "",
+      "email": "e.sovagaaat@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-08T21:00:25.685Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 16,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$KswMC73BOwcz7NYVMxyST3$WEYE3IjDjrEdBWPtMttXq2wsRvRm4hb+oABgl4jiVPo=",
+      "last_login": "2023-06-08T21:12:26.455Z",
+      "is_superuser": false,
+      "username": "e.sovagsdst",
+      "first_name": "",
+      "last_name": "",
+      "email": "e.sovagsdst@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-08T21:12:25.174Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 17,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$TJbsQWxJ9FHmW2o4cAvfjb$nfdU/UklALFTDfSNOYT+w1scR1miP3xfo+6NiD1wFrg=",
+      "last_login": "2023-06-08T21:13:33.314Z",
+      "is_superuser": false,
+      "username": "e.sovwdwdwdagt",
+      "first_name": "",
+      "last_name": "",
+      "email": "e.sovwdwdwdagt@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-08T21:13:32.941Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 18,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$xIJdVJn4g1iqNH4K0JXYDc$c3RBxkAgVam8t7v+ok/015KyCLglnqHOEkerRe8uEZs=",
+      "last_login": "2023-06-10T10:12:08.300Z",
+      "is_superuser": false,
+      "username": "e.sovagaxaxt",
+      "first_name": "",
+      "last_name": "",
+      "email": "e.sovagaxaxt@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-10T10:12:07.671Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 19,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$9jtC5w8qajZHXCC0FGCnzq$Nsw2gOKxGjbF/PwpM6EH3igxuwofvToj5g8/F5V6QRI=",
+      "last_login": "2023-06-10T10:15:17.654Z",
+      "is_superuser": false,
+      "username": "senddfseveesv1",
+      "first_name": "",
+      "last_name": "",
+      "email": "senddfseveesv1@test.test",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-10T10:15:17.310Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 20,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$PTVuORW2Uck9AqxplZhzSE$1SlYcqCS+aGI0KGXWtn5MKTObUDGnLC8JQtwPfIK3yQ=",
+      "last_login": "2023-06-10T10:16:17.844Z",
+      "is_superuser": false,
+      "username": "sendefsefesf2",
+      "first_name": "",
+      "last_name": "",
+      "email": "sendefsefesf2@test.test",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-10T10:16:17.499Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 21,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$8unIe0pM7qXGBRm2Dt71h2$+PZDuwbN9KaWKH4A/dYEMPrwPC5D4qY+y8QGRAu594I=",
+      "last_login": "2023-06-10T10:18:03.524Z",
+      "is_superuser": false,
+      "username": "stafeewdwdff.dmitrij",
+      "first_name": "",
+      "last_name": "",
+      "email": "stafeewdwdff.dmitrij@yandex.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-10T10:18:03.181Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 22,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$JHrLjzIsxc48rFR6T3HoDX$Os5ICNM8bYuGCSWIVB/F5ITiRolrEv9/bqCNrroiaN0=",
+      "last_login": "2023-06-10T10:19:39.834Z",
+      "is_superuser": false,
+      "username": "e.sovawawdgt",
+      "first_name": "",
+      "last_name": "",
+      "email": "e.sovawawdgt@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-10T10:19:39.269Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 23,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$zePRpbaWWNo6WN4yQuQnjX$1Zbm+Rn9LOv7tpW4K8OtwXzubrEjHo2D/mNs+i/iabQ=",
+      "last_login": "2023-06-10T15:10:20.682Z",
+      "is_superuser": false,
+      "username": "sendewdsd23",
+      "first_name": "",
+      "last_name": "",
+      "email": "sendewdsd23@test.test",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-10T15:10:20.281Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 24,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$5UNHfW00G81FytAGZjRiqb$+KuSbXwc7DCv18DvhSMf/O4CRMLnMUssFMI8t8POU5E=",
+      "last_login": "2023-06-10T15:12:26.190Z",
+      "is_superuser": false,
+      "username": "send232113",
+      "first_name": "",
+      "last_name": "",
+      "email": "send232113@test.test",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-10T15:12:24.962Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 25,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$OIAppIXy5ceZU1V3nAaApc$cw5QBp38XLdI1HZbV+E/K30tVVv/QhPZCSgAXsq9LoU=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "stafeeff.dmitrij",
+      "first_name": "",
+      "last_name": "",
+      "email": "stafeeff.dmitrij@yandex.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-15T19:04:36.353Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 26,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$LJHPlNQhiJ8hQyPv0XMCag$vGV4GRk2f1l5Lw9gWIybW30bzM2H0V/UYaup8tr5Y4E=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "send2r232f",
+      "first_name": "",
+      "last_name": "",
+      "email": "send2r232f@test.test",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-15T19:08:26.540Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 27,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$2B9dZXWQFIatVgwAB0MsFQ$3ua/2bxGbTiHwb6F64vfHYlnXT2cYxgYCBAd/g5hQi4=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "send34242",
+      "first_name": "",
+      "last_name": "",
+      "email": "send34242@test.test",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-15T19:33:13.987Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 28,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$xN556v6wXspXg8Pc1vcbN5$58R1CTzWuSgK0ctDSH60r0DuluO+oVCe5gwdoBdbZ1Y=",
+      "last_login": "2023-06-15T19:36:20.288Z",
+      "is_superuser": false,
+      "username": "send35435",
+      "first_name": "",
+      "last_name": "",
+      "email": "send35435@test.test",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-15T19:36:19.121Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 29,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$FYnihAABCRqKLnlChdB59q$exJOWn55svWzK6ce71T7838NApD+HAerqCdEzdZgUQs=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "send99",
+      "first_name": "",
+      "last_name": "",
+      "email": "send99@test.test",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-21T19:28:13.680Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 30,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$83UdAsH5wmO3GRUzJiTp7D$GpNm2nzdhqvEiNOg2ksqbWxIDa6lKSpJyI+QkxixlxQ=",
+      "last_login": "2023-06-21T19:29:04.844Z",
+      "is_superuser": false,
+      "username": "send54",
+      "first_name": "",
+      "last_name": "",
+      "email": "send54@test.test",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-21T19:29:03.692Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 31,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$LceOHKmRt63ZETUpU2xqh4$C9CNCEnRLREDI2RSvyi4M2AeRl5AWWftPKocjF4fxkI=",
+      "last_login": "2023-06-21T19:50:16.187Z",
+      "is_superuser": false,
+      "username": "senere2",
+      "first_name": "",
+      "last_name": "",
+      "email": "senere2@test.test",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-21T19:50:15.798Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
     "model": "sessions.session",
     "pk": "07kubus00tfn99xt8nrfl0svm08uvyzn",
     "fields": {
@@ -3528,10 +5299,42 @@
   },
   {
     "model": "sessions.session",
+    "pk": "08yp5g6z9e4awlyy7l8slkj2wsmz5ksa",
+    "fields": {
+      "session_data": "eyJjYXJ0Ijp7IjciOjJ9fQ:1q7vyI:2xXkWz6_7vtzZGxYkowMCB52Nvsb6wyIp2sqUSdIWgA",
+      "expire_date": "2023-06-17T10:37:26.402Z"
+    }
+  },
+  {
+    "model": "sessions.session",
     "pk": "299eqxcix34a7qin17uvyrcfswzzsbof",
     "fields": {
       "session_data": ".eJxVjMsOwiAUBf-FtSEFysule7-B3AdI1dCktCvjv2uTLnR7Zua8RIJtrWnreUkTi7Pw4vS7IdAjtx3wHdptljS3dZlQ7oo8aJfXmfPzcrh_BxV6_dYlAmIxnhxZxHEoWmWLhouxJsNoyWGMwTIGr1kROTUEQq0deibDWbw_Ers48g:1pxnY3:4fBN9ubUG_nWArYlgvIGMFeXRddhLAt1ZD7vilVSObo",
       "expire_date": "2023-05-27T11:36:27.622Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "2zmu5syk6ot60xkiec56pmd7m3vyy3uo",
+    "fields": {
+      "session_data": ".eJxVjDkOwjAQAP_iGlnxER-U9LzB2vVucADZUpxUiL-joBTQzozmJRJsa0lb5yXNJM5CKXH6hQj5wXU3dId6azK3ui4zyj2Rh-3y2oifl6P9GxTo5ft15ACNAvLesOWgBjPqjC4bHYHRgp7AIzkeQ9SRBs3KokbyeUII4v0BC8E4rg:1q7MMH:YXNLJnBozB8kfpFCxJQNS1mVohrgkTv_gWp9RYXpV0M",
+      "expire_date": "2023-06-15T20:35:49.756Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "35a5c2no5i3comnoesidqfoalhq2kf0t",
+    "fields": {
+      "session_data": ".eJxVjDEOwjAMRe-SGUV1ojopIztnqOzYIQWUSk07Ie4OlTrA-t97_2VG2tYybk2XcRJzNmBOvxtTemjdgdyp3mab5rouE9tdsQdt9jqLPi-H-3dQqJVvPQRWSNkTDtwhMErPKXegLqp3zklOGNQBSMwkoQ-YPGkmIOSIvjfvD_zgOIo:1q6zyS:EENuNx9xU-fsnZZYkf4jtCLAPfLSmQnWGgNzhBMjAw8",
+      "expire_date": "2023-06-14T20:41:44.192Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "5iehquoqbtmvcu2unghnh43308lbmmje",
+    "fields": {
+      "session_data": "eyJjYXJ0Ijp7IjEiOjF9fQ:1q806a:xyqPavJUf6EC9w0mYGbPcPwvveNbU3K4hWo2RcbvVj8",
+      "expire_date": "2023-06-17T15:02:16.225Z"
     }
   },
   {
@@ -3552,10 +5355,58 @@
   },
   {
     "model": "sessions.session",
+    "pk": "6a38wqc5vq16amfcobvsr76bkyk73wtj",
+    "fields": {
+      "session_data": ".eJxVjMsOwiAQRf-FtSEURh4u3fcbyAAzUjU0Ke3K-O_apAvd3nPOfYmI21rj1mmJUxEXoZU4_Y4J84PaTsod222WeW7rMiW5K_KgXY5zoef1cP8OKvb6rVXKCMxcKODgSNlzYKOd9gDBgSc2DIoYqSg1kEWTrclkINhE2VMR7w8lLzkA:1q7vdp:jDBgVXp3BAUenxx4dim8WaHHvAjh6Ezty9bQNAluFtY",
+      "expire_date": "2023-06-17T10:16:17.849Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "6r59zogjo2u445rq6552a1qo3eg4qlqc",
+    "fields": {
+      "session_data": "eyJjYXJ0Ijp7IjEiOjEsIjYiOjN9fQ:1qCmj9:7kW36iYa5cAYG_0d2Vp7reHorOiV78_gbT7Qziy9Gkc",
+      "expire_date": "2023-06-30T19:45:51.881Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "7m7wjzczih2ekhorph81bpk4khn2okf4",
+    "fields": {
+      "session_data": ".eJxVjMsOwiAQRf-FtSF0eBRcuvcbyDAMUjU0Ke3K-O_apAvd3nPOfYmI21rj1nmJUxZnASBOv2NCenDbSb5ju82S5rYuU5K7Ig_a5XXO_Lwc7t9BxV6_tVbkDCjvIbHjMRjPBTVaMiE5LDSgM0igNWAu6Ggs1qjkgyK0xsMg3h8J6Tgp:1q7vh5:LDyQV-QR6KuWaFNjDNYcbGeV8hHpQpGsvPdxBVdKijI",
+      "expire_date": "2023-06-17T10:19:39.844Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "8kjywhj8qjg9yk5y9kb9ehsuxi8m8g1a",
+    "fields": {
+      "session_data": ".eJxVjDEOwjAMRe-SGUV1ojopIztnqOzYIQWUSk07Ie4OlTrA-t97_2VG2tYybk2XcRJzNmBOvxtTemjdgdyp3mab5rouE9tdsQdt9jqLPi-H-3dQqJVvPQRWSNkTDtwhMErPKXegLqp3zklOGNQBSMwkoQ-YPGkmIOSIvjfvD_zgOIo:1qD3Bo:IeiR4-49UjbR7p1CaFmgmoY-fEsfeL8T7d58NyqlxII",
+      "expire_date": "2023-07-01T13:20:32.993Z"
+    }
+  },
+  {
+    "model": "sessions.session",
     "pk": "8ld5l1z52fhbaq01xpztsk1dvk5zcyx9",
     "fields": {
       "session_data": "e30:1pxlV4:o5CC_c4dWJtVLR0FgiuHxjJwFYPNEKjsHab76y9HoAU",
       "expire_date": "2023-05-27T09:25:14.817Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "9eqrgxklo3iugp9j83ghx61xg43z7yfs",
+    "fields": {
+      "session_data": ".eJxVjDkOwjAQAP_iGlnxER-U9LzB2vVucADZUpxUiL-joBTQzozmJRJsa0lb5yXNJM5CKXH6hQj5wXU3dId6azK3ui4zyj2Rh-3y2oifl6P9GxTo5ft15ACNAvLesOWgBjPqjC4bHYHRgp7AIzkeQ9SRBs3KokbyeUII4v0BC8E4rg:1q7zwT:m09SlbOuvAUkuV6gEagRp0p8dsEAkmUCF22XMs_BS1s",
+      "expire_date": "2023-06-17T14:51:49.369Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "9hyoetlf8v4gpc6pa8umsxcivbu3zybs",
+    "fields": {
+      "session_data": ".eJxVjDsOwjAQBe_iGln-e0NJzxksr3eDA8iR4qRC3B0ipYD2zcx7iZS3taat85ImEmehozj9jpjLg9tO6J7bbZZlbusyodwVedAurzPx83K4fwc19_qtPRpibdGjDRDJRHZa2aw9aHYjKW8RaCigmCxZVBy8djCYkQKgM1G8P_8RN6Y:1q7Mwn:3nJUjk1181ddJcAKaljGpV2cA9n0IbDmrmAJccnjimY",
+      "expire_date": "2023-06-15T21:13:33.340Z"
     }
   },
   {
@@ -3568,10 +5419,162 @@
   },
   {
     "model": "sessions.session",
+    "pk": "a32n7i9c7yiw640x8qgfqyftim0auiru",
+    "fields": {
+      "session_data": ".eJxVjMsOwiAQRf-FtSHDG1y67zeQgUGpGkhKuzL-uzbpQrf3nHNfLOK21riNssSZ2JmJwE6_Y8L8KG0ndMd26zz3ti5z4rvCDzr41Kk8L4f7d1Bx1G8NlixJlAKVBC0wO_BoKAVA4aQHr68GSGBKCp2hogwpq0zQ5CE7S-z9AfRWN4o:1q7vcr:XivTM5HhVC_AjVCpl4CIP2Q0IO72N0ov0ywLbZ5UiSE",
+      "expire_date": "2023-06-17T10:15:17.661Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "acqcap3lnc4v0mbd1lm5p7303laca7pz",
+    "fields": {
+      "session_data": "eyJjYXJ0Ijp7IjEwIjoxfX0:1q5Q5H:DA72hGYwL7JP0F24Wf9LgGqUmdTGopbuJBn-454vFCU",
+      "expire_date": "2023-06-17T12:10:15.760Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "awflds9k9u6eamtm71u7l6wo4ltj8pup",
+    "fields": {
+      "session_data": ".eJxVjDsOwjAQBe_iGln-bPyhpOcM1nrXwQHkSHFSIe4OkVJA-2bmvUTCba1p62VJE4uz0CBOv2NGepS2E75ju82S5rYuU5a7Ig_a5XXm8rwc7t9BxV6_tdFqzGh0jF5FVoEMuuICqcFytGANZ59tGALoyM5CCcykqQCgV55G8f4A6xI3qA:1q7wmB:vwMorQjwOBk_PC1SmynGhtbxO8lu6NGTHZBaSa60SZ4",
+      "expire_date": "2023-06-17T11:28:59.271Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "ciog9pe4w3gfbs76lsrvo5ryyquq6pi7",
+    "fields": {
+      "session_data": ".eJxVjEsOAiEQBe_C2hBg-DQu3XsG0g2NjJohmc_KeHedZBa6fVX1XiLhtra0LTynsYizMCBOvyNhfvC0k3LH6dZl7tM6jyR3RR50kdde-Hk53L-Dhkv71iHGzDgUG5SroGsgTewslKi8Np6jVQ4Y7GCgKqboqWg0BpRmZdGSeH8A-rc3gA:1q9slY:WS9Hh8BjKtHYxB5lnrrUYuAmDGmkVnpwaUP-uuBUEYc",
+      "expire_date": "2023-06-22T19:36:20.288Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "cqypr7dsfbmf0k0dtobmi98aopr4fuu7",
+    "fields": {
+      "session_data": ".eJxVjEsOgzAMBe_idRXhRHEoy-57BmQ7TqGtQOKzQty9RWLD9s3M20B5WqDZgKCJ-w1aXpeuXWeb2j5DAwiXTVg_Nhwgv3l4jU7HYZl6cYfiTjq755jt-zjdy0HHc_ev70kMtQSmu1SEQjmKlgrN1xa897koJfOIuS6cU0ykga0wMklNIcL-A_LrPL8:1q6FNd:mjmZ5Py6OQNgHltHUABZFMnh5cbjKEJdjKK_uvNl6ZQ",
+      "expire_date": "2023-06-12T18:56:37.215Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "d5dzvp901rogbj3byhuwlaex7q0l3wyv",
+    "fields": {
+      "session_data": ".eJxVjDEOwjAMRe-SGUV1ojopIztnqOzYIQWUSk07Ie4OlTrA-t97_2VG2tYybk2XcRJzNmBOvxtTemjdgdyp3mab5rouE9tdsQdt9jqLPi-H-3dQqJVvPQRWSNkTDtwhMErPKXegLqp3zklOGNQBSMwkoQ-YPGkmIOSIvjfvD_zgOIo:1q2yA4:12xIs7cGVUBZA42a4KWKkFkc4KcK_iB5yP5OZGnwM7s",
+      "expire_date": "2023-06-10T17:57:04.160Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "dey2tdb0e0tmem38f9277x2u67nf8nve",
+    "fields": {
+      "session_data": ".eJxVjDsOwjAQBe_iGln-bPyhpOcM1nrXwQHkSHFSIe4OkVJA-2bmvUTCba1p62VJE4uz0CBOv2NGepS2E75ju82S5rYuU5a7Ig_a5XXm8rwc7t9BxV6_tdFqzGh0jF5FVoEMuuICqcFytGANZ59tGALoyM5CCcykqQCgV55G8f4A6xI3qA:1q7MeT:TBOfj-4-EGg27e5S26cRAfLmEDMfjasAJX6lQ2lVYtE",
+      "expire_date": "2023-06-15T20:54:37.024Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "eyg9ch3maz1ho3fftz12ldnk10idn4j5",
+    "fields": {
+      "session_data": ".eJxVjDsOwyAQBe9CHSGWnyFlep8BLQsEJxGWjF1FuXtsyUXSvpl5bxZwW2vYel7ClNiVgWGX3zEiPXM7SHpgu8-c5rYuU-SHwk_a-Tin_Lqd7t9BxV732iFQsgXIiIhKaC8dWe-lUo4cIiqkQdlsBEApFslqr3dOEgokO0j2-QIDZDem:1q7Mk6:SMo7FNhw17fdg1gYfRxVO0eX-V3jsshsQhLF9uJZeXg",
+      "expire_date": "2023-06-15T21:00:26.932Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "fuid8qyn9vnf90wquutwc6hp3ayhidql",
+    "fields": {
+      "session_data": ".eJxVjDsOwjAQRO_iGlnxf5eSPmewdv0hAZRIcVIh7k4ipYBuNO_NvEWkbR3i1soSxyyuQnlx-S2Z0rNMB8kPmu6zTPO0LiPLQ5EnbbKfc3ndTvfvYKA27GsTCGyxGbODABxqx177SuiANFbrUi1GcReUV5qNowp7AI0JoUPD4vMF_Zs3Yw:1q7Mvi:7hidQmRmKozupUzHUjdRYiVIO7ZfVcxaXLFYAyLSxG0",
+      "expire_date": "2023-06-15T21:12:26.471Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "h88wsubdxi9moauvl982sbbhr20m02gj",
+    "fields": {
+      "session_data": "eyJjYXJ0Ijp7IjEiOjF9fQ:1q6zm4:lbBtv8XS3lV8q2q81pxQkgTFSv4wR-Oovkuh_4LDeR8",
+      "expire_date": "2023-06-14T20:28:56.652Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "hc3mtxnv0xc0b1ve9n9bnu7zlcltpdaf",
+    "fields": {
+      "session_data": "eyJjYXJ0Ijp7fX0:1q5NtS:mjuhIbvE0Ac0tBAfshrB5FZUXtlKWtv7W8SlbKmisNo",
+      "expire_date": "2023-06-17T09:49:54.934Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "hpb9s1b5t0q783pnqx0nly2xx899f6s6",
+    "fields": {
+      "session_data": ".eJxVjDEOwjAMRe-SGUV1ojopIztnqOzYIQWUSk07Ie4OlTrA-t97_2VG2tYybk2XcRJzNmBOvxtTemjdgdyp3mab5rouE9tdsQdt9jqLPi-H-3dQqJVvPQRWSNkTDtwhMErPKXegLqp3zklOGNQBSMwkoQ-YPGkmIOSIvjfvD_zgOIo:1q6zfV:cnI0d0vumO7wAIupltiByhfP_cqWNUjJAgfrPZTIoi4",
+      "expire_date": "2023-06-14T20:22:09.925Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "hqda8sbem7lkljwom2s6cox69xfv02ab",
+    "fields": {
+      "session_data": "eyJjYXJ0Ijp7IjYiOjEsIjciOjEsIjEiOjF9fQ:1q4okY:xsq_7bQ8-Bp5laQHGS5Ite63DplqOvPEEpIjdYvedIQ",
+      "expire_date": "2023-06-15T20:18:22.733Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "hucjh9p7cjb54ba0e8704kkruer9qdcw",
+    "fields": {
+      "session_data": "eyJjYXJ0Ijp7IjciOjEsIjYiOjN9fQ:1q5Q4o:tGiCgQZUAs2H4HRBGGlSqSKUpFQN-TvTgSrdmhc814g",
+      "expire_date": "2023-06-17T12:09:46.502Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "hwao7gcrzas5xcps8ju51fh1wzkeufvq",
+    "fields": {
+      "session_data": ".eJxVjDEOwjAMRe-SGUV1ojopIztnqOzYIQWUSk07Ie4OlTrA-t97_2VG2tYybk2XcRJzNmBOvxtTemjdgdyp3mab5rouE9tdsQdt9jqLPi-H-3dQqJVvPQRWSNkTDtwhMErPKXegLqp3zklOGNQBSMwkoQ-YPGkmIOSIvjfvD_zgOIo:1q9Via:_qrbUuKPB0x0zzx2gchjVntInRSjKq9u38jm3f5wnbs",
+      "expire_date": "2023-06-21T18:59:44.769Z"
+    }
+  },
+  {
+    "model": "sessions.session",
     "pk": "is2hpo2xi6q2g5hk5cva9q1egn311qyg",
     "fields": {
       "session_data": ".eJxVjEEOgyAQRe_CuiEORLBddt8zkGEY1GogAVw0Te9eTdy4_e-9_xUr1uYIG4-5fMRD8MpLKznNC4qbcLi1yW2Vi5vDTuG6eaSF0wHCG9OYJeXUyuzlociTVvnKgdfn6V4OJqzTXt-tZ6Co0dx9Z8Cb0HuKHbAaWCulQiRjWQGEIWKwvTWkkSMCGj8Y3YvfHwHeQ4I:1pu8Hx:he0JDNOOE0cwNmRIFdYwEdGHplitCqTzR4v13KcOvgA",
       "expire_date": "2023-05-17T08:56:41.865Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "k6guy9lr52vetq1pp8i8w9xxzjde912r",
+    "fields": {
+      "session_data": ".eJxVjEEOgkAMRe8yazOhQ6GDS_eegbTT4qAGEgZWxrsrCQvd_vfef7metzX3W7GlH9WdXUB3-h2F08Omneidp9vs0zytyyh-V_xBi7_Oas_L4f4dZC75WyPHgbhqIlLTQmWgFoIkFKi5GyARKFtAUVJkEkm1gWBlRtS1kcW9Pw-dOLQ:1q80GQ:AUNMKir6Q-QEzXxXzyYM6aW8QcN3SeR5_7SEal9FPlI",
+      "expire_date": "2023-06-17T15:12:26.199Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "kdru3099m5tyw03xwfpqokhqv26at6m7",
+    "fields": {
+      "session_data": "eyJjYXJ0Ijp7IjgiOjR9fQ:1q5Wz0:373TwY8LbcfRlZ6Jv7vgESnmcA7MY2-QT6cu30B45Jc",
+      "expire_date": "2023-06-10T19:32:14.371Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "ktuqq18toxzlbl6bcmxlx6v8d2tcnbde",
+    "fields": {
+      "session_data": ".eJxVjDEOwjAMRe-SGUV1ojopIztnqOzYIQWUSk07Ie4OlTrA-t97_2VG2tYybk2XcRJzNmBOvxtTemjdgdyp3mab5rouE9tdsQdt9jqLPi-H-3dQqJVvPQRWSNkTDtwhMErPKXegLqp3zklOGNQBSMwkoQ-YPGkmIOSIvjfvD_zgOIo:1qC3aZ:SYpo8j_ZcQEdcHcxQ_jPkvBSX1cWav_ctjfcAw79f08",
+      "expire_date": "2023-06-28T19:33:59.771Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "lbtbhhi3d96ldfjbyqyvb7qn5j9vt0xf",
+    "fields": {
+      "session_data": ".eJxVjEEOwiAQRe_C2pBMW2Bw6d4zkIEZpGogKe3KeHdt0oVu_3vvv1SgbS1h67KEmdVZAarT7xgpPaTuhO9Ub02nVtdljnpX9EG7vjaW5-Vw_w4K9fKtM4oRNzhE9GgtZDc5ccayZIAUR-8gsyEG8QTe-wGQOcYpmQwjk1HvDwFVODg:1q7vZo:bCBZq4DXsOC3pHt43l3D_U9-PCewfZ_cLpNo3-dbjbs",
+      "expire_date": "2023-06-17T10:12:08.306Z"
     }
   },
   {
@@ -3584,10 +5587,106 @@
   },
   {
     "model": "sessions.session",
+    "pk": "lg77bk6e4bnavddkstw85puuwieceb5p",
+    "fields": {
+      "session_data": "eyJjYXJ0Ijp7IjExIjoxfX0:1qD5i8:qDk2Jyz5DRazBsD0Zzdd6h7e7OafKhaC3iS8fn2ec9E",
+      "expire_date": "2023-07-01T16:02:04.439Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "ljtxvvepdt5vdbjizqr278h8tcji2vqg",
+    "fields": {
+      "session_data": ".eJxVjDEOwjAMRe-SGUUxMcRlZO8ZIid2SQE1UtNOiLtDpQ6w_vfef5nI61Li2nSOo5iLAWcOv2Pi_NBpI3Ln6VZtrtMyj8luit1ps30VfV539--gcCvf2rkMgijskZMGDeSJtGMSSIQDyyno-cicu4wC4MGJEgRVSYMgs3l_AB7hOUU:1q5QI9:dvJgVtWaxob3K9C5YD7M2V1MWE4CbO51EkGpmpKCBH4",
+      "expire_date": "2023-06-17T12:23:33.990Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "ma5gv4nio69ft0q3umdhumer8cloldw4",
+    "fields": {
+      "session_data": ".eJxVjMsOwiAQRf-FtSEwUGbq0n2_gQwPpWogKe3K-O_apAvd3nPOfQnP21r81vPi5yTOQhtx-h0Dx0euO0l3rrcmY6vrMge5K_KgXU4t5eflcP8OCvfyrY0lNDigG5xKgMFpBMUqRyBDEcBZuGrFqBVQInA4Uoyatc3KjJBBvD-3azYa:1q7Mby:05J7rFMiGguN-1XtPL_CzOTg_nIGsy7MZSZPWL7Hc-Y",
+      "expire_date": "2023-06-15T20:52:02.437Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "mdyzrovsbo0tadm17rcdmapjclvh7adv",
+    "fields": {
+      "session_data": ".eJxVjMsOwiAQRf-FtSEgjyku3fsNZBimUjWQlHZl_HfbpAvd3nPOfYuI61Li2nmOUxYXMYjT75aQnlx3kB9Y701Sq8s8Jbkr8qBd3lrm1_Vw_w4K9rLVyp4dsmHntM2eHCUDoMmBSgo0APtAAEGH0bMFhGHDyo7JauTsjBKfL8RSNvQ:1q5Q02:7diSOFK5S1BSTzVFduLAIu-jeUhJSgbAkau0DHPUjWU",
+      "expire_date": "2023-06-17T12:04:50.738Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "mqj648godo3fhibma6bs1tdn7zww54k1",
+    "fields": {
+      "session_data": ".eJxVjDsOwjAQBe_iGln-aP2hpOcM1nq9xgHkSHFSIe4OkVJA-2bmvUTCbW1pG7ykqYizsEqcfseM9OC-k3LHfpslzX1dpix3RR50yOtc-Hk53L-DhqN9a7CuatJFYybjWXtTM2CgUhwAK8uGNdsYMzivQjDMusaQQw2KnAEr3h8TnjgO:1qC3Vo:DhSm5vXQ9seMXq6-yQ6tJRhE9opjormXI7LeiBsowv0",
+      "expire_date": "2023-06-28T19:29:04.847Z"
+    }
+  },
+  {
+    "model": "sessions.session",
     "pk": "o4nlq5aroqf8ine1rtm513jzewhn9jxp",
     "fields": {
       "session_data": ".eJxVjDEOwjAMRe-SGUV1ojopIztnqOzYIQWUSk07Ie4OlTrA-t97_2VG2tYybk2XcRJzNmBOvxtTemjdgdyp3mab5rouE9tdsQdt9jqLPi-H-3dQqJVvPQRWSNkTDtwhMErPKXegLqp3zklOGNQBSMwkoQ-YPGkmIOSIvjfvD_zgOIo:1pzMix:4PTfhI6vhg5JHQoOLVFGt-ym6ViT-50ZQ6Vtu_6yMeY",
       "expire_date": "2023-05-31T19:22:11.587Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "ors40pjj0kq5kd9ksiw9qazfpo1vh0rg",
+    "fields": {
+      "session_data": "eyJjYXJ0Ijp7IjgiOjF9fQ:1q9s74:6dr5JDtTIOe64rHRJQrlJWnOlXLJ0sfZVscu8Mo8tso",
+      "expire_date": "2023-06-22T18:54:30.293Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "ort27ye9pzgbxeitm0uk7akovl081eb0",
+    "fields": {
+      "session_data": ".eJxVjDsOgzAQRO_iOrKwF_9SpucM1q69xCSRkTBUUe4ekCiSbjTvzbxFxG0tcWu8xCmLqwAlLr8lYXpyPUh-YL3PMs11XSaShyJP2uQwZ37dTvfvoGAr-1opDuxG4zGFYC3vuffGJWVsSMZrIgZLmrLvfcaQfAfgoHPBaAaDo_h8AQY4N84:1qC3qK:uucb3OA1YUOAflDganHFzy-CbKcy0hPN7YxWo6khzc4",
+      "expire_date": "2023-06-28T19:50:16.188Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "pq5vxgqxd9186vrvhayigu39317da4fu",
+    "fields": {
+      "session_data": ".eJxVjDsOwjAQBe_iGln2Wv4sJT1nsGzvLg6gRMqnQtwdIqWA9s3Me6lctrXnbeE5D6TOCqw6_Y61tAePO6F7GW-TbtO4zkPVu6IPuujrRPy8HO7fQS9L_9YoyNG7Rg6qi8khO4lR0EsiaAlEgKAmZDaIACaYKGSrrdGHYMSp9wcHPTfN:1q7vfX:6kTJcQ2zIzKbcwwk7CTqDohqYT53VAe9NjAdcU-WI7Y",
+      "expire_date": "2023-06-17T10:18:03.530Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "q6n4rj9aj7nca8r3qoycirkp7vs2qoe0",
+    "fields": {
+      "session_data": ".eJxVjDsOwjAQBe_iGln-bPyhpOcM1nrXwQHkSHFSIe4OkVJA-2bmvUTCba1p62VJE4uz0CBOv2NGepS2E75ju82S5rYuU5a7Ig_a5XXm8rwc7t9BxV6_tdFqzGh0jF5FVoEMuuICqcFytGANZ59tGALoyM5CCcykqQCgV55G8f4A6xI3qA:1q7wod:zyi4-IdsjamkmGdzUnX0Kb2AKDI28PuXEumLJA-x87c",
+      "expire_date": "2023-06-17T11:31:31.531Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "qbjkoud336etdvjsebrazel0rkl07r9z",
+    "fields": {
+      "session_data": ".eJxVjDEOwjAMRe-SGUV1ojopIztnqOzYIQWUSk07Ie4OlTrA-t97_2VG2tYybk2XcRJzNmBOvxtTemjdgdyp3mab5rouE9tdsQdt9jqLPi-H-3dQqJVvPQRWSNkTDtwhMErPKXegLqp3zklOGNQBSMwkoQ-YPGkmIOSIvjfvD_zgOIo:1qBiMM:J3OuxCIGHSknk7FO8Bh0hHZ2SPi2DBQ1BdScv0Ao02o",
+      "expire_date": "2023-06-27T20:53:54.441Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "qeqw4j9rqkzo0r087z56y9nxmuptqmgc",
+    "fields": {
+      "session_data": "eyJjYXJ0Ijp7IjciOjV9fQ:1q5kmU:KNm7tS_Nk-9XRBDva2N9ld395jBdq1Y3fVrqb7d5JHk",
+      "expire_date": "2023-06-11T10:16:14.616Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "r5msgumq4w44wjuhzg164m2i2w0m5kg2",
+    "fields": {
+      "session_data": ".eJxVjDsOwjAQBe_iGlnx-pNASZ8zWOvdNQ4gR4qTCnF3iJQC2jcz76UibmuJW5MlTqwuCqw6_Y4J6SF1J3zHeps1zXVdpqR3RR-06XFmeV4P9--gYCvfOgyM2LN1HRm0LGB6yRkYHJDP2ZoA3CVMIXgmCmTsOUgmkx0YQD-o9wclWDit:1q80EO:72UVe7c5nssdFe3kPksYSKdTZ94QgTJNpKb_RZYUOBY",
+      "expire_date": "2023-06-17T15:10:20.689Z"
     }
   },
   {
@@ -3600,10 +5699,34 @@
   },
   {
     "model": "sessions.session",
+    "pk": "rzqtznudn7316a2hrbb9y3cjpqxgjnjn",
+    "fields": {
+      "session_data": "eyJjYXJ0Ijp7IjYiOjF9fQ:1q4oOT:kiC9yRYJXZOp1VvyTU1C-6_iRBwqI7DKccrN_b3SYOc",
+      "expire_date": "2023-06-15T19:55:33.784Z"
+    }
+  },
+  {
+    "model": "sessions.session",
     "pk": "t9y9m5i55zs5163askq2rztaklnhs8i1",
     "fields": {
       "session_data": ".eJw9jEEKwzAMBP-icw6-9OLPGNdVUmHFNpIKDcF_rwppjzs7zAmc1VLJhluXAyIgYzXpjWqGBVZiQ1GIJ-zU0hAq6JI_e37_5y2E4MjI-HrdVeulQlwzK3pIEJM-aQxq20XnAtrF8PHN349fzuSFc34A_tM1OA:1ptl4e:PkmtuF8A85ytmsVPb3CrZV5SvjpszUxCg9ipxZCaxGI",
       "expire_date": "2023-05-16T08:09:24.223Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "tyixvwg3l3ctfg8vftzc58dw2lyjo3ou",
+    "fields": {
+      "session_data": "eyJjYXJ0Ijp7IjExIjoxLCI2IjoxLCI3IjoxLCI5IjoxfX0:1q4ohI:CHC7MjlCKeAFS5fNHvCHt5JE2FxBXjwQzvH-qFdjk18",
+      "expire_date": "2023-06-15T20:15:00.623Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "v01ngb1uv6uf68zbl6wz7qvhqzz6kixm",
+    "fields": {
+      "session_data": ".eJxVjMsOwiAQRf-FtSEgjyku3fsNZBimUjWQlHZl_HfbpAvd3nPOfYuI61Li2nmOUxYXMYjT75aQnlx3kB9Y701Sq8s8Jbkr8qBd3lrm1_Vw_w4K9rLVyp4dsmHntM2eHCUDoMmBSgo0APtAAEGH0bMFhGHDyo7JauTsjBKfL8RSNvQ:1q5Plg:SaLIFlgpyJwiUf4C0Y9Y1l4ntxNfyMmkfmR8W70Ad4o",
+      "expire_date": "2023-06-17T11:50:00.971Z"
     }
   },
   {
@@ -3616,6 +5739,14 @@
   },
   {
     "model": "sessions.session",
+    "pk": "vb7eivuolon00t0c50b6vimiwfjcvc50",
+    "fields": {
+      "session_data": "eyJjYXJ0Ijp7IjIyIjoxLCIxMCI6MSwiMTEiOjV9fQ:1q5RTa:tBGrh5usohPCA9gF0xLx6AuFm24LgnHYjeHdlsgsm4Q",
+      "expire_date": "2023-06-17T13:39:26.013Z"
+    }
+  },
+  {
+    "model": "sessions.session",
     "pk": "vm8y2r60h05p8ldlpngnntm4nebcoov1",
     "fields": {
       "session_data": ".eJxVjEEOwiAQRe_C2pAgMIBL956BzMAgVQNJaVeNd9cmXej2v_f-JiKuS43r4DlOWVyEFaffjTA9ue0gP7Ddu0y9LfNEclfkQYe89cyv6-H-HVQc9VsbAxodcSlobeCAPp21USprygZIJ9IlIxcLzhsm54IFJKSgELyHIt4fAGE4qg:1pxmSj:TOpZnP3Ou5FQbfSS7lcwBGIcRtclnn9LLZJMn2xa56s",
@@ -3623,15 +5754,19 @@
     }
   },
   {
-    "model": "app_user.profile",
-    "pk": 1,
+    "model": "sessions.session",
+    "pk": "wrog8isgeimjyr18zroofwfm3bi5i3i0",
     "fields": {
-      "user": 2,
-      "full_name": "Тестовый пользователь",
-      "phone_number": null,
-      "address": "",
-      "avatar": "images/profiles/test_user/avatar/test_avatar.jpg",
-      "deleted": false
+      "session_data": "eyJjYXJ0Ijp7IjYiOjF9fQ:1q7MSZ:gU-eJG3aHK6C1OwqtccEBdilb30oepGBacja9HNWkwg",
+      "expire_date": "2023-06-15T20:42:19.686Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "zrp8ff3mghq6ilzwcu6jmlk3gcikyd84",
+    "fields": {
+      "session_data": ".eJxVjDsOwjAQRO_iGlnyNzYlPWew1rtrHECOFCdVxN1JpBSg6ea9mU0kWJea1s5zGklchdLi8ltmwBe3g9AT2mOSOLVlHrM8FHnSLu8T8ft2un8HFXrd1wENKJ33sPUuGLAaQ_aD1uyoRLZsBowqEoZoMvjobHHgolZAuTCIzxcC0Dhu:1q7MPz:l1ugZ6MFs2Lv52rviyNcbu_jeV-nUcXq4nGBjgzLZTg",
+      "expire_date": "2023-06-15T20:39:39.251Z"
     }
   },
   {
@@ -3648,11 +5783,23 @@
   },
   {
     "model": "app_user.profile",
-    "pk": 4,
+    "pk": 21,
     "fields": {
-      "user": 5,
-      "full_name": "Валя",
-      "phone_number": null,
+      "user": 23,
+      "full_name": "Валера",
+      "phone_number": "9027448561",
+      "address": "Москва, ул.Корнева, 36",
+      "avatar": "",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_user.profile",
+    "pk": 22,
+    "fields": {
+      "user": 24,
+      "full_name": "Чукча",
+      "phone_number": "0005670034",
       "address": "",
       "avatar": "",
       "deleted": false
@@ -3660,21 +5807,37 @@
   },
   {
     "model": "app_user.profile",
-    "pk": 5,
+    "pk": 23,
     "fields": {
-      "user": 7,
-      "full_name": "Дима",
-      "phone_number": "0000000006",
+      "user": 28,
+      "full_name": "Дмитрий Лже",
+      "phone_number": "0000340001",
       "address": "",
-      "avatar": "images/profiles/send1/avatar/cs-go-avatars-vk-pixelbox.ru-37.jpg",
+      "avatar": "",
       "deleted": false
     }
   },
   {
-    "model": "app_user.buyer",
-    "pk": 1,
+    "model": "app_user.profile",
+    "pk": 24,
     "fields": {
-      "profile": 1,
+      "user": 30,
+      "full_name": "Дмитрий Олегович Стафеев 2",
+      "phone_number": "9029448561",
+      "address": "",
+      "avatar": "",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_user.profile",
+    "pk": 25,
+    "fields": {
+      "user": 31,
+      "full_name": "Дмитрий Олегович Стафеев",
+      "phone_number": "9032148561",
+      "address": "",
+      "avatar": "",
       "deleted": false
     }
   },
@@ -4072,6 +6235,7 @@
       "count": 100,
       "limited_edition": true,
       "deleted": false,
+      "purchases": 10,
       "tags": [
         6
       ]
@@ -4091,6 +6255,7 @@
       "count": 56,
       "limited_edition": true,
       "deleted": false,
+      "purchases": 6,
       "tags": [
         1,
         2
@@ -4111,6 +6276,7 @@
       "count": 50,
       "limited_edition": true,
       "deleted": false,
+      "purchases": 0,
       "tags": [
         2,
         12
@@ -4131,6 +6297,7 @@
       "count": 77,
       "limited_edition": true,
       "deleted": false,
+      "purchases": 15,
       "tags": [
         2
       ]
@@ -4150,6 +6317,7 @@
       "count": 888,
       "limited_edition": false,
       "deleted": false,
+      "purchases": 0,
       "tags": [
         13
       ]
@@ -4169,6 +6337,7 @@
       "count": 500,
       "limited_edition": false,
       "deleted": false,
+      "purchases": 0,
       "tags": [
         5
       ]
@@ -4188,6 +6357,7 @@
       "count": 654,
       "limited_edition": false,
       "deleted": false,
+      "purchases": 0,
       "tags": [
         7
       ]
@@ -4207,6 +6377,7 @@
       "count": 34,
       "limited_edition": true,
       "deleted": false,
+      "purchases": 0,
       "tags": [
         8
       ]
@@ -4226,6 +6397,7 @@
       "count": 1,
       "limited_edition": false,
       "deleted": true,
+      "purchases": 0,
       "tags": [
         2
       ]
@@ -4245,6 +6417,7 @@
       "count": 65,
       "limited_edition": true,
       "deleted": false,
+      "purchases": 0,
       "tags": [
         9
       ]
@@ -4264,6 +6437,7 @@
       "count": 678,
       "limited_edition": false,
       "deleted": false,
+      "purchases": 0,
       "tags": [
         5
       ]
@@ -4283,6 +6457,7 @@
       "count": 53,
       "limited_edition": true,
       "deleted": false,
+      "purchases": 0,
       "tags": [
         10
       ]
@@ -4302,6 +6477,7 @@
       "count": 32,
       "limited_edition": true,
       "deleted": false,
+      "purchases": 0,
       "tags": [
         5
       ]
@@ -4321,6 +6497,7 @@
       "count": 763,
       "limited_edition": false,
       "deleted": false,
+      "purchases": 45,
       "tags": [
         11
       ]
@@ -4340,6 +6517,7 @@
       "count": 65,
       "limited_edition": true,
       "deleted": false,
+      "purchases": 0,
       "tags": [
         11
       ]
@@ -4359,6 +6537,7 @@
       "count": 66,
       "limited_edition": true,
       "deleted": false,
+      "purchases": 0,
       "tags": [
         14
       ]
@@ -4378,6 +6557,7 @@
       "count": 432,
       "limited_edition": false,
       "deleted": false,
+      "purchases": 0,
       "tags": [
         15
       ]
@@ -4397,9 +6577,253 @@
       "count": 99,
       "limited_edition": true,
       "deleted": false,
+      "purchases": 0,
       "tags": [
         1
       ]
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "product": 1,
+      "viewing_time": "2023-06-15T19:57:41.192Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 9,
+    "fields": {
+      "user": 1,
+      "product": 6,
+      "viewing_time": "2023-06-15T20:26:20.944Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 10,
+    "fields": {
+      "user": 1,
+      "product": 7,
+      "viewing_time": "2023-06-15T20:29:05.287Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 11,
+    "fields": {
+      "user": 1,
+      "product": 9,
+      "viewing_time": "2023-06-15T20:33:44.484Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 12,
+    "fields": {
+      "user": 1,
+      "product": 17,
+      "viewing_time": "2023-06-15T20:33:45.017Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 13,
+    "fields": {
+      "user": 1,
+      "product": 18,
+      "viewing_time": "2023-06-15T20:33:45.530Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 14,
+    "fields": {
+      "user": 1,
+      "product": 19,
+      "viewing_time": "2023-06-15T20:33:52.799Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 15,
+    "fields": {
+      "user": 1,
+      "product": 21,
+      "viewing_time": "2023-06-15T20:33:54.564Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 16,
+    "fields": {
+      "user": 1,
+      "product": 8,
+      "viewing_time": "2023-06-15T20:33:57.766Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 17,
+    "fields": {
+      "user": 1,
+      "product": 18,
+      "viewing_time": "2023-06-15T20:33:58.162Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 18,
+    "fields": {
+      "user": 1,
+      "product": 9,
+      "viewing_time": "2023-06-15T20:50:33.000Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 21,
+    "fields": {
+      "user": 1,
+      "product": 7,
+      "viewing_time": "2023-06-15T21:06:17.541Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 22,
+    "fields": {
+      "user": 1,
+      "product": 22,
+      "viewing_time": "2023-06-15T21:07:53.494Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 23,
+    "fields": {
+      "user": 1,
+      "product": 11,
+      "viewing_time": "2023-06-15T21:08:50.008Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 24,
+    "fields": {
+      "user": 1,
+      "product": 1,
+      "viewing_time": "2023-06-17T09:57:28.233Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 25,
+    "fields": {
+      "user": 1,
+      "product": 6,
+      "viewing_time": "2023-06-18T10:16:41.981Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 26,
+    "fields": {
+      "user": 1,
+      "product": 21,
+      "viewing_time": "2023-06-18T12:51:23.003Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 27,
+    "fields": {
+      "user": 1,
+      "product": 10,
+      "viewing_time": "2023-06-20T19:00:49.283Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 28,
+    "fields": {
+      "user": 1,
+      "product": 18,
+      "viewing_time": "2023-06-21T20:45:04.361Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 29,
+    "fields": {
+      "user": 1,
+      "product": 20,
+      "viewing_time": "2023-06-21T21:00:18.741Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 30,
+    "fields": {
+      "user": 1,
+      "product": 19,
+      "viewing_time": "2023-06-22T18:28:48.131Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 31,
+    "fields": {
+      "user": 1,
+      "product": 12,
+      "viewing_time": "2023-06-22T18:28:55.963Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 32,
+    "fields": {
+      "user": 1,
+      "product": 17,
+      "viewing_time": "2023-06-24T12:37:11.793Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 33,
+    "fields": {
+      "user": 1,
+      "product": 7,
+      "viewing_time": "2023-06-24T12:39:55.925Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 34,
+    "fields": {
+      "user": 1,
+      "product": 8,
+      "viewing_time": "2023-06-24T16:42:00.116Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 35,
+    "fields": {
+      "user": 1,
+      "product": 21,
+      "viewing_time": "2023-06-25T11:47:25.995Z"
+    }
+  },
+  {
+    "model": "app_shop.productbrowsinghistory",
+    "pk": 36,
+    "fields": {
+      "user": 1,
+      "product": 6,
+      "viewing_time": "2023-06-25T12:00:55.495Z"
     }
   },
   {
@@ -5034,39 +7458,6 @@
   },
   {
     "model": "app_shop.productreviews",
-    "pk": 1,
-    "fields": {
-      "product": 6,
-      "buyer": 1,
-      "review": "Особенность TCL 50C635 в использовании матрицы с разрешением 4K Ultra HD, соответствующим 3840x2160. Наряду с технологией Dolby Vision такое разрешение позволяет погрузиться в происходящее на экране, что позволяет использовать телевизор в качестве домашнего кинотеатра или игрового экрана для подключения консолей. Модуль Wi-Fi обеспечивает плавную трансляцию видеопотока, не допуская задержек. Google TV дает возможность насладиться удобным интерфейсом и предоставляет широкие возможности для пользователей.",
-      "created_at": "2023-05-05T14:15:05.522Z",
-      "deleted": false
-    }
-  },
-  {
-    "model": "app_shop.productreviews",
-    "pk": 2,
-    "fields": {
-      "product": 7,
-      "buyer": 1,
-      "review": "Какой-то тестовый комментарий",
-      "created_at": "2023-05-06T08:45:25.385Z",
-      "deleted": false
-    }
-  },
-  {
-    "model": "app_shop.productreviews",
-    "pk": 3,
-    "fields": {
-      "product": 7,
-      "buyer": 1,
-      "review": "Второй какой-то тестовый комментарий",
-      "created_at": "2023-05-06T10:12:07.275Z",
-      "deleted": false
-    }
-  },
-  {
-    "model": "app_shop.productreviews",
     "pk": 24,
     "fields": {
       "product": 7,
@@ -5088,75 +7479,843 @@
     }
   },
   {
-    "model": "app_shop.cart",
-    "pk": 2,
+    "model": "app_shop.productreviews",
+    "pk": 26,
     "fields": {
+      "product": 7,
       "buyer": 2,
-      "product": 22,
-      "count": 1
+      "review": "bjhbjhbnj",
+      "created_at": "2023-06-11T11:33:56.033Z",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.productreviews",
+    "pk": 27,
+    "fields": {
+      "product": 20,
+      "buyer": 2,
+      "review": "wevsevesv",
+      "created_at": "2023-06-14T19:40:29.774Z",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.productreviews",
+    "pk": 28,
+    "fields": {
+      "product": 20,
+      "buyer": 2,
+      "review": "sevsevsevsev",
+      "created_at": "2023-06-14T19:40:33.548Z",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.productreviews",
+    "pk": 29,
+    "fields": {
+      "product": 20,
+      "buyer": 2,
+      "review": "sevsvsevse",
+      "created_at": "2023-06-14T19:40:37.772Z",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.productreviews",
+    "pk": 30,
+    "fields": {
+      "product": 20,
+      "buyer": 2,
+      "review": "sevsevsevesv",
+      "created_at": "2023-06-14T19:40:41.637Z",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.productreviews",
+    "pk": 31,
+    "fields": {
+      "product": 8,
+      "buyer": 2,
+      "review": "ccecsecsec",
+      "created_at": "2023-06-14T19:41:11.605Z",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.productreviews",
+    "pk": 32,
+    "fields": {
+      "product": 1,
+      "buyer": 2,
+      "review": "sevseve",
+      "created_at": "2023-06-17T09:57:32.156Z",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.productreviews",
+    "pk": 33,
+    "fields": {
+      "product": 10,
+      "buyer": 2,
+      "review": "ыумыумуы",
+      "created_at": "2023-06-20T19:15:11.752Z",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.productreviews",
+    "pk": 34,
+    "fields": {
+      "product": 10,
+      "buyer": 2,
+      "review": "фцмыумуым",
+      "created_at": "2023-06-20T19:15:17.472Z",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.productreviews",
+    "pk": 35,
+    "fields": {
+      "product": 10,
+      "buyer": 2,
+      "review": "1212121",
+      "created_at": "2023-06-20T19:30:57.973Z",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.productreviews",
+    "pk": 36,
+    "fields": {
+      "product": 7,
+      "buyer": 2,
+      "review": "svrvr",
+      "created_at": "2023-06-25T09:48:49.041Z",
+      "deleted": false
+    }
+  },
+  {
+    "model": "app_shop.productreviews",
+    "pk": 37,
+    "fields": {
+      "product": 7,
+      "buyer": 2,
+      "review": "wwcw",
+      "created_at": "2023-06-25T10:47:59.764Z",
+      "deleted": false
     }
   },
   {
     "model": "app_shop.cart",
-    "pk": 6,
+    "pk": 68,
     "fields": {
-      "buyer": 2,
+      "user": 23,
       "product": 6,
-      "count": 1
+      "count": 4
     }
   },
   {
     "model": "app_shop.cart",
-    "pk": 8,
+    "pk": 84,
     "fields": {
-      "buyer": 2,
+      "user": 28,
       "product": 1,
       "count": 1
     }
   },
   {
     "model": "app_shop.cart",
-    "pk": 9,
+    "pk": 92,
     "fields": {
-      "buyer": 2,
+      "user": 30,
       "product": 10,
       "count": 1
     }
   },
   {
     "model": "app_shop.cart",
-    "pk": 10,
+    "pk": 93,
     "fields": {
-      "buyer": 2,
-      "product": 7,
-      "count": 1
-    }
-  },
-  {
-    "model": "app_shop.cart",
-    "pk": 11,
-    "fields": {
-      "buyer": 2,
-      "product": 18,
-      "count": 1
-    }
-  },
-  {
-    "model": "app_shop.cart",
-    "pk": 12,
-    "fields": {
-      "buyer": 2,
-      "product": 19,
-      "count": 1
-    }
-  },
-  {
-    "model": "app_shop.cart",
-    "pk": 13,
-    "fields": {
-      "buyer": 2,
+      "user": 30,
       "product": 11,
       "count": 1
+    }
+  },
+  {
+    "model": "app_shop.cart",
+    "pk": 94,
+    "fields": {
+      "user": 30,
+      "product": 12,
+      "count": 1
+    }
+  },
+  {
+    "model": "app_shop.cart",
+    "pk": 95,
+    "fields": {
+      "user": 31,
+      "product": 10,
+      "count": 2
+    }
+  },
+  {
+    "model": "app_shop.paymenterrors",
+    "pk": 1,
+    "fields": {
+      "title": "Оплата не прошла",
+      "description": "Оплата не выполнена, т.к. вы подозреваетесь в нетолерантности"
+    }
+  },
+  {
+    "model": "app_shop.paymenterrors",
+    "pk": 2,
+    "fields": {
+      "title": "Недостаточно средств на счете",
+      "description": "Оплата не прошла, т.к. на счете недостаточно средств"
+    }
+  },
+  {
+    "model": "app_shop.order",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "data_created": "2023-06-07T19:18:38.348Z",
+      "city": "Москва",
+      "address": "Москва, ул.Корнева, 36",
+      "delivery": 2,
+      "payment": 1,
+      "status": 4,
+      "error_message": null
+    }
+  },
+  {
+    "model": "app_shop.order",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "data_created": "2023-06-11T10:09:38.822Z",
+      "city": "Москва",
+      "address": "Москва, ул.Корнева, 36",
+      "delivery": 2,
+      "payment": 1,
+      "status": 5,
+      "error_message": null
+    }
+  },
+  {
+    "model": "app_shop.order",
+    "pk": 3,
+    "fields": {
+      "user": 1,
+      "data_created": "2023-06-11T10:50:51.880Z",
+      "city": "Москва",
+      "address": "Москва, ул.Корнева, 36",
+      "delivery": 2,
+      "payment": 1,
+      "status": 4,
+      "error_message": null
+    }
+  },
+  {
+    "model": "app_shop.order",
+    "pk": 4,
+    "fields": {
+      "user": 1,
+      "data_created": "2023-06-11T10:51:18.447Z",
+      "city": "Москва",
+      "address": "Москва, ул.Корнева, 36",
+      "delivery": 1,
+      "payment": 2,
+      "status": 4,
+      "error_message": null
+    }
+  },
+  {
+    "model": "app_shop.order",
+    "pk": 5,
+    "fields": {
+      "user": 1,
+      "data_created": "2023-06-11T11:35:53.665Z",
+      "city": "Воронеж",
+      "address": "Москва, ул.Корнева, 36",
+      "delivery": 2,
+      "payment": 2,
+      "status": 3,
+      "error_message": null
+    }
+  },
+  {
+    "model": "app_shop.order",
+    "pk": 6,
+    "fields": {
+      "user": 1,
+      "data_created": "2023-06-12T10:02:41.034Z",
+      "city": "Москва",
+      "address": "Москва, ул.Корнева, 36",
+      "delivery": 1,
+      "payment": 1,
+      "status": 2,
+      "error_message": 1
+    }
+  },
+  {
+    "model": "app_shop.order",
+    "pk": 7,
+    "fields": {
+      "user": 1,
+      "data_created": "2023-06-12T10:06:34.148Z",
+      "city": "Москва",
+      "address": "Москва, ул.Корнева, 36",
+      "delivery": 2,
+      "payment": 2,
+      "status": 4,
+      "error_message": null
+    }
+  },
+  {
+    "model": "app_shop.order",
+    "pk": 8,
+    "fields": {
+      "user": 1,
+      "data_created": "2023-06-12T17:34:22.533Z",
+      "city": "Москва",
+      "address": "Москва, ул.Корнева, 36",
+      "delivery": 2,
+      "payment": 1,
+      "status": 3,
+      "error_message": null
+    }
+  },
+  {
+    "model": "app_shop.order",
+    "pk": 9,
+    "fields": {
+      "user": 1,
+      "data_created": "2023-06-19T20:09:00.230Z",
+      "city": "Воронеж",
+      "address": "ул.Корнева, 36",
+      "delivery": 2,
+      "payment": 2,
+      "status": 4,
+      "error_message": null
+    }
+  },
+  {
+    "model": "app_shop.order",
+    "pk": 10,
+    "fields": {
+      "user": 1,
+      "data_created": "2023-06-19T20:23:09.202Z",
+      "city": "Воронеж",
+      "address": "Москва, ул.Корнева, 36",
+      "delivery": 1,
+      "payment": 2,
+      "status": 4,
+      "error_message": null
+    }
+  },
+  {
+    "model": "app_shop.order",
+    "pk": 11,
+    "fields": {
+      "user": 1,
+      "data_created": "2023-06-21T20:28:02.509Z",
+      "city": "Москва",
+      "address": "Москва, ул.Корнева, 36",
+      "delivery": 2,
+      "payment": 2,
+      "status": 4,
+      "error_message": null
+    }
+  },
+  {
+    "model": "app_shop.order",
+    "pk": 12,
+    "fields": {
+      "user": 1,
+      "data_created": "2023-06-24T13:05:52.597Z",
+      "city": "Воронеж",
+      "address": "Москва, ул.Корнева, 36",
+      "delivery": 1,
+      "payment": 1,
+      "status": 4,
+      "error_message": null
+    }
+  },
+  {
+    "model": "app_shop.order",
+    "pk": 13,
+    "fields": {
+      "user": 1,
+      "data_created": "2023-06-25T10:30:13.575Z",
+      "city": "Воронеж",
+      "address": "Москва, ул.Корнева, 36",
+      "delivery": 2,
+      "payment": 2,
+      "status": 4,
+      "error_message": null
+    }
+  },
+  {
+    "model": "app_shop.order",
+    "pk": 14,
+    "fields": {
+      "user": 1,
+      "data_created": "2023-06-25T10:32:31.772Z",
+      "city": "Воронеж",
+      "address": "Москва, ул.Корнева, 36",
+      "delivery": 2,
+      "payment": 2,
+      "status": 3,
+      "error_message": null
+    }
+  },
+  {
+    "model": "app_shop.order",
+    "pk": 15,
+    "fields": {
+      "user": 1,
+      "data_created": "2023-06-25T10:34:06.437Z",
+      "city": "Москва",
+      "address": "Москва, ул.Корнева, 36",
+      "delivery": 2,
+      "payment": 2,
+      "status": 4,
+      "error_message": null
+    }
+  },
+  {
+    "model": "app_shop.order",
+    "pk": 16,
+    "fields": {
+      "user": 1,
+      "data_created": "2023-06-25T10:49:02.736Z",
+      "city": "Москва",
+      "address": "Москва, ул.Корнева, 36",
+      "delivery": 1,
+      "payment": 2,
+      "status": 2,
+      "error_message": 1
+    }
+  },
+  {
+    "model": "app_shop.order",
+    "pk": 17,
+    "fields": {
+      "user": 1,
+      "data_created": "2023-06-25T12:08:21.450Z",
+      "city": "Москва",
+      "address": "ул.Корнева, 36",
+      "delivery": 2,
+      "payment": 1,
+      "status": 4,
+      "error_message": null
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 1,
+    "fields": {
+      "order": 1,
+      "product": 17,
+      "count": 1,
+      "price": 1000
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 2,
+    "fields": {
+      "order": 2,
+      "product": 7,
+      "count": 1,
+      "price": 1221
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 3,
+    "fields": {
+      "order": 3,
+      "product": 7,
+      "count": 1,
+      "price": 1221
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 4,
+    "fields": {
+      "order": 3,
+      "product": 6,
+      "count": 1,
+      "price": 7581
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 5,
+    "fields": {
+      "order": 4,
+      "product": 6,
+      "count": 2,
+      "price": 15162
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 6,
+    "fields": {
+      "order": 5,
+      "product": 10,
+      "count": 5,
+      "price": 27610
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 7,
+    "fields": {
+      "order": 6,
+      "product": 1,
+      "count": 1,
+      "price": 2250
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 8,
+    "fields": {
+      "order": 7,
+      "product": 10,
+      "count": 1,
+      "price": 5522
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 9,
+    "fields": {
+      "order": 8,
+      "product": 1,
+      "count": 1,
+      "price": 2250
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 10,
+    "fields": {
+      "order": 9,
+      "product": 17,
+      "count": 1,
+      "price": 22932
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 11,
+    "fields": {
+      "order": 9,
+      "product": 6,
+      "count": 3,
+      "price": 22743
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 12,
+    "fields": {
+      "order": 9,
+      "product": 7,
+      "count": 1,
+      "price": 1221
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 13,
+    "fields": {
+      "order": 9,
+      "product": 18,
+      "count": 1,
+      "price": 34180
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 14,
+    "fields": {
+      "order": 10,
+      "product": 10,
+      "count": 1,
+      "price": 5522
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 15,
+    "fields": {
+      "order": 10,
+      "product": 21,
+      "count": 1,
+      "price": 23090
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 16,
+    "fields": {
+      "order": 10,
+      "product": 1,
+      "count": 4,
+      "price": 9000
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 17,
+    "fields": {
+      "order": 10,
+      "product": 22,
+      "count": 1,
+      "price": 95540
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 18,
+    "fields": {
+      "order": 10,
+      "product": 18,
+      "count": 3,
+      "price": 102540
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 19,
+    "fields": {
+      "order": 11,
+      "product": 10,
+      "count": 2,
+      "price": 11044
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 20,
+    "fields": {
+      "order": 12,
+      "product": 11,
+      "count": 1,
+      "price": 28050
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 21,
+    "fields": {
+      "order": 12,
+      "product": 12,
+      "count": 1,
+      "price": 8445
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 22,
+    "fields": {
+      "order": 12,
+      "product": 10,
+      "count": 1,
+      "price": 5522
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 23,
+    "fields": {
+      "order": 12,
+      "product": 16,
+      "count": 1,
+      "price": 9090
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 24,
+    "fields": {
+      "order": 12,
+      "product": 15,
+      "count": 1,
+      "price": 4792
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 25,
+    "fields": {
+      "order": 12,
+      "product": 1,
+      "count": 1,
+      "price": 2250
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 26,
+    "fields": {
+      "order": 12,
+      "product": 6,
+      "count": 1,
+      "price": 7581
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 27,
+    "fields": {
+      "order": 12,
+      "product": 7,
+      "count": 4,
+      "price": 4884
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 28,
+    "fields": {
+      "order": 13,
+      "product": 17,
+      "count": 2,
+      "price": 45865
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 29,
+    "fields": {
+      "order": 13,
+      "product": 9,
+      "count": 1,
+      "price": 420
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 30,
+    "fields": {
+      "order": 13,
+      "product": 20,
+      "count": 1,
+      "price": 32750
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 31,
+    "fields": {
+      "order": 13,
+      "product": 8,
+      "count": 1,
+      "price": 1070
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 32,
+    "fields": {
+      "order": 13,
+      "product": 12,
+      "count": 4,
+      "price": 33780
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 33,
+    "fields": {
+      "order": 13,
+      "product": 7,
+      "count": 4,
+      "price": 4884
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 34,
+    "fields": {
+      "order": 14,
+      "product": 12,
+      "count": 1,
+      "price": 8445
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 35,
+    "fields": {
+      "order": 14,
+      "product": 14,
+      "count": 1,
+      "price": 8340
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 36,
+    "fields": {
+      "order": 15,
+      "product": 17,
+      "count": 1,
+      "price": 22932
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 37,
+    "fields": {
+      "order": 16,
+      "product": 7,
+      "count": 4,
+      "price": 4884
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 38,
+    "fields": {
+      "order": 17,
+      "product": 1,
+      "count": 1,
+      "price": 2250
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 39,
+    "fields": {
+      "order": 17,
+      "product": 11,
+      "count": 1,
+      "price": 28050
+    }
+  },
+  {
+    "model": "app_shop.purchasedproduct",
+    "pk": 40,
+    "fields": {
+      "order": 17,
+      "product": 7,
+      "count": 3,
+      "price": 3663
     }
   },
   {
