@@ -2,7 +2,6 @@ import logging
 
 from typing import Dict
 from django.contrib.auth.models import User
-from django.db.models import Sum, F
 from django.db import models
 
 from .products import Product
@@ -93,10 +92,8 @@ class Order(models.Model):
         Расчет стоимости заказа с учетом кол-ва каждого товара и текущей цены с учетом скидки
         """
         products = PurchasedProduct.objects.filter(order__id=self.id)
-        # amount = products.aggregate(amount=Sum(F('count') * F('price')))
-        amount = sum(record.position_cost for record in products)
+        amount = sum(record.price for record in products)
 
-        # return amount['amount']
         return amount
 
     class Meta:

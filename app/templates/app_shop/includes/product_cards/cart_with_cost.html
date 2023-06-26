@@ -14,7 +14,7 @@
     <div class="Card-description">
       {% if product.discount %}
         <div class="Card-cost flex price-block">
-          <div class="Card-price discount-price">{{ product.price }}<small> руб</small></div>
+          <div class="Card-price discount-price">{{ product.discounted_price }}<small> руб</small></div>
           <div class="discount-block">
             <div class="discount">—{{ product.discount }}%</div>
             <div class="old-price">{{ product.price }} р</div>
