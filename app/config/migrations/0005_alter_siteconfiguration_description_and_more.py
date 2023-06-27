@@ -5,30 +5,37 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('config', '0004_siteconfiguration_caching_time'),
+        ("config", "0004_siteconfiguration_caching_time"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='siteconfiguration',
-            name='description',
-            field=models.TextField(default='', max_length=500, verbose_name='Описание'),
+            model_name="siteconfiguration",
+            name="description",
+            field=models.TextField(default="", max_length=500, verbose_name="Описание"),
         ),
         migrations.AlterField(
-            model_name='siteconfiguration',
-            name='logo_footer',
-            field=models.ImageField(default='', upload_to=config.utils.saving_fales.saving_logo, verbose_name='Логотип в футере'),
+            model_name="siteconfiguration",
+            name="logo_footer",
+            field=models.ImageField(
+                default="",
+                upload_to=config.utils.saving_fales.saving_logo,
+                verbose_name="Логотип в футере",
+            ),
         ),
         migrations.AlterField(
-            model_name='siteconfiguration',
-            name='logo_head',
-            field=models.ImageField(default='', upload_to=config.utils.saving_fales.saving_logo, verbose_name='Логотип в шапке'),
+            model_name="siteconfiguration",
+            name="logo_head",
+            field=models.ImageField(
+                default="",
+                upload_to=config.utils.saving_fales.saving_logo,
+                verbose_name="Логотип в шапке",
+            ),
         ),
         migrations.AlterField(
-            model_name='siteconfiguration',
-            name='title',
-            field=models.CharField(default='', max_length=200, verbose_name='Название'),
+            model_name="siteconfiguration",
+            name="title",
+            field=models.CharField(default="", max_length=200, verbose_name="Название"),
         ),
     ]

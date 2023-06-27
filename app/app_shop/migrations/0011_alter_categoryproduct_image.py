@@ -5,15 +5,17 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app_shop', '0010_alter_productimages_options_and_more'),
+        ("app_shop", "0010_alter_productimages_options_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='categoryproduct',
-            name='image',
-            field=models.ImageField(upload_to=app_shop.utils.models.saving_files.saving_the_category_image, verbose_name='Изображение'),
+            model_name="categoryproduct",
+            name="image",
+            field=models.ImageField(
+                upload_to=app_shop.utils.models.saving_files.saving_the_category_image,
+                verbose_name="Изображение",
+            ),
         ),
     ]

@@ -25,9 +25,10 @@ def output_categories() -> QuerySet:
     config = get_config()
 
     categories = cache.get_or_set(
-        'categories',
-        CategoryProduct.objects.filter(deleted=False, parent=None).order_by('id'),
-        60 * config.caching_time)
+        "categories",
+        CategoryProduct.objects.filter(deleted=False, parent=None).order_by("id"),
+        60 * config.caching_time,
+    )
 
     return categories
 
@@ -40,12 +41,12 @@ def products_cart(context: Dict) -> Tuple[int, int]:
     @param context: словарь - контекстная переменная
     @return: кол-во записей, общая стоимость товаров
     """
-    logger.debug('Вывод в header кол-ва и стоимости товаров в корзине пользователя')
+    logger.debug("Вывод в header кол-ва и стоимости товаров в корзине пользователя")
 
     records_number = 0
     total_cost = 0
 
-    records = CartProductsListService.all_products(context['request'])
+    records = CartProductsListService.all_products(context["request"])
 
     if records:
         for record in records:
@@ -53,6 +54,6 @@ def products_cart(context: Dict) -> Tuple[int, int]:
 
         total_cost = ProductsCartUserService.total_cost(records)
 
-    logger.debug(f'Товаров: {records_number}, стоимость: {total_cost} руб')
+    logger.debug(f"Товаров: {records_number}, стоимость: {total_cost} руб")
 
     return records_number, total_cost

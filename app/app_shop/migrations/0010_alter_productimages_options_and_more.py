@@ -4,28 +4,38 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app_shop', '0009_alter_product_options_productreviews'),
+        ("app_shop", "0009_alter_product_options_productreviews"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='productimages',
-            options={'verbose_name': 'Изображение товара', 'verbose_name_plural': 'Изображения товара'},
+            name="productimages",
+            options={
+                "verbose_name": "Изображение товара",
+                "verbose_name_plural": "Изображения товара",
+            },
         ),
         migrations.AlterModelOptions(
-            name='productreviews',
-            options={'ordering': ['created_at'], 'verbose_name': 'Отзыв о товаре', 'verbose_name_plural': 'Отзывы о товаре'},
+            name="productreviews",
+            options={
+                "ordering": ["created_at"],
+                "verbose_name": "Отзыв о товаре",
+                "verbose_name_plural": "Отзывы о товаре",
+            },
         ),
         migrations.AlterField(
-            model_name='product',
-            name='created_at',
-            field=models.DateTimeField(auto_now_add=True, verbose_name='Время добавления товара'),
+            model_name="product",
+            name="created_at",
+            field=models.DateTimeField(
+                auto_now_add=True, verbose_name="Время добавления товара"
+            ),
         ),
         migrations.AlterField(
-            model_name='productreviews',
-            name='created_at',
-            field=models.DateTimeField(auto_now_add=True, verbose_name='Время добавления отзыва'),
+            model_name="productreviews",
+            name="created_at",
+            field=models.DateTimeField(
+                auto_now_add=True, verbose_name="Время добавления отзыва"
+            ),
         ),
     ]

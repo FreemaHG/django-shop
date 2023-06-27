@@ -5,40 +5,72 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app_user', '0001_initial'),
+        ("app_user", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='profile',
-            options={'verbose_name': 'Профиль', 'verbose_name_plural': 'Учетные записи'},
-        ),
-        migrations.CreateModel(
-            name='Seller',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=150, verbose_name='Продавец')),
-                ('description', models.TextField(verbose_name='Описание')),
-                ('profile', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='app_user.profile', verbose_name='Пользователь')),
-            ],
+            name="profile",
             options={
-                'verbose_name': 'Продавец',
-                'verbose_name_plural': 'Продавцы',
-                'db_table': 'seller',
+                "verbose_name": "Профиль",
+                "verbose_name_plural": "Учетные записи",
             },
         ),
         migrations.CreateModel(
-            name='Buyer',
+            name="Seller",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('profile', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='app_user.profile', verbose_name='Пользователь')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=150, verbose_name="Продавец")),
+                ("description", models.TextField(verbose_name="Описание")),
+                (
+                    "profile",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="app_user.profile",
+                        verbose_name="Пользователь",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Покупатель',
-                'verbose_name_plural': 'Покупатели',
-                'db_table': 'buyer',
+                "verbose_name": "Продавец",
+                "verbose_name_plural": "Продавцы",
+                "db_table": "seller",
+            },
+        ),
+        migrations.CreateModel(
+            name="Buyer",
+            fields=[
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "profile",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="app_user.profile",
+                        verbose_name="Пользователь",
+                    ),
+                ),
+            ],
+            options={
+                "verbose_name": "Покупатель",
+                "verbose_name_plural": "Покупатели",
+                "db_table": "buyer",
             },
         ),
     ]

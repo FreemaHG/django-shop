@@ -28,10 +28,10 @@ def tags_for_product(product: Product) -> QuerySet:
     @param product: объект товара
     @return: QuerySet с активными тегами
     """
-    logger.debug(f'Возврат активных тегов товара: {product.name}')
+    logger.debug(f"Возврат активных тегов товара: {product.name}")
 
     tags = product.tags.filter(deleted=False)
-    logger.debug(f'Найдено тегов: {tags.count()}')
+    logger.debug(f"Найдено тегов: {tags.count()}")
 
     return tags
 
@@ -45,18 +45,23 @@ def check_for_word_end(number: int = False) -> Union[str, None]:
     @param number: число - кол-во товара
     @return: строка - окончание слова
     """
-    logger.debug(f'Проверка входящего числа: {number}')
+    logger.debug(f"Проверка входящего числа: {number}")
 
     if number is not False:
-        if str(number)[-1] in ['5', '6', '7', '8', '9', '0'] or str(number)[-2:] in ['11', '12', '13', '14']:
-            return 'ов'
+        if str(number)[-1] in ["5", "6", "7", "8", "9", "0"] or str(number)[-2:] in [
+            "11",
+            "12",
+            "13",
+            "14",
+        ]:
+            return "ов"
 
-        elif str(number)[-1] in ['2', '3', '4']:
-            return 'а'
+        elif str(number)[-1] in ["2", "3", "4"]:
+            return "а"
 
         else:
-            return ''
+            return ""
 
     else:
-        logger.warning('Не передан числовой аргумент')
-        return ''
+        logger.warning("Не передан числовой аргумент")
+        return ""

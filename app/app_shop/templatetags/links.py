@@ -16,26 +16,26 @@ def clear_link_for_sort(link: str) -> str:
     @param link: строка-ссылка
     @return: очищенная строка
     """
-    logger.debug(f'Очистка ссылки для сортировки: {link}')
+    logger.debug(f"Очистка ссылки для сортировки: {link}")
 
-    if '&sort' in link:
-        link = link.split('&sort')[0]
+    if "&sort" in link:
+        link = link.split("&sort")[0]
 
-    elif '?sort' in link:
-        link = link.split('?sort')[0]
+    elif "?sort" in link:
+        link = link.split("?sort")[0]
 
-    elif '&page=' in link:
-        link = link.split('&page=')[0]
+    elif "&page=" in link:
+        link = link.split("&page=")[0]
 
-    elif '?page=' in link:
-        link = link.split('?page=')[0]
+    elif "?page=" in link:
+        link = link.split("?page=")[0]
 
-    if '?' not in link:
-        link += '?'
+    if "?" not in link:
+        link += "?"
     else:
-        link += '&'
+        link += "&"
 
-    logger.info(f'Возврат очищенной ссылки: {link}')
+    logger.info(f"Возврат очищенной ссылки: {link}")
 
     return link
 
@@ -49,20 +49,20 @@ def clear_link_for_paginate(link: str) -> str:
     @param link: строка-ссылка
     @return: очищенная строка
     """
-    logger.warning(f'Очистка ссылки для пагинации: {link}')
+    logger.warning(f"Очистка ссылки для пагинации: {link}")
 
-    if '&page=' in link:
-        link = link.split('&page=')[0]
+    if "&page=" in link:
+        link = link.split("&page=")[0]
 
-    elif '?page=' in link:
-        link = link.split('?page=')[0]
+    elif "?page=" in link:
+        link = link.split("?page=")[0]
 
-    if '?' not in link:
-        link += '?'
+    if "?" not in link:
+        link += "?"
     else:
-        link += '&'
+        link += "&"
 
-    logger.info(f'Возврат очищенной ссылки: {link}')
+    logger.info(f"Возврат очищенной ссылки: {link}")
 
     return link
 
@@ -77,9 +77,9 @@ def clear_link_for_next(link: str) -> str:
     """
     logger.debug(f'Очистка ссылки от "?next": {link}')
 
-    if '?next' in link:
-        link = link.split('?next=')[-1]
+    if "?next" in link:
+        link = link.split("?next=")[-1]
 
-    logger.info(f'Возврат очищенной ссылки: {link}')
+    logger.info(f"Возврат очищенной ссылки: {link}")
 
     return link

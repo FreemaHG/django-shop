@@ -33,20 +33,22 @@ class UserRegistrationService:
         @return: строка для редиректа на след.страницу (если есть), объект формы, сообщение об ошибке
         """
 
-        _ERROR_MESSAGE_EMAIL = 'Пользователь с таким email уже зарегистрирован'
-        _ERROR_MESSAGE_PHONE = 'Пользователь с таким номером телефона уже зарегистрирован'
+        _ERROR_MESSAGE_EMAIL = "Пользователь с таким email уже зарегистрирован"
+        _ERROR_MESSAGE_PHONE = (
+            "Пользователь с таким номером телефона уже зарегистрирован"
+        )
 
         form = RegisterUserForm(request.POST, request.FILES)
-        next_page = request.GET.get('next', False)
+        next_page = request.GET.get("next", False)
 
         if form.is_valid():
-            logger.debug(f'Данные валидны: {form.cleaned_data}')
+            logger.debug(f"Данные валидны: {form.cleaned_data}")
             user = form.save(commit=False)
-            full_name = form.cleaned_data.get('full_name', False)
-            email = form.cleaned_data.get('email', False)
-            phone_number = form.cleaned_data.get('phone_number', None)
-            avatar = request.FILES.get('avatar', None)
-            password = form.cleaned_data.get('password1')
+            full_name = form.cleaned_data.get("full_name", False)
+            email = form.cleaned_data.get("email", False)
+            phone_number = form.cleaned_data.get("phone_number", None)
+            avatar = request.FILES.get("avatar", None)
+            password = form.cleaned_data.get("password1")
 
             username = save_username(email)  # Извлекаем и сохраняем username по email
             user.username = username
@@ -57,7 +59,7 @@ class UserRegistrationService:
                 user.save()
 
             except IntegrityError:
-                logger.error(f'Регистрация - дублирующийся email')
+                logger.error(f"Регистрация - дублирующийся email")
 
                 return next_page, form, _ERROR_MESSAGE_EMAIL
 
@@ -66,11 +68,11 @@ class UserRegistrationService:
                     user=user,
                     full_name=full_name,
                     phone_number=cleaned_phone,
-                    avatar=avatar
+                    avatar=avatar,
                 )
 
             except IntegrityError:
-                logger.error(f'Регистрация - дублирующийся phone_number')
+                logger.error(f"Регистрация - дублирующийся phone_number")
                 return next_page, form, _ERROR_MESSAGE_PHONE
 
             # Слияние корзин в БД
@@ -83,13 +85,12 @@ class UserRegistrationService:
             return next_page, form, False
 
         else:
-            logger.error(f'Регистрация - не валидные данные: {form.errors}')
+            logger.error(f"Регистрация - не валидные данные: {form.errors}")
 
             return next_page, form, False
 
-
     @classmethod
-    def login(cls, request: HttpRequest, form : AuthUserForm) -> Any:
+    def login(cls, request: HttpRequest, form: AuthUserForm) -> Any:
         """
         Метод для авторизации пользователя
 
@@ -98,14 +99,14 @@ class UserRegistrationService:
         @return: строка для редиректа (если есть), объект формы,
             сообщение об успешной/неуспешной отправке инструкций на указанный Email
         """
-        logger.debug('Авторизация пользователя')
+        logger.debug("Авторизация пользователя")
 
-        _ERROR_MESSAGE = 'Email или пароль не верны!'
+        _ERROR_MESSAGE = "Email или пароль не верны!"
 
-        email = form.cleaned_data.get('email')
-        password = form.cleaned_data.get('password')
+        email = form.cleaned_data.get("email")
+        password = form.cleaned_data.get("password")
         username = save_username(email)
-        next_page = request.GET.get('next', False)
+        next_page = request.GET.get("next", False)
 
         try:
             user = authenticate(username=username, password=password)
@@ -115,16 +116,15 @@ class UserRegistrationService:
             CartProductsService.merge_carts(request=request, user=user)
 
             if next_page:
-                logger.debug(f'Возврат на страницу: {next_page}')
+                logger.debug(f"Возврат на страницу: {next_page}")
                 return next_page, False, False
 
-            logger.debug('Перенаправление в личный кабинет')
+            logger.debug("Перенаправление в личный кабинет")
             return False, True, False
 
         except AttributeError:
-            logger.warning('Email или пароль не верны!')
+            logger.warning("Email или пароль не верны!")
             return False, False, _ERROR_MESSAGE
-
 
     @classmethod
     def password_recovery(cls, form: EmailForm) -> Tuple[str, str]:
@@ -134,42 +134,45 @@ class UserRegistrationService:
         @param form: форма для ввода Email
         @return: сообщение об успешной/неуспешной отправке инструкций на указанный Email
         """
-        _MESSAGE = 'Новый пароль выслан на указанный Email'
-        _ERROR_MESSAGE = 'При отправке Email произошла ошибка! Попробуйте позже...'
-        _ERROR_MESSAGE_NOT_USER = 'Пользователь с таким Email не найден!'
+        _MESSAGE = "Новый пароль выслан на указанный Email"
+        _ERROR_MESSAGE = "При отправке Email произошла ошибка! Попробуйте позже..."
+        _ERROR_MESSAGE_NOT_USER = "Пользователь с таким Email не найден!"
 
-        logger.debug('Восстановление пароля пользователя')
+        logger.debug("Восстановление пароля пользователя")
 
-        email = form.cleaned_data.get('email')
+        email = form.cleaned_data.get("email")
         user = check_for_email(email)
 
         if user:
             new_password = password_generation()
             user.set_password(new_password)
             user.save()
-            logger.info(f'Пароль для пользователя username: {user.username} id: {user.id} успешно изменен')
+            logger.info(
+                f"Пароль для пользователя username: {user.username} id: {user.id} успешно изменен"
+            )
 
             try:
                 send_mail(
-                    f'{email} от Megano',
-                    f'Новый пароль - {new_password}',
+                    f"{email} от Megano",
+                    f"Новый пароль - {new_password}",
                     settings.DEFAULT_FROM_EMAIL,
                     [email],
                 )
 
-                logger.info('Сообщение в новым паролем успешно отправлено пользователю')
-                return _MESSAGE, ''
+                logger.info("Сообщение в новым паролем успешно отправлено пользователю")
+                return _MESSAGE, ""
 
             except BadHeaderError:
-                return '', _ERROR_MESSAGE
+                return "", _ERROR_MESSAGE
 
         else:
-            logger.warning(f'Пользователь с Email: {email} не найден')
-            return '', _ERROR_MESSAGE_NOT_USER
-
+            logger.warning(f"Пользователь с Email: {email} не найден")
+            return "", _ERROR_MESSAGE_NOT_USER
 
     @classmethod
-    def editing_data(cls, request: HttpRequest, form: RegisterUserForm) -> Tuple[str, str]:
+    def editing_data(
+        cls, request: HttpRequest, form: RegisterUserForm
+    ) -> Tuple[str, str]:
         """
         Метод для редактирования данных о пользователе
 
@@ -177,17 +180,19 @@ class UserRegistrationService:
         @param form: форма с новыми данными
         @return: сообщение об успешном/неуспешном обновлении данных
         """
-        logger.debug('Редактирование данных пользователя')
+        logger.debug("Редактирование данных пользователя")
 
-        _MESSAGE = 'Данные успешно обновлены'
-        _ERROR_MESSAGE_EMAIL = 'Указанный Email уже используется другим пользователем'
-        _ERROR_MESSAGE_PHONE = 'Указанный номер телефона уже используется другим пользователем'
+        _MESSAGE = "Данные успешно обновлены"
+        _ERROR_MESSAGE_EMAIL = "Указанный Email уже используется другим пользователем"
+        _ERROR_MESSAGE_PHONE = (
+            "Указанный номер телефона уже используется другим пользователем"
+        )
 
         user = request.user
-        full_name = form.cleaned_data.get('full_name', False)
-        email = form.cleaned_data.get('email', False)
-        phone_number = form.cleaned_data.get('phone_number', None)
-        avatar = request.FILES.get('avatar', False)
+        full_name = form.cleaned_data.get("full_name", False)
+        email = form.cleaned_data.get("email", False)
+        phone_number = form.cleaned_data.get("phone_number", None)
+        avatar = request.FILES.get("avatar", False)
 
         username = save_username(email)  # Извлекаем и сохраняем username по email
 
@@ -197,7 +202,7 @@ class UserRegistrationService:
             user.save()
 
         except IntegrityError:
-            return '', _ERROR_MESSAGE_EMAIL
+            return "", _ERROR_MESSAGE_EMAIL
 
         profile = Profile.objects.get(user=user)
 
@@ -215,6 +220,6 @@ class UserRegistrationService:
             profile.save()
 
         except IntegrityError:
-            return '', _ERROR_MESSAGE_PHONE
+            return "", _ERROR_MESSAGE_PHONE
 
-        return _MESSAGE, ''
+        return _MESSAGE, ""

@@ -6,20 +6,22 @@ import jsonfield.fields
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app_shop', '0003_alter_producttags_options_and_more'),
+        ("app_shop", "0003_alter_producttags_options_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='product',
-            name='characteristics',
-            field=jsonfield.fields.JSONField(verbose_name='Характеристики'),
+            model_name="product",
+            name="characteristics",
+            field=jsonfield.fields.JSONField(verbose_name="Характеристики"),
         ),
         migrations.AlterField(
-            model_name='product',
-            name='price',
-            field=models.FloatField(validators=[django.core.validators.MinValueValidator(0)], verbose_name='Стоимость'),
+            model_name="product",
+            name="price",
+            field=models.FloatField(
+                validators=[django.core.validators.MinValueValidator(0)],
+                verbose_name="Стоимость",
+            ),
         ),
     ]

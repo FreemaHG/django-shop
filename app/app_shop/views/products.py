@@ -29,9 +29,10 @@ class BaseListView(ListView):
     """
     Базовое представление для вывода списка товаров (используется в ProductsListView и ProductsLisSearchView)
     """
+
     model = Product
-    template_name = '../templates/app_shop/catalog.html'
-    context_object_name = 'products'
+    template_name = "../templates/app_shop/catalog.html"
+    context_object_name = "products"
     paginate_by = 8
 
     def get_context_data(self, **kwargs):
@@ -42,7 +43,7 @@ class BaseListView(ListView):
         context = SaveContextDataService.save_data(
             context=context,
             filter_parameters=self.filter_parameters,
-            request=self.request
+            request=self.request,
         )
 
         return context
@@ -60,20 +61,24 @@ class ProductsListView(BaseListView):
 
         @return: QuerySet с товарами
         """
-        logger.info(f'Новый запрос: {self.request.build_absolute_uri()}')
+        logger.info(f"Новый запрос: {self.request.build_absolute_uri()}")
 
         # Сохраняем параметры фильтрации
         self.filter_parameters = self.kwargs | clear_data(self.request.GET)
-        logger.info(f'Параметры фильтрации: {self.filter_parameters}')
+        logger.info(f"Параметры фильтрации: {self.filter_parameters}")
 
         # Фильтрация по категории / тегу
         products = ProductsListService.output(filter_parameters=self.filter_parameters)
 
         # Фильтрация по переданным в форме параметрам
-        products = ProductFilterService.output(products=products, filters=self.filter_parameters)
+        products = ProductFilterService.output(
+            products=products, filters=self.filter_parameters
+        )
 
         # Сортировка по переданным параметрам
-        products = ProductSortService.output(products=products, filters=self.filter_parameters)
+        products = ProductSortService.output(
+            products=products, filters=self.filter_parameters
+        )
 
         return products
 
@@ -86,23 +91,27 @@ class ProductsLisSearchView(BaseListView):
     def get_queryset(self) -> QuerySet:
         """
         Вывод товаров, найденных по поисковой фразе
-        
+
         @return: QuerySet с товарами
         """
-        logger.info(f'Новый запрос: {self.request.build_absolute_uri()}')
+        logger.info(f"Новый запрос: {self.request.build_absolute_uri()}")
 
         # Сохраняем параметры фильтрации
         self.filter_parameters = self.kwargs | clear_data(self.request.GET)
-        logger.info(f'Параметры фильтрации: {self.filter_parameters}')
+        logger.info(f"Параметры фильтрации: {self.filter_parameters}")
 
         # Поиск товаров по названию
         products = ProductsListSearchService.search(request=self.request)
 
         # Фильтрация по переданным в форме параметрам
-        products = ProductFilterService.output(products=products, filters=self.filter_parameters)
+        products = ProductFilterService.output(
+            products=products, filters=self.filter_parameters
+        )
 
         # Сортировка по переданным параметрам
-        products = ProductSortService.output(products=products, filters=self.filter_parameters)
+        products = ProductSortService.output(
+            products=products, filters=self.filter_parameters
+        )
 
         return products
 
@@ -111,9 +120,10 @@ class ProductDetailView(DetailView, FormMixin):
     """
     Представление для вывода детальной страницы товара с комментариями
     """
+
     model = Product
     form_class = CommentProductForm
-    template_name = '../templates/app_shop/detail_product/product.html'
+    template_name = "../templates/app_shop/detail_product/product.html"
 
     def get(self, request, *args, **kwargs):
         """
@@ -123,22 +133,30 @@ class ProductDetailView(DetailView, FormMixin):
 
         # Возвращаем объект из кэша / кэшируем объект
         # (кэш товара автоматически очищается в model.save() при редактировании товара)
-        self.object = cache.get_or_set(f'product_{id}', Product.objects.prefetch_related('images').get(id=id), 60 * config.caching_time)
+        self.object = cache.get_or_set(
+            f"product_{id}",
+            Product.objects.prefetch_related("images").get(id=id),
+            60 * config.caching_time,
+        )
 
         context = self.get_context_data(object=self.object)
-        comments = ProductCommentsService.all_comments(product=self.object)  # Комментарии к товару
+        comments = ProductCommentsService.all_comments(
+            product=self.object
+        )  # Комментарии к товару
 
         # id товаров в корзине текущего пользователя
         # (для корректного отображения кнопки добавления товара/перехода в корзину)
         cart_products = CartProductsListService.id_products(request=self.request)
 
-        context['cart_products'] = cart_products
-        context['comments'] = comments[:1]
-        context['total_comments'] = comments.count()
+        context["cart_products"] = cart_products
+        context["comments"] = comments[:1]
+        context["total_comments"] = comments.count()
 
         # Добавление записи в истории просмотра авторизованного пользователя
         if request.user.is_authenticated:
-            ProductBrowsingHistoryService.save_view(request=request, product=self.object)
+            ProductBrowsingHistoryService.save_view(
+                request=request, product=self.object
+            )
 
         return self.render_to_response(context)
 
@@ -151,26 +169,32 @@ class ProductDetailView(DetailView, FormMixin):
         comments = ProductCommentsService.all_comments(product=product)
 
         if form.is_valid():
-            logger.debug(f'Данные формы валидны: {form.cleaned_data}')
+            logger.debug(f"Данные формы валидны: {form.cleaned_data}")
 
             result = ProductCommentsService.add_new_comments(
-                form=form,
-                product=product,
-                user=request.user
+                form=form, product=product, user=request.user
             )
 
             if result:
-                return HttpResponseRedirect(reverse('shop:product_detail', kwargs={'pk': pk}))
+                return HttpResponseRedirect(
+                    reverse("shop:product_detail", kwargs={"pk": pk})
+                )
             else:
-                logger.error(f'Ошибка при публикации комментария')
-                return HttpResponse('При публикации комментария произошла ошибка, попробуйте позже...')
+                logger.error(f"Ошибка при публикации комментария")
+                return HttpResponse(
+                    "При публикации комментария произошла ошибка, попробуйте позже..."
+                )
 
         else:
-            logger.warning(f'Невалидные данные: {form.errors}')
+            logger.warning(f"Невалидные данные: {form.errors}")
 
-            return render(request, '../templates/app_shop/detail_product/product.html', context={
-                'object': product,
-                'comments': comments,
-                'total_comments': comments.count(),
-                'form': form
-            })
+            return render(
+                request,
+                "../templates/app_shop/detail_product/product.html",
+                context={
+                    "object": product,
+                    "comments": comments,
+                    "total_comments": comments.count(),
+                    "form": form,
+                },
+            )

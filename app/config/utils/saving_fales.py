@@ -1,7 +1,8 @@
 import os.path
 
 
-IMAGES_PATH = os.path.join('images', 'logo')
+IMAGES_PATH = os.path.join("images", "logo")
+
 
 def saving_logo(instance, filename: str) -> str:
     """

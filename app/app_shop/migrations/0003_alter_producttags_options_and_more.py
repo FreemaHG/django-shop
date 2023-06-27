@@ -4,19 +4,18 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app_shop', '0002_product_producttags_productimages_product_tags'),
+        ("app_shop", "0002_product_producttags_productimages_product_tags"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='producttags',
-            options={'verbose_name': 'Тег', 'verbose_name_plural': 'Теги'},
+            name="producttags",
+            options={"verbose_name": "Тег", "verbose_name_plural": "Теги"},
         ),
         migrations.RenameField(
-            model_name='product',
-            old_name='description',
-            new_name='definition',
+            model_name="product",
+            old_name="description",
+            new_name="definition",
         ),
     ]

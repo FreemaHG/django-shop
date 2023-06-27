@@ -4,25 +4,31 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('config', '0001_initial'),
+        ("config", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='siteconfiguration',
-            name='extra_shipping_cost',
-            field=models.IntegerField(default=500, verbose_name='Надбавочная стоимость для экспресс-доставки'),
+            model_name="siteconfiguration",
+            name="extra_shipping_cost",
+            field=models.IntegerField(
+                default=500, verbose_name="Надбавочная стоимость для экспресс-доставки"
+            ),
         ),
         migrations.AddField(
-            model_name='siteconfiguration',
-            name='min_order_cost',
-            field=models.IntegerField(default=2000, verbose_name='Минимальная стоимость заказа для бесплатной доставки'),
+            model_name="siteconfiguration",
+            name="min_order_cost",
+            field=models.IntegerField(
+                default=2000,
+                verbose_name="Минимальная стоимость заказа для бесплатной доставки",
+            ),
         ),
         migrations.AddField(
-            model_name='siteconfiguration',
-            name='shipping_cost',
-            field=models.IntegerField(default=200, verbose_name='Стоимость обычной доставки'),
+            model_name="siteconfiguration",
+            name="shipping_cost",
+            field=models.IntegerField(
+                default=200, verbose_name="Стоимость обычной доставки"
+            ),
         ),
     ]

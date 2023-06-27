@@ -24,13 +24,18 @@ class ProductsListSearchService:
         @return: QuerySet с товарами
         """
 
-        query = request.GET['query']
-        logger.debug(f'Поиск товаров по фразе: {query}')
+        query = request.GET["query"]
+        logger.debug(f"Поиск товаров по фразе: {query}")
 
         products = Product.objects.filter(
-            Q(name__icontains=query) | Q(name__contains=query) | Q(name__startswith=query) | Q(name__endswith=query) |
-            Q(name__icontains=query.capitalize()) | Q(name__contains=query.capitalize()) |
-            Q(name__startswith=query.capitalize()) | Q(name__endswith=query.capitalize())
+            Q(name__icontains=query)
+            | Q(name__contains=query)
+            | Q(name__startswith=query)
+            | Q(name__endswith=query)
+            | Q(name__icontains=query.capitalize())
+            | Q(name__contains=query.capitalize())
+            | Q(name__startswith=query.capitalize())
+            | Q(name__endswith=query.capitalize())
         )
 
         return products

@@ -5,19 +5,23 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app_shop', '0023_productbrowsinghistory'),
+        ("app_shop", "0023_productbrowsinghistory"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='productbrowsinghistory',
-            options={'ordering': ['-viewing_time']},
+            name="productbrowsinghistory",
+            options={"ordering": ["-viewing_time"]},
         ),
         migrations.AlterField(
-            model_name='productimages',
-            name='product',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='images', to='app_shop.product', verbose_name='Товар'),
+            model_name="productimages",
+            name="product",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="images",
+                to="app_shop.product",
+                verbose_name="Товар",
+            ),
         ),
     ]

@@ -6,20 +6,46 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('app_shop', '0022_product_purchases'),
+        ("app_shop", "0022_product_purchases"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ProductBrowsingHistory',
+            name="ProductBrowsingHistory",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('viewing_time', models.DateTimeField(auto_now_add=True, verbose_name='Время просмотра')),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app_shop.product', verbose_name='Товар')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='Пользователь')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "viewing_time",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Время просмотра"
+                    ),
+                ),
+                (
+                    "product",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="app_shop.product",
+                        verbose_name="Товар",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="Пользователь",
+                    ),
+                ),
             ],
         ),
     ]

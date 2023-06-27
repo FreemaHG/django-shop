@@ -30,16 +30,15 @@ class ProductsForMainService:
         @return: словарь с данными по товарам и категориям
         """
 
-        context['selected_categories'] = ProductsForMainService.selected_categories()
-        context['limited_products'] = ProductsForMainService.limited_edition()
-        context['popular_products'] = ProductsForMainService.popular_products()
+        context["selected_categories"] = ProductsForMainService.selected_categories()
+        context["limited_products"] = ProductsForMainService.limited_edition()
+        context["popular_products"] = ProductsForMainService.popular_products()
 
         # id товаров в корзине текущего пользователя
         # для корректного отображения кнопки добавления/удаления товара из корзины в карточке товара
-        context['products_id'] = CartProductsListService.id_products(request=request)
+        context["products_id"] = CartProductsListService.id_products(request=request)
 
         return context
-
 
     @classmethod
     def selected_categories(cls) -> QuerySet:
@@ -50,14 +49,14 @@ class ProductsForMainService:
         """
 
         categories = cache.get_or_set(
-            'selected_categories',
-            CategoryProduct.objects.only('title', 'slug', 'image').filter(selected=True)
-            .annotate(min_price=Min('product__price'))[:3],
-            cls._CACHING_TIME
+            "selected_categories",
+            CategoryProduct.objects.only("title", "slug", "image")
+            .filter(selected=True)
+            .annotate(min_price=Min("product__price"))[:3],
+            cls._CACHING_TIME,
         )
 
         return categories
-
 
     @classmethod
     def popular_products(cls) -> QuerySet:
@@ -69,15 +68,18 @@ class ProductsForMainService:
         """
 
         most_popular_products = cache.get_or_set(
-            'popular_products',
-            list(Product.objects.select_related('category').only('id', 'name', 'category__title', 'price', 'discount')
-                 .order_by('-purchases')[:30]),
-            cls._CACHING_TIME)
+            "popular_products",
+            list(
+                Product.objects.select_related("category")
+                .only("id", "name", "category__title", "price", "discount")
+                .order_by("-purchases")[:30]
+            ),
+            cls._CACHING_TIME,
+        )
 
         random.shuffle(most_popular_products)
 
         return most_popular_products[:8]
-
 
     @classmethod
     def limited_edition(cls) -> QuerySet:
@@ -87,9 +89,11 @@ class ProductsForMainService:
         @return: QuerySet с товарами
         """
         products = cache.get_or_set(
-            'limited_edition',
-            Product.objects.select_related('category').only('id', 'name', 'category__title', 'price', 'discount')
+            "limited_edition",
+            Product.objects.select_related("category")
+            .only("id", "name", "category__title", "price", "discount")
             .filter(limited_edition=True),
-            cls._CACHING_TIME)
+            cls._CACHING_TIME,
+        )
 
         return products

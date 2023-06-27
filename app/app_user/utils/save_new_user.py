@@ -11,7 +11,7 @@ def save_username(email: str) -> str:
     @param email: строка - email
     @return: строка - username
     """
-    username = email.split('@')[0]
+    username = email.split("@")[0]
 
     return username
 
@@ -23,13 +23,13 @@ def cleaned_phone_data(phone: str) -> str | bool:
     @param phone: строка - номер телефона
     @return: строка - очищенный номер телефона / False, если передана пустая строка
     """
-    logger.debug(f'Очистка номера телефона. Передана строка: {phone}')
+    logger.debug(f"Очистка номера телефона. Передана строка: {phone}")
 
-    if phone.startswith('+7'):
-        return phone.split('+7')[1]
+    if phone.startswith("+7"):
+        return phone.split("+7")[1]
 
-    if phone.startswith('+'):
-        return phone.lstrip('+')
+    if phone.startswith("+"):
+        return phone.lstrip("+")
 
     elif not phone:
         return False

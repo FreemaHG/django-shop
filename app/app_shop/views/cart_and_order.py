@@ -23,16 +23,17 @@ class ShoppingCartView(TemplateView):
     """
     Представление для вывода корзины с товарами пользователя
     """
-    template_name = '../templates/app_shop/cart.html'
+
+    template_name = "../templates/app_shop/cart.html"
 
     def get_context_data(self, **kwargs) -> Dict:
         context = super().get_context_data(**kwargs)
         records = CartProductsListService.all_products(self.request)
 
         if records:
-            context['records'] = records
+            context["records"] = records
             total_cost = ProductsCartUserService.total_cost(records)
-            context['total_cost'] = total_cost
+            context["total_cost"] = total_cost
 
         return context
 
@@ -41,7 +42,8 @@ class OrderRegistrationView(TemplateView):
     """
     Представление для вывода и обработки формы при регистрации заказа
     """
-    template_name = '../templates/app_shop/orders/registration/order.html'
+
+    template_name = "../templates/app_shop/orders/registration/order.html"
 
     def get(self, request, *args, **kwargs):
         """
@@ -51,16 +53,18 @@ class OrderRegistrationView(TemplateView):
         context = self.get_context_data(**kwargs)
 
         if request.user.is_authenticated:
-            logger.debug('Вывод формы для оформления заказа')
-            context['form'] = MakingOrderForm()
+            logger.debug("Вывод формы для оформления заказа")
+            context["form"] = MakingOrderForm()
             records = CartProductsListService.all_products(request=request)
-            context['records'] = records
+            context["records"] = records
 
             return self.render_to_response(context)
 
         else:
-            logger.warning('Пользователь не авторизован. Вывод формы для регистрации пользователя')
-            context['form'] = RegisterUserForm()
+            logger.warning(
+                "Пользователь не авторизован. Вывод формы для регистрации пользователя"
+            )
+            context["form"] = RegisterUserForm()
 
             return self.render_to_response(context)
 
@@ -71,29 +75,37 @@ class OrderRegistrationView(TemplateView):
         form = MakingOrderForm(request.POST)
 
         if form.is_valid():
-            logger.debug(f'Данные формы валидны: {form.cleaned_data}')
+            logger.debug(f"Данные формы валидны: {form.cleaned_data}")
 
             # Регистрация заказа
             order = RegistrationOrderService.create_order(request=request, form=form)
 
             if order:
-                logger.info('Заказ успешно оформлен')
+                logger.info("Заказ успешно оформлен")
 
                 if order.payment == 1:
-                    logger.debug('Перенаправление на страницу ввода номера карты')
-                    return redirect(reverse('shop:online_payment', kwargs={'order_id': order.id}))
+                    logger.debug("Перенаправление на страницу ввода номера карты")
+                    return redirect(
+                        reverse("shop:online_payment", kwargs={"order_id": order.id})
+                    )
 
                 else:
-                    logger.debug('Перенаправление на страницу генерации случайного чужого счета')
-                    return redirect(reverse('shop:someone_payment', kwargs={'order_id': order.id}))
+                    logger.debug(
+                        "Перенаправление на страницу генерации случайного чужого счета"
+                    )
+                    return redirect(
+                        reverse("shop:someone_payment", kwargs={"order_id": order.id})
+                    )
 
             else:
-                logger.error('Ошибка при оформлении заказа')
-                return HttpResponse('При оформлении заказа произошла ошибка, попробуйте позже...')
+                logger.error("Ошибка при оформлении заказа")
+                return HttpResponse(
+                    "При оформлении заказа произошла ошибка, попробуйте позже..."
+                )
 
         else:
-            logger.error(f'Не валидные данные: {form.errors}')
-            return reverse('shop:order_registration')
+            logger.error(f"Не валидные данные: {form.errors}")
+            return reverse("shop:order_registration")
 
 
 class PaymentView(TemplateView):
@@ -101,19 +113,20 @@ class PaymentView(TemplateView):
     Представление для вывода и обработки формы для ввода номера карты
     (генерации случайного чужого счета) для оплаты заказа
     """
-    template_name = '../templates/app_shop/orders/payment/payment.html'
+
+    template_name = "../templates/app_shop/orders/payment/payment.html"
 
     def post(self, request, **kwargs):
         """
         Вызов метода для оплаты заказа с номера введенной карты.
         Перенаправление на страницу-загрушку для ожидания фиктивной оплаты.
         """
-        order_id = kwargs['order_id']
-        cart_number = request.POST['numero1']
+        order_id = kwargs["order_id"]
+        cart_number = request.POST["numero1"]
 
         PaymentService.payment_processing(order_id=order_id, cart_number=cart_number)
 
-        return redirect(reverse('shop:progress_payment', kwargs={'order_id': order_id}))
+        return redirect(reverse("shop:progress_payment", kwargs={"order_id": order_id}))
 
 
 class ProgressPaymentView(View):
@@ -121,17 +134,23 @@ class ProgressPaymentView(View):
     Представление для вывода заглушки, имитирующей ожидание от сервиса оплаты.
     Автоматический редирект на страницу заказа через 4 сек при помощи JS-скрипта.
     """
+
     def get(self, request, **kwargs):
-        order_id = kwargs['order_id']
-        return render(request, '../templates/app_shop/orders/payment/progressPayment.html', {'order_id': order_id})
+        order_id = kwargs["order_id"]
+        return render(
+            request,
+            "../templates/app_shop/orders/payment/progressPayment.html",
+            {"order_id": order_id},
+        )
 
 
 class HistoryOrderView(ListView):
     """
     Представление для вывода страницы с заказами текущего пользователя
     """
+
     model = Order
-    template_name = '../templates/app_shop/orders/historyorder.html'
+    template_name = "../templates/app_shop/orders/historyorder.html"
     paginate_by = 4
 
 
@@ -139,16 +158,21 @@ class OrderInformationView(DetailView):
     """
     Представление для вывода детальной страницы заказа
     """
+
     model = Order
-    template_name = '../templates/app_shop/orders/oneorder.html'
+    template_name = "../templates/app_shop/orders/oneorder.html"
 
     def get(self, request, *args, **kwargs):
         """
         Возврат заказа и сохранение в контексте товаров текущего заказа для вывода в шаблоне
         """
-        self.object = Order.objects.select_related('user', 'user__profile').get(id=self.kwargs['pk'])
+        self.object = Order.objects.select_related("user", "user__profile").get(
+            id=self.kwargs["pk"]
+        )
 
         context = self.get_context_data(object=self.object)
-        context = RegistrationOrderService.save_order_products_in_context(context=context, order=self.object)
+        context = RegistrationOrderService.save_order_products_in_context(
+            context=context, order=self.object
+        )
 
         return self.render_to_response(context)

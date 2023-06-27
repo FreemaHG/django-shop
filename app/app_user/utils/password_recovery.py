@@ -13,8 +13,8 @@ def password_generation() -> str:
     @return: строка - рандомный пароль
     """
     alphabet = string.ascii_letters + string.digits
-    new_password = ''.join(secrets.choice(alphabet) for i in range(8))
+    new_password = "".join(secrets.choice(alphabet) for i in range(8))
 
-    logger.info(f'Сгенерирован новый случайный пароль')
+    logger.info(f"Сгенерирован новый случайный пароль")
 
     return new_password

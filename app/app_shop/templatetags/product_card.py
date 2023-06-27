@@ -20,6 +20,6 @@ def product_image(product_id: int) -> ProductImages:
     image = ProductImages.objects.filter(product=product_id).first()
 
     if not image:
-        logger.warning('Изображение не найдено')
+        logger.warning("Изображение не найдено")
 
     return image

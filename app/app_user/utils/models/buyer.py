@@ -25,11 +25,11 @@ class BuyerUtil:
 
         try:
             buyer = Buyer.objects.get(profile=profile)
-            logger.debug(f'Покупатель найден: id - {buyer.id})')
+            logger.debug(f"Покупатель найден: id - {buyer.id})")
 
             return buyer
 
         except ObjectDoesNotExist:
-            logger.warning('Покупатель не найден')
+            logger.warning("Покупатель не найден")
 
             return False

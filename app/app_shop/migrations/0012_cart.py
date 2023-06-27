@@ -5,25 +5,49 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app_user', '0006_buyer_deleted_profile_deleted_seller_deleted'),
-        ('app_shop', '0011_alter_categoryproduct_image'),
+        ("app_user", "0006_buyer_deleted_profile_deleted_seller_deleted"),
+        ("app_shop", "0011_alter_categoryproduct_image"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Cart',
+            name="Cart",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('count', models.PositiveIntegerField(default=1, verbose_name='Кол-во')),
-                ('buyer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app_user.buyer', verbose_name='Покупатель')),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app_shop.product', verbose_name='Товар')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "count",
+                    models.PositiveIntegerField(default=1, verbose_name="Кол-во"),
+                ),
+                (
+                    "buyer",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="app_user.buyer",
+                        verbose_name="Покупатель",
+                    ),
+                ),
+                (
+                    "product",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="app_shop.product",
+                        verbose_name="Товар",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Корзина',
-                'verbose_name_plural': 'Корзины',
-                'db_table': 'products_cart',
+                "verbose_name": "Корзина",
+                "verbose_name_plural": "Корзины",
+                "db_table": "products_cart",
             },
         ),
     ]

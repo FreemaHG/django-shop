@@ -5,15 +5,18 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('config', '0003_alter_siteconfiguration_extra_shipping_cost_and_more'),
+        ("config", "0003_alter_siteconfiguration_extra_shipping_cost_and_more"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='siteconfiguration',
-            name='caching_time',
-            field=models.PositiveIntegerField(default=1, validators=[django.core.validators.MaxValueValidator(168)], verbose_name='Кэширование (кол-во часов)'),
+            model_name="siteconfiguration",
+            name="caching_time",
+            field=models.PositiveIntegerField(
+                default=1,
+                validators=[django.core.validators.MaxValueValidator(168)],
+                verbose_name="Кэширование (кол-во часов)",
+            ),
         ),
     ]

@@ -30,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7k9xa@$#*i^707qq(5l5p0xik4!f3*r_87^r72h_(625--x2i8'
+SECRET_KEY = "django-insecure-7k9xa@$#*i^707qq(5l5p0xik4!f3*r_87^r72h_(625--x2i8"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,89 +41,83 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'mptt',  # Вложенные категории
-    'app_user.apps.AppUserConfig',
-    'app_shop.apps.AppShopConfig',
-    'config.apps.ConfigConfig',  # Конфигурация сайта
-    'django_cleanup.apps.CleanupConfig',  # Очистка файлов при удалении записи
-    'solo',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "mptt",  # Вложенные категории
+    "app_user.apps.AppUserConfig",
+    "app_shop.apps.AppShopConfig",
+    "config.apps.ConfigConfig",  # Конфигурация сайта
+    "django_cleanup.apps.CleanupConfig",  # Очистка файлов при удалении записи
+    "solo",
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
     # 'django.middleware.cache.UpdateCacheMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.locale.LocaleMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = 'megano.urls'
+ROOT_URLCONF = "megano.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [BASE_DIR / "templates"],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
 CASHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-        'LOCATION': 'unique-snowflake',
-        'TIMEOUT': 60 * 60 * 24,  # Кэширование на сутки
-        'OPTIONS': {
-            'MAX_ENTRIES': 500
-        }
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "unique-snowflake",
+        "TIMEOUT": 60 * 60 * 24,  # Кэширование на сутки
+        "OPTIONS": {"MAX_ENTRIES": 500},
     }
 }
 
-WSGI_APPLICATION = 'megano.wsgi.application'
+WSGI_APPLICATION = "megano.wsgi.application"
 
 LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-            'color': {
-                '()': 'colorlog.ColoredFormatter',
-                'format': '%(log_color)s%(asctime)-8s %(levelname)s - %(name)s.py | func:%(funcName)s (%(lineno)s) - %(message)s',
-                'log_colors': {
-                    'DEBUG':    'white',
-                    'INFO':     'green',
-                    'WARNING':  'yellow',
-                    'ERROR':    'red',
-                    'CRITICAL': 'bold_red',
-                },
-            }
-        },
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-            'formatter': 'color'
-        },
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "color": {
+            "()": "colorlog.ColoredFormatter",
+            "format": "%(log_color)s%(asctime)-8s %(levelname)s - %(name)s.py | func:%(funcName)s (%(lineno)s) - %(message)s",
+            "log_colors": {
+                "DEBUG": "white",
+                "INFO": "green",
+                "WARNING": "yellow",
+                "ERROR": "red",
+                "CRITICAL": "bold_red",
+            },
+        }
     },
-    'root': {
-        'handlers': ['console'],
-        'level': 'DEBUG',
+    "handlers": {
+        "console": {"class": "logging.StreamHandler", "formatter": "color"},
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "DEBUG",
     },
 }
 
@@ -131,9 +125,9 @@ LOGGING = {
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {  # Для разработки
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {  # Для разработки
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     },
     # 'mysql': {
     #     'NAME': 'mysql_db',
@@ -148,16 +142,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -165,9 +159,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'ru-RU'
+LANGUAGE_CODE = "ru-RU"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -178,25 +172,25 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Пустая папка для сбора статики командой collectstatic
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(
+    BASE_DIR, "staticfiles"
+)  # Пустая папка для сбора статики командой collectstatic
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 MPTT_ADMIN_LEVEL_INDENT = 20  # Размер отступа при выводе древовидной структуры
 
 RECIPIENTS_EMAIL = []
-DEFAULT_FROM_EMAIL = 'support@megano.ru'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = "support@megano.ru"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 SESSION_COOKIE_AGE = 7 * 24 * 60 * 60  # Время жизни сессии (7 дней)

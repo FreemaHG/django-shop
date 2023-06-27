@@ -4,19 +4,35 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app_shop', '0020_alter_order_options_alter_purchasedproduct_options_and_more'),
+        (
+            "app_shop",
+            "0020_alter_order_options_alter_purchasedproduct_options_and_more",
+        ),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='order',
-            options={'ordering': ['-data_created'], 'verbose_name': 'Заказ', 'verbose_name_plural': 'Заказы'},
+            name="order",
+            options={
+                "ordering": ["-data_created"],
+                "verbose_name": "Заказ",
+                "verbose_name_plural": "Заказы",
+            },
         ),
         migrations.AlterField(
-            model_name='order',
-            name='status',
-            field=models.IntegerField(choices=[(1, 'Оформлен'), (2, 'Не оплачен'), (3, 'Подтверждение оплаты'), (4, 'Оплачен'), (5, 'Доставляется')], default=1, verbose_name='Статус'),
+            model_name="order",
+            name="status",
+            field=models.IntegerField(
+                choices=[
+                    (1, "Оформлен"),
+                    (2, "Не оплачен"),
+                    (3, "Подтверждение оплаты"),
+                    (4, "Оплачен"),
+                    (5, "Доставляется"),
+                ],
+                default=1,
+                verbose_name="Статус",
+            ),
         ),
     ]

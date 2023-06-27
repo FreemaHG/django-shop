@@ -34,55 +34,133 @@ from .views.cart_and_order import (
 )
 
 
-app_name = 'shop'
+app_name = "shop"
 config = get_config()  # Настройки сайта с параметрами кэширования
 
 
 urlpatterns = [
-    path('', MainView.as_view(), name='main'),
-    path('about/', cache_page(60 * config.caching_time)(AboutView.as_view()), name='about'),
-    path('sale/', cache_page(60 * config.caching_time)(ProductsSalesView.as_view()), name='sale'),
-
+    path("", MainView.as_view(), name="main"),
+    path(
+        "about/",
+        cache_page(60 * config.caching_time)(AboutView.as_view()),
+        name="about",
+    ),
+    path(
+        "sale/",
+        cache_page(60 * config.caching_time)(ProductsSalesView.as_view()),
+        name="sale",
+    ),
     # Фильтрация товаров по категории / тегу, параметрам фильтрации, сортировка товаров
-    path('catalog/', include([
-        path('', cache_page(60 * config.caching_time)(ProductsListView.as_view()), name='products_list'),
-        re_path(r'^(?P<group>.*)/(?P<name>.*)/.*', ProductsListView.as_view(), name='products_list'),
-    ])),
-
+    path(
+        "catalog/",
+        include(
+            [
+                path(
+                    "",
+                    cache_page(60 * config.caching_time)(ProductsListView.as_view()),
+                    name="products_list",
+                ),
+                re_path(
+                    r"^(?P<group>.*)/(?P<name>.*)/.*",
+                    ProductsListView.as_view(),
+                    name="products_list",
+                ),
+            ]
+        ),
+    ),
     # Поиск товаров с фильтрацией и сортировкой результатов
-    path('search/', include([
-        re_path(r'^.*', ProductsLisSearchView.as_view(), name='search'),
-    ])),
-
-    path('product/', include([
-        path('<int:pk>', ProductDetailView.as_view(), name='product_detail'),  # Страница товара
-        path('load_comments/', load_comments, name='load_comments'),  # Загрузка доп.комментария (Ajax-запрос)
-
-        path('add_product/', include([  # Добавление товара в корзину
-            path('', add_product, name='add_product'),  # Ajax-запрос
-            re_path(r'^(?P<product_id>.*)/next=(?P<next>.*)', add_product_in_cart, name='add_product'),  # С перезагрузкой страницы
-        ])),
-
-        # Удаление товара из корзины (с перезагрузкой страницы)
-        re_path(r'^delete_product/(?P<product_id>.*)/next=(?P<next>.*)', delete_product, name='delete_product'),
-    ])),
-
+    path(
+        "search/",
+        include(
+            [
+                re_path(r"^.*", ProductsLisSearchView.as_view(), name="search"),
+            ]
+        ),
+    ),
+    path(
+        "product/",
+        include(
+            [
+                path(
+                    "<int:pk>", ProductDetailView.as_view(), name="product_detail"
+                ),  # Страница товара
+                path(
+                    "load_comments/", load_comments, name="load_comments"
+                ),  # Загрузка доп.комментария (Ajax-запрос)
+                path(
+                    "add_product/",
+                    include(
+                        [  # Добавление товара в корзину
+                            path("", add_product, name="add_product"),  # Ajax-запрос
+                            re_path(
+                                r"^(?P<product_id>.*)/next=(?P<next>.*)",
+                                add_product_in_cart,
+                                name="add_product",
+                            ),  # С перезагрузкой страницы
+                        ]
+                    ),
+                ),
+                # Удаление товара из корзины (с перезагрузкой страницы)
+                re_path(
+                    r"^delete_product/(?P<product_id>.*)/next=(?P<next>.*)",
+                    delete_product,
+                    name="delete_product",
+                ),
+            ]
+        ),
+    ),
     # Корзина
-    path('shopping_cart/', ShoppingCartView.as_view(), name='shopping_cart'),  # Корзина с товарами
-    path('reduce_product/<int:product_id>', reduce_product, name='reduce_product'),  # Уменьшение кол-ва товара в корзине
-    path('increase_product/<int:product_id>', increase_product, name='increase_product'),  # Увеличение кол-ва товара в корзине
-
+    path(
+        "shopping_cart/", ShoppingCartView.as_view(), name="shopping_cart"
+    ),  # Корзина с товарами
+    path(
+        "reduce_product/<int:product_id>", reduce_product, name="reduce_product"
+    ),  # Уменьшение кол-ва товара в корзине
+    path(
+        "increase_product/<int:product_id>", increase_product, name="increase_product"
+    ),  # Увеличение кол-ва товара в корзине
     # Заказы
-    path('order/', include([
-        path('registration/', OrderRegistrationView.as_view(), name='order_registration'),  # Регистрация заказа
-        path('history/', HistoryOrderView.as_view(), name='history_order'),  # История заказов
-        path('detail/<int:pk>', OrderInformationView.as_view(), name='order_detail'),  # Информация о заказе
-    ])),
-
+    path(
+        "order/",
+        include(
+            [
+                path(
+                    "registration/",
+                    OrderRegistrationView.as_view(),
+                    name="order_registration",
+                ),  # Регистрация заказа
+                path(
+                    "history/", HistoryOrderView.as_view(), name="history_order"
+                ),  # История заказов
+                path(
+                    "detail/<int:pk>",
+                    OrderInformationView.as_view(),
+                    name="order_detail",
+                ),  # Информация о заказе
+            ]
+        ),
+    ),
     # Оплата заказа
-    path('payment/', include([
-        path('online/<int:order_id>/', cache_page(60 * config.caching_time)(PaymentView.as_view()), name='online_payment'),  # Онлайн картой
-        path('someone/<int:order_id>/', cache_page(60 * config.caching_time)(PaymentView.as_view()), name='someone_payment'),  # Онлайн со случайного чужого счета
-        path('progress_payment/<int:order_id>/', cache_page(60 * config.caching_time)(ProgressPaymentView.as_view()), name='progress_payment'),  # Ожидание оплаты
-    ])),
+    path(
+        "payment/",
+        include(
+            [
+                path(
+                    "online/<int:order_id>/",
+                    cache_page(60 * config.caching_time)(PaymentView.as_view()),
+                    name="online_payment",
+                ),  # Онлайн картой
+                path(
+                    "someone/<int:order_id>/",
+                    cache_page(60 * config.caching_time)(PaymentView.as_view()),
+                    name="someone_payment",
+                ),  # Онлайн со случайного чужого счета
+                path(
+                    "progress_payment/<int:order_id>/",
+                    cache_page(60 * config.caching_time)(ProgressPaymentView.as_view()),
+                    name="progress_payment",
+                ),  # Ожидание оплаты
+            ]
+        ),
+    ),
 ]

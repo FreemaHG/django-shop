@@ -5,32 +5,69 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app_user', '0006_buyer_deleted_profile_deleted_seller_deleted'),
-        ('app_shop', '0008_alter_producttags_slug'),
+        ("app_user", "0006_buyer_deleted_profile_deleted_seller_deleted"),
+        ("app_shop", "0008_alter_producttags_slug"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='product',
-            options={'ordering': ['id'], 'verbose_name': 'Товар', 'verbose_name_plural': 'Товары'},
+            name="product",
+            options={
+                "ordering": ["id"],
+                "verbose_name": "Товар",
+                "verbose_name_plural": "Товары",
+            },
         ),
         migrations.CreateModel(
-            name='ProductReviews',
+            name="ProductReviews",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('review', models.TextField(max_length=2500, verbose_name='Отзыв')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Дата и время добавления отзыва')),
-                ('deleted', models.BooleanField(choices=[(True, 'Удалено'), (False, 'Активно')], default=False, verbose_name='Статус')),
-                ('buyer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app_user.buyer', verbose_name='Покупатель')),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app_shop.product', verbose_name='Товар')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("review", models.TextField(max_length=2500, verbose_name="Отзыв")),
+                (
+                    "created_at",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Дата и время добавления отзыва"
+                    ),
+                ),
+                (
+                    "deleted",
+                    models.BooleanField(
+                        choices=[(True, "Удалено"), (False, "Активно")],
+                        default=False,
+                        verbose_name="Статус",
+                    ),
+                ),
+                (
+                    "buyer",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="app_user.buyer",
+                        verbose_name="Покупатель",
+                    ),
+                ),
+                (
+                    "product",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="app_shop.product",
+                        verbose_name="Товар",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Отзыв о товаре',
-                'verbose_name_plural': 'Отзывы о товарах',
-                'db_table': 'products_reviews',
-                'ordering': ['-created_at'],
+                "verbose_name": "Отзыв о товаре",
+                "verbose_name_plural": "Отзывы о товарах",
+                "db_table": "products_reviews",
+                "ordering": ["-created_at"],
             },
         ),
     ]

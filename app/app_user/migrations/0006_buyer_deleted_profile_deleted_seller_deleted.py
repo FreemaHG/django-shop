@@ -4,25 +4,36 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app_user', '0005_alter_profile_full_name_alter_profile_phone_number'),
+        ("app_user", "0005_alter_profile_full_name_alter_profile_phone_number"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='buyer',
-            name='deleted',
-            field=models.BooleanField(choices=[(True, 'Удалено'), (False, 'Активно')], default=False, verbose_name='Статус'),
+            model_name="buyer",
+            name="deleted",
+            field=models.BooleanField(
+                choices=[(True, "Удалено"), (False, "Активно")],
+                default=False,
+                verbose_name="Статус",
+            ),
         ),
         migrations.AddField(
-            model_name='profile',
-            name='deleted',
-            field=models.BooleanField(choices=[(True, 'Удалено'), (False, 'Активно')], default=False, verbose_name='Статус'),
+            model_name="profile",
+            name="deleted",
+            field=models.BooleanField(
+                choices=[(True, "Удалено"), (False, "Активно")],
+                default=False,
+                verbose_name="Статус",
+            ),
         ),
         migrations.AddField(
-            model_name='seller',
-            name='deleted',
-            field=models.BooleanField(choices=[(True, 'Удалено'), (False, 'Активно')], default=False, verbose_name='Статус'),
+            model_name="seller",
+            name="deleted",
+            field=models.BooleanField(
+                choices=[(True, "Удалено"), (False, "Активно")],
+                default=False,
+                verbose_name="Статус",
+            ),
         ),
     ]

@@ -4,13 +4,12 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app_shop', '0015_remove_cart_buyer_cart_user'),
+        ("app_shop", "0015_remove_cart_buyer_cart_user"),
     ]
 
     operations = [
         migrations.DeleteModel(
-            name='Cart',
+            name="Cart",
         ),
     ]

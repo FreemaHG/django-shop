@@ -4,23 +4,22 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app_shop', '0012_cart'),
+        ("app_shop", "0012_cart"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='cart',
-            options={'verbose_name': 'Корзина', 'verbose_name_plural': 'Корзина'},
+            name="cart",
+            options={"verbose_name": "Корзина", "verbose_name_plural": "Корзина"},
         ),
         migrations.RemoveField(
-            model_name='cart',
-            name='product',
+            model_name="cart",
+            name="product",
         ),
         migrations.AddField(
-            model_name='cart',
-            name='product',
-            field=models.ManyToManyField(to='app_shop.product', verbose_name='Товары'),
+            model_name="cart",
+            name="product",
+            field=models.ManyToManyField(to="app_shop.product", verbose_name="Товары"),
         ),
     ]

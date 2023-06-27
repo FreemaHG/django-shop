@@ -16,11 +16,11 @@ def check_for_email(email: str) -> bool | User:
     """
     try:
         user = User.objects.get(email=email)
-        logger.debug(f'Пользователь с email: {email} найден')
+        logger.debug(f"Пользователь с email: {email} найден")
 
         return user
 
     except ObjectDoesNotExist:
-        logger.warning(f'Пользователь с email: {email} не найден')
+        logger.warning(f"Пользователь с email: {email} не найден")
 
         return False

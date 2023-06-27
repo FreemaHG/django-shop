@@ -4,20 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app_user', '0002_alter_profile_options_seller_buyer'),
+        ("app_user", "0002_alter_profile_options_seller_buyer"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='profile',
-            name='email',
-            field=models.EmailField(blank=True, max_length=150, verbose_name='E-mail'),
+            model_name="profile",
+            name="email",
+            field=models.EmailField(blank=True, max_length=150, verbose_name="E-mail"),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='phone_number',
-            field=models.CharField(blank=True, max_length=10, verbose_name='Телефон'),
+            model_name="profile",
+            name="phone_number",
+            field=models.CharField(blank=True, max_length=10, verbose_name="Телефон"),
         ),
     ]

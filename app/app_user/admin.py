@@ -4,7 +4,7 @@ from .models import Profile, Seller, Buyer
 from .utils.models.output import output_name
 
 
-@admin.action(description='Мягкое удаление')
+@admin.action(description="Мягкое удаление")
 def deleted_records(adminmodel, request, queryset):
     """
     Мягкое удаление всех записей, включая дочерние
@@ -12,7 +12,7 @@ def deleted_records(adminmodel, request, queryset):
     queryset.update(deleted=True)  # Мягкое удаление родительской записи
 
 
-@admin.action(description='Восстановить записи')
+@admin.action(description="Восстановить записи")
 def restore_records(adminmodel, request, queryset):
     """
     Восстановить записи, отключенные ч/з мягкое удаление
@@ -22,39 +22,48 @@ def restore_records(adminmodel, request, queryset):
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
-    """ Профайл пользователя """
+    """Профайл пользователя"""
 
-    list_display = ['user', 'name', 'email', 'phone_number', 'address', 'deleted']
-    list_display_links = ['user', 'name']
-    search_fields = ['user']
-    actions = (deleted_records, restore_records)  # Мягкое удаление/восстановление записей
+    list_display = ["user", "name", "email", "phone_number", "address", "deleted"]
+    list_display_links = ["user", "name"]
+    search_fields = ["user"]
+    actions = (
+        deleted_records,
+        restore_records,
+    )  # Мягкое удаление/восстановление записей
 
     def name(self, object):
         return output_name(object)
 
-    name.short_description = 'Имя'
+    name.short_description = "Имя"
 
     def email(self, object):
         return object.user.email
 
-    email.short_description = 'Email'
+    email.short_description = "Email"
 
 
 @admin.register(Seller)
 class SellerAdmin(admin.ModelAdmin):
-    """ Продавец """
+    """Продавец"""
 
-    list_display = ['title', 'description', 'deleted']
-    list_display_links = ['title']
-    search_fields = ['title']
-    actions = (deleted_records, restore_records)  # Мягкое удаление/восстановление записей
+    list_display = ["title", "description", "deleted"]
+    list_display_links = ["title"]
+    search_fields = ["title"]
+    actions = (
+        deleted_records,
+        restore_records,
+    )  # Мягкое удаление/восстановление записей
 
 
 @admin.register(Buyer)
 class BuyerAdmin(admin.ModelAdmin):
-    """ Покупатель """
+    """Покупатель"""
 
-    list_display = ['profile', 'deleted']
-    list_display_links = ['profile']
-    search_fields = ['profile']
-    actions = (deleted_records, restore_records)  # Мягкое удаление/восстановление записей
+    list_display = ["profile", "deleted"]
+    list_display_links = ["profile"]
+    search_fields = ["profile"]
+    actions = (
+        deleted_records,
+        restore_records,
+    )  # Мягкое удаление/восстановление записей

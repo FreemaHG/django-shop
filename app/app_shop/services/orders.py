@@ -29,21 +29,21 @@ class RegistrationOrderService:
         @param form: объект формы с данными заказа
         @return: объект созданного заказа
         """
-        logger.debug('Создание заказа')
+        logger.debug("Создание заказа")
 
-        delivery = form.cleaned_data.get('delivery', False)
-        city = form.cleaned_data.get('city', False)
-        address = form.cleaned_data.get('address', False)
-        pay = form.cleaned_data.get('pay', False)
+        delivery = form.cleaned_data.get("delivery", False)
+        city = form.cleaned_data.get("city", False)
+        address = form.cleaned_data.get("address", False)
+        pay = form.cleaned_data.get("pay", False)
 
-        if delivery == 'ordinary':
-            logger.debug('Доставка: обычная')
+        if delivery == "ordinary":
+            logger.debug("Доставка: обычная")
             delivery_num = 1
         else:
-            logger.debug('Доставка: экспресс')
+            logger.debug("Доставка: экспресс")
             delivery_num = 2
 
-        if pay == 'online':
+        if pay == "online":
             logger.debug('Оплата "Онлайн картой"')
             pay_num = 1
         else:
@@ -56,22 +56,23 @@ class RegistrationOrderService:
             address=address,
             delivery=delivery_num,
             payment=pay_num,
-            status=1  # Оформлен
+            status=1,  # Оформлен
         )
 
         # Сохранение товаров заказа
         products_cart = ProductsCartUserService.all(user=request.user)
-        RegistrationOrderService.purchase_history(products_cart=products_cart, order=order)
+        RegistrationOrderService.purchase_history(
+            products_cart=products_cart, order=order
+        )
 
         # Очистка корзины
         ProductsCartUserService.clear_cart(user=request.user)
 
         # Стоимость оплаты = стоимость товаров + стоимость доставки
         amount = order.order_cost + RegistrationOrderService.delivery_cost(order=order)
-        logger.debug(f'Стоимость заказа с учетом доставки: {amount} руб')
+        logger.debug(f"Стоимость заказа с учетом доставки: {amount} руб")
 
         return order
-
 
     @classmethod
     def purchase_history(cls, products_cart: List[Cart], order: Order) -> None:
@@ -82,20 +83,19 @@ class RegistrationOrderService:
         @param order: объект заказа
         @return: None
         """
-        logger.debug('Сохранение товаров в заказе')
+        logger.debug("Сохранение товаров в заказе")
 
         purchase_products = [
             PurchasedProduct(
                 order=order,
                 product=record.product,
                 count=record.count,
-                price=record.position_cost  # Стоимость товара * кол-во (с учетом скидки)
+                price=record.position_cost,  # Стоимость товара * кол-во (с учетом скидки)
             )
             for record in products_cart
         ]
 
         PurchasedProduct.objects.bulk_create(purchase_products)
-
 
     @classmethod
     def delivery_cost(cls, order: Order) -> int:
@@ -107,7 +107,7 @@ class RegistrationOrderService:
         @param order: объект заказа
         @return: стоимость доставки
         """
-        logger.debug('Расчет стоимости доставки')
+        logger.debug("Расчет стоимости доставки")
 
         config = get_config()
 
@@ -118,7 +118,7 @@ class RegistrationOrderService:
             else:
                 delivery_cost = config.shipping_cost
 
-            logger.debug(f'Обычная доставка. Стоимость: {delivery_cost} руб')
+            logger.debug(f"Обычная доставка. Стоимость: {delivery_cost} руб")
 
             return delivery_cost
 
@@ -129,10 +129,9 @@ class RegistrationOrderService:
             else:
                 delivery_cost = config.shipping_cost + config.extra_shipping_cost
 
-            logger.debug(f'Экспресс доставка. Стоимость: {delivery_cost} руб')
+            logger.debug(f"Экспресс доставка. Стоимость: {delivery_cost} руб")
 
             return delivery_cost
-
 
     @classmethod
     def last_order(cls, request: HttpRequest) -> Order:
@@ -142,12 +141,13 @@ class RegistrationOrderService:
         @param request: объект http-запроса
         @return: объект последнего заказа текущего пользователя
         """
-        logger.debug(f'Возврат последнего заказа для пользователя: {request.user.profile.full_name}')
+        logger.debug(
+            f"Возврат последнего заказа для пользователя: {request.user.profile.full_name}"
+        )
 
         # По умолчанию у заказов обратная сортировка по дате создания,
         # поэтому для возврата последнего заказа используем first()
         return Order.objects.filter(user=request.user).first()
-
 
     @classmethod
     def save_order_products_in_context(cls, context: Dict, order: Order) -> Dict:
@@ -158,15 +158,26 @@ class RegistrationOrderService:
         @param order: объект заказа
         @return: словарь - контекстная переменная представления с сохраненными данными по товарам
         """
-        logger.debug(f'Сохранение в контексте товаров заказа №{order.id}')
+        logger.debug(f"Сохранение в контексте товаров заказа №{order.id}")
 
         config = get_config()
 
         products = cache.get_or_set(
-            f'order_{order.id}',
-            PurchasedProduct.objects.select_related('product').only('id', 'count', 'price', 'product__id', 'product__name', 'product__price', 'product__definition').filter(order=order),
-            60 * config.caching_time)
+            f"order_{order.id}",
+            PurchasedProduct.objects.select_related("product")
+            .only(
+                "id",
+                "count",
+                "price",
+                "product__id",
+                "product__name",
+                "product__price",
+                "product__definition",
+            )
+            .filter(order=order),
+            60 * config.caching_time,
+        )
 
-        context['products'] = products
+        context["products"] = products
 
         return context

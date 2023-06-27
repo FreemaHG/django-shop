@@ -23,13 +23,13 @@ class ProfileUtil:
         @param user: объект пользователя
         @return: объект профайла / False, если не найден
         """
-        logger.debug('Поиск профиля в БД по объекту User')
+        logger.debug("Поиск профиля в БД по объекту User")
 
         try:
             profile = Profile.objects.get(user=user)
-            logger.debug(f'Профиль найден: id - {profile.id} ({profile.full_name})')
+            logger.debug(f"Профиль найден: id - {profile.id} ({profile.full_name})")
             return profile
 
         except ObjectDoesNotExist:
-            logger.warning('Профиль не найден')
+            logger.warning("Профиль не найден")
             return False
