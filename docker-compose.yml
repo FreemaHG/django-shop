@@ -1,0 +1,47 @@
+version: '3.11'
+
+services:
+#  web:
+#    container_name: nginx
+#    build: nginx
+#    volumes:
+#      - ./nginx/static/images:/usr/share/nginx/html/static/images
+#    ports:
+#      - 80:80
+#      - 443:443
+#    depends_on:
+#      - api
+#    logging:
+#      driver: "local"
+
+#  api:
+#    build:
+#      context: .
+#    env_file:
+#      - .env
+#    container_name: api
+#    expose:
+#      - 5555
+#    ports:
+#      - 5555:5000
+#    depends_on:
+#      - postgres
+#    logging:
+#      driver: "local"
+
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    command: -p 5432
+    expose:
+      - 5432
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=${DB_USER:?err}
+      - POSTGRES_PASSWORD=${DB_PASS:?err}
+      - POSTGRES_DB=${DB_NAME:?err}
+    env_file:
+      - .env
+    volumes:
+      - ./postgres_db/:/var/lib/postgresql/data

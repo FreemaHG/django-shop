@@ -14,23 +14,26 @@ import environ
 
 from pathlib import Path
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
 
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
 )
 # reading .env file
-environ.Env.read_env()
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-7k9xa@$#*i^707qq(5l5p0xik4!f3*r_87^r72h_(625--x2i8"
+# SECRET_KEY = "django-insecure-7k9xa@$#*i^707qq(5l5p0xik4!f3*r_87^r72h_(625--x2i8"
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -72,7 +75,7 @@ ROOT_URLCONF = "megano.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"],
+        "DIRS": [BASE_DIR / "app" / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -125,16 +128,30 @@ LOGGING = {
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {  # Для разработки
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    },
+
+    # SQLite3
+    # "default": {
+    #     "ENGINE": "django.db.backends.sqlite3",
+    #     "NAME": BASE_DIR / "db.sqlite3",
+    # },
+
+    # MySQL
     # 'mysql': {
     #     'NAME': 'mysql_db',
     #     'ENGINE': 'django.db.backends.mysql',
     #     'USER': 'root',
     #     'PASSWORD': 'admin'
-    # }
+    # },
+
+    # PostgresSQL
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASS'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
+    }
 }
 
 # Password validation
@@ -174,13 +191,13 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(
-    BASE_DIR, "staticfiles"
+    BASE_DIR, "app", "staticfiles"
 )  # Пустая папка для сбора статики командой collectstatic
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "app", "static"),)
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_ROOT = os.path.join(BASE_DIR, "app", "media")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

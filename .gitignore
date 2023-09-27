@@ -123,9 +123,10 @@ venv.bak/
 # mypy
 .mypy_cache/
 .dmypy.json
-dmypy.json
+dmypy.jsong
 
 # Pyre type checker
 .pyre/
 .idea/*
-app/.env
+.env
+postgres_db
