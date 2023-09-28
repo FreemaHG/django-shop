@@ -2,7 +2,7 @@ import logging
 
 from django.views.generic import TemplateView
 
-from ..services.main import ProductsForMainService
+from app.app_shop.services.main import ProductsForMainService
 
 
 logger = logging.getLogger(__name__)

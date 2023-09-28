@@ -7,12 +7,12 @@ from django.http import HttpRequest, BadHeaderError
 from django.db import IntegrityError, transaction
 from django.core.mail import send_mail, BadHeaderError
 
-from ..models import Profile
-from ..forms import RegisterUserForm, EmailForm, AuthUserForm
-from ..utils.save_new_user import save_username, cleaned_phone_data
-from ..utils.check_users import check_for_email
-from ..utils.password_recovery import password_generation
-from app_shop.services.shop_cart.logic import CartProductsService
+from app.app_user.models import Profile
+from app.app_user.forms import RegisterUserForm, EmailForm, AuthUserForm
+from app.app_user.utils.save_new_user import save_username, cleaned_phone_data
+from app.app_user.utils.check_users import check_for_email
+from app.app_user.utils.password_recovery import password_generation
+from app.app_shop.services.shop_cart.logic import CartProductsService
 
 
 logger = logging.getLogger(__name__)

@@ -2,8 +2,8 @@ from django.urls import path, re_path, include
 from django.views.decorators.cache import cache_page
 
 # from config.admin import config
-from config.utils.configuration import get_config
-from .views import (
+from app.config.utils.configuration import get_config
+from app.app_user.views import (
     register_user_view,  # Регистрация пользователя
     LoginUserView,  # Авторизация
     LogoutUserView,  # Выход

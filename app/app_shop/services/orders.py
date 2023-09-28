@@ -5,10 +5,10 @@ from django.core.cache import cache
 from django.db import transaction
 from django.http import HttpRequest
 
-from config.utils.configuration import get_config
-from ..services.shop_cart.authenticated import ProductsCartUserService
-from ..models.cart_and_orders import PurchasedProduct, Cart, Order
-from ..forms import MakingOrderForm
+from app.config.utils.configuration import get_config
+from app.app_shop.services.shop_cart.authenticated import ProductsCartUserService
+from app.app_shop.models.cart_and_orders import PurchasedProduct, Cart, Order
+from app.app_shop.forms import MakingOrderForm
 
 
 logger = logging.getLogger(__name__)

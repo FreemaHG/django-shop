@@ -1,10 +1,9 @@
 import logging
 
-from typing import Any
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 
-from ...models import Profile
+from app.app_user.models import Profile
 
 
 logger = logging.getLogger(__name__)

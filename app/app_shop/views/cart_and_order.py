@@ -7,13 +7,13 @@ from django.urls import reverse
 from django.views.generic import View, TemplateView, ListView, DetailView
 from django.shortcuts import render, redirect
 
-from app_user.forms import RegisterUserForm
-from ..models.cart_and_orders import Order
-from ..forms import MakingOrderForm
-from ..services.orders import RegistrationOrderService
-from ..services.shop_cart.logic import CartProductsListService
-from ..services.shop_cart.authenticated import ProductsCartUserService
-from ..services.orders_payment import PaymentService
+from app.app_user.forms import RegisterUserForm
+from app.app_shop.models.cart_and_orders import Order
+from app.app_shop.forms import MakingOrderForm
+from app.app_shop.services.orders import RegistrationOrderService
+from app.app_shop.services.shop_cart.logic import CartProductsListService
+from app.app_shop.services.shop_cart.authenticated import ProductsCartUserService
+from app.app_shop.services.orders_payment import PaymentService
 
 
 logger = logging.getLogger(__name__)

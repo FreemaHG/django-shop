@@ -5,8 +5,8 @@ from django.contrib import admin, messages
 from django.db.models import QuerySet
 from mptt.admin import DraggableMPTTAdmin
 
-from .utils.admin.change_status_delete import soft_deletion_child_records
-from .models.products import (
+from app.app_shop.utils.admin.change_status_delete import soft_deletion_child_records
+from app.app_shop.models.products import (
     CategoryProduct,
     Product,
     ProductTags,

@@ -5,10 +5,10 @@ from django.db.models import QuerySet
 from django.http import HttpRequest
 from django.contrib.auth.models import User
 
-from ...models.products import Product
-from ...models.cart_and_orders import Cart
-from .authenticated import ProductsCartUserService
-from .quest import ProductsCartQuestService
+from app.app_shop.models.products import Product
+from app.app_shop.models.cart_and_orders import Cart
+from app.app_shop.services.shop_cart.authenticated import ProductsCartUserService
+from app.app_shop.services.shop_cart.quest import ProductsCartQuestService
 
 
 logger = logging.getLogger(__name__)

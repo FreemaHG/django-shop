@@ -3,7 +3,7 @@ import logging
 from django.db.models import Q, QuerySet
 from django.http import HttpRequest
 
-from ...models.products import Product
+from app.app_shop.models.products import Product
 
 
 logger = logging.getLogger(__name__)

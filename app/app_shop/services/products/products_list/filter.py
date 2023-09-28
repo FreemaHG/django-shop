@@ -4,7 +4,7 @@ from typing import Dict
 from django.db.models import QuerySet
 
 # from config.admin import config
-from config.utils.configuration import get_config
+from app.config.utils.configuration import get_config
 
 logger = logging.getLogger(__name__)
 

@@ -1,8 +1,8 @@
 from django.contrib import admin
 from solo.admin import SingletonModelAdmin
 
-from .models import SiteConfiguration
-from .utils.configuration import get_config
+from app.config.models import SiteConfiguration
+from app.config.utils.configuration import get_config
 
 config = get_config()
 

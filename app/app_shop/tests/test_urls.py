@@ -5,7 +5,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
 
-from app_shop.models.products import Product, CategoryProduct, ProductTags
+from app.app_shop.models.products import Product, CategoryProduct
 
 
 class TestUrls(TestCase):

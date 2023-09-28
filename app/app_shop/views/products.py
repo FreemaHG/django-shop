@@ -8,18 +8,18 @@ from django.shortcuts import render
 from django.views.generic.edit import FormMixin
 from django.core.cache import cache
 
-from config.admin import config
-from ..models.products import Product
-from ..forms import CommentProductForm
-from ..services.products.output_products import ProductsListService
-from ..services.products.detail_page import ProductCommentsService
-from ..services.products.products_list.filter import ProductFilterService
-from ..services.products.products_list.sorting import ProductSortService
-from ..services.shop_cart.logic import CartProductsListService
-from ..services.products.search import ProductsListSearchService
-from ..services.products.browsing_history import ProductBrowsingHistoryService
-from ..utils.input_data import clear_data
-from ..services.products.context import SaveContextDataService
+from app.config.admin import config
+from app.app_shop.models.products import Product
+from app.app_shop.forms import CommentProductForm
+from app.app_shop.services.products.output_products import ProductsListService
+from app.app_shop.services.products.detail_page import ProductCommentsService
+from app.app_shop.services.products.products_list.filter import ProductFilterService
+from app.app_shop.services.products.products_list.sorting import ProductSortService
+from app.app_shop.services.shop_cart.logic import CartProductsListService
+from app.app_shop.services.products.search import ProductsListSearchService
+from app.app_shop.services.products.browsing_history import ProductBrowsingHistoryService
+from app.app_shop.utils.input_data import clear_data
+from app.app_shop.services.products.context import SaveContextDataService
 
 
 logger = logging.getLogger(__name__)

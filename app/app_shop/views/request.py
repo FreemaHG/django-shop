@@ -4,8 +4,8 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from django.shortcuts import redirect
 
-from ..services.products.detail_page import ProductCommentsService
-from ..services.shop_cart.logic import CartProductsService
+from app.app_shop.services.products.detail_page import ProductCommentsService
+from app.app_shop.services.shop_cart.logic import CartProductsService
 
 
 logger = logging.getLogger(__name__)

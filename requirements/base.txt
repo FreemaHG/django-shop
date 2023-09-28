@@ -9,3 +9,6 @@ jsonfield==3.1.0
 colorlog==6.7.0
 django-environ==0.10.0
 DjangoColorsFormatter @ git+https://github.com/tiliv/django-colors-formatter.git
+redis==5.0.1
+celery==5.3.4
+flower==2.0.1

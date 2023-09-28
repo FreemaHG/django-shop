@@ -4,9 +4,9 @@ from django.db.models import QuerySet
 from django.http import HttpRequest
 from django.core.cache import cache
 
-from config.admin import config
-from ...models.products import Product
-from ...models.cart_and_orders import Cart
+from app.config.admin import config
+from app.app_shop.models.products import Product
+from app.app_shop.models.cart_and_orders import Cart
 
 
 logger = logging.getLogger(__name__)
@@ -28,7 +28,8 @@ class ProductsCartQuestService:
         @return: bool-значение
         """
         logger.debug(
-            f"Добавление товара в корзину гостя: id пользователя: {request.user.id}, id товара - {product_id}, кол-во: {count}"
+            f"Добавление товара в корзину гостя: id пользователя: "
+            f"{request.user.id}, id товара - {product_id}, кол-во: {count}"
         )
 
         ProductsCartQuestService.check_key(
