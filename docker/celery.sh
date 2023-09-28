@@ -7,5 +7,5 @@ if [[ "${1}" == "celery" ]]; then
 # Если передан аргумент "flower"
 elif [[ "${1}" == "flower" ]]; then
   # Запускаем flower через celery
-  celery --app=app.megano.celery:app flower
+  celery --app=app.megano.celery:app flower -l INFO
 fi

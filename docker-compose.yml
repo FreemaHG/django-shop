@@ -1,41 +1,46 @@
 version: '3.11'
 
 services:
-#  web:
-#    container_name: nginx
-#    build: nginx
-#    volumes:
-#      - ./nginx/static/images:/usr/share/nginx/html/static/images
-#    ports:
-#      - 80:80
-#      - 443:443
-#    depends_on:
-#      - api
-#    logging:
-#      driver: "local"
+  nginx:
+    container_name: nginx
+    build: nginx
+    volumes:
+      - staticfiles:/app/staticfiles
+      - ./app/media/:/app/media
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - app
 
-#  api:
-#    build:
-#      context: .
-#    env_file:
-#      - .env
-#    container_name: api
-#    expose:
-#      - 5555
-#    ports:
-#      - 5555:5000
-#    depends_on:
-#      - postgres
-#    logging:
-#      driver: "local"
+  app:
+    build:
+      context: .
+    env_file:
+      - .env
+    container_name: app
+    command: gunicorn app.megano.wsgi:application --workers 4 --bind=0.0.0.0:8000
+    volumes:
+      # Именованный том
+      - staticfiles:/app/staticfiles
+      # Дублируем файлы в контейнер физически, т.к. картинки не копируются командой COPY в Dockerfile
+      - ./app/media/:/app/media
+    expose:
+      - 8000
+    ports:
+      - 8000:8000
+    depends_on:
+      - postgres
+      - redis
+      - celery
 
   redis:
     image: redis:7
     container_name: redis
-    # На случай, если в Docker уже есть запущенные контейнеры с redis на порту 5370
-    command: --port 5370
+    # На случай, если в Docker уже есть запущенные контейнеры с redis на порту 6379
+    command: --port 6379
     expose:
-      - 5370
+      - 6379
 
   celery:
     # Т.к. Celery это не отдельная технология как PostgresSQL или Redis, а просто пакет, используемый в приложении,
@@ -48,7 +53,7 @@ services:
     container_name: celery
     # Команды для запуска Celery в отдельном файле
     # "celery" - передаем аргумент в команду, прописанную в файле celery.sh
-    command: [ "/docker/celery.sh", "celery" ]
+    command: [ "/docker/celery.sh", "celery"]
     # Зависимость (контейнер с celery запуститься только после запуска контейнера с redis)
     depends_on:
       - redis
@@ -74,7 +79,7 @@ services:
     # Порты, чтобы можно было руками зайти и просмотреть запущенные воркеры и задачи в фоне
     # порт на ПК: порт в контейнере
     ports:
-      - 8888:5555
+      - 5555:5555
 
   postgres:
     image: postgres:15
@@ -90,5 +95,11 @@ services:
       - POSTGRES_DB=${DB_NAME:?err}
     env_file:
       - .env
+    # Именованный том
     volumes:
-      - ./postgres_db/:/var/lib/postgresql/data
+      - postgres_db:/var/lib/postgresql/data
+
+# Объявляем именованные тома
+volumes:
+  postgres_db:
+  staticfiles:

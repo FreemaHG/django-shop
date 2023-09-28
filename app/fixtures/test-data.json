@@ -8324,7 +8324,7 @@
     "fields": {
       "title": "Интернет-магазин Megano - покупки с быстрой доставкой",
       "description": "Тестовое описание сайта",
-      "site_url": "http://127.0.0.1:8000",
+      "site_url": "http://localhost",
       "logo_head": "images/logo/logo.png",
       "logo_footer": "images/logo/logo_footer.png",
       "shipping_cost": 200,

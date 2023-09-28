@@ -1,4 +1,4 @@
-from ..models import SiteConfiguration
+from app.config.models import SiteConfiguration
 
 
 def get_config() -> SiteConfiguration:

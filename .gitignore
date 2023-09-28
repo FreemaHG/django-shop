@@ -130,3 +130,5 @@ dmypy.jsong
 .idea/*
 .env
 postgres_db
+static_volume
+media_volume

@@ -7,6 +7,7 @@ from functools import lru_cache
 
 from app.config.utils.saving_fales import saving_logo
 from app.app_shop.models.products import CategoryProduct
+from app.env_config import DOMEN_HOST
 
 
 logger = logging.getLogger(__name__)

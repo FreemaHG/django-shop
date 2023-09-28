@@ -27,3 +27,6 @@ DB_PORT = env('DB_PORT')
 # Redis
 REDIS_HOST = env('REDIS_HOST')
 REDIS_PORT = env('REDIS_PORT')
+
+# Домен (ip) при развертывании на сервере
+DOMEN_HOST = env('DOMEN_HOST')
