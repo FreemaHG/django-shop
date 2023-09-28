@@ -14,18 +14,20 @@ import environ
 
 from pathlib import Path
 
+from app.env_config import SECRET_KEY as _SECRET_KEY
+from app.env_config import (
+    DB_NAME,
+    DB_USER,
+    DB_PASS,
+    DB_HOST,
+    DB_PORT,
+    REDIS_HOST,
+    REDIS_PORT,
+)
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-
-
-env = environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
-)
-# reading .env file
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
-
 
 
 # Quick-start development settings - unsuitable for production
@@ -33,7 +35,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = "django-insecure-7k9xa@$#*i^707qq(5l5p0xik4!f3*r_87^r72h_(625--x2i8"
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = _SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -51,9 +53,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "mptt",  # Вложенные категории
-    "app_user.apps.AppUserConfig",
-    "app_shop.apps.AppShopConfig",
-    "config.apps.ConfigConfig",  # Конфигурация сайта
+    "app.app_user.apps.AppUserConfig",
+    "app.app_shop.apps.AppShopConfig",
+    "app.config.apps.ConfigConfig",  # Конфигурация сайта
     "django_cleanup.apps.CleanupConfig",  # Очистка файлов при удалении записи
     "solo",
 ]
@@ -70,7 +72,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "megano.urls"
+ROOT_URLCONF = "app.megano.urls"
 
 TEMPLATES = [
     {
@@ -97,7 +99,7 @@ CASHES = {
     }
 }
 
-WSGI_APPLICATION = "megano.wsgi.application"
+WSGI_APPLICATION = "app.megano.wsgi.application"
 
 LOGGING = {
     "version": 1,
@@ -146,11 +148,11 @@ DATABASES = {
     # PostgresSQL
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DB_NAME'),
-        'USER': env('DB_USER'),
-        'PASSWORD': env('DB_PASS'),
-        'HOST': env('DB_HOST'),
-        'PORT': env('DB_PORT'),
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASS,
+        'HOST': DB_HOST,
+        'PORT': DB_PORT,
     }
 }
 
@@ -211,3 +213,9 @@ DEFAULT_FROM_EMAIL = "support@megano.ru"
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 SESSION_COOKIE_AGE = 7 * 24 * 60 * 60  # Время жизни сессии (7 дней)
+
+# Celery settings
+# Т.к. мы используем Redis как в качестве брокера сообщений, так и в качестве серверной части базы данных,
+# оба URL-адреса указывают на один и тот же адрес.
+CELERY_BROKER_URL = f"redis://{REDIS_HOST}:{REDIS_PORT}"
+CELERY_RESULT_BACKEND = f"redis://{REDIS_HOST}:{REDIS_PORT}"

@@ -2,7 +2,7 @@ import logging
 
 from django.core.exceptions import ObjectDoesNotExist
 
-from ...models import Buyer, Profile
+from app.app_user.models import Buyer, Profile
 
 
 logger = logging.getLogger(__name__)

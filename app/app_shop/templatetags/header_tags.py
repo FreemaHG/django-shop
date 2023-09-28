@@ -5,10 +5,9 @@ from django import template
 from django.core.cache import cache
 from django.db.models import QuerySet
 
-# from config.admin import config
-from config.utils.configuration import get_config
-from ..models.products import CategoryProduct
-from ..services.shop_cart.logic import CartProductsListService, ProductsCartUserService
+from app.config.utils.configuration import get_config
+from app.app_shop.models.products import CategoryProduct
+from app.app_shop.services.shop_cart.logic import CartProductsListService, ProductsCartUserService
 
 
 logger = logging.getLogger(__name__)

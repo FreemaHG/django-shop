@@ -9,7 +9,7 @@ from mptt.models import MPTTModel, TreeForeignKey
 from jsonfield import JSONField
 from django.core.cache import cache
 
-from ..utils.models.saving_files import (
+from app.app_shop.utils.models.saving_files import (
     saving_the_category_icon,
     saving_the_category_image,
     saving_images_for_product,

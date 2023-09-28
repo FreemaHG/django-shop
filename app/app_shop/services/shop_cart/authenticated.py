@@ -3,11 +3,11 @@ import logging
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.cache import cache
-
-from config.admin import config
 from django.db.models import QuerySet
-from ...models.products import Product
-from ...models.cart_and_orders import Cart
+
+from app.config.admin import config
+from app.app_shop.models.products import Product
+from app.app_shop.models.cart_and_orders import Cart
 
 
 logger = logging.getLogger(__name__)

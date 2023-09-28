@@ -1,8 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from .utils.models.saving_files import save_avatar
-from .utils.models.output import output_name
+from app.app_user.utils.models.saving_files import save_avatar
+from app.app_user.utils.models.output import output_name
 
 
 STATUS_CHOICES = [

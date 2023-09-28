@@ -4,7 +4,7 @@ from typing import Dict
 from django.contrib.auth.models import User
 from django.db import models
 
-from .products import Product
+from app.app_shop.models.products import Product
 
 
 logger = logging.getLogger(__name__)

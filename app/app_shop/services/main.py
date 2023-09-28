@@ -1,13 +1,13 @@
 import random
 import logging
 
-from typing import Dict, List
+from typing import Dict
 from django.db.models import Min, QuerySet
 from django.http import HttpRequest
 from django.core.cache import cache
 
-from ..services.shop_cart.logic import CartProductsListService
-from ..models.products import Product, CategoryProduct
+from app.app_shop.services.shop_cart.logic import CartProductsListService
+from app.app_shop.models.products import Product, CategoryProduct
 
 
 logger = logging.getLogger(__name__)

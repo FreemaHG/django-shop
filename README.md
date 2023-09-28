@@ -2,9 +2,23 @@
 Проект интернет-магазина, написанный на Python с использованием фреймворка Django.
 
 ## Оглавление
-1. [Возможности](#Функционал)
-2. [Установка](#Установка)
-3. [Скриншоты](#Скриншоты)
+1. [Инструменты](#Инструменты)
+2. [Возможности](#Функционал)
+3. [Установка](#Установка)
+4. [Скриншоты](#Скриншоты)
+
+## Инструменты
+* **Python** (3.11);
+* **Django** (Wev Framework);
+* **PostgreSQL** (database);
+* **Redis** (message broker for celery);
+* **Celery** (background tasks);
+* **Flower** (tracking background tasks);
+* **logging** (logging);
+
+[//]: # (* **Pytest** &#40;tests&#41;;)
+* **Docker** and **Docker Compose** (containerization);
+* **Nginx** (server for linking frontend and backend).
 
 ## Функционал
 *Приложение позволяет*:

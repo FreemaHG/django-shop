@@ -5,8 +5,8 @@ from django.db import models
 from solo.models import SingletonModel
 from functools import lru_cache
 
-from .utils.saving_fales import saving_logo
-from app_shop.models.products import CategoryProduct
+from app.config.utils.saving_fales import saving_logo
+from app.app_shop.models.products import CategoryProduct
 
 
 logger = logging.getLogger(__name__)

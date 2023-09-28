@@ -4,7 +4,7 @@ from typing import Dict, List, Union
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import QuerySet
 
-from ...models.products import Product, CategoryProduct
+from app.app_shop.models.products import Product, CategoryProduct
 
 
 logger = logging.getLogger(__name__)

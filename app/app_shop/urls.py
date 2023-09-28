@@ -2,8 +2,8 @@ from django.urls import path, re_path, include
 from django.views.decorators.cache import cache_page
 
 # from config.admin import config
-from config.utils.configuration import get_config
-from .views.page import (
+from app.config.utils.configuration import get_config
+from app.app_shop.views.page import (
     MainView,
     AboutView,
     ProductsSalesView,
@@ -112,31 +112,36 @@ urlpatterns = [
     # Корзина
     path(
         "shopping_cart/", ShoppingCartView.as_view(), name="shopping_cart"
-    ),  # Корзина с товарами
+    ),
+    # Уменьшение кол-ва товара в корзине
     path(
         "reduce_product/<int:product_id>", reduce_product, name="reduce_product"
-    ),  # Уменьшение кол-ва товара в корзине
+    ),
+    # Увеличение кол-ва товара в корзине
     path(
         "increase_product/<int:product_id>", increase_product, name="increase_product"
-    ),  # Увеличение кол-ва товара в корзине
+    ),
     # Заказы
     path(
         "order/",
         include(
             [
+                # Регистрация заказа
                 path(
                     "registration/",
                     OrderRegistrationView.as_view(),
                     name="order_registration",
-                ),  # Регистрация заказа
+                ),
+                # История заказов
                 path(
                     "history/", HistoryOrderView.as_view(), name="history_order"
-                ),  # История заказов
+                ),
+                # Информация о заказе
                 path(
                     "detail/<int:pk>",
                     OrderInformationView.as_view(),
                     name="order_detail",
-                ),  # Информация о заказе
+                ),
             ]
         ),
     ),
@@ -145,21 +150,24 @@ urlpatterns = [
         "payment/",
         include(
             [
+                # Онлайн картой
                 path(
                     "online/<int:order_id>/",
                     cache_page(60 * config.caching_time)(PaymentView.as_view()),
                     name="online_payment",
-                ),  # Онлайн картой
+                ),
+                # Онлайн со случайного чужого счета
                 path(
                     "someone/<int:order_id>/",
                     cache_page(60 * config.caching_time)(PaymentView.as_view()),
                     name="someone_payment",
-                ),  # Онлайн со случайного чужого счета
+                ),
+                # Ожидание оплаты
                 path(
                     "progress_payment/<int:order_id>/",
                     cache_page(60 * config.caching_time)(ProgressPaymentView.as_view()),
                     name="progress_payment",
-                ),  # Ожидание оплаты
+                ),
             ]
         ),
     ),

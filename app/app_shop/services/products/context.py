@@ -3,7 +3,7 @@ import logging
 from typing import Dict
 from django.http import HttpRequest
 
-from ...services.shop_cart.logic import CartProductsListService
+from app.app_shop.services.shop_cart.logic import CartProductsListService
 
 
 logger = logging.getLogger(__name__)

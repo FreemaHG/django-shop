@@ -20,7 +20,7 @@
     <div class="Section">
       <div class="wrap">
         <div class="ProgressPayment">
-          <div class="ProgressPayment-title">Ждем подтверждения оплаты платежной системой</div>
+          <div class="ProgressPayment-title">Подтверждение оплаты платежной системой</div>
           <div class="ProgressPayment-icon">
             <div class="cssload-thecube">
               <div class="cssload-cube cssload-c1"></div>
@@ -34,10 +34,11 @@
     </div>
   </div>
 
+  <!-- Сделать автоматический переход к карточке заказа после оплаты -->
   <script>
    setTimeout(function(){
         window.location.href = "{% url 'shop:order_detail' pk=order_id %}";
-     }, 4000);
+     }, 3000);
   </script>
 
 {% endblock %}

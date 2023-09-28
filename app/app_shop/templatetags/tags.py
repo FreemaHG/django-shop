@@ -4,7 +4,7 @@ from typing import Union
 from django import template
 from django.db.models import QuerySet
 
-from ..models.products import ProductTags, Product
+from app.app_shop.models.products import ProductTags, Product
 
 
 logger = logging.getLogger(__name__)

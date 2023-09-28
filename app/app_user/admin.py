@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from .models import Profile, Seller, Buyer
-from .utils.models.output import output_name
+from app.app_user.models import Profile, Seller, Buyer
+from app.app_user.utils.models.output import output_name
 
 
 @admin.action(description="Мягкое удаление")

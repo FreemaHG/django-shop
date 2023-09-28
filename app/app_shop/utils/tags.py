@@ -3,7 +3,7 @@ import logging
 from typing import Union
 from django.core.exceptions import ObjectDoesNotExist
 
-from ..models.products import ProductTags
+from app.app_shop.models.products import ProductTags
 
 
 logger = logging.getLogger(__name__)

@@ -9,11 +9,11 @@ from django.views.generic.edit import FormView
 from django.shortcuts import render, redirect
 from django.views import View
 
-from app_shop.services.products.browsing_history import ProductBrowsingHistoryService
-from app_shop.services.orders import RegistrationOrderService
-from app_shop.models.products import ProductBrowsingHistory
-from .forms import RegisterUserForm, AuthUserForm, EmailForm
-from .services.user import UserRegistrationService
+from app.app_shop.services.products.browsing_history import ProductBrowsingHistoryService
+from app.app_shop.services.orders import RegistrationOrderService
+from app.app_shop.models.products import ProductBrowsingHistory
+from app.app_user.forms import RegisterUserForm, AuthUserForm, EmailForm
+from app.app_user.services.user import UserRegistrationService
 
 
 logger = logging.getLogger(__name__)
