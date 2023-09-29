@@ -15,8 +15,6 @@
 * **Celery** (background tasks);
 * **Flower** (tracking background tasks);
 * **logging** (logging);
-
-[//]: # (* **Pytest** &#40;tests&#41;;)
 * **Docker** and **Docker Compose** (containerization);
 * **Gunicorn** (WSGI HTTP Server);
 * **Nginx** (Web Server).
@@ -45,17 +43,12 @@ git clone https://github.com/FreemaHG/django-shop.git
 docker-compose up -d
 ```
 
-4. Сбор статических файлов для последующей обработки сервером nginx:
-```
-docker-compose exec app python3 -m app.manage collectstatic --noinput
-```
-
-5. Применяем миграции (создаем БД с зависимостями):
+4. Применяем миграции (создаем БД с зависимостями):
 ```
 docker-compose exec app python3 -m app.manage migrate
 ```
 
-6. Загрузка демонстрационных данных (опционально):
+5. Загрузка демонстрационных данных (опционально):
 ```
 docker-compose exec app python3 -m app.manage loaddata app/fixtures/test-data.json
 ```
@@ -64,7 +57,7 @@ docker-compose exec app python3 -m app.manage loaddata app/fixtures/test-data.js
   - логин: admin; 
   - пароль: admin.
 
-7. Создание суперпользователя (опционально):
+6. Создание суперпользователя (опционально):
 ```
 docker-compose exec app python3 -m app.manage createsuperuser
 ```

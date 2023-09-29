@@ -7,7 +7,10 @@ from django.db.models import QuerySet
 
 from app.config.utils.configuration import get_config
 from app.app_shop.models.products import CategoryProduct
-from app.app_shop.services.shop_cart.logic import CartProductsListService, ProductsCartUserService
+from app.app_shop.services.shop_cart.logic import (
+    CartProductsListService,
+    ProductsCartUserService,
+)
 
 
 logger = logging.getLogger(__name__)

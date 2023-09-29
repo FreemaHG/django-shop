@@ -1,7 +1,6 @@
 from django.urls import path, re_path, include
 from django.views.decorators.cache import cache_page
 
-# from config.admin import config
 from app.config.utils.configuration import get_config
 from app.app_shop.views.page import (
     MainView,
@@ -81,12 +80,10 @@ urlpatterns = [
         "product/",
         include(
             [
-                path(
-                    "<int:pk>", ProductDetailView.as_view(), name="product_detail"
-                ),  # Страница товара
-                path(
-                    "load_comments/", load_comments, name="load_comments"
-                ),  # Загрузка доп.комментария (Ajax-запрос)
+                # Страница товара
+                path("<int:pk>", ProductDetailView.as_view(), name="product_detail"),
+                # Загрузка доп.комментария (Ajax-запрос)
+                path("load_comments/", load_comments, name="load_comments"),
                 path(
                     "add_product/",
                     include(
@@ -110,13 +107,9 @@ urlpatterns = [
         ),
     ),
     # Корзина
-    path(
-        "shopping_cart/", ShoppingCartView.as_view(), name="shopping_cart"
-    ),
+    path("shopping_cart/", ShoppingCartView.as_view(), name="shopping_cart"),
     # Уменьшение кол-ва товара в корзине
-    path(
-        "reduce_product/<int:product_id>", reduce_product, name="reduce_product"
-    ),
+    path("reduce_product/<int:product_id>", reduce_product, name="reduce_product"),
     # Увеличение кол-ва товара в корзине
     path(
         "increase_product/<int:product_id>", increase_product, name="increase_product"
@@ -133,9 +126,7 @@ urlpatterns = [
                     name="order_registration",
                 ),
                 # История заказов
-                path(
-                    "history/", HistoryOrderView.as_view(), name="history_order"
-                ),
+                path("history/", HistoryOrderView.as_view(), name="history_order"),
                 # Информация о заказе
                 path(
                     "detail/<int:pk>",
