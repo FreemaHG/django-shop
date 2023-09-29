@@ -9,7 +9,9 @@ from django.views.generic.edit import FormView
 from django.shortcuts import render, redirect
 from django.views import View
 
-from app.app_shop.services.products.browsing_history import ProductBrowsingHistoryService
+from app.app_shop.services.products.browsing_history import (
+    ProductBrowsingHistoryService,
+)
 from app.app_shop.services.orders import RegistrationOrderService
 from app.app_shop.models.products import ProductBrowsingHistory
 from app.app_user.forms import RegisterUserForm, AuthUserForm, EmailForm

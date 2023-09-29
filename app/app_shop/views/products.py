@@ -17,7 +17,9 @@ from app.app_shop.services.products.products_list.filter import ProductFilterSer
 from app.app_shop.services.products.products_list.sorting import ProductSortService
 from app.app_shop.services.shop_cart.logic import CartProductsListService
 from app.app_shop.services.products.search import ProductsListSearchService
-from app.app_shop.services.products.browsing_history import ProductBrowsingHistoryService
+from app.app_shop.services.products.browsing_history import (
+    ProductBrowsingHistoryService,
+)
 from app.app_shop.utils.input_data import clear_data
 from app.app_shop.services.products.context import SaveContextDataService
 

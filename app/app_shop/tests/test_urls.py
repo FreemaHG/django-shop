@@ -1,49 +1,81 @@
-import os
-
-from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
 
-from app.app_shop.models.products import Product, CategoryProduct
-
 
 class TestUrls(TestCase):
     """
-    Проверка доступности страниц по URL-адресам
+    Проверка доступности url, связанных с магазином (главная страница, страница товара, оформления заказа и т.п.)
     """
 
-    @classmethod
-    def setUpTestData(cls):
-        """
-        Метод создает тестовых пользователя и категорию перед тестированием
-        """
+    # fixtures = ['app/fixtures/test-data.json']
 
-        test_user = User.objects.create(
-            username="test_user", password="secret_password"
-        )
-        test_img = open(os.path.join("app_shop", "tests", "test_img.jpg"), "rb").read()
-
-        test_category = CategoryProduct.objects.create(
-            title="Тестовая категория",
-            image=SimpleUploadedFile(
-                name="test_img.jpg", content=test_img, content_type="image/jpeg"
-            ),
-        )
-
-        # test_tag = ProductTags.objects.create(name='Тестовый тег')
-        test_post = Product.objects.create(
-            name="Тестовый товар",
-            definition="Описание тестового товара",
-            characteristics={},
-            category=test_category,
-            # tags=test_tag,
-            price=100,
-        )
-
-    def test_main(self):
+    def test_main_url(self):
         """
-        Проверка доступности главной страницы
+        Проверка доступности главной страницы по url
         """
-        resource = self.client.get(reverse("shop:main"))
-        self.assertEqual(resource.status_code, 200)
+        response = self.client.get("/")
+        self.assertEqual(response.status_code, 200)
+
+    def test_main_url_name(self):
+        """
+        Проверка доступности главной страницы по url-name
+        """
+        response = self.client.get(reverse("shop:main"))
+        self.assertEqual(response.status_code, 200)
+
+    def test_about_url(self):
+        """
+        Проверка доступности страницы о магазине по url
+        """
+        response = self.client.get("/about/")
+        self.assertEqual(response.status_code, 200)
+
+    def test_about_url_name(self):
+        """
+        Проверка доступности страницы о магазине по url-name
+        """
+        response = self.client.get(reverse("shop:about"))
+        self.assertEqual(response.status_code, 200)
+
+    def test_sale_url(self):
+        """
+        Проверка доступности страницы с распродажей по url
+        """
+        response = self.client.get("/sale/")
+        self.assertEqual(response.status_code, 200)
+
+    def test_sale_url_name(self):
+        """
+        Проверка доступности страницы с распродажей по url-name
+        """
+        response = self.client.get(reverse("shop:sale"))
+        self.assertEqual(response.status_code, 200)
+
+    def test_catalog_url(self):
+        """
+        Проверка доступности страницы с каталогом товаров по url
+        """
+        response = self.client.get("/catalog/")
+        self.assertEqual(response.status_code, 200)
+
+    def test_catalog_url_name(self):
+        """
+        Проверка доступности страницы с каталогом товаров по url-name
+        """
+        response = self.client.get(reverse("shop:products_list"))
+        self.assertEqual(response.status_code, 200)
+
+    def test_search_url(self):
+        """
+        Проверка доступности страницы поиска товаров по url
+        """
+        response = self.client.get("/search/", data={"query": ""})
+        self.assertEqual(response.status_code, 200)
+
+    def test_search_url_name(self):
+        """
+        Проверка доступности страницы поиска товаров по url-name
+        """
+        response = self.client.get(reverse("shop:search"), data={"query": ""})
+        self.assertEqual(response.status_code, 200)

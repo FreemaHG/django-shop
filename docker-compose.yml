@@ -19,7 +19,9 @@ services:
     env_file:
       - .env
     container_name: app
-    command: gunicorn app.megano.wsgi:application --workers 4 --bind=0.0.0.0:8000
+#    command: gunicorn app.megano.wsgi:application --workers 4 --bind=0.0.0.0:8000
+    # Собираем статику и запускаем сервер
+    command: ["/docker/app.sh"]
     volumes:
       # Именованный том
       - staticfiles:/app/staticfiles
@@ -53,7 +55,7 @@ services:
     container_name: celery
     # Команды для запуска Celery в отдельном файле
     # "celery" - передаем аргумент в команду, прописанную в файле celery.sh
-    command: [ "/docker/celery.sh", "celery"]
+    command: ["/docker/celery.sh", "celery"]
     # Зависимость (контейнер с celery запуститься только после запуска контейнера с redis)
     depends_on:
       - redis
@@ -71,7 +73,7 @@ services:
     # Команды для запуска flower
     # Тот же файл, что и для запуска celery, просто передаем другой аргумент и выполнится другая команда
     # "flower" - передаем аргумент в команду, прописанную в файле celery.sh
-    command: [ "/docker/celery.sh", "flower" ]
+    command: ["/docker/celery.sh", "flower"]
     # Зависимость (контейнер с flower запуститься только после запуска контейнера с redis и celery)
     depends_on:
       - redis

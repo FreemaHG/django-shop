@@ -1,7 +1,6 @@
 from django.urls import path, re_path, include
 from django.views.decorators.cache import cache_page
 
-# from config.admin import config
 from app.config.utils.configuration import get_config
 from app.app_user.views import (
     register_user_view,  # Регистрация пользователя
@@ -56,18 +55,17 @@ urlpatterns = [
         cache_page(60 * config.caching_time)(LogoutUserView.as_view()),
         name="logout",
     ),
+    # Восстановление пароля
     path(
         "password_recovery/",
         cache_page(60 * config.caching_time)(PasswordRecoveryView.as_view()),
         name="password_recovery",
-    ),  # Восстановление пароля
+    ),
     # Личный кабинет
     path("account/", account_view, name="account"),
     path("profile/", ProfileView.as_view(), name="profile"),
-    path(
-        "update_account/", UpdateAccountView.as_view(), name="update_account"
-    ),  # Обновление данных аккаунта
-    path(
-        "browsing_history/", BrowsingHistoryView.as_view(), name="browsing_history"
-    ),  # История просмотров
+    # Обновление данных аккаунта
+    path("update_account/", UpdateAccountView.as_view(), name="update_account"),
+    # История просмотров
+    path("browsing_history/", BrowsingHistoryView.as_view(), name="browsing_history"),
 ]
